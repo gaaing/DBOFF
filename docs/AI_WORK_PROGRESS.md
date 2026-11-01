@@ -491,3 +491,60 @@ README 明确说明：
 - 将后续任务改为自动化全盘发现、提取覆盖率核对和未知文件保留，不要求用户人工分类。
 - 根据 Cloudflare 官方最新文档补充 R2 容量、对象大小、multipart、上传工具、价格、访问策略和未来客户端安装包分区方案。
 - 明确目前尚未确认 R2 bucket 已创建，也未进行任何 R2 配置或上传。
+
+
+## 16. OpenDBO-Core 协议覆盖扩展：角色、社区、服务器协调与数据库消息（2026-11-01）
+
+审计仍固定在 OpenDBO-Core master commit 23cb305a6cf20048fec75595a8fa1ee2f1a0e83d，不将其他版本的协议定义混入本轮统计。
+
+### 16.1 新增读取的共享协议头
+本轮继续读取：
+- NtlPacketUC.h / NtlPacketCU.h：客户端与 CharServer；
+- NtlPacketUT.h / NtlPacketTU.h：客户端与 Community/Chat；
+- NtlPacketMG.h / NtlPacketGM.h：Master/服务器协调方向；
+- NtlPacketGQ.h / NtlPacketQG.h：GameServer 与 QueryServer；
+并重新读取 UA/AU、UG/GU 作为同一版本统计基线。
+
+### 16.2 目前读取的 12 个协议族初步计数
+按共享头文件 enum 中实际命名的 opcode 项目初步计数（排除 BEGIN/END/DUMMY 标记；尚未完成与注册表逐项对账）：
+
+| 协议族 | 初步 opcode 数 | 主要覆盖 |
+|---|---:|---|
+| UA | 2 | 客户端认证请求 |
+| AU | 2 | 认证结果/断开响应 |
+| UC | 12 | CharServer 登录、服务器列表、角色创建/删除/选择/加载/退出、等待队列、改名 |
+| CU | 22 | 角色服务响应、角色信息、服务器/频道列表、排队通知、断开与角色通知 |
+| UG | 322 | 客户端到 GameServer 的游戏行为请求/通知 |
+| GU | 681 | GameServer 到客户端的状态、对象、战斗、系统响应/通知 |
+| UT | 46 | 聊天、好友、公会、排名、TMQ 记录、Budokai、客服 Petition、Dojo、HLS |
+| TU | 96 | 社区响应/广播、公会/好友/排名、TMQ/Budokai、Petition、Dojo、HLS |
+| MG | 27 | 服务器信息、服务状态、世界分配、版本/人数、踢人、频道切换/跨服传送协调 |
+| GM | 18 | 服务器注册/心跳/负载/人数报告、登录/登出、玩家迁移、关闭与活动状态通知 |
+| GQ | 252 | 角色持久化、物品/技能/Buff/任务/邮件/宠物/商店/公会银行/Budokai/拍卖/现金商城/称号/活动奖励等数据库请求 |
+| QG | 243 | 对应查询/持久化响应及数据载荷 |
+| **合计** | **1,723** | 以上 12 个已读取协议头的初步 enum 项目数 |
+
+计数是协议定义规模，不等于 1,723 个可供玩家使用的独立功能；其中包含请求、响应、通知、数据分片、内部管理消息和可能遗留的 opcode。还必须核查 opcode 是否注册、处理函数是否有业务闭环、客户端是否有调用/显示、配置和数据是否支持。
+
+### 16.3 新增确认的系统范围
+- 角色服务 UC/CU 不只是角色创建/选择，还包含服务器农场列表、单服务器列表、等待队列检查/取消、角色删除取消和改名。UC opcode 注册表中可见多个请求被绑定到 CClientSession 方法；本轮只截取验证了前段注册，尚未逐项统计全表。
+- 社区服务 UT/TU 明确不只是聊天。协议头还覆盖好友黑名单、公会管理/职位、Dojo、RankBattle 排名查询、TMQ 记录、Budokai 赛事信息、客服 Petition 和 HLS Slot Machine。必须把社区服务作为独立系统审计。
+- Master/服务器协调 MG/GM 覆盖服务器注册信息、心跳、负载、在线人数、服务器/频道列表更新、版本通知、强制踢人、玩家频道切换、CharServer teleport 和服务器关闭。玩家跨频道/跨服流程不能只看客户端 UG/GU。
+- GameServer/QueryServer GQ/QG 的数据库消息远超角色基础存档，包含角色、背包、装备耐久、技能、Buff、任务状态、宠物、交易、邮件、私人商店、排名/Budokai、Hoipoi Mix、现金物品、拍卖、称号、Mascot、Dynamic Field、Event Reward 等持久化/查询接口。需要逐项确认 QueryServer handler、数据库表/事务、失败处理和 GameServer 回包。
+
+### 16.4 当前审计边界与下一批工作
+目前没有完成：
+1. 12 个协议族所有 opcode 与服务端注册表逐项差异比对；
+2. AuthServer、CharServer、GameServer、ChatServer、MasterServer、QueryServer 的全部分派表及 handler 调用链；
+3. 客户端全部 packet send/generator 与 receive handler 的对照；
+4. GQ/QG 对应 QueryServer 处理函数、SQL、表结构和事务闭环；
+5. UT/TU 社区消息的 ChatServer/CommunityServer 业务路径及与 GameServer 的桥接；
+6. 服务器迁移、跨频道、登录等待队列的时序和失败路径；
+7. 代码存在但未注册、注册但未调用、客户端 UI 不可达、宏/配置关闭和数据缺失等功能状态判定。
+本轮通过 GitHub connector 直接按固定 commit 读取了共享协议头；尝试的部分服务端 opcode 文件路径未命中，不能据此断言不存在，后续需要从仓库实际路径搜索定位。
+
+### 2026-11-01 更新记录
+- 增加 UC/CU、UT/TU、MG/GM、GQ/QG 八个共享协议头的读取记录。
+- 对 UA/AU、UC/CU、UG/GU、UT/TU、MG/GM、GQ/QG 共 12 个方向协议族作出 1,723 项初步 enum 计数，明确这不是功能完成度或玩家可用功能数。
+- 识别社区、服务器协调和数据库持久化协议中此前未纳入首轮摘要的系统范围。
+- 将协议定义与 opcode 注册、handler、SQL、客户端 UI/行为之间的差异核查列为后续工作。
