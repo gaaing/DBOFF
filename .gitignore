@@ -8,6 +8,7 @@ cd E:\DBOFF
 !/docs/
 !/scenes/
 !/src/
+!/project.godot
 
 # 保留规则文件
 !/.gitignore

@@ -1,0 +1,49 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="DBOFF"
+run/main_scene="res://scenes/lobby/character_lobby.tscn"
+config/features=PackedStringArray("4.7", "Forward Plus")
+
+[autoload]
+
+DBOEventBus="*res://src/core/dbo_event_bus.gd"
+DBOLocalizer="*res://src/core/dbo_localizer.gd"
+DBOTableManager="*res://src/core/dbo_table_manager.gd"
+AudioManager="*res://src/core/audio_manager.gd"
+DBOInventoryManager="*res://src/core/dbo_inventory_manager.gd"
+DBOQuestManager="*res://src/core/dbo_quest_manager.gd"
+DBOUIManager="*res://src/ui/dbo_ui_manager.gd"
+DBOCombatTextManager="*res://src/ui/hud/dbo_combat_text_manager.gd"
+DBOEffectManager="*res://src/effects/dbo_effect_manager.gd"
+
+[display]
+
+window/size/viewport_width=1920
+window/size/viewport_height=1080
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[importer_defaults]
+
+scene/meshes/generate_lods=false
+scene/meshes/create_shadow_meshes=false
+scene/meshes/ensure_tangents=false
+scene/animation/trimming=false
+
+[physics]
+
+3d/physics_engine="Jolt Physics"
+
+[rendering]
+
+rendering_device/driver.windows="d3d12"
