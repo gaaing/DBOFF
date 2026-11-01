@@ -313,3 +313,87 @@ GitHub 文件存在只证明这些文件已上传，不证明其内容正确或�
 - 对于私有 bucket，普通 URL 无法读取；需要临时签名 URL 或经过授权的读取代理。
 - URL 可访问不保证所有格式都能在网页端直接预览；部分二进制资产需要下载、解包或专用工具分析。
 - 本轮仅记录访问架构建议；没有创建 bucket、修改 Cloudflare 配置、上传或公开任何 DBOFF 资产。
+
+
+## 14. OpenDBO-Core 全量客户端/服务端审计启动（2026-11-01）
+
+### 14.1 审计基准与仓库规模
+
+本轮开始按用户要求扩大 OpenDBO-Core 审计范围，不再将此前少数入口文件的阅读称为完整对照。
+
+- 上游仓库：`OpenDBO/OpenDBO-Core`
+- 分支：`master`
+- 本轮锁定的 HEAD commit：`23cb305a6cf20048fec75595a8fa1ee2f1a0e83d`
+- commit 时间：`2026-10-29T22:42:53Z`
+- commit 信息：`Merge pull request #147 from riagoncalves/feat/event-reward-npc`
+- 对应 Git tree SHA：`9b1885340a9d41f8a9a56fcdb54b30d75c63b3ae`
+- 递归 tree 检查：43,728 个条目，GitHub 返回 `truncated=false`。
+
+按顶层目录统计的条目数（包含文件和目录，不等于源文件数）：
+
+| 顶层目录 | 条目数 | 当前观察 |
+|---|---:|---|
+| DboClient | 10,671 | 客户端、客户端库、编辑器和工具 |
+| DboServer | 30,562 | 六类服务端程序、数据库、运行环境和大量服务端数据 |
+| DboShared | 669 | 客户端/服务端共享结构、数据表定义、触发器 |
+| NtlLib | 1,822 | 网络、引擎、工具和共享基础库 |
+
+扩展名统计显示，DboClient 有 2,569 个 .cpp、4,335 个 .h；DboServer 有 771 个 .cpp、777 个 .h。DboServer/ExecutionEnv 有 28,976 个 tree 条目，其中可见 23,082 个 .dat、237 个 .rdf、352 个 .cf、352 个 .pf、357 个 .sps、534 个 .wps、3,604 个 .t 等数据文件。上述统计来自 Git tree，不代表每个文件都已阅读或已判定用途。
+
+README 明确说明：
+- DboServer/Server 包含 AuthServer、CharServer、ChatServer、GameServer（每个频道一个进程）、MasterServer、QueryServer；QueryServer 是唯一直接与数据库交互的服务。
+- DboShared 放置两端共用的 packet definitions、game tables、triggers。
+- DboServer/ExecutionEnv 包含配置、server_data 和启动脚本。
+- DboClient 包含 Client、presentation/simulation/GUI/sound libraries，以及世界、模型、GUI、任务编辑器、PackEditor 和 DBOLauncher 等工具。
+
+### 14.2 协议审计的首轮源码证据
+
+已读取：
+- `DboShared/NtlShared2/NtlPacketAll.h`（blob SHA `ab0a442fa02c67e67aeb4e0ab73780722396983b`）
+- `DboShared/NtlShared2/NtlPacketCommon.h`（blob SHA `2bf4f83750d4f4d915514cd5d896e023c2d288de`）
+- `DboShared/NtlShared2/NtlPacketUG.h`（blob SHA `5cf298d285b710e5c86467d5b33ec794a4308c6d`）
+- `DboShared/NtlShared2/NtlPacketGU.h`（blob SHA `604d0f37295c7076fdc692d0a02590ad22c6f6b5`）
+- `DboShared/NtlShared2/NtlPacketUA.h`（blob SHA `e5401e9b7d25bfc2c811fef1f935acec59b88f23`）
+- `DboShared/NtlShared2/NtlPacketAU.h`（blob SHA `feff488c76e49f82672160282d1ce015f55543c6`）
+- 客户端 `DboClient/Client/Main/PacketProc.cpp`（blob SHA `1bd07d230e15cd28656a2801140a8e0a51800ad5`）
+- 客户端 `DboClient/Client/Main/DboPacketHandler.cpp`（blob SHA `b2f939619d6e2c1bf47de7d946b8d733b0a3c9d2`）
+- GameServer `ug_opcodes.cpp/.h`（请求分派表；blob SHA 分别为 `6d2376f191847fb21d85b28ec1ee2cef3eca20e6`、`6583a400c7559f0c527d892f231817a3c4c4dab3`）
+- ChatServer `tg_opcodes.cpp/.h`（GameServer 与 ChatServer 方向的分派表；blob SHA 分别为 `433445d362760e09e688631924cf4e2e448078e6`、`be6b1f3200c6b247d0da8e29e815d542c2265e93`）
+
+首轮可确认：
+1. `NtlPacketAll.h` 规定了按通信双方命名的协议族：U=游戏客户端、A=Auth、C=Character、G=Game、T=Community/Chat、M=Master、Q=Query、N=NPC、L=Log、W=Web、X=未定义/其他；例如 UG 是 User→Game，GU 是 Game→User。
+2. 同一文件规定 opcode 数值区间，例如 UA 100–999、AU 1000–1999、UG 4000–4999、GU 5000–5999、UT 6000–6999、TU 7000–7999，以及多个服务器间通信区间。协议审计必须覆盖全部方向，不能只看客户端与 GameServer。
+3. `NtlPacketCommon.h` 的当前 packet header 结构可见字段为 WORD wOpCode；旧版带 sequence/checksum 的结构被注释掉。具体线上帧格式、编码/加密、长度和可靠性语义仍需结合 NtlLib 网络层验证，不能仅凭该结构断言完整 wire format。
+4. UG 定义客户端向 GameServer 发出的移动/状态、进入世界、技能、Buff、物品、商店、组队、银行、任务、交易、公会、龙珠、TimeQuest、RankBattle、传送和私人商店等请求类别；GU 定义服务器回传角色/世界信息、对象创建销毁、移动状态、战斗/技能/Buff、物品、组队及其他系统结果/通知。
+5. GameServer 的 `ug_opcodes.cpp` 将 UG opcode 注册到具体 `CClientSession` 处理函数，并标注 PROCESS_INPLACE / PROCESS_THREADUNSAFE 等处理模式。这意味着协议清单必须进一步追到每个 handler 的校验、状态变更、持久化和回包，而不是停留在 packet struct。
+6. Auth 登录协议 UA/AU 已可见请求/响应结构：请求包含用户 ID、加密密码字段、版本字段和网卡地址；响应包含结果码、用户 ID、Auth Key、账号 ID、上次服务器农场 ID、开发者权限、GM 标志和服务器列表。后续需核对密码处理、版本校验、Auth Key 生命周期、角色/频道连接链和失败状态。
+
+### 14.3 首轮审计方向与未完成项
+
+后续按以下链路逐步核查，并记录 packet struct → client generator → server opcode registration → handler → cross-server/query/database → response/notification → client handler → player-visible state：
+
+- 登录、认证、服务器农场/频道选择、角色列表、创建/删除/选择角色、进入世界、加载完成、断线与重连；
+- GameServer 与 ChatServer/Community、MasterServer、QueryServer、CharServer 的跨服务消息和状态同步；
+- 角色移动、战斗、技能、Buff、物品、任务、NPC/怪物、掉落、交易、商店、背包/仓库；
+- 组队、好友、聊天、公会/道场、邮件、私人商店、拍卖；
+- TimeQuest、Dungeon/World Concept、Budokai、RankBattle、FreeBattle、Dragonball Scramble、动态世界事件、活动奖励、车辆、宠物/Mascot 等；
+- 客户端表现与 UI 是否实际接收并执行相应消息；
+- 未注册 opcode、未调用函数、仅有结构无 handler、仅有 handler 无客户端入口、宏/配置关闭、数据库表有数据但业务未接通、注释掉的代码、遗留版本分支和运行资源缺失。
+
+### 14.4 当前缺少的材料与证据边界
+
+本轮可通过公开 GitHub 读取上游源码和被跟踪的 ExecutionEnv 数据；但若要验证完整编译、运行行为和所有资源依赖，还缺少：
+- 与该 commit 配套的 OpenDBO-Assets 客户端资源包及第三方依赖仓库/版本；
+- 可运行的原版客户端文件（README 说明 DboClient/DragonBall 运行文件不在 Core 仓库跟踪）；
+- 与此版本匹配的数据库实际实例、配置和可复现账号/角色数据（SQL schema/seed 只能说明初始化结构，不能替代运行实例）；
+- 若要确认“实际游戏行为”，需要能运行的服务端/客户端环境、日志、封包或用户提供的录屏/操作复现；静态源码审计只能确认代码路径和设计，不自动证明运行时路径可达；
+- 若要对照 DBOFF 的实现，还需随审计模块提供当前 DBOFF 对应脚本、场景、数据和资源。当前阶段不要求用户立即分类资产；后续可通过自动 manifest 和文件指纹盘点。
+
+当前已完成的是仓库规模/结构摸底和协议入口首轮读取，**不是完整客户端、完整服务端或协议审计完成**。尤其尚未逐个读取所有服务端 handler、全部共享 packet 结构、数据库访问链和实际运行流程。
+
+### 2026-11-01 更新记录
+- 锁定 OpenDBO-Core master commit `23cb305a6cf20048fec75595a8fa1ee2f1a0e83d`，记录对应 tree SHA。
+- 对递归 Git tree 进行完整性检查，确认 43,728 条目且未被 GitHub API 截断；记录客户端、服务端、共享库和 NtlLib 的规模。
+- 阅读上游 README、共享 packet 总入口/通用头、UA/AU/UG/GU 协议头、客户端 PacketProc/主 packet handler、GameServer UG opcode 分派表和 ChatServer TG opcode 分派表。
+- 建立从 packet struct 到玩家可见状态的端到端协议审计链路与待查项目。
+- 明确缺少运行版客户端资产、第三方依赖、数据库实例和运行日志等材料；这些缺口影响运行行为验证，不妨碍继续静态源码审计。
