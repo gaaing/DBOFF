@@ -397,3 +397,97 @@ README 明确说明：
 - 阅读上游 README、共享 packet 总入口/通用头、UA/AU/UG/GU 协议头、客户端 PacketProc/主 packet handler、GameServer UG opcode 分派表和 ChatServer TG opcode 分派表。
 - 建立从 packet struct 到玩家可见状态的端到端协议审计链路与待查项目。
 - 明确缺少运行版客户端资产、第三方依赖、数据库实例和运行日志等材料；这些缺口影响运行行为验证，不妨碍继续静态源码审计。
+
+
+## 15. Antigravity 资产修复结束后的全量盘点与 R2 交付（2026-11-01）
+
+### 15.1 当前状态（用户报告）
+- 用户确认 Antigravity 本轮修复工作已经完成。
+- 用户确认模型、贴图和动画已完整提取；其他资产类型是否完整提取尚不能保证。
+- 用户目前不希望承担人工资产分类工作；分类、格式识别、关联关系和完整性盘点应尽量由自动化扫描完成。
+- 本节只记录用户报告与后续工作要求；尚未读取本轮 Antigravity 的最终导出目录、日志或报告，因此不能独立确认实际提取覆盖率。
+
+### 15.2 全量扫描范围
+盘点不得只扫描模型/纹理/动画目录。至少扫描：
+- 模型与几何：OBJ、DFF、GLB、网格、骨骼、模型变体；
+- 纹理、图集、材质、Shader 和材质参数；
+- 动画片段、骨骼绑定、动作映射和动画配置；
+- 粒子、技能/环境特效；
+- UI 图片、图标、图集、字体；
+- BGM、环境音、技能音效、语音；
+- 地图、地形、区块、TileAttr/地表属性、碰撞、地图对象；
+- NPC、怪物、道具、建筑、载具、交互对象；
+- RDF、DAT、CF、PF、SPS、WPS、TBL、XML、JSON 等数据；
+- 任务、技能、掉落、对话、事件、触发器及其他脚本配置；
+- 所有未知扩展名、无扩展名和暂不能识别的二进制文件。
+未知文件必须保留并进入待识别清单，不得因扩展名未知而删除或跳过。
+
+### 15.3 每个文件的资产记录
+后续 manifest 至少记录：
+- 稳定 asset_id；
+- original_path（相对原始资源根目录）；
+- exported_path（相对导出根目录，可空）；
+- extension、size_bytes、SHA-256；
+- 自动识别的 asset_type 和识别置信度；
+- source_version、export_tool/version；
+- export_status、错误信息；
+- references（与模型、材质、贴图、骨骼、动画、数据 ID 等关联）；
+- notes。
+同时保留原始文件、导出文件、失败清单、未知文件清单、重复文件清单、关联关系和可复现导出日志。不得把转换成功等同于资源完整性验收；仍需检查贴图引用、骨骼/动画兼容、模型变体覆盖和资源引用闭环。
+
+### 15.4 本地路径可变更的设计
+- manifest 中禁止把机器绝对路径作为资产身份或稳定引用。
+- 路径以相对路径表示，并在扫描/同步配置中单独指定本地 source_root、export_root 和 R2 destination prefix。
+- 本地目录移动后，只需更新根目录映射，不应改变 asset_id、SHA-256 或对象身份。
+- R2 object key 使用稳定前缀和相对路径；避免把 Windows 盘符、用户名或本机绝对路径写入对象 key。
+- 同步应支持 dry-run、增量上传、失败重试、断点续传、远端校验和显式删除保护；默认不得因本地某次扫描缺失就删除 R2 对象。
+- 上传完成后生成远端 manifest 与上传报告，按 SHA-256/大小核对，不以 ETag 代替 SHA-256。
+
+### 15.5 R2 容量和上传能力（Cloudflare 官方文档，2026-11-01 检索）
+- R2 单桶存储容量不限、每桶对象数不限；默认每账户 bucket 数上限 100,000，超过部分按官方定价收费。
+- 单对象最大 5 TiB（官方限制表精确表述为 5 GiB less than 5 TiB）；单次普通 PUT 最大 5 GiB less 5 MiB，超大对象应使用 multipart。
+- Multipart 最多 10,000 个 part；每个 part 5 MiB 至 5 GiB（最后一个 part 可小于 5 MiB）；支持并行和失败分片重试。未完成 multipart 默认 7 天后自动中止。
+- Wrangler 单文件上传上限 315 MB 且一次一个对象，不适合本项目的大批量资产同步；官方文档推荐大文件/批量使用 rclone 或 S3-compatible 工具。
+- 当前官方 Standard 定价为 $0.015/GB-month；每月免费额度 10 GB-month、1M Class A、10M Class B；互联网出口流量免费。Infrequent Access 为 $0.01/GB-month，但有读取/检索费用和 30 天最低存储期，不适合频繁审查和频繁读取的工作资产。
+- 生产分发建议使用自定义域名；r2.dev 仅用于开发测试并有可变速率限制。
+- 私有对象可用短期 presigned GET/PUT；URL 是 bearer token，应限制有效期和对象范围。公开 bucket 需明确开启，不能默认公开整个资产库。
+- 来源：
+  - https://developers.cloudflare.com/r2/platform/limits/
+  - https://developers.cloudflare.com/r2/objects/upload-objects/
+  - https://developers.cloudflare.com/r2/pricing/
+  - https://developers.cloudflare.com/r2/api/s3/presigned-urls/
+  - https://developers.cloudflare.com/r2/buckets/public-buckets/
+
+### 15.6 R2 对象分区提案（尚未配置）
+建议用一个专用 DBOFF R2 bucket，按用途分前缀，而不是将所有内容混成一个目录：
+- assets/raw/：原始提取资产，保留原格式；
+- assets/exported/：转换后的可用资产；
+- assets/manifests/：完整 manifest、分类索引、关系索引、校验报告；
+- assets/review/：供审查使用的抽样或明确授权读取资产；
+- releases/client/<version>/：未来客户端安装包/压缩包；
+- releases/metadata/：版本清单、SHA-256、签名、更新说明和平台信息；
+- backups/：仅在明确需要时存放备份。
+以上是逻辑前缀，不要求创建真实目录对象。R2 不限制单桶对象数量/容量，资产和安装包可放同一桶，但权限、公开域名、缓存策略和生命周期应按前缀隔离。
+不建议将全部原始资产公开。优先保持私有，通过受控 Worker 或短期 presigned URL 提供指定对象访问；若将来要公开分发客户端安装包，应只公开 releases 中经过签名和校验的发布对象。
+
+### 15.7 尚需用户/Antigravity 提供的材料
+当前缺少：
+1. Antigravity 本轮修复完成后的最终导出目录树；
+2. 原始资源根目录和已导出模型/纹理/动画的路径（可只提供根目录，不要求人工分类）；
+3. 本轮提取脚本/工具名称与版本、执行日志、成功/失败统计；
+4. 现有导出是否保留原始格式文件，以及是否有资源 ID/引用关系输出；
+5. R2 当前 bucket 是否已创建、bucket 名称、现有自定义域名/访问策略（只需非秘密配置状态，不要提供 API Secret/Access Key）。
+在取得这些材料前，不估算总资产数量/容量，不宣称提取完整，也不创建或公开 R2 bucket。
+
+### 15.8 后续工作
+1. 先让 Antigravity 生成全盘扫描报告与机器可读 manifest，不要立刻批量上传。
+2. 核对已导出的模型/纹理/动画覆盖率，列出未导出和未知文件。
+3. 根据扫描总容量、文件分布和读取需求确定 R2 前缀、访问策略和同步工具。
+4. 先上传小样本，验证路径映射、断点续传、SHA-256、远端读取和本地根目录变更。
+5. 验证通过后再全量上传，并将资产 manifest 与 OpenDBO 功能审计系统关联。
+
+### 2026-11-01 更新记录
+- 用户确认 Antigravity 本轮修复已结束；模型、贴图和动画已完整提取，但其他资产覆盖率未知。
+- 将后续任务改为自动化全盘发现、提取覆盖率核对和未知文件保留，不要求用户人工分类。
+- 根据 Cloudflare 官方最新文档补充 R2 容量、对象大小、multipart、上传工具、价格、访问策略和未来客户端安装包分区方案。
+- 明确目前尚未确认 R2 bucket 已创建，也未进行任何 R2 配置或上传。
