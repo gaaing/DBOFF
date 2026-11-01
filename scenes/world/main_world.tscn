@@ -1,0 +1,29 @@
+[gd_scene format=3 uid="uid://b2ewvmakyao2s"]
+
+[ext_resource type="Script" uid="uid://bnw8aq82vm3sn" path="res://src/world/world_scene_driver.gd" id="1_scene_driver"]
+[ext_resource type="Script" uid="uid://pl54oqwjfnsw" path="res://src/core/free_look_camera_3d.gd" id="2_freelook_cam"]
+[ext_resource type="Script" uid="uid://dv8782cc4bo83" path="res://src/world/world_skybox.gd" id="3_skybox"]
+[ext_resource type="Script" uid="uid://bqeod3gooegnf" path="res://src/world/world_chunk_manager.gd" id="4_chunk_manager"]
+[ext_resource type="Script" uid="uid://cdbyxw6qgnxa4" path="res://src/world/world_prop_manager.gd" id="5_prop_manager"]
+
+[node name="MainWorld" type="Node3D" unique_id=1950842146]
+script = ExtResource("1_scene_driver")
+initial_player_spawn_pos = Vector3(0, 65, 0)
+
+[node name="FreeLookCamera3D" type="Camera3D" parent="." unique_id=1842109246]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 65, 30)
+current = true
+far = 2000.0
+script = ExtResource("2_freelook_cam")
+move_speed = 40.0
+
+[node name="WorldSkybox" type="Node3D" parent="." unique_id=865163958]
+script = ExtResource("3_skybox")
+sky_scale = 1.0
+
+[node name="WorldChunkManager" type="Node3D" parent="." unique_id=736331377 node_paths=PackedStringArray("target_follow_node")]
+script = ExtResource("4_chunk_manager")
+target_follow_node = NodePath("../FreeLookCamera3D")
+
+[node name="WorldPropManager" type="Node3D" parent="." unique_id=598914938]
+script = ExtResource("5_prop_manager")

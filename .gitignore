@@ -1,0 +1,14 @@
+cd E:\DBOFF
+
+@'
+# 默认忽略根目录下所有内容
+/*
+
+# 只允许这三个目录
+!/docs/
+!/scenes/
+!/src/
+
+# 保留规则文件
+!/.gitignore
+'@ | Set-Content -Encoding utf8 .gitignore

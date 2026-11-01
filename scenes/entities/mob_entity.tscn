@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmob01entity"]
+
+[ext_resource type="Script" path="res://src/entities/mob_entity_3d.gd" id="1_mob"]
+[ext_resource type="Script" path="res://src/entities/character_visual.gd" id="2_vis"]
+[ext_resource type="Script" path="res://src/entities/anim_event_dispatcher.gd" id="3_ev"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_mob"]
+radius = 0.5
+height = 1.6
+
+[node name="MobEntity" type="CharacterBody3D"]
+collision_layer = 4
+collision_mask = 3
+script = ExtResource("1_mob")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8, 0)
+shape = SubResource("CapsuleShape3D_mob")
+
+[node name="DBOCharacterVisual" type="Node3D" parent="."]
+script = ExtResource("2_vis")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="DBOCharacterVisual"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DBOCharacterVisual"]
+
+[node name="AnimEventDispatcher" type="Node" parent="DBOCharacterVisual"]
+script = ExtResource("3_ev")

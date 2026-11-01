@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bpl01character"]
+
+[ext_resource type="Script" path="res://src/entities/player_controller_3d.gd" id="1_pc"]
+[ext_resource type="Script" path="res://src/entities/character_visual.gd" id="2_vis"]
+[ext_resource type="Script" path="res://src/entities/anim_event_dispatcher.gd" id="3_ev"]
+[ext_resource type="Script" path="res://src/entities/dbo_aspect_component.gd" id="4_asp"]
+[ext_resource type="Script" path="res://src/entities/dbo_buff_component.gd" id="5_buff"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_pc"]
+radius = 0.4
+height = 1.8
+
+[node name="PlayerCharacter" type="CharacterBody3D"]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_pc")
+character_name = "SonGoku"
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.9, 0)
+shape = SubResource("CapsuleShape3D_pc")
+
+[node name="DBOCharacterVisual" type="Node3D" parent="."]
+script = ExtResource("2_vis")
+
+[node name="Skeleton3D" type="Skeleton3D" parent="DBOCharacterVisual"]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="DBOCharacterVisual"]
+
+[node name="AnimEventDispatcher" type="Node" parent="DBOCharacterVisual"]
+script = ExtResource("3_ev")
+
+[node name="DBOAspectComponent" type="Node" parent="."]
+script = ExtResource("4_asp")
+
+[node name="DBOBuffComponent" type="Node" parent="."]
+script = ExtResource("5_buff")
+
+[node name="CameraArm" type="SpringArm3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 1.4, 0)
+spring_length = 4.5
+margin = 0.2
+
+[node name="Camera3D" type="Camera3D" parent="CameraArm"]
+current = true
+fov = 65.0
