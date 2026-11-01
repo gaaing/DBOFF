@@ -1,0 +1,3239 @@
+{
+  "world_name": "dbo_dungeon_001",
+  "folder": "dungeon_001_chunks",
+  "is_indoor_bsp": false,
+  "field_count": 256,
+  "preset_count": 49,
+  "presets": [
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.302,
+          0.055,
+          0.584
+        ],
+        "horizon": [
+          0.0,
+          0.635,
+          1.0
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "directional_light": {
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [],
+      "weather_ids": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        16843009,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        50529027,
+        33751811,
+        50528770,
+        50528770
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        50529025,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33686019,
+        33685762,
+        50463490,
+        16908803,
+        50397441
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "directional_light": {
+        "color": [
+          1.0,
+          1.0,
+          1.0
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [],
+      "weather_ids": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [],
+      "weather_ids": [
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        16843009,
+        16843010
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        33686017,
+        33686018,
+        33686018,
+        33686018
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33686018,
+        33686018,
+        33686018,
+        33686018,
+        33686018
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50529027,
+        50529027,
+        50397441,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        33685761,
+        16974595,
+        33686017,
+        50528770
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33751554,
+        33686019,
+        50463234,
+        50463491,
+        16974594
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843011,
+        50528513,
+        50529027,
+        16843523,
+        50528515
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        50397441,
+        50529027,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50397954,
+        16843011,
+        50529025,
+        33686018,
+        33686018
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843266,
+        16843009,
+        16974593,
+        16843009,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        33685761,
+        33751554,
+        16843010,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        16843009,
+        50397441
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50528770,
+        50529027,
+        50529027,
+        50529027,
+        33686275
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50462979,
+        50529027,
+        33686019,
+        50528770,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50529027,
+        33751811,
+        33686018,
+        50528770,
+        33751555
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        33685761,
+        33686018,
+        33686018
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        50528513,
+        50529027,
+        16843523,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33686275,
+        33751554,
+        50463234,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50529027,
+        33686275,
+        50463234,
+        33686275,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        33620225,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16974595,
+        50528513,
+        50529027,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33686018,
+        16843009,
+        50529027,
+        16843011,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33686019,
+        16843523,
+        33751809,
+        16908802,
+        16908545
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50529027,
+        50529027,
+        50529027,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        33686018,
+        33686018,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33686018,
+        50529027,
+        50463234,
+        50529027,
+        33686018
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50529027,
+        33686018,
+        33686018,
+        33686018,
+        33686018
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        16843009,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [],
+      "weather_ids": [
+        50529027,
+        50529027,
+        50529027,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [],
+      "weather_ids": [
+        33686019,
+        50528770,
+        50529027,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        33685761,
+        33686018,
+        33686018,
+        33686018,
+        33686018
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        50397441,
+        33686275,
+        50528770
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        16843265,
+        33620225
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50529026,
+        16843011,
+        16843009,
+        33751809,
+        16843010
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        16974593,
+        50397441
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843266,
+        33686275,
+        16843009,
+        16843009,
+        16843009
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        16843009,
+        16843009,
+        16908545
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        50529027,
+        50529027,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        50529027,
+        33751811,
+        50463234,
+        50529027,
+        50529027
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        16843009,
+        33620225,
+        16974338,
+        33620225
+      ]
+    },
+    {
+      "sky_mode": 1,
+      "sky_gradient": {
+        "top": [
+          0.502,
+          0.251,
+          0.0
+        ],
+        "horizon": [
+          1.0,
+          0.502,
+          0.251
+        ],
+        "bottom": [
+          0.0,
+          0.0,
+          0.0
+        ]
+      },
+      "base_sky": "sky",
+      "base_sky_speed": 0.0,
+      "cloud_0": "",
+      "cloud_speed_0": 0.0,
+      "cloud_1": "",
+      "cloud_speed_1": 0.0,
+      "ambient_color": [
+        0.525,
+        0.427,
+        0.302
+      ],
+      "directional_light": {
+        "color": [
+          0.933,
+          0.941,
+          0.816
+        ],
+        "angle": [
+          135.0,
+          45.0,
+          0.0
+        ]
+      },
+      "planets": [
+        {
+          "texture": "sun_001.png",
+          "relative_pos": [
+            188.7,
+            354.8,
+            287.6
+          ],
+          "scale": 80.0,
+          "lensflare": true
+        }
+      ],
+      "weather_ids": [
+        16843009,
+        33686017,
+        33686018,
+        33686018,
+        50529027
+      ]
+    }
+  ],
+  "field_map": {
+    "0": 0,
+    "1": 0,
+    "10": 0,
+    "100": 1,
+    "101": 1,
+    "102": 2,
+    "103": 3,
+    "104": 2,
+    "105": 2,
+    "106": 4,
+    "107": 5,
+    "108": 2,
+    "109": 1,
+    "11": 0,
+    "110": 0,
+    "111": 0,
+    "112": 0,
+    "113": 0,
+    "114": 6,
+    "115": 7,
+    "116": 1,
+    "117": 1,
+    "118": 8,
+    "119": 9,
+    "12": 0,
+    "120": 10,
+    "121": 2,
+    "122": 11,
+    "123": 12,
+    "124": 13,
+    "125": 2,
+    "126": 0,
+    "127": 0,
+    "128": 0,
+    "129": 0,
+    "13": 0,
+    "130": 6,
+    "131": 7,
+    "132": 1,
+    "133": 1,
+    "134": 2,
+    "135": 2,
+    "136": 14,
+    "137": 15,
+    "138": 16,
+    "139": 10,
+    "14": 0,
+    "140": 17,
+    "141": 18,
+    "142": 0,
+    "143": 0,
+    "144": 0,
+    "145": 0,
+    "146": 6,
+    "147": 7,
+    "148": 1,
+    "149": 2,
+    "15": 0,
+    "150": 2,
+    "151": 2,
+    "152": 19,
+    "153": 20,
+    "154": 21,
+    "155": 22,
+    "156": 23,
+    "157": 2,
+    "158": 0,
+    "159": 0,
+    "16": 0,
+    "160": 0,
+    "161": 0,
+    "162": 6,
+    "163": 7,
+    "164": 1,
+    "165": 2,
+    "166": 24,
+    "167": 25,
+    "168": 26,
+    "169": 27,
+    "17": 0,
+    "170": 28,
+    "171": 2,
+    "172": 1,
+    "173": 1,
+    "174": 0,
+    "175": 0,
+    "176": 0,
+    "177": 0,
+    "178": 6,
+    "179": 7,
+    "18": 0,
+    "180": 2,
+    "181": 2,
+    "182": 29,
+    "183": 30,
+    "184": 31,
+    "185": 10,
+    "186": 10,
+    "187": 1,
+    "188": 1,
+    "189": 1,
+    "19": 0,
+    "190": 0,
+    "191": 0,
+    "192": 0,
+    "193": 0,
+    "194": 6,
+    "195": 7,
+    "196": 32,
+    "197": 31,
+    "198": 33,
+    "199": 34,
+    "2": 0,
+    "20": 0,
+    "200": 1,
+    "201": 1,
+    "202": 1,
+    "203": 1,
+    "204": 1,
+    "205": 1,
+    "206": 0,
+    "207": 0,
+    "208": 0,
+    "209": 0,
+    "21": 0,
+    "210": 6,
+    "211": 7,
+    "212": 35,
+    "213": 36,
+    "214": 37,
+    "215": 35,
+    "216": 7,
+    "217": 7,
+    "218": 7,
+    "219": 7,
+    "22": 0,
+    "220": 7,
+    "221": 7,
+    "222": 0,
+    "223": 0,
+    "224": 0,
+    "225": 0,
+    "226": 0,
+    "227": 0,
+    "228": 0,
+    "229": 0,
+    "23": 0,
+    "230": 0,
+    "231": 0,
+    "232": 0,
+    "233": 0,
+    "234": 0,
+    "235": 0,
+    "236": 0,
+    "237": 0,
+    "238": 0,
+    "239": 0,
+    "24": 0,
+    "240": 0,
+    "241": 0,
+    "242": 0,
+    "243": 0,
+    "244": 0,
+    "245": 0,
+    "246": 0,
+    "247": 0,
+    "248": 0,
+    "249": 0,
+    "25": 0,
+    "250": 0,
+    "251": 0,
+    "252": 0,
+    "253": 0,
+    "254": 0,
+    "255": 0,
+    "26": 0,
+    "27": 0,
+    "28": 0,
+    "29": 0,
+    "3": 0,
+    "30": 0,
+    "31": 0,
+    "32": 0,
+    "33": 0,
+    "34": 6,
+    "35": 7,
+    "36": 7,
+    "37": 7,
+    "38": 7,
+    "39": 7,
+    "4": 0,
+    "40": 7,
+    "41": 7,
+    "42": 35,
+    "43": 35,
+    "44": 35,
+    "45": 7,
+    "46": 0,
+    "47": 0,
+    "48": 0,
+    "49": 0,
+    "5": 0,
+    "50": 6,
+    "51": 7,
+    "52": 1,
+    "53": 1,
+    "54": 2,
+    "55": 2,
+    "56": 2,
+    "57": 2,
+    "58": 38,
+    "59": 19,
+    "6": 0,
+    "60": 2,
+    "61": 1,
+    "62": 0,
+    "63": 0,
+    "64": 0,
+    "65": 0,
+    "66": 6,
+    "67": 7,
+    "68": 1,
+    "69": 1,
+    "7": 0,
+    "70": 2,
+    "71": 39,
+    "72": 40,
+    "73": 10,
+    "74": 41,
+    "75": 42,
+    "76": 2,
+    "77": 1,
+    "78": 0,
+    "79": 0,
+    "8": 0,
+    "80": 0,
+    "81": 0,
+    "82": 6,
+    "83": 7,
+    "84": 1,
+    "85": 1,
+    "86": 2,
+    "87": 43,
+    "88": 44,
+    "89": 45,
+    "9": 0,
+    "90": 46,
+    "91": 47,
+    "92": 48,
+    "93": 1,
+    "94": 0,
+    "95": 0,
+    "96": 0,
+    "97": 0,
+    "98": 6,
+    "99": 7
+  }
+}

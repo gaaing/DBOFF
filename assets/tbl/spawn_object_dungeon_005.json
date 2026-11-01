@@ -1,0 +1,202 @@
+[
+  {
+    "tblidx": 1,
+    "name": 169,
+    "function_flags": 1,
+    "min": {
+      "x": 277.25,
+      "y": 4.67,
+      "z": 85.83
+    },
+    "max": {
+      "x": 279.08,
+      "y": 7.52,
+      "z": 88.18
+    },
+    "loc": {
+      "x": 278.16,
+      "y": 4.74,
+      "z": 87.0
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D5_O_WATER_GAUGE_002",
+    "click_sounds": [],
+    "radius": 2.0612,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 167,
+    "function_flags": 1,
+    "min": {
+      "x": -190.77,
+      "y": 19.76,
+      "z": 437.26
+    },
+    "max": {
+      "x": -186.21,
+      "y": 25.46,
+      "z": 440.57
+    },
+    "loc": {
+      "x": -188.49,
+      "y": 19.9,
+      "z": 438.92
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D5_O_WATER_GAUGE_002",
+    "click_sounds": [],
+    "radius": 4.0075,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 126,
+    "function_flags": 1,
+    "min": {
+      "x": 385.88,
+      "y": 20.51,
+      "z": 74.39
+    },
+    "max": {
+      "x": 414.68,
+      "y": 40.06,
+      "z": 103.32
+    },
+    "loc": {
+      "x": 400.91,
+      "y": 19.32,
+      "z": 87.85
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_T_RP_CANNON_001",
+    "click_sounds": [],
+    "radius": 22.6307,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 4,
+    "name": 168,
+    "function_flags": 1,
+    "min": {
+      "x": -183.88,
+      "y": 5.16,
+      "z": 134.17
+    },
+    "max": {
+      "x": -180.51,
+      "y": 10.86,
+      "z": 138.76
+    },
+    "loc": {
+      "x": -182.2,
+      "y": 5.3,
+      "z": 136.46
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D5_O_WATER_GAUGE_002",
+    "click_sounds": [],
+    "radius": 4.0285,
+    "sequence": 3,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 5,
+    "name": 100022,
+    "function_flags": 4194304,
+    "min": {
+      "x": 332.15,
+      "y": 11.18,
+      "z": 884.19
+    },
+    "max": {
+      "x": 332.43,
+      "y": 23.18,
+      "z": 892.18
+    },
+    "loc": {
+      "x": 332.29,
+      "y": 11.18,
+      "z": 888.19
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 255,
+    "def_main_state": 255,
+    "def_sub_state": 255,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 7.2097,
+    "sequence": 4,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

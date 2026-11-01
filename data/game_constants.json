@@ -1,0 +1,134 @@
+{
+  "movement": {
+    "default_run_speed_child": 7.0,
+    "default_run_speed_adult": 8.0,
+    "backward_speed_rate": 0.5,
+    "dash_speed": 25.0,
+    "active_dash_speed": 40.0,
+    "swimming_speed_ratio": 0.5,
+    "falling_speed": 8.0,
+    "max_bind_radius": 8.0,
+    "distance_check_tolerance": 5.0
+  },
+  "character_states": {
+    "CHARSTATE_SPAWNING": 0,
+    "CHARSTATE_DESPAWNING": 1,
+    "CHARSTATE_STANDING": 2,
+    "CHARSTATE_SITTING": 3,
+    "CHARSTATE_FAINTING": 4,
+    "CHARSTATE_CAMPING": 5,
+    "CHARSTATE_LEAVING": 6,
+    "CHARSTATE_MOVING": 7,
+    "CHARSTATE_DESTMOVE": 8,
+    "CHARSTATE_FOLLOWING": 9,
+    "CHARSTATE_FALLING": 10,
+    "CHARSTATE_DASH_PASSIVE": 11,
+    "CHARSTATE_TELEPORTING": 12,
+    "CHARSTATE_SLIDING": 13,
+    "CHARSTATE_KNOCKDOWN": 14,
+    "CHARSTATE_FOCUSING": 15,
+    "CHARSTATE_CASTING": 16,
+    "CHARSTATE_SKILL_AFFECTING": 17,
+    "CHARSTATE_KEEPING_EFFECT": 18,
+    "CHARSTATE_CASTING_ITEM": 19,
+    "CHARSTATE_STUNNED": 20,
+    "CHARSTATE_SLEEPING": 21,
+    "CHARSTATE_PARALYZED": 22,
+    "CHARSTATE_HTB": 23,
+    "CHARSTATE_SANDBAG": 24,
+    "CHARSTATE_CHARGING": 25,
+    "CHARSTATE_GUARD": 26
+  },
+  "regeneration_formulas": {
+    "lp_regen_base_formula_id": 300,
+    "lp_regen_base_desc": "wLpRegen = Formula[300][1] (3.0) + Con * Formula[300][2] (1.5)",
+    "lp_sitdown_mult_formula_id": 400,
+    "lp_sitdown_mult_desc": "wLpSitdownRegen = wLpRegen * Formula[400][1] (2.0)",
+    "lp_battle_mult_formula_id": 500,
+    "lp_battle_mult_desc": "wLpBattleRegen = wLpRegen * Formula[500][1] (0.0)",
+    "ep_regen_base_formula_id": 1400,
+    "ep_regen_base_desc": "wEpRegen = Formula[1400][1] (1.0) + Eng * Formula[1400][2] (1.5)",
+    "ep_sitdown_mult_formula_id": 1500,
+    "ep_sitdown_mult_desc": "wEpSitdownRegen = wEpRegen * Formula[1500][1] (2.0)",
+    "ep_battle_mult_formula_id": 1600,
+    "ep_battle_mult_desc": "wEpBattleRegen = wEpRegen * Formula[1600][1] (0.1)",
+    "regen_tick_interval_ms": 2000
+  },
+  "teleport_types": {
+    "TELEPORT_TYPE_DEFAULT": 0,
+    "TELEPORT_TYPE_GAME_IN": 1,
+    "TELEPORT_TYPE_GAME_OUT": 2,
+    "TELEPORT_TYPE_TELEPOPO": 3,
+    "TELEPORT_TYPE_SKILL": 4,
+    "TELEPORT_TYPE_NPC_PORTAL": 5,
+    "TELEPORT_TYPE_POPOSTONE": 6,
+    "TELEPORT_TYPE_WORLD_MOVE": 7,
+    "TELEPORT_TYPE_TMQ_WORLD_MOVE": 8,
+    "TELEPORT_TYPE_TMQ_PORTAL": 9,
+    "TELEPORT_TYPE_RANKBATTLE": 10,
+    "TELEPORT_TYPE_TIMEQUEST": 11,
+    "TELEPORT_TYPE_TUTORIAL": 12,
+    "TELEPORT_TYPE_BUDOKAI": 13,
+    "TELEPORT_TYPE_MATCH": 14
+  },
+  "chain_attack": {
+    "bonus_rates": [
+      0.0,
+      0.5,
+      1.0,
+      2.0,
+      3.0,
+      4.0
+    ]
+  },
+  "battle_attribute_matrix": [
+    [
+      0.0,
+      -5.0,
+      -5.0,
+      -5.0,
+      -5.0,
+      -5.0
+    ],
+    [
+      5.0,
+      0.0,
+      5.0,
+      10.0,
+      -10.0,
+      -5.0
+    ],
+    [
+      5.0,
+      -5.0,
+      0.0,
+      5.0,
+      10.0,
+      -10.0
+    ],
+    [
+      5.0,
+      -10.0,
+      -5.0,
+      0.0,
+      5.0,
+      10.0
+    ],
+    [
+      5.0,
+      10.0,
+      -10.0,
+      -5.0,
+      0.0,
+      5.0
+    ],
+    [
+      5.0,
+      5.0,
+      10.0,
+      -10.0,
+      -5.0,
+      0.0
+    ]
+  ]
+}

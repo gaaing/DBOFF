@@ -1,0 +1,1242 @@
+[
+  {
+    "tblidx": 1,
+    "name": 16,
+    "function_flags": 1,
+    "min": {
+      "x": 447.35,
+      "y": -128.0,
+      "z": 211.54
+    },
+    "max": {
+      "x": 455.23,
+      "y": -121.08,
+      "z": 212.23
+    },
+    "loc": {
+      "x": 451.29,
+      "y": -128.0,
+      "z": 211.71
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_T_RR_GATE_002",
+    "click_sounds": [],
+    "radius": 5.2549,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 2,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 17,
+    "function_flags": 1,
+    "min": {
+      "x": 351.14,
+      "y": -128.11,
+      "z": -113.28
+    },
+    "max": {
+      "x": 356.71,
+      "y": -116.07,
+      "z": -106.33
+    },
+    "loc": {
+      "x": 353.92,
+      "y": -128.07,
+      "z": -109.79
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_T_RR_GATE_001",
+    "click_sounds": [],
+    "radius": 7.4881,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 2,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 18,
+    "function_flags": 1,
+    "min": {
+      "x": 524.71,
+      "y": -128.05,
+      "z": -354.09
+    },
+    "max": {
+      "x": 529.7,
+      "y": -115.4,
+      "z": -346.23
+    },
+    "loc": {
+      "x": 527.19,
+      "y": -128.0,
+      "z": -350.16
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_T_RR_GATE_001",
+    "click_sounds": [],
+    "radius": 7.8534,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 2,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 4,
+    "name": 19,
+    "function_flags": 1,
+    "min": {
+      "x": 624.72,
+      "y": -127.07,
+      "z": -437.81
+    },
+    "max": {
+      "x": 625.73,
+      "y": -125.52,
+      "z": -437.08
+    },
+    "loc": {
+      "x": 625.22,
+      "y": -127.0,
+      "z": -437.44
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_T_RR_SWITCH_001",
+    "click_sounds": [],
+    "radius": 0.9944,
+    "sequence": 3,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 2,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 5,
+    "name": 19,
+    "function_flags": 1,
+    "min": {
+      "x": 525.24,
+      "y": -128.01,
+      "z": -357.08
+    },
+    "max": {
+      "x": 526.33,
+      "y": -126.46,
+      "z": -355.86
+    },
+    "loc": {
+      "x": 525.79,
+      "y": -127.94,
+      "z": -356.47
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_T_RR_SWITCH_001",
+    "click_sounds": [],
+    "radius": 1.1268,
+    "sequence": 4,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 6,
+    "name": 131,
+    "function_flags": 1,
+    "min": {
+      "x": 444.02,
+      "y": -131.22,
+      "z": -206.24
+    },
+    "max": {
+      "x": 451.41,
+      "y": -128.71,
+      "z": -198.85
+    },
+    "loc": {
+      "x": 447.57,
+      "y": -130.76,
+      "z": -202.69
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_T_ROBOT_RUIN_001",
+    "click_sounds": [],
+    "radius": 5.3741,
+    "sequence": 5,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 7,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 438.1,
+      "y": -128.0,
+      "z": 53.98
+    },
+    "max": {
+      "x": 444.77,
+      "y": -126.21,
+      "z": 59.21
+    },
+    "loc": {
+      "x": 441.43,
+      "y": -128.0,
+      "z": 56.6
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 4.3314,
+    "sequence": 6,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 8,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 452.49,
+      "y": -127.0,
+      "z": 91.29
+    },
+    "max": {
+      "x": 459.57,
+      "y": -125.21,
+      "z": 97.16
+    },
+    "loc": {
+      "x": 456.03,
+      "y": -127.0,
+      "z": 94.23
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 4.6848,
+    "sequence": 7,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 9,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 346.83,
+      "y": -127.41,
+      "z": 54.68
+    },
+    "max": {
+      "x": 353.69,
+      "y": -125.62,
+      "z": 60.19
+    },
+    "loc": {
+      "x": 350.26,
+      "y": -127.41,
+      "z": 57.43
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 4.4895,
+    "sequence": 8,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 10,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 311.67,
+      "y": -127.07,
+      "z": 91.02
+    },
+    "max": {
+      "x": 319.32,
+      "y": -125.28,
+      "z": 98.3
+    },
+    "loc": {
+      "x": 315.5,
+      "y": -127.07,
+      "z": 94.66
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 5.3555,
+    "sequence": 9,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 11,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 338.41,
+      "y": -126.99,
+      "z": 184.34
+    },
+    "max": {
+      "x": 345.59,
+      "y": -125.2,
+      "z": 190.38
+    },
+    "loc": {
+      "x": 342.0,
+      "y": -126.99,
+      "z": 187.36
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 4.7759,
+    "sequence": 10,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 12,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 368.28,
+      "y": -127.0,
+      "z": 181.16
+    },
+    "max": {
+      "x": 373.31,
+      "y": -125.21,
+      "z": 187.7
+    },
+    "loc": {
+      "x": 370.79,
+      "y": -127.0,
+      "z": 184.43
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 4.2213,
+    "sequence": 11,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 13,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 440.72,
+      "y": -127.0,
+      "z": 129.14
+    },
+    "max": {
+      "x": 445.24,
+      "y": -125.21,
+      "z": 135.31
+    },
+    "loc": {
+      "x": 442.98,
+      "y": -127.0,
+      "z": 132.23
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 3.9276,
+    "sequence": 12,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 14,
+    "name": 145,
+    "function_flags": 1,
+    "min": {
+      "x": 382.31,
+      "y": -128.0,
+      "z": 115.22
+    },
+    "max": {
+      "x": 388.47,
+      "y": -126.21,
+      "z": 119.74
+    },
+    "loc": {
+      "x": 385.39,
+      "y": -128.0,
+      "z": 117.48
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D2_O_RP_BOOTY_001",
+    "click_sounds": [],
+    "radius": 3.9237,
+    "sequence": 13,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 15,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 295.82,
+      "y": -127.58,
+      "z": 529.74
+    },
+    "max": {
+      "x": 297.12,
+      "y": -123.64,
+      "z": 531.84
+    },
+    "loc": {
+      "x": 296.47,
+      "y": -127.51,
+      "z": 529.91
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 255,
+    "def_main_state": 255,
+    "def_sub_state": 255,
+    "model_name": "08_C_LADDER_001",
+    "click_sounds": [],
+    "radius": 2.3251,
+    "sequence": 14,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 16,
+    "name": 6000,
+    "function_flags": 1,
+    "min": {
+      "x": 405.48,
+      "y": -126.99,
+      "z": -445.52
+    },
+    "max": {
+      "x": 410.84,
+      "y": -122.9,
+      "z": -441.09
+    },
+    "loc": {
+      "x": 407.69,
+      "y": -126.99,
+      "z": -443.3
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 255,
+    "def_main_state": 255,
+    "def_sub_state": 255,
+    "model_name": "00_C_TELEPORT_MACHINE_001",
+    "click_sounds": [],
+    "radius": 4.0337,
+    "sequence": 15,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 17,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 296.81,
+      "y": -125.8,
+      "z": -266.65
+    },
+    "max": {
+      "x": 297.56,
+      "y": -124.74,
+      "z": -265.9
+    },
+    "loc": {
+      "x": 297.18,
+      "y": -125.79,
+      "z": -266.27
+    },
+    "dir": {
+      "x": -0.9573,
+      "y": 0.0,
+      "z": 0.2892
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.7498,
+    "sequence": 16,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 18,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 349.81,
+      "y": -128.01,
+      "z": -324.2
+    },
+    "max": {
+      "x": 350.56,
+      "y": -126.95,
+      "z": -323.45
+    },
+    "loc": {
+      "x": 350.18,
+      "y": -128.0,
+      "z": -323.82
+    },
+    "dir": {
+      "x": -0.9573,
+      "y": 0.0,
+      "z": 0.2892
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.7498,
+    "sequence": 17,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 19,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 481.01,
+      "y": -126.85,
+      "z": -354.69
+    },
+    "max": {
+      "x": 481.76,
+      "y": -125.79,
+      "z": -353.94
+    },
+    "loc": {
+      "x": 481.39,
+      "y": -126.84,
+      "z": -354.32
+    },
+    "dir": {
+      "x": -0.9573,
+      "y": 0.0,
+      "z": 0.2892
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.7498,
+    "sequence": 18,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 20,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 428.67,
+      "y": -128.01,
+      "z": -370.04
+    },
+    "max": {
+      "x": 429.42,
+      "y": -126.95,
+      "z": -369.29
+    },
+    "loc": {
+      "x": 429.05,
+      "y": -128.0,
+      "z": -369.66
+    },
+    "dir": {
+      "x": -0.9573,
+      "y": 0.0,
+      "z": 0.2892
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.7498,
+    "sequence": 19,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 21,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 539.26,
+      "y": -126.79,
+      "z": -402.63
+    },
+    "max": {
+      "x": 539.86,
+      "y": -125.73,
+      "z": -402.03
+    },
+    "loc": {
+      "x": 539.56,
+      "y": -126.78,
+      "z": -402.33
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 20,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 22,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 622.29,
+      "y": -127.01,
+      "z": -340.76
+    },
+    "max": {
+      "x": 622.89,
+      "y": -125.95,
+      "z": -340.16
+    },
+    "loc": {
+      "x": 622.59,
+      "y": -127.0,
+      "z": -340.46
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 21,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 23,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 660.09,
+      "y": -127.0,
+      "z": -221.37
+    },
+    "max": {
+      "x": 660.69,
+      "y": -125.94,
+      "z": -220.77
+    },
+    "loc": {
+      "x": 660.39,
+      "y": -126.99,
+      "z": -221.07
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 22,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 24,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 556.6,
+      "y": -127.01,
+      "z": -299.09
+    },
+    "max": {
+      "x": 557.2,
+      "y": -125.95,
+      "z": -298.49
+    },
+    "loc": {
+      "x": 556.9,
+      "y": -127.0,
+      "z": -298.79
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 23,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 25,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 570.63,
+      "y": -125.82,
+      "z": -236.0
+    },
+    "max": {
+      "x": 571.23,
+      "y": -124.76,
+      "z": -235.4
+    },
+    "loc": {
+      "x": 570.93,
+      "y": -125.81,
+      "z": -235.7
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 24,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 26,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 590.21,
+      "y": -127.01,
+      "z": -201.29
+    },
+    "max": {
+      "x": 590.81,
+      "y": -125.95,
+      "z": -200.69
+    },
+    "loc": {
+      "x": 590.51,
+      "y": -127.0,
+      "z": -200.99
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 25,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 27,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 373.05,
+      "y": -128.01,
+      "z": -59.95
+    },
+    "max": {
+      "x": 373.65,
+      "y": -126.95,
+      "z": -59.35
+    },
+    "loc": {
+      "x": 373.35,
+      "y": -128.0,
+      "z": -59.65
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 26,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 28,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 317.74,
+      "y": -126.92,
+      "z": -57.79
+    },
+    "max": {
+      "x": 318.34,
+      "y": -125.86,
+      "z": -57.19
+    },
+    "loc": {
+      "x": 318.04,
+      "y": -126.91,
+      "z": -57.49
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.6789,
+    "sequence": 27,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 29,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 496.81,
+      "y": -127.58,
+      "z": -58.76
+    },
+    "max": {
+      "x": 498.01,
+      "y": -126.28,
+      "z": -58.01
+    },
+    "loc": {
+      "x": 497.69,
+      "y": -127.37,
+      "z": -58.39
+    },
+    "dir": {
+      "x": 0.2892,
+      "y": 0.0,
+      "z": -0.9573
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.9608,
+    "sequence": 28,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 30,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 482.55,
+      "y": -126.23,
+      "z": -103.3
+    },
+    "max": {
+      "x": 483.33,
+      "y": -125.17,
+      "z": -102.52
+    },
+    "loc": {
+      "x": 482.94,
+      "y": -126.22,
+      "z": -102.91
+    },
+    "dir": {
+      "x": -0.9292,
+      "y": 0.0,
+      "z": 0.3697
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.7649,
+    "sequence": 29,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 31,
+    "name": 462,
+    "function_flags": 1,
+    "min": {
+      "x": 661.25,
+      "y": -125.81,
+      "z": -334.25
+    },
+    "max": {
+      "x": 662.03,
+      "y": -124.75,
+      "z": -333.47
+    },
+    "loc": {
+      "x": 661.64,
+      "y": -125.8,
+      "z": -333.86
+    },
+    "dir": {
+      "x": -0.9292,
+      "y": 0.0,
+      "z": 0.3697
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DOJO_O_CHINAWARE_006",
+    "click_sounds": [],
+    "radius": 0.7649,
+    "sequence": 30,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

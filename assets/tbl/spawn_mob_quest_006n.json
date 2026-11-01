@@ -1,0 +1,4524 @@
+[
+  {
+    "tblidx": 1,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -302.73,
+      "y": 139.9,
+      "z": -101.51
+    },
+    "spawn_dir": {
+      "x": 0.14,
+      "y": 0.0,
+      "z": -0.9901
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 16,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 2,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -312.4,
+      "y": 139.42,
+      "z": -100.51
+    },
+    "spawn_dir": {
+      "x": 0.1005,
+      "y": 0.0,
+      "z": 0.9949
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 5,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 16,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 3,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -312.32,
+      "y": 140.06,
+      "z": -97.17
+    },
+    "spawn_dir": {
+      "x": 0.0896,
+      "y": 0.0,
+      "z": -0.996
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 16,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 4,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -305.68,
+      "y": 140.19,
+      "z": -92.59
+    },
+    "spawn_dir": {
+      "x": -0.02,
+      "y": 0.0,
+      "z": -0.9998
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 16,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 5,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -298.26,
+      "y": 140.68,
+      "z": -80.15
+    },
+    "spawn_dir": {
+      "x": 0.3102,
+      "y": 0.0,
+      "z": -0.9507
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 15,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 6,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -283.22,
+      "y": 140.94,
+      "z": -69.99
+    },
+    "spawn_dir": {
+      "x": 0.1203,
+      "y": 0.0,
+      "z": -0.9927
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 15,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 7,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -291.2,
+      "y": 140.97,
+      "z": -67.33
+    },
+    "spawn_dir": {
+      "x": 0.28,
+      "y": 0.0,
+      "z": -0.96
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 15,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 8,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -265.99,
+      "y": 137.85,
+      "z": -109.06
+    },
+    "spawn_dir": {
+      "x": 0.769,
+      "y": 0.0,
+      "z": 0.6392
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 3,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 14,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 9,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -290.9,
+      "y": 140.93,
+      "z": -74.84
+    },
+    "spawn_dir": {
+      "x": -0.2589,
+      "y": 0.0,
+      "z": -0.9659
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 15,
+    "move_range": 50,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 15,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 10,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -279.42,
+      "y": 140.7,
+      "z": -82.1
+    },
+    "spawn_dir": {
+      "x": 0.14,
+      "y": 0.0,
+      "z": 0.9901
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 15,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 11,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -262.48,
+      "y": 137.94,
+      "z": -104.15
+    },
+    "spawn_dir": {
+      "x": -0.9117,
+      "y": 0.0,
+      "z": -0.4108
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 4,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 14,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 12,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -260.21,
+      "y": 138.06,
+      "z": -108.24
+    },
+    "spawn_dir": {
+      "x": -0.9778,
+      "y": 0.0,
+      "z": -0.2095
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 14,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 13,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -261.3,
+      "y": 137.82,
+      "z": -113.38
+    },
+    "spawn_dir": {
+      "x": -0.9752,
+      "y": 0.0,
+      "z": -0.2212
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 14,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 14,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -318.62,
+      "y": 140.79,
+      "z": -104.69
+    },
+    "spawn_dir": {
+      "x": 0.0698,
+      "y": 0.0,
+      "z": -0.9976
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 16,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 15,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -258.13,
+      "y": 134.76,
+      "z": -64.34
+    },
+    "spawn_dir": {
+      "x": -0.4711,
+      "y": 0.0,
+      "z": 0.8821
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 5,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 17,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 16,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -270.87,
+      "y": 134.24,
+      "z": -43.12
+    },
+    "spawn_dir": {
+      "x": -0.5593,
+      "y": 0.0,
+      "z": -0.829
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 17,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 17,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -334.89,
+      "y": 141.43,
+      "z": -68.18
+    },
+    "spawn_dir": {
+      "x": 0.6,
+      "y": 0.0,
+      "z": -0.8
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 18,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 18,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -324.95,
+      "y": 141.2,
+      "z": -60.77
+    },
+    "spawn_dir": {
+      "x": 0.2589,
+      "y": 0.0,
+      "z": -0.9659
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 18,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 19,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -314.08,
+      "y": 140.61,
+      "z": -54.17
+    },
+    "spawn_dir": {
+      "x": 0.1903,
+      "y": 0.0,
+      "z": 0.9817
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 6,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 18,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 20,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -342.76,
+      "y": 141.04,
+      "z": -80.46
+    },
+    "spawn_dir": {
+      "x": 0.6816,
+      "y": 0.0,
+      "z": -0.7317
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 18,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 21,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -348.75,
+      "y": 140.99,
+      "z": -86.8
+    },
+    "spawn_dir": {
+      "x": 0.14,
+      "y": 0.0,
+      "z": 0.9901
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 7,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 18,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 22,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -254.71,
+      "y": 137.54,
+      "z": -106.86
+    },
+    "spawn_dir": {
+      "x": -0.9117,
+      "y": 0.0,
+      "z": -0.4108
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 14,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 23,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -254.83,
+      "y": 136.2,
+      "z": -69.62
+    },
+    "spawn_dir": {
+      "x": -0.0499,
+      "y": 0.0,
+      "z": -0.9988
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 17,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 24,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -242.02,
+      "y": 138.01,
+      "z": -69.58
+    },
+    "spawn_dir": {
+      "x": -0.4831,
+      "y": 0.0,
+      "z": -0.8756
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 2,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 17,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 25,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -251.62,
+      "y": 135.97,
+      "z": -82.43
+    },
+    "spawn_dir": {
+      "x": -0.3401,
+      "y": 0.0,
+      "z": -0.9404
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 17,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 26,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -331.08,
+      "y": 142.45,
+      "z": 193.97
+    },
+    "spawn_dir": {
+      "x": -0.4191,
+      "y": 0.0,
+      "z": -0.908
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 19,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 27,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -352.22,
+      "y": 141.98,
+      "z": 195.14
+    },
+    "spawn_dir": {
+      "x": 0.6816,
+      "y": 0.0,
+      "z": -0.7317
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 8,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 19,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 28,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -346.97,
+      "y": 141.91,
+      "z": 190.98
+    },
+    "spawn_dir": {
+      "x": 0.8984,
+      "y": 0.0,
+      "z": -0.4392
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 19,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 29,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -338.24,
+      "y": 141.93,
+      "z": 188.61
+    },
+    "spawn_dir": {
+      "x": 0.8083,
+      "y": 0.0,
+      "z": 0.5888
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 9,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 19,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 30,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -322.57,
+      "y": 143.26,
+      "z": 219.1
+    },
+    "spawn_dir": {
+      "x": -0.4392,
+      "y": 0.0,
+      "z": -0.8984
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 8,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 19,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 31,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -395.98,
+      "y": 140.68,
+      "z": 193.25
+    },
+    "spawn_dir": {
+      "x": 0.3697,
+      "y": 0.0,
+      "z": -0.9292
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 25,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 32,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -412.94,
+      "y": 140.53,
+      "z": 188.04
+    },
+    "spawn_dir": {
+      "x": 0.3697,
+      "y": 0.0,
+      "z": -0.9292
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 25,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 33,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -401.36,
+      "y": 140.88,
+      "z": 182.45
+    },
+    "spawn_dir": {
+      "x": -0.4108,
+      "y": 0.0,
+      "z": 0.9117
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 15,
+    "move_range": 50,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 25,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 34,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -399.62,
+      "y": 140.61,
+      "z": 192.37
+    },
+    "spawn_dir": {
+      "x": 0.5174,
+      "y": 0.0,
+      "z": -0.8557
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 15,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 25,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 35,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -408.82,
+      "y": 140.66,
+      "z": 189.35
+    },
+    "spawn_dir": {
+      "x": 0.4191,
+      "y": 0.0,
+      "z": -0.908
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 15,
+    "action_pattern_tblidx": 4,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 25,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 36,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -456.52,
+      "y": 143.42,
+      "z": 176.32
+    },
+    "spawn_dir": {
+      "x": -0.908,
+      "y": 0.0,
+      "z": -0.4191
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 13,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 24,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 37,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -480.99,
+      "y": 143.46,
+      "z": 195.41
+    },
+    "spawn_dir": {
+      "x": 0.5408,
+      "y": 0.0,
+      "z": -0.8412
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 12,
+    "move_range": 20,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 27,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 38,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -441.68,
+      "y": 143.81,
+      "z": 184.52
+    },
+    "spawn_dir": {
+      "x": 0.8,
+      "y": 0.0,
+      "z": -0.6
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 24,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 39,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -455.65,
+      "y": 143.42,
+      "z": 171.31
+    },
+    "spawn_dir": {
+      "x": 0.6,
+      "y": 0.0,
+      "z": -0.8
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 24,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 40,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -446.19,
+      "y": 143.55,
+      "z": 185.93
+    },
+    "spawn_dir": {
+      "x": -0.1005,
+      "y": 0.0,
+      "z": 0.9949
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 12,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 24,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 41,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -475.24,
+      "y": 144.02,
+      "z": 200.15
+    },
+    "spawn_dir": {
+      "x": 0.5408,
+      "y": 0.0,
+      "z": -0.8412
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 27,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 42,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -485.75,
+      "y": 143.58,
+      "z": 200.17
+    },
+    "spawn_dir": {
+      "x": 0.5408,
+      "y": 0.0,
+      "z": -0.8412
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 27,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 43,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -474.88,
+      "y": 143.45,
+      "z": 190.91
+    },
+    "spawn_dir": {
+      "x": 0.5408,
+      "y": 0.0,
+      "z": -0.8412
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 27,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 44,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -485.26,
+      "y": 143.42,
+      "z": 190.64
+    },
+    "spawn_dir": {
+      "x": 0.5408,
+      "y": 0.0,
+      "z": -0.8412
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 27,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 45,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -499.92,
+      "y": 145.22,
+      "z": 227.32
+    },
+    "spawn_dir": {
+      "x": 0.0896,
+      "y": 0.0,
+      "z": -0.996
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 28,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 46,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -474.19,
+      "y": 147.74,
+      "z": 224.57
+    },
+    "spawn_dir": {
+      "x": -0.9507,
+      "y": 0.0,
+      "z": -0.3102
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 14,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 28,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 47,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -490.06,
+      "y": 145.12,
+      "z": 216.03
+    },
+    "spawn_dir": {
+      "x": 0.1005,
+      "y": 0.0,
+      "z": -0.9949
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 28,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 48,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -489.73,
+      "y": 145.87,
+      "z": 224.63
+    },
+    "spawn_dir": {
+      "x": 0.5174,
+      "y": 0.0,
+      "z": -0.8557
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 28,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 49,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -480.01,
+      "y": 147.36,
+      "z": 227.12
+    },
+    "spawn_dir": {
+      "x": 0.3697,
+      "y": 0.0,
+      "z": -0.9292
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 28,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 50,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -394.54,
+      "y": 141.7,
+      "z": 223.49
+    },
+    "spawn_dir": {
+      "x": 0.5593,
+      "y": 0.0,
+      "z": -0.829
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 21,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 51,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -398.17,
+      "y": 141.56,
+      "z": 223.51
+    },
+    "spawn_dir": {
+      "x": 0.9778,
+      "y": 0.0,
+      "z": -0.2095
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 21,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 52,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -411.88,
+      "y": 140.49,
+      "z": 210.37
+    },
+    "spawn_dir": {
+      "x": 0.361,
+      "y": 0.0,
+      "z": -0.9326
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 8,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 21,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 53,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -414.91,
+      "y": 140.57,
+      "z": 250.17
+    },
+    "spawn_dir": {
+      "x": -0.9752,
+      "y": 0.0,
+      "z": 0.2212
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 10,
+    "follow_distance": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 20,
+    "party_leader": true,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 54,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -393.58,
+      "y": 141.25,
+      "z": 212.94
+    },
+    "spawn_dir": {
+      "x": 0.4108,
+      "y": 0.0,
+      "z": -0.9117
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 8,
+    "action_pattern_tblidx": 4,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 21,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 55,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -477.57,
+      "y": 145.23,
+      "z": 209.49
+    },
+    "spawn_dir": {
+      "x": 0.5708,
+      "y": 0.0,
+      "z": -0.8211
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 1,
+    "follow_distance": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 26,
+    "party_leader": true,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 56,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -411.51,
+      "y": 140.84,
+      "z": 249.98
+    },
+    "spawn_dir": {
+      "x": -0.9949,
+      "y": 0.0,
+      "z": 0.1005
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4,
+      "y": 0.0,
+      "z": 0.19
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 20,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 57,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -396.59,
+      "y": 141.45,
+      "z": 219.8
+    },
+    "spawn_dir": {
+      "x": 0.4191,
+      "y": 0.0,
+      "z": 0.908
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 21,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 58,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -394.64,
+      "y": 141.77,
+      "z": 244.45
+    },
+    "spawn_dir": {
+      "x": -0.1005,
+      "y": 0.0,
+      "z": -0.9949
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 0.82,
+      "y": 0.0,
+      "z": 4.72
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 22,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 59,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -395.46,
+      "y": 141.75,
+      "z": 239.73
+    },
+    "spawn_dir": {
+      "x": -0.1005,
+      "y": 0.0,
+      "z": -0.9949
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 11,
+    "follow_distance": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 22,
+    "party_leader": true,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 60,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -456.12,
+      "y": 139.59,
+      "z": 249.54
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 23,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 61,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -429.29,
+      "y": 139.99,
+      "z": 245.66
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 23,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 62,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -453.83,
+      "y": 143.42,
+      "z": 182.69
+    },
+    "spawn_dir": {
+      "x": 0.8083,
+      "y": 0.0,
+      "z": -0.5888
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 24,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 63,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -480.03,
+      "y": 145.45,
+      "z": 211.79
+    },
+    "spawn_dir": {
+      "x": 0.8,
+      "y": 0.0,
+      "z": -0.6
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 2.46,
+      "y": 0.0,
+      "z": 2.29
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 26,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 64,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -296.92,
+      "y": 139.95,
+      "z": 255.52
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 0.83,
+      "y": 0.0,
+      "z": 6.7
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 34,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 65,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -497.75,
+      "y": 147.38,
+      "z": 253.84
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 23,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 66,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -387.83,
+      "y": 141.79,
+      "z": 225.41
+    },
+    "spawn_dir": {
+      "x": 0.2402,
+      "y": 0.0,
+      "z": -0.9707
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 42,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 67,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -384.51,
+      "y": 141.78,
+      "z": 219.25
+    },
+    "spawn_dir": {
+      "x": 0.2402,
+      "y": 0.0,
+      "z": -0.9707
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 42,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 68,
+    "mob_tblidx": 3212146,
+    "spawn_loc": {
+      "x": -218.2,
+      "y": 136.8,
+      "z": 52.14
+    },
+    "spawn_dir": {
+      "x": 0.9988,
+      "y": 0.0,
+      "z": 0.0499
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 1,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 10
+  },
+  {
+    "tblidx": 69,
+    "mob_tblidx": 3212146,
+    "spawn_loc": {
+      "x": -220.16,
+      "y": 136.87,
+      "z": 41.83
+    },
+    "spawn_dir": {
+      "x": 0.6283,
+      "y": 0.0,
+      "z": -0.7779
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 1,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 10
+  },
+  {
+    "tblidx": 70,
+    "mob_tblidx": 3211149,
+    "spawn_loc": {
+      "x": -229.17,
+      "y": 136.97,
+      "z": 35.73
+    },
+    "spawn_dir": {
+      "x": 0.2589,
+      "y": 0.0,
+      "z": -0.9659
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 1,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 10
+  },
+  {
+    "tblidx": 71,
+    "mob_tblidx": 3213113,
+    "spawn_loc": {
+      "x": -239.11,
+      "y": 137.43,
+      "z": 60.24
+    },
+    "spawn_dir": {
+      "x": -0.6816,
+      "y": 0.0,
+      "z": 0.7317
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 1,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 10
+  },
+  {
+    "tblidx": 72,
+    "mob_tblidx": 3211149,
+    "spawn_loc": {
+      "x": -241.25,
+      "y": 136.85,
+      "z": 40.04
+    },
+    "spawn_dir": {
+      "x": -0.6919,
+      "y": 0.0,
+      "z": -0.722
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 1,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 10
+  },
+  {
+    "tblidx": 73,
+    "mob_tblidx": 3213113,
+    "spawn_loc": {
+      "x": -243.59,
+      "y": 136.94,
+      "z": 50.94
+    },
+    "spawn_dir": {
+      "x": -0.9976,
+      "y": 0.0,
+      "z": -0.0698
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 1,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 10
+  },
+  {
+    "tblidx": 74,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -512.57,
+      "y": 139.22,
+      "z": 330.28
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 31,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 75,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -521.75,
+      "y": 139.04,
+      "z": 324.02
+    },
+    "spawn_dir": {
+      "x": 0.4392,
+      "y": 0.0,
+      "z": -0.8984
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 31,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 76,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -518.97,
+      "y": 137.36,
+      "z": 337.04
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 31,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 77,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -365.61,
+      "y": 143.44,
+      "z": 339.41
+    },
+    "spawn_dir": {
+      "x": -0.0698,
+      "y": 0.0,
+      "z": 0.9976
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 37,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 78,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -359.37,
+      "y": 143.91,
+      "z": 331.82
+    },
+    "spawn_dir": {
+      "x": -0.0698,
+      "y": 0.0,
+      "z": 0.9976
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 37,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 79,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -350.13,
+      "y": 143.63,
+      "z": 338.22
+    },
+    "spawn_dir": {
+      "x": -0.0698,
+      "y": 0.0,
+      "z": 0.9976
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 8,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 37,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 80,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -358.42,
+      "y": 143.59,
+      "z": 345.75
+    },
+    "spawn_dir": {
+      "x": -0.2892,
+      "y": 0.0,
+      "z": -0.9573
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 37,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 81,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -358.54,
+      "y": 143.42,
+      "z": 338.22
+    },
+    "spawn_dir": {
+      "x": 0.8083,
+      "y": 0.0,
+      "z": -0.5888
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 37,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 82,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -315.38,
+      "y": 142.75,
+      "z": 263.13
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 100,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 38,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 83,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -323.87,
+      "y": 142.67,
+      "z": 261.05
+    },
+    "spawn_dir": {
+      "x": -0.6712,
+      "y": 0.0,
+      "z": 0.7413
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 38,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 84,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -314.12,
+      "y": 142.83,
+      "z": 276.08
+    },
+    "spawn_dir": {
+      "x": -0.5593,
+      "y": 0.0,
+      "z": 0.829
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 5,
+    "action_pattern_tblidx": 0,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 38,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 85,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -320.81,
+      "y": 142.66,
+      "z": 267.41
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 2,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 38,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 86,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -334.02,
+      "y": 142.62,
+      "z": 267.55
+    },
+    "spawn_dir": {
+      "x": -0.9901,
+      "y": 0.0,
+      "z": 0.14
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 38,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 87,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -395.48,
+      "y": 142.59,
+      "z": 278.06
+    },
+    "spawn_dir": {
+      "x": 0.3903,
+      "y": 0.0,
+      "z": -0.9207
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 30,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 88,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -394.21,
+      "y": 145.7,
+      "z": 295.94
+    },
+    "spawn_dir": {
+      "x": 0.9872,
+      "y": 0.0,
+      "z": 0.1595
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 30,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 89,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -398.23,
+      "y": 144.46,
+      "z": 287.11
+    },
+    "spawn_dir": {
+      "x": 0.9949,
+      "y": 0.0,
+      "z": -0.1005
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 30,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 90,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -400.77,
+      "y": 146.23,
+      "z": 296.99
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 30,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 91,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -402.21,
+      "y": 142.17,
+      "z": 275.54
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 30,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 92,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -450.07,
+      "y": 160.25,
+      "z": 304.08
+    },
+    "spawn_dir": {
+      "x": 0.8924,
+      "y": 0.0,
+      "z": -0.4512
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 7,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 29,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 93,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -454.35,
+      "y": 159.66,
+      "z": 293.44
+    },
+    "spawn_dir": {
+      "x": 0.8924,
+      "y": 0.0,
+      "z": -0.4512
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 29,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 94,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -444.7,
+      "y": 157.76,
+      "z": 300.03
+    },
+    "spawn_dir": {
+      "x": 0.9404,
+      "y": 0.0,
+      "z": -0.3401
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 29,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 95,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -443.1,
+      "y": 156.24,
+      "z": 295.37
+    },
+    "spawn_dir": {
+      "x": 0.9507,
+      "y": 0.0,
+      "z": -0.3102
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 15,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 29,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 96,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -448.27,
+      "y": 157.42,
+      "z": 292.41
+    },
+    "spawn_dir": {
+      "x": 0.9573,
+      "y": 0.0,
+      "z": -0.2892
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 29,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 97,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -367.59,
+      "y": 142.42,
+      "z": 288.58
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 2,
+    "follow_distance": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 33,
+    "party_leader": true,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 98,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -489.72,
+      "y": 142.82,
+      "z": 265.78
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 23,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 99,
+    "mob_tblidx": 2912116,
+    "spawn_loc": {
+      "x": -462.09,
+      "y": 139.64,
+      "z": 257.38
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 23,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 100,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -505.63,
+      "y": 142.49,
+      "z": 321.12
+    },
+    "spawn_dir": {
+      "x": 0.3697,
+      "y": 0.0,
+      "z": -0.9292
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 31,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 101,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -504.09,
+      "y": 140.04,
+      "z": 332.81
+    },
+    "spawn_dir": {
+      "x": 0.8486,
+      "y": 0.0,
+      "z": 0.5291
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 4,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 31,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 102,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -475.9,
+      "y": 143.3,
+      "z": 335.31
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 4,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 32,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 103,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -470.24,
+      "y": 142.56,
+      "z": 347.01
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 32,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 104,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -462.21,
+      "y": 143.08,
+      "z": 336.57
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 10,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 32,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 105,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -482.19,
+      "y": 141.33,
+      "z": 343.36
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 10,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 32,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 106,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -472.72,
+      "y": 142.71,
+      "z": 341.25
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 32,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 107,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -418.63,
+      "y": 143.99,
+      "z": 336.6
+    },
+    "spawn_dir": {
+      "x": 0.9949,
+      "y": 0.0,
+      "z": 0.1005
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 16,
+    "follow_distance": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 35,
+    "party_leader": true,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 108,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -368.51,
+      "y": 141.97,
+      "z": 283.37
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 0.92,
+      "y": 0.0,
+      "z": 5.21
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 33,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 109,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -423.93,
+      "y": 144.04,
+      "z": 337.17
+    },
+    "spawn_dir": {
+      "x": 0.9507,
+      "y": 0.0,
+      "z": 0.3102
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 5.29,
+      "y": 0.0,
+      "z": 0.57
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 35,
+    "party_leader": false,
+    "spawn_group_id": 3
+  },
+  {
+    "tblidx": 110,
+    "mob_tblidx": 7772122,
+    "spawn_loc": {
+      "x": -297.75,
+      "y": 141.0,
+      "z": 262.22
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 2,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 17,
+    "follow_distance": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 34,
+    "party_leader": true,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 111,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -402.56,
+      "y": 144.12,
+      "z": 341.47
+    },
+    "spawn_dir": {
+      "x": 0.1595,
+      "y": 0.0,
+      "z": -0.9872
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 100,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 36,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 112,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -391.83,
+      "y": 143.76,
+      "z": 336.97
+    },
+    "spawn_dir": {
+      "x": 0.1595,
+      "y": 0.0,
+      "z": -0.9872
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 100,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 36,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 113,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -395.41,
+      "y": 143.85,
+      "z": 344.47
+    },
+    "spawn_dir": {
+      "x": 0.1595,
+      "y": 0.0,
+      "z": -0.9872
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 2,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 36,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 114,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -386.81,
+      "y": 143.42,
+      "z": 345.18
+    },
+    "spawn_dir": {
+      "x": 0.3281,
+      "y": 0.0,
+      "z": -0.9446
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 36,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 115,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -390.56,
+      "y": 143.51,
+      "z": 352.75
+    },
+    "spawn_dir": {
+      "x": 0.1595,
+      "y": 0.0,
+      "z": -0.9872
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 100,
+    "action_pattern_tblidx": 3,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 36,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 116,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -350.41,
+      "y": 142.28,
+      "z": 294.8
+    },
+    "spawn_dir": {
+      "x": -0.996,
+      "y": 0.0,
+      "z": -0.0896
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 39,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 117,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -350.01,
+      "y": 141.55,
+      "z": 285.96
+    },
+    "spawn_dir": {
+      "x": -0.9998,
+      "y": 0.0,
+      "z": -0.02
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 39,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 118,
+    "mob_tblidx": 7115101,
+    "spawn_loc": {
+      "x": -342.95,
+      "y": 143.14,
+      "z": 291.13
+    },
+    "spawn_dir": {
+      "x": -0.9976,
+      "y": 0.0,
+      "z": 0.0698
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 100,
+    "action_pattern_tblidx": 5,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 39,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 119,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -339.48,
+      "y": 143.42,
+      "z": 291.3
+    },
+    "spawn_dir": {
+      "x": -0.9988,
+      "y": 0.0,
+      "z": -0.0499
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 2,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 39,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 120,
+    "mob_tblidx": 7114234,
+    "spawn_loc": {
+      "x": -343.62,
+      "y": 144.37,
+      "z": 303.66
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 2,
+    "move_range": 5,
+    "action_pattern_tblidx": 2,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 39,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 121,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -302.31,
+      "y": 143.61,
+      "z": 285.93
+    },
+    "spawn_dir": {
+      "x": -0.769,
+      "y": 0.0,
+      "z": -0.6392
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 40,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 122,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -303.21,
+      "y": 144.48,
+      "z": 293.32
+    },
+    "spawn_dir": {
+      "x": -0.8412,
+      "y": 0.0,
+      "z": -0.5408
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 40,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 123,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -294.46,
+      "y": 144.32,
+      "z": 283.41
+    },
+    "spawn_dir": {
+      "x": -0.769,
+      "y": 0.0,
+      "z": -0.6392
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 40,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 124,
+    "mob_tblidx": 6811213,
+    "spawn_loc": {
+      "x": -297.86,
+      "y": 145.55,
+      "z": 298.7
+    },
+    "spawn_dir": {
+      "x": -0.769,
+      "y": 0.0,
+      "z": -0.6392
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 3,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 40,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 125,
+    "mob_tblidx": 5813310,
+    "spawn_loc": {
+      "x": -298.7,
+      "y": 145.18,
+      "z": 291.9
+    },
+    "spawn_dir": {
+      "x": -0.9778,
+      "y": 0.0,
+      "z": -0.2095
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 10,
+    "move_range": 10,
+    "action_pattern_tblidx": 4,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 40,
+    "party_leader": false,
+    "spawn_group_id": 4
+  },
+  {
+    "tblidx": 126,
+    "mob_tblidx": 8811122,
+    "spawn_loc": {
+      "x": -300.42,
+      "y": 136.5,
+      "z": 490.58
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 5
+  },
+  {
+    "tblidx": 127,
+    "mob_tblidx": 8811122,
+    "spawn_loc": {
+      "x": -280.03,
+      "y": 136.67,
+      "z": 463.79
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 5
+  },
+  {
+    "tblidx": 128,
+    "mob_tblidx": 8811122,
+    "spawn_loc": {
+      "x": -261.28,
+      "y": 136.61,
+      "z": 497.48
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 0,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 5
+  },
+  {
+    "tblidx": 129,
+    "mob_tblidx": 4613107,
+    "spawn_loc": {
+      "x": -276.82,
+      "y": 136.43,
+      "z": 485.2
+    },
+    "spawn_dir": {
+      "x": -0.722,
+      "y": 0.0,
+      "z": -0.6919
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 41,
+    "party_leader": true,
+    "spawn_group_id": 5
+  },
+  {
+    "tblidx": 130,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -283.6,
+      "y": 136.42,
+      "z": 486.13
+    },
+    "spawn_dir": {
+      "x": -0.8412,
+      "y": 0.0,
+      "z": -0.5408
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 6.78,
+      "y": 0.0,
+      "z": 0.92
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 41,
+    "party_leader": false,
+    "spawn_group_id": 5
+  },
+  {
+    "tblidx": 131,
+    "mob_tblidx": 7114191,
+    "spawn_loc": {
+      "x": -277.58,
+      "y": 136.36,
+      "z": 478.13
+    },
+    "spawn_dir": {
+      "x": -0.8,
+      "y": 0.0,
+      "z": -0.6
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 0.76,
+      "y": 0.0,
+      "z": 7.07
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 41,
+    "party_leader": false,
+    "spawn_group_id": 5
+  },
+  {
+    "tblidx": 132,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -276.13,
+      "y": 136.81,
+      "z": 492.32
+    },
+    "spawn_dir": {
+      "x": -0.8083,
+      "y": 0.0,
+      "z": -0.5888
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 0.68,
+      "y": 0.0,
+      "z": 7.12
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 41,
+    "party_leader": false,
+    "spawn_group_id": 5
+  },
+  {
+    "tblidx": 133,
+    "mob_tblidx": 4652116,
+    "spawn_loc": {
+      "x": -269.61,
+      "y": 136.36,
+      "z": 483.67
+    },
+    "spawn_dir": {
+      "x": -0.8083,
+      "y": 0.0,
+      "z": -0.5888
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 7200,
+    "spawn_move_type": 1,
+    "wander_range": 1,
+    "move_range": 1,
+    "action_pattern_tblidx": 1,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 7.21,
+      "y": 0.0,
+      "z": 1.54
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 41,
+    "party_leader": false,
+    "spawn_group_id": 5
+  }
+]

@@ -10,6 +10,11 @@ cd E:\DBOFF
 !/src/
 !/project.godot
 
+!/assets/
+/assets/*
+!/assets/tbl/
+!/data/
+
 # 保留规则文件
 !/.gitignore
 '@ | Set-Content -Encoding utf8 .gitignore

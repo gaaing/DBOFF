@@ -1,0 +1,82 @@
+[
+  {
+    "tblidx": 2,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": -170.19,
+      "y": 47.42,
+      "z": -106.46
+    },
+    "max": {
+      "x": -168.81,
+      "y": 51.83,
+      "z": -105.07
+    },
+    "loc": {
+      "x": -169.5,
+      "y": 47.42,
+      "z": -105.76
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "Q2_O_M_EYE_001",
+    "click_sounds": [],
+    "radius": 2.4127,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": -117.01,
+      "y": 50.71,
+      "z": -92.83
+    },
+    "max": {
+      "x": -108.44,
+      "y": 55.71,
+      "z": -84.26
+    },
+    "loc": {
+      "x": -112.73,
+      "y": 50.71,
+      "z": -88.54
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 1,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "Q1_TIMEMACHINE_001",
+    "click_sounds": [],
+    "radius": 6.5553,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

@@ -1,0 +1,122 @@
+[
+  {
+    "tblidx": 1,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 192.9,
+      "y": 148.45,
+      "z": 120.49
+    },
+    "max": {
+      "x": 193.32,
+      "y": 178.45,
+      "z": 128.48
+    },
+    "loc": {
+      "x": 193.11,
+      "y": 148.45,
+      "z": 124.49
+    },
+    "dir": {
+      "x": 0.9988,
+      "y": 0.0,
+      "z": -0.0499
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 15.5243,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": 40.69,
+      "y": 129.96,
+      "z": -25.97
+    },
+    "max": {
+      "x": 87.32,
+      "y": 180.66,
+      "z": -14.96
+    },
+    "loc": {
+      "x": 63.54,
+      "y": 131.5,
+      "z": -23.22
+    },
+    "dir": {
+      "x": 0.03,
+      "y": 0.0,
+      "z": 0.9996
+    },
+    "state_type": 1,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "BID02_T_DOOR_01",
+    "click_sounds": [],
+    "radius": 34.8786,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": -29.4,
+      "y": 131.97,
+      "z": -171.53
+    },
+    "max": {
+      "x": -27.14,
+      "y": 161.97,
+      "z": -163.86
+    },
+    "loc": {
+      "x": -28.27,
+      "y": 131.97,
+      "z": -167.7
+    },
+    "dir": {
+      "x": -0.96,
+      "y": 0.0,
+      "z": 0.28
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 0,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 15.5237,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

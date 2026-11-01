@@ -1,0 +1,82 @@
+[
+  {
+    "tblidx": 1,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 375.0,
+      "y": 58.21,
+      "z": -392.69
+    },
+    "max": {
+      "x": 392.8,
+      "y": 59.17,
+      "z": -374.89
+    },
+    "loc": {
+      "x": 383.9,
+      "y": 59.1,
+      "z": -383.79
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_C_CDUN_ELEVATOR_01",
+    "click_sounds": [],
+    "radius": 12.5956,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 319.81,
+      "y": -60.65,
+      "z": -447.89
+    },
+    "max": {
+      "x": 447.99,
+      "y": 16.42,
+      "z": -319.69
+    },
+    "loc": {
+      "x": 383.9,
+      "y": -20.3,
+      "z": -383.79
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "00_C_CDUNGEON_001",
+    "click_sounds": [],
+    "radius": 98.4951,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

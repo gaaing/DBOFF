@@ -1,0 +1,980 @@
+[
+  {
+    "action_name": "ACTION_AVATAR_FORWARD",
+    "action_id": 0,
+    "desc": "전진",
+    "raw_key": "'W'",
+    "key_label": "W",
+    "godot_keycode": "KEY_W",
+    "keycode_val": 87,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_BACKWARD",
+    "action_id": 1,
+    "desc": "후진",
+    "raw_key": "'S'",
+    "key_label": "S",
+    "godot_keycode": "KEY_S",
+    "keycode_val": 83,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_LEFTTURN",
+    "action_id": 2,
+    "desc": "좌회전",
+    "raw_key": "'A'",
+    "key_label": "A",
+    "godot_keycode": "KEY_A",
+    "keycode_val": 65,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_RIGHTTURN",
+    "action_id": 3,
+    "desc": "우회전",
+    "raw_key": "'D'",
+    "key_label": "D",
+    "godot_keycode": "KEY_D",
+    "keycode_val": 68,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_LEFTSIDE",
+    "action_id": 11,
+    "desc": "",
+    "raw_key": "'Q'",
+    "key_label": "Q",
+    "godot_keycode": "KEY_Q",
+    "keycode_val": 81,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_RIGHTSIDE",
+    "action_id": 12,
+    "desc": "",
+    "raw_key": "'E'",
+    "key_label": "E",
+    "godot_keycode": "KEY_E",
+    "keycode_val": 69,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_SITDOWN",
+    "action_id": 4,
+    "desc": "앉기",
+    "raw_key": "'X'",
+    "key_label": "X",
+    "godot_keycode": "KEY_X",
+    "keycode_val": 88,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_JUMP",
+    "action_id": 5,
+    "desc": "점프",
+    "raw_key": "' '",
+    "key_label": "Space",
+    "godot_keycode": "KEY_SPACE",
+    "keycode_val": 32,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_AUTORUN",
+    "action_id": 6,
+    "desc": "자동달리기",
+    "raw_key": "'*'",
+    "key_label": "Asterisk (Numpad *)",
+    "godot_keycode": "KEY_KP_MULTIPLY",
+    "keycode_val": 4194442,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_SCOUTER",
+    "action_id": 7,
+    "desc": "스카우터 사용하기",
+    "raw_key": "'T'",
+    "key_label": "T",
+    "godot_keycode": "KEY_T",
+    "keycode_val": 84,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_CHARGE",
+    "action_id": 8,
+    "desc": "기 모으기",
+    "raw_key": "'Z'",
+    "key_label": "Z",
+    "godot_keycode": "KEY_Z",
+    "keycode_val": 90,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_LOOTING",
+    "action_id": 9,
+    "desc": "아이템 줍기",
+    "raw_key": "'V'",
+    "key_label": "V",
+    "godot_keycode": "KEY_V",
+    "keycode_val": 86,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_AVATAR_BLOCKING",
+    "action_id": 10,
+    "desc": "아바타 블록킹",
+    "raw_key": "'R'",
+    "key_label": "R",
+    "godot_keycode": "KEY_R",
+    "keycode_val": 82,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_TARGET_SELF",
+    "action_id": 20,
+    "desc": "자신 선택",
+    "raw_key": "NTL_KEY_WAVE",
+    "key_label": "~",
+    "godot_keycode": "KEY_ASCIITILDE",
+    "keycode_val": 126,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_TARGET_1STPARTY",
+    "action_id": 21,
+    "desc": "파티원1 선택",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_NUMPAD1",
+    "key_label": "Alt+Numpad 1",
+    "godot_keycode": "KEY_KP_1",
+    "keycode_val": 4194433,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_2NDPARTY",
+    "action_id": 22,
+    "desc": "파티원2 선택",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_NUMPAD2",
+    "key_label": "Alt+Numpad 2",
+    "godot_keycode": "KEY_KP_2",
+    "keycode_val": 4194434,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_3RDPARTY",
+    "action_id": 23,
+    "desc": "파티원3 선택",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_NUMPAD3",
+    "key_label": "Alt+Numpad 3",
+    "godot_keycode": "KEY_KP_3",
+    "keycode_val": 4194435,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_4THPARTY",
+    "action_id": 24,
+    "desc": "파티원4 선택",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_NUMPAD4",
+    "key_label": "Alt+Numpad 4",
+    "godot_keycode": "KEY_KP_4",
+    "keycode_val": 4194436,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_MEMBER",
+    "action_id": 25,
+    "desc": "",
+    "raw_key": "NTL_CTRL_BIT | NTL_KEY_TAB",
+    "key_label": "Ctrl+Tab",
+    "godot_keycode": "KEY_TAB",
+    "keycode_val": 4194306,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_AUTO",
+    "action_id": 26,
+    "desc": "가까운 적 선택",
+    "raw_key": "NTL_KEY_TAB",
+    "key_label": "Tab",
+    "godot_keycode": "KEY_TAB",
+    "keycode_val": 4194306,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_TARGET_AUTOATK",
+    "action_id": 27,
+    "desc": "자동공격",
+    "raw_key": "'F'",
+    "key_label": "F",
+    "godot_keycode": "KEY_F",
+    "keycode_val": 70,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_TARGET_AUTOFOLLOW",
+    "action_id": 28,
+    "desc": "자동 따라가기",
+    "raw_key": "'/'",
+    "key_label": "/",
+    "godot_keycode": "KEY_SLASH",
+    "keycode_val": 47,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_TARGET_MARKING_1",
+    "action_id": 29,
+    "desc": "공유 타겟1 지정",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_F1",
+    "key_label": "Alt+F1",
+    "godot_keycode": "KEY_F1",
+    "keycode_val": 4194332,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_MARKING_2",
+    "action_id": 30,
+    "desc": "공유 타겟2 지정",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_F2",
+    "key_label": "Alt+F2",
+    "godot_keycode": "KEY_F2",
+    "keycode_val": 4194333,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_MARKING_3",
+    "action_id": 31,
+    "desc": "공유 타겟3 지정",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_F3",
+    "key_label": "Alt+F3",
+    "godot_keycode": "KEY_F3",
+    "keycode_val": 4194334,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_MARKING_4",
+    "action_id": 32,
+    "desc": "공유 타겟4 지정",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_F4",
+    "key_label": "Alt+F4",
+    "godot_keycode": "KEY_F4",
+    "keycode_val": 4194335,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_MARKING_5",
+    "action_id": 33,
+    "desc": "공유 타겟5 지정",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_F5",
+    "key_label": "Alt+F5",
+    "godot_keycode": "KEY_F5",
+    "keycode_val": 4194336,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_SELECTING_1",
+    "action_id": 34,
+    "desc": "공유 타겟1 선택",
+    "raw_key": "NTL_CTRL_BIT | NTL_KEY_F1",
+    "key_label": "Ctrl+F1",
+    "godot_keycode": "KEY_F1",
+    "keycode_val": 4194332,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_SELECTING_2",
+    "action_id": 35,
+    "desc": "공유 타겟2 선택",
+    "raw_key": "NTL_CTRL_BIT | NTL_KEY_F2",
+    "key_label": "Ctrl+F2",
+    "godot_keycode": "KEY_F2",
+    "keycode_val": 4194333,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_SELECTING_3",
+    "action_id": 36,
+    "desc": "공유 타겟3 선택",
+    "raw_key": "NTL_CTRL_BIT | NTL_KEY_F3",
+    "key_label": "Ctrl+F3",
+    "godot_keycode": "KEY_F3",
+    "keycode_val": 4194334,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_SELECTING_4",
+    "action_id": 37,
+    "desc": "공유 타겟4 선택",
+    "raw_key": "NTL_CTRL_BIT | NTL_KEY_F4",
+    "key_label": "Ctrl+F4",
+    "godot_keycode": "KEY_F4",
+    "keycode_val": 4194335,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_SELECTING_5",
+    "action_id": 38,
+    "desc": "공유 타겟5 선택",
+    "raw_key": "NTL_CTRL_BIT | NTL_KEY_F5",
+    "key_label": "Ctrl+F5",
+    "godot_keycode": "KEY_F5",
+    "keycode_val": 4194336,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_TARGET_AUTOTARGET_PARTY",
+    "action_id": 39,
+    "desc": "파티원 자동 선택",
+    "raw_key": "NTL_CTRL_BIT | NTL_KEY_TAB",
+    "key_label": "Ctrl+Tab",
+    "godot_keycode": "KEY_TAB",
+    "keycode_val": 4194306,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_1",
+    "action_id": 40,
+    "desc": "퀵슬롯1번",
+    "raw_key": "'1'",
+    "key_label": "1",
+    "godot_keycode": "KEY_1",
+    "keycode_val": 49,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_2",
+    "action_id": 41,
+    "desc": "퀵슬롯2번",
+    "raw_key": "'2'",
+    "key_label": "2",
+    "godot_keycode": "KEY_2",
+    "keycode_val": 50,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_3",
+    "action_id": 42,
+    "desc": "퀵슬롯3번",
+    "raw_key": "'3'",
+    "key_label": "3",
+    "godot_keycode": "KEY_3",
+    "keycode_val": 51,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_4",
+    "action_id": 43,
+    "desc": "퀵슬롯4번",
+    "raw_key": "'4'",
+    "key_label": "4",
+    "godot_keycode": "KEY_4",
+    "keycode_val": 52,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_5",
+    "action_id": 44,
+    "desc": "퀵슬롯5번",
+    "raw_key": "'5'",
+    "key_label": "5",
+    "godot_keycode": "KEY_5",
+    "keycode_val": 53,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_6",
+    "action_id": 45,
+    "desc": "퀵슬롯6번",
+    "raw_key": "'6'",
+    "key_label": "6",
+    "godot_keycode": "KEY_6",
+    "keycode_val": 54,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_7",
+    "action_id": 46,
+    "desc": "퀵슬롯7번",
+    "raw_key": "'7'",
+    "key_label": "7",
+    "godot_keycode": "KEY_7",
+    "keycode_val": 55,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_8",
+    "action_id": 47,
+    "desc": "퀵슬롯8번",
+    "raw_key": "'8'",
+    "key_label": "8",
+    "godot_keycode": "KEY_8",
+    "keycode_val": 56,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_9",
+    "action_id": 48,
+    "desc": "퀵슬롯9번",
+    "raw_key": "'9'",
+    "key_label": "9",
+    "godot_keycode": "KEY_9",
+    "keycode_val": 57,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_0",
+    "action_id": 49,
+    "desc": "퀵슬롯0번",
+    "raw_key": "'0'",
+    "key_label": "0",
+    "godot_keycode": "KEY_0",
+    "keycode_val": 48,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_MIN",
+    "action_id": 50,
+    "desc": "퀵슬롯-번",
+    "raw_key": "NTL_KEY_DASH",
+    "key_label": "-",
+    "godot_keycode": "KEY_MINUS",
+    "keycode_val": 45,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_PLUS",
+    "action_id": 51,
+    "desc": "퀵슬롯+번",
+    "raw_key": "NTL_KEY_EQUAL",
+    "key_label": "=",
+    "godot_keycode": "KEY_EQUAL",
+    "keycode_val": 61,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_1_EX",
+    "action_id": 80,
+    "desc": "퀵슬롯 첫번째 확장 1번",
+    "raw_key": "NTL_KEY_F1",
+    "key_label": "F1",
+    "godot_keycode": "KEY_F1",
+    "keycode_val": 4194332,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_2_EX",
+    "action_id": 81,
+    "desc": "퀵슬롯2번",
+    "raw_key": "NTL_KEY_F2",
+    "key_label": "F2",
+    "godot_keycode": "KEY_F2",
+    "keycode_val": 4194333,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_3_EX",
+    "action_id": 82,
+    "desc": "퀵슬롯3번",
+    "raw_key": "NTL_KEY_F3",
+    "key_label": "F3",
+    "godot_keycode": "KEY_F3",
+    "keycode_val": 4194334,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_4_EX",
+    "action_id": 83,
+    "desc": "퀵슬롯4번",
+    "raw_key": "NTL_KEY_F4",
+    "key_label": "F4",
+    "godot_keycode": "KEY_F4",
+    "keycode_val": 4194335,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_5_EX",
+    "action_id": 84,
+    "desc": "퀵슬롯5번",
+    "raw_key": "NTL_KEY_F5",
+    "key_label": "F5",
+    "godot_keycode": "KEY_F5",
+    "keycode_val": 4194336,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_6_EX",
+    "action_id": 85,
+    "desc": "퀵슬롯6번",
+    "raw_key": "NTL_KEY_F6",
+    "key_label": "F6",
+    "godot_keycode": "KEY_F6",
+    "keycode_val": 4194337,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_7_EX",
+    "action_id": 86,
+    "desc": "퀵슬롯7번",
+    "raw_key": "NTL_KEY_F7",
+    "key_label": "F7",
+    "godot_keycode": "KEY_F7",
+    "keycode_val": 4194338,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_8_EX",
+    "action_id": 87,
+    "desc": "퀵슬롯8번",
+    "raw_key": "NTL_KEY_F8",
+    "key_label": "F8",
+    "godot_keycode": "KEY_F8",
+    "keycode_val": 4194339,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_9_EX",
+    "action_id": 88,
+    "desc": "퀵슬롯9번",
+    "raw_key": "NTL_KEY_F9",
+    "key_label": "F9",
+    "godot_keycode": "KEY_F9",
+    "keycode_val": 4194340,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_0_EX",
+    "action_id": 89,
+    "desc": "퀵슬롯0번",
+    "raw_key": "NTL_KEY_F10",
+    "key_label": "F10",
+    "godot_keycode": "KEY_F10",
+    "keycode_val": 4194341,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_MIN_EX",
+    "action_id": 90,
+    "desc": "퀵슬롯-번",
+    "raw_key": "NTL_KEY_F11",
+    "key_label": "F11",
+    "godot_keycode": "KEY_F11",
+    "keycode_val": 4194342,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_PLUS_EX",
+    "action_id": 91,
+    "desc": "퀵슬롯+번",
+    "raw_key": "NTL_KEY_F12",
+    "key_label": "F12",
+    "godot_keycode": "KEY_F12",
+    "keycode_val": 4194343,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_1_EX2",
+    "action_id": 92,
+    "desc": "퀵슬롯 첫번째 확장 1번",
+    "raw_key": "NTL_ALT_BIT | '1'",
+    "key_label": "Alt+1",
+    "godot_keycode": "KEY_1",
+    "keycode_val": 49,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_2_EX2",
+    "action_id": 93,
+    "desc": "퀵슬롯2번",
+    "raw_key": "NTL_ALT_BIT | '2'",
+    "key_label": "Alt+2",
+    "godot_keycode": "KEY_2",
+    "keycode_val": 50,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_3_EX2",
+    "action_id": 94,
+    "desc": "퀵슬롯3번",
+    "raw_key": "NTL_ALT_BIT | '3'",
+    "key_label": "Alt+3",
+    "godot_keycode": "KEY_3",
+    "keycode_val": 51,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_4_EX2",
+    "action_id": 95,
+    "desc": "퀵슬롯4번",
+    "raw_key": "NTL_ALT_BIT | '4'",
+    "key_label": "Alt+4",
+    "godot_keycode": "KEY_4",
+    "keycode_val": 52,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_5_EX2",
+    "action_id": 96,
+    "desc": "퀵슬롯5번",
+    "raw_key": "NTL_ALT_BIT | '5'",
+    "key_label": "Alt+5",
+    "godot_keycode": "KEY_5",
+    "keycode_val": 53,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_6_EX2",
+    "action_id": 97,
+    "desc": "퀵슬롯6번",
+    "raw_key": "NTL_ALT_BIT | '6'",
+    "key_label": "Alt+6",
+    "godot_keycode": "KEY_6",
+    "keycode_val": 54,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_7_EX2",
+    "action_id": 98,
+    "desc": "퀵슬롯7번",
+    "raw_key": "NTL_ALT_BIT | '7'",
+    "key_label": "Alt+7",
+    "godot_keycode": "KEY_7",
+    "keycode_val": 55,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_8_EX2",
+    "action_id": 99,
+    "desc": "퀵슬롯8번",
+    "raw_key": "NTL_ALT_BIT | '8'",
+    "key_label": "Alt+8",
+    "godot_keycode": "KEY_8",
+    "keycode_val": 56,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_9_EX2",
+    "action_id": 100,
+    "desc": "퀵슬롯9번",
+    "raw_key": "NTL_ALT_BIT | '9'",
+    "key_label": "Alt+9",
+    "godot_keycode": "KEY_9",
+    "keycode_val": 57,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_0_EX2",
+    "action_id": 101,
+    "desc": "퀵슬롯0번",
+    "raw_key": "NTL_ALT_BIT | '0'",
+    "key_label": "Alt+0",
+    "godot_keycode": "KEY_0",
+    "keycode_val": 48,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_MIN_EX2",
+    "action_id": 102,
+    "desc": "퀵슬롯-번",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_DASH",
+    "key_label": "Alt+-",
+    "godot_keycode": "KEY_MINUS",
+    "keycode_val": 45,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_PLUS_EX2",
+    "action_id": 103,
+    "desc": "퀵슬롯+번",
+    "raw_key": "NTL_ALT_BIT | NTL_KEY_EQUAL",
+    "key_label": "Alt+=",
+    "godot_keycode": "KEY_EQUAL",
+    "keycode_val": 61,
+    "modifiers": [
+      "alt"
+    ]
+  },
+  {
+    "action_name": "ACTION_QUICK_PREV",
+    "action_id": 52,
+    "desc": "이전 퀵슬롯",
+    "raw_key": "0xDB",
+    "key_label": "[",
+    "godot_keycode": "KEY_BRACKETLEFT",
+    "keycode_val": 91,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_QUICK_NEXT",
+    "action_id": 53,
+    "desc": "다음 퀵슬롯",
+    "raw_key": "0xDD",
+    "key_label": "]",
+    "godot_keycode": "KEY_BRACKETRIGHT",
+    "keycode_val": 93,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_PROFILE",
+    "action_id": 60,
+    "desc": "상세정보 윈도우",
+    "raw_key": "'C'",
+    "key_label": "C",
+    "godot_keycode": "KEY_C",
+    "keycode_val": 67,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_SKILL",
+    "action_id": 61,
+    "desc": "스킬정보 윈도우",
+    "raw_key": "'K'",
+    "key_label": "K",
+    "godot_keycode": "KEY_K",
+    "keycode_val": 75,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_QUEST",
+    "action_id": 62,
+    "desc": "퀘스트 윈도우",
+    "raw_key": "'J'",
+    "key_label": "J",
+    "godot_keycode": "KEY_J",
+    "keycode_val": 74,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_MINIMAP",
+    "action_id": 63,
+    "desc": "미니맵",
+    "raw_key": "'N'",
+    "key_label": "N",
+    "godot_keycode": "KEY_N",
+    "keycode_val": 78,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_WORLDMAP",
+    "action_id": 64,
+    "desc": "월드맵",
+    "raw_key": "'M'",
+    "key_label": "M",
+    "godot_keycode": "KEY_M",
+    "keycode_val": 77,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_MAINCAP",
+    "action_id": 65,
+    "desc": "메인 캡슐키트",
+    "raw_key": "'I'",
+    "key_label": "I",
+    "godot_keycode": "KEY_I",
+    "keycode_val": 73,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_PARTY",
+    "action_id": 66,
+    "desc": "파티정보\t\t\t\t\t///< 기획 단계에서 사라짐",
+    "raw_key": "'P'",
+    "key_label": "P",
+    "godot_keycode": "KEY_P",
+    "keycode_val": 80,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_GUILD",
+    "action_id": 67,
+    "desc": "길드정보",
+    "raw_key": "'G'",
+    "key_label": "G",
+    "godot_keycode": "KEY_G",
+    "keycode_val": 71,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_FRIEND",
+    "action_id": 68,
+    "desc": "친구정보",
+    "raw_key": "'L'",
+    "key_label": "L",
+    "godot_keycode": "KEY_L",
+    "keycode_val": 76,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_OPTION",
+    "action_id": 69,
+    "desc": "옵션",
+    "raw_key": "'O'",
+    "key_label": "O",
+    "godot_keycode": "KEY_O",
+    "keycode_val": 79,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_HELP",
+    "action_id": 70,
+    "desc": "도움말",
+    "raw_key": "'H'",
+    "key_label": "H",
+    "godot_keycode": "KEY_H",
+    "keycode_val": 72,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_MAIN",
+    "action_id": 71,
+    "desc": "메인메뉴",
+    "raw_key": "NTL_CTRL_BIT | 'M'",
+    "key_label": "Ctrl+M",
+    "godot_keycode": "KEY_M",
+    "keycode_val": 77,
+    "modifiers": [
+      "ctrl"
+    ]
+  },
+  {
+    "action_name": "ACTION_WINDOW_RANKBOARD",
+    "action_id": 72,
+    "desc": "랭크보드",
+    "raw_key": "'B'",
+    "key_label": "B",
+    "godot_keycode": "KEY_B",
+    "keycode_val": 66,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_WINDOW_HOIPOIMIX",
+    "action_id": 73,
+    "desc": "",
+    "raw_key": "'.'",
+    "key_label": ".",
+    "godot_keycode": "KEY_PERIOD",
+    "keycode_val": 46,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_MINIMAP_ZOOMOUT",
+    "action_id": 160,
+    "desc": "미니맵 축소",
+    "raw_key": "NTL_KEY_SUBTRACT",
+    "key_label": "Numpad -",
+    "godot_keycode": "KEY_KP_SUBTRACT",
+    "keycode_val": 4194445,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_MINIMAP_ZOOMIN",
+    "action_id": 161,
+    "desc": "미니맵 확대",
+    "raw_key": "NTL_KEY_ADD",
+    "key_label": "Numpad +",
+    "godot_keycode": "KEY_KP_ADD",
+    "keycode_val": 4194443,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_CHAT_PGUP",
+    "action_id": 170,
+    "desc": "채팅창 이전 페이지",
+    "raw_key": "NTL_KEY_PRIOR",
+    "key_label": "PageUp",
+    "godot_keycode": "KEY_PAGEUP",
+    "keycode_val": 4194321,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_CHAT_PGDN",
+    "action_id": 171,
+    "desc": "채팅창 다음 페이지",
+    "raw_key": "NTL_KEY_NEXT",
+    "key_label": "PageDown",
+    "godot_keycode": "KEY_PAGEDOWN",
+    "keycode_val": 4194322,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_GLOBAL_CANCLE",
+    "action_id": 180,
+    "desc": "취소(Targeting, Windows, Main Menu)",
+    "raw_key": "NTL_KEY_ESCAPE",
+    "key_label": "Escape",
+    "godot_keycode": "KEY_ESCAPE",
+    "keycode_val": 4194305,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_GLOBAL_SNAPSHOT",
+    "action_id": 181,
+    "desc": "스크린샷",
+    "raw_key": "NTL_KEY_SNAPSHOT",
+    "key_label": "PrintScreen",
+    "godot_keycode": "KEY_PRINT",
+    "keycode_val": 4194318,
+    "modifiers": []
+  },
+  {
+    "action_name": "ACTION_GLOBAL_CHAT",
+    "action_id": 182,
+    "desc": "채팅입력",
+    "raw_key": "NTL_KEY_RETURN",
+    "key_label": "Return / Enter",
+    "godot_keycode": "KEY_ENTER",
+    "keycode_val": 4194309,
+    "modifiers": []
+  }
+]

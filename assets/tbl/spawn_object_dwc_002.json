@@ -1,0 +1,122 @@
+[
+  {
+    "tblidx": 3,
+    "name": 514,
+    "function_flags": 1,
+    "min": {
+      "x": -639.87,
+      "y": -79.36,
+      "z": 1651.9301
+    },
+    "max": {
+      "x": -637.32,
+      "y": -77.89,
+      "z": 1654.47
+    },
+    "loc": {
+      "x": -638.59,
+      "y": -79.21,
+      "z": 1653.2
+    },
+    "dir": {
+      "x": -0.6712,
+      "y": 0.0,
+      "z": 0.7413
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "09_T_MUSHROOM_FEED_001",
+    "click_sounds": [],
+    "radius": 1.9439,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 5,
+    "name": 515,
+    "function_flags": 1,
+    "min": {
+      "x": -647.38,
+      "y": -78.78,
+      "z": 1653.77
+    },
+    "max": {
+      "x": -646.16,
+      "y": -77.84,
+      "z": 1654.76
+    },
+    "loc": {
+      "x": -646.8,
+      "y": -78.74,
+      "z": 1654.26
+    },
+    "dir": {
+      "x": -0.1595,
+      "y": 0.0,
+      "z": 0.9872
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "Q2_O_BOX_002",
+    "click_sounds": [],
+    "radius": 0.9154,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 6,
+    "name": 516,
+    "function_flags": 1,
+    "min": {
+      "x": -614.36,
+      "y": -104.1,
+      "z": 1769.38
+    },
+    "max": {
+      "x": -613.73,
+      "y": -103.84,
+      "z": 1770.0601
+    },
+    "loc": {
+      "x": -614.05,
+      "y": -104.02,
+      "z": 1769.71
+    },
+    "dir": {
+      "x": 0.3281,
+      "y": 0.0,
+      "z": 0.9446
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "DWC2_T_MAGAZINE_001",
+    "click_sounds": [],
+    "radius": 0.4814,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 5,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

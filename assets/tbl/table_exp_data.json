@@ -1,0 +1,1002 @@
+{
+  "1": {
+    "tblidx": 1,
+    "level": 1,
+    "exp": 0,
+    "need_exp": 450,
+    "mob_exp": 131081,
+    "phy_defence_ref": 65537,
+    "eng_defence_ref": 589826,
+    "mob_zenny": 65538
+  },
+  "2": {
+    "tblidx": 2,
+    "level": 2,
+    "exp": 450,
+    "need_exp": 1200,
+    "mob_exp": 131081,
+    "phy_defence_ref": 65537,
+    "eng_defence_ref": 589826,
+    "mob_zenny": 65538
+  },
+  "3": {
+    "tblidx": 3,
+    "level": 3,
+    "exp": 1650,
+    "need_exp": 2310,
+    "mob_exp": 131081,
+    "phy_defence_ref": 65537,
+    "eng_defence_ref": 589826,
+    "mob_zenny": 65538
+  },
+  "4": {
+    "tblidx": 4,
+    "level": 4,
+    "exp": 3960,
+    "need_exp": 3760,
+    "mob_exp": 131081,
+    "phy_defence_ref": 131073,
+    "eng_defence_ref": 589828,
+    "mob_zenny": 65538
+  },
+  "5": {
+    "tblidx": 5,
+    "level": 5,
+    "exp": 7720,
+    "need_exp": 5580,
+    "mob_exp": 131081,
+    "phy_defence_ref": 131073,
+    "eng_defence_ref": 589828,
+    "mob_zenny": 65538
+  },
+  "6": {
+    "tblidx": 6,
+    "level": 6,
+    "exp": 13300,
+    "need_exp": 7700,
+    "mob_exp": 131081,
+    "phy_defence_ref": 131073,
+    "eng_defence_ref": 589828,
+    "mob_zenny": 65538
+  },
+  "7": {
+    "tblidx": 7,
+    "level": 7,
+    "exp": 21000,
+    "need_exp": 10120,
+    "mob_exp": 262162,
+    "phy_defence_ref": 196610,
+    "eng_defence_ref": 1179654,
+    "mob_zenny": 131076
+  },
+  "8": {
+    "tblidx": 8,
+    "level": 8,
+    "exp": 31120,
+    "need_exp": 13080,
+    "mob_exp": 262162,
+    "phy_defence_ref": 196610,
+    "eng_defence_ref": 1179654,
+    "mob_zenny": 131076
+  },
+  "9": {
+    "tblidx": 9,
+    "level": 9,
+    "exp": 44200,
+    "need_exp": 16250,
+    "mob_exp": 262162,
+    "phy_defence_ref": 196610,
+    "eng_defence_ref": 1179654,
+    "mob_zenny": 131076
+  },
+  "10": {
+    "tblidx": 10,
+    "level": 10,
+    "exp": 60450,
+    "need_exp": 19880,
+    "mob_exp": 262163,
+    "phy_defence_ref": 196610,
+    "eng_defence_ref": 1245190,
+    "mob_zenny": 131076
+  },
+  "11": {
+    "tblidx": 11,
+    "level": 11,
+    "exp": 80330,
+    "need_exp": 23850,
+    "mob_exp": 262163,
+    "phy_defence_ref": 196610,
+    "eng_defence_ref": 1245190,
+    "mob_zenny": 131076
+  },
+  "12": {
+    "tblidx": 12,
+    "level": 12,
+    "exp": 104180,
+    "need_exp": 28320,
+    "mob_exp": 458783,
+    "phy_defence_ref": 262147,
+    "eng_defence_ref": 2031624,
+    "mob_zenny": 196615
+  },
+  "13": {
+    "tblidx": 13,
+    "level": 13,
+    "exp": 132500,
+    "need_exp": 33150,
+    "mob_exp": 458784,
+    "phy_defence_ref": 262147,
+    "eng_defence_ref": 2097160,
+    "mob_zenny": 196615
+  },
+  "14": {
+    "tblidx": 14,
+    "level": 14,
+    "exp": 165650,
+    "need_exp": 38340,
+    "mob_exp": 458784,
+    "phy_defence_ref": 262147,
+    "eng_defence_ref": 2097160,
+    "mob_zenny": 196615
+  },
+  "15": {
+    "tblidx": 15,
+    "level": 15,
+    "exp": 203990,
+    "need_exp": 44080,
+    "mob_exp": 458784,
+    "phy_defence_ref": 262147,
+    "eng_defence_ref": 2097160,
+    "mob_zenny": 196615
+  },
+  "16": {
+    "tblidx": 16,
+    "level": 16,
+    "exp": 248070,
+    "need_exp": 50000,
+    "mob_exp": 458785,
+    "phy_defence_ref": 262147,
+    "eng_defence_ref": 2162696,
+    "mob_zenny": 196615
+  },
+  "17": {
+    "tblidx": 17,
+    "level": 17,
+    "exp": 298070,
+    "need_exp": 56490,
+    "mob_exp": 655405,
+    "phy_defence_ref": 327685,
+    "eng_defence_ref": 2949130,
+    "mob_zenny": 327690
+  },
+  "18": {
+    "tblidx": 18,
+    "level": 18,
+    "exp": 354560,
+    "need_exp": 63360,
+    "mob_exp": 655405,
+    "phy_defence_ref": 393221,
+    "eng_defence_ref": 2949132,
+    "mob_zenny": 327690
+  },
+  "19": {
+    "tblidx": 19,
+    "level": 19,
+    "exp": 417920,
+    "need_exp": 70840,
+    "mob_exp": 655405,
+    "phy_defence_ref": 393221,
+    "eng_defence_ref": 2949132,
+    "mob_zenny": 327690
+  },
+  "20": {
+    "tblidx": 20,
+    "level": 20,
+    "exp": 488760,
+    "need_exp": 78480,
+    "mob_exp": 655405,
+    "phy_defence_ref": 393221,
+    "eng_defence_ref": 2949132,
+    "mob_zenny": 327690
+  },
+  "21": {
+    "tblidx": 21,
+    "level": 21,
+    "exp": 567240,
+    "need_exp": 86750,
+    "mob_exp": 655406,
+    "phy_defence_ref": 393221,
+    "eng_defence_ref": 3014668,
+    "mob_zenny": 327690
+  },
+  "22": {
+    "tblidx": 22,
+    "level": 22,
+    "exp": 653990,
+    "need_exp": 95420,
+    "mob_exp": 786489,
+    "phy_defence_ref": 458758,
+    "eng_defence_ref": 3735566,
+    "mob_zenny": 393228
+  },
+  "23": {
+    "tblidx": 23,
+    "level": 23,
+    "exp": 749410,
+    "need_exp": 104490,
+    "mob_exp": 852026,
+    "phy_defence_ref": 458758,
+    "eng_defence_ref": 3801102,
+    "mob_zenny": 393229
+  },
+  "24": {
+    "tblidx": 24,
+    "level": 24,
+    "exp": 853900,
+    "need_exp": 113960,
+    "mob_exp": 852026,
+    "phy_defence_ref": 458758,
+    "eng_defence_ref": 3801102,
+    "mob_zenny": 393229
+  },
+  "25": {
+    "tblidx": 25,
+    "level": 25,
+    "exp": 967860,
+    "need_exp": 124120,
+    "mob_exp": 852026,
+    "phy_defence_ref": 458758,
+    "eng_defence_ref": 3801102,
+    "mob_zenny": 393229
+  },
+  "26": {
+    "tblidx": 26,
+    "level": 26,
+    "exp": 1091980,
+    "need_exp": 134400,
+    "mob_exp": 852027,
+    "phy_defence_ref": 458758,
+    "eng_defence_ref": 3866638,
+    "mob_zenny": 393229
+  },
+  "27": {
+    "tblidx": 27,
+    "level": 27,
+    "exp": 1226380,
+    "need_exp": 145390,
+    "mob_exp": 1048648,
+    "phy_defence_ref": 524296,
+    "eng_defence_ref": 4718608,
+    "mob_zenny": 524304
+  },
+  "28": {
+    "tblidx": 28,
+    "level": 28,
+    "exp": 1371770,
+    "need_exp": 156800,
+    "mob_exp": 1048648,
+    "phy_defence_ref": 524296,
+    "eng_defence_ref": 4718608,
+    "mob_zenny": 524304
+  },
+  "29": {
+    "tblidx": 29,
+    "level": 29,
+    "exp": 1528570,
+    "need_exp": 168630,
+    "mob_exp": 1048648,
+    "phy_defence_ref": 589832,
+    "eng_defence_ref": 4718610,
+    "mob_zenny": 524304
+  },
+  "30": {
+    "tblidx": 30,
+    "level": 30,
+    "exp": 1697200,
+    "need_exp": 184280,
+    "mob_exp": 1048648,
+    "phy_defence_ref": 589832,
+    "eng_defence_ref": 4718610,
+    "mob_zenny": 524304
+  },
+  "31": {
+    "tblidx": 31,
+    "level": 31,
+    "exp": 1881480,
+    "need_exp": 200550,
+    "mob_exp": 1245271,
+    "phy_defence_ref": 655369,
+    "eng_defence_ref": 5701652,
+    "mob_zenny": 589843
+  },
+  "32": {
+    "tblidx": 32,
+    "level": 32,
+    "exp": 2082030,
+    "need_exp": 218160,
+    "mob_exp": 1245271,
+    "phy_defence_ref": 655369,
+    "eng_defence_ref": 5701652,
+    "mob_zenny": 589843
+  },
+  "33": {
+    "tblidx": 33,
+    "level": 33,
+    "exp": 2300190,
+    "need_exp": 236800,
+    "mob_exp": 1245272,
+    "phy_defence_ref": 655369,
+    "eng_defence_ref": 5767188,
+    "mob_zenny": 589843
+  },
+  "34": {
+    "tblidx": 34,
+    "level": 34,
+    "exp": 2536990,
+    "need_exp": 256880,
+    "mob_exp": 1245272,
+    "phy_defence_ref": 655369,
+    "eng_defence_ref": 5767188,
+    "mob_zenny": 589843
+  },
+  "35": {
+    "tblidx": 35,
+    "level": 35,
+    "exp": 2793870,
+    "need_exp": 278070,
+    "mob_exp": 1441891,
+    "phy_defence_ref": 786443,
+    "eng_defence_ref": 6488088,
+    "mob_zenny": 720918
+  },
+  "36": {
+    "tblidx": 36,
+    "level": 36,
+    "exp": 3071940,
+    "need_exp": 300800,
+    "mob_exp": 1441892,
+    "phy_defence_ref": 786443,
+    "eng_defence_ref": 6553624,
+    "mob_zenny": 720918
+  },
+  "37": {
+    "tblidx": 37,
+    "level": 37,
+    "exp": 3372740,
+    "need_exp": 324720,
+    "mob_exp": 1441892,
+    "phy_defence_ref": 786443,
+    "eng_defence_ref": 6553624,
+    "mob_zenny": 720918
+  },
+  "38": {
+    "tblidx": 38,
+    "level": 38,
+    "exp": 3697460,
+    "need_exp": 349860,
+    "mob_exp": 1441892,
+    "phy_defence_ref": 786443,
+    "eng_defence_ref": 6553624,
+    "mob_zenny": 720918
+  },
+  "39": {
+    "tblidx": 39,
+    "level": 39,
+    "exp": 4047320,
+    "need_exp": 377110,
+    "mob_exp": 1638513,
+    "phy_defence_ref": 851980,
+    "eng_defence_ref": 7405594,
+    "mob_zenny": 786457
+  },
+  "40": {
+    "tblidx": 40,
+    "level": 40,
+    "exp": 4424430,
+    "need_exp": 405680,
+    "mob_exp": 1638514,
+    "phy_defence_ref": 851980,
+    "eng_defence_ref": 7471130,
+    "mob_zenny": 786457
+  },
+  "41": {
+    "tblidx": 41,
+    "level": 41,
+    "exp": 4830110,
+    "need_exp": 436050,
+    "mob_exp": 1638514,
+    "phy_defence_ref": 851980,
+    "eng_defence_ref": 7471130,
+    "mob_zenny": 786457
+  },
+  "42": {
+    "tblidx": 42,
+    "level": 42,
+    "exp": 5266160,
+    "need_exp": 467820,
+    "mob_exp": 1638514,
+    "phy_defence_ref": 851980,
+    "eng_defence_ref": 7471130,
+    "mob_zenny": 786457
+  },
+  "43": {
+    "tblidx": 43,
+    "level": 43,
+    "exp": 5733980,
+    "need_exp": 501960,
+    "mob_exp": 1835137,
+    "phy_defence_ref": 983054,
+    "eng_defence_ref": 8454174,
+    "mob_zenny": 917532
+  },
+  "44": {
+    "tblidx": 44,
+    "level": 44,
+    "exp": 6235940,
+    "need_exp": 538080,
+    "mob_exp": 1835137,
+    "phy_defence_ref": 983054,
+    "eng_defence_ref": 8454174,
+    "mob_zenny": 917532
+  },
+  "45": {
+    "tblidx": 45,
+    "level": 45,
+    "exp": 6774020,
+    "need_exp": 575750,
+    "mob_exp": 1900674,
+    "phy_defence_ref": 983054,
+    "eng_defence_ref": 8519710,
+    "mob_zenny": 917533
+  },
+  "46": {
+    "tblidx": 46,
+    "level": 46,
+    "exp": 7349770,
+    "need_exp": 616000,
+    "mob_exp": 1900674,
+    "phy_defence_ref": 983054,
+    "eng_defence_ref": 8519710,
+    "mob_zenny": 917533
+  },
+  "47": {
+    "tblidx": 47,
+    "level": 47,
+    "exp": 7965770,
+    "need_exp": 658410,
+    "mob_exp": 2097296,
+    "phy_defence_ref": 1048592,
+    "eng_defence_ref": 9437216,
+    "mob_zenny": 1048608
+  },
+  "48": {
+    "tblidx": 48,
+    "level": 48,
+    "exp": 8624180,
+    "need_exp": 703560,
+    "mob_exp": 2097296,
+    "phy_defence_ref": 1048592,
+    "eng_defence_ref": 9437216,
+    "mob_zenny": 1048608
+  },
+  "49": {
+    "tblidx": 49,
+    "level": 49,
+    "exp": 9327740,
+    "need_exp": 751010,
+    "mob_exp": 2097296,
+    "phy_defence_ref": 1114128,
+    "eng_defence_ref": 9437218,
+    "mob_zenny": 1048608
+  },
+  "50": {
+    "tblidx": 50,
+    "level": 50,
+    "exp": 10078750,
+    "need_exp": 800820,
+    "mob_exp": 2097296,
+    "phy_defence_ref": 1114128,
+    "eng_defence_ref": 9437218,
+    "mob_zenny": 1048608
+  },
+  "51": {
+    "tblidx": 51,
+    "level": 51,
+    "exp": 10879570,
+    "need_exp": 853600,
+    "mob_exp": 2490542,
+    "phy_defence_ref": 1310739,
+    "eng_defence_ref": 11403304,
+    "mob_zenny": 1245222
+  },
+  "52": {
+    "tblidx": 52,
+    "level": 52,
+    "exp": 11733170,
+    "need_exp": 909440,
+    "mob_exp": 2490542,
+    "phy_defence_ref": 1310739,
+    "eng_defence_ref": 11403304,
+    "mob_zenny": 1245222
+  },
+  "53": {
+    "tblidx": 53,
+    "level": 53,
+    "exp": 12642610,
+    "need_exp": 968430,
+    "mob_exp": 2556079,
+    "phy_defence_ref": 1310739,
+    "eng_defence_ref": 11468840,
+    "mob_zenny": 1245223
+  },
+  "54": {
+    "tblidx": 54,
+    "level": 54,
+    "exp": 13611040,
+    "need_exp": 1030080,
+    "mob_exp": 2556083,
+    "phy_defence_ref": 1310739,
+    "eng_defence_ref": 11730984,
+    "mob_zenny": 1245223
+  },
+  "55": {
+    "tblidx": 55,
+    "level": 55,
+    "exp": 14641120,
+    "need_exp": 1095630,
+    "mob_exp": 2621620,
+    "phy_defence_ref": 1310740,
+    "eng_defence_ref": 11796520,
+    "mob_zenny": 1310760
+  },
+  "56": {
+    "tblidx": 56,
+    "level": 56,
+    "exp": 15736750,
+    "need_exp": 1141200,
+    "mob_exp": 2687160,
+    "phy_defence_ref": 1376276,
+    "eng_defence_ref": 12058666,
+    "mob_zenny": 1310761
+  },
+  "57": {
+    "tblidx": 57,
+    "level": 57,
+    "exp": 16877950,
+    "need_exp": 1187670,
+    "mob_exp": 2687161,
+    "phy_defence_ref": 1376276,
+    "eng_defence_ref": 12124202,
+    "mob_zenny": 1310761
+  },
+  "58": {
+    "tblidx": 58,
+    "level": 58,
+    "exp": 18065620,
+    "need_exp": 1235660,
+    "mob_exp": 2687161,
+    "phy_defence_ref": 1376276,
+    "eng_defence_ref": 12124202,
+    "mob_zenny": 1310761
+  },
+  "59": {
+    "tblidx": 59,
+    "level": 59,
+    "exp": 19301280,
+    "need_exp": 1284570,
+    "mob_exp": 2883783,
+    "phy_defence_ref": 1507350,
+    "eng_defence_ref": 13041710,
+    "mob_zenny": 1441836
+  },
+  "60": {
+    "tblidx": 60,
+    "level": 60,
+    "exp": 20585850,
+    "need_exp": 1334400,
+    "mob_exp": 2883783,
+    "phy_defence_ref": 1507350,
+    "eng_defence_ref": 13041710,
+    "mob_zenny": 1441836
+  },
+  "61": {
+    "tblidx": 61,
+    "level": 61,
+    "exp": 21920250,
+    "need_exp": 1385150,
+    "mob_exp": 3277027,
+    "phy_defence_ref": 1703961,
+    "eng_defence_ref": 14876724,
+    "mob_zenny": 1638450
+  },
+  "62": {
+    "tblidx": 62,
+    "level": 62,
+    "exp": 23305400,
+    "need_exp": 1437480,
+    "mob_exp": 3408107,
+    "phy_defence_ref": 1769498,
+    "eng_defence_ref": 15401014,
+    "mob_zenny": 1703988
+  },
+  "63": {
+    "tblidx": 63,
+    "level": 63,
+    "exp": 24742880,
+    "need_exp": 1490750,
+    "mob_exp": 3539188,
+    "phy_defence_ref": 1835035,
+    "eng_defence_ref": 15990840,
+    "mob_zenny": 1769526
+  },
+  "64": {
+    "tblidx": 64,
+    "level": 64,
+    "exp": 26233630,
+    "need_exp": 1544960,
+    "mob_exp": 3670269,
+    "phy_defence_ref": 1900572,
+    "eng_defence_ref": 16580666,
+    "mob_zenny": 1835064
+  },
+  "65": {
+    "tblidx": 65,
+    "level": 65,
+    "exp": 27778590,
+    "need_exp": 1600110,
+    "mob_exp": 3801349,
+    "phy_defence_ref": 1966109,
+    "eng_defence_ref": 17104956,
+    "mob_zenny": 1900602
+  },
+  "66": {
+    "tblidx": 66,
+    "level": 66,
+    "exp": 29378700,
+    "need_exp": 1656900,
+    "mob_exp": 3932431,
+    "phy_defence_ref": 2031646,
+    "eng_defence_ref": 17760318,
+    "mob_zenny": 1966140
+  },
+  "67": {
+    "tblidx": 67,
+    "level": 67,
+    "exp": 31035600,
+    "need_exp": 1714650,
+    "mob_exp": 4063512,
+    "phy_defence_ref": 2097183,
+    "eng_defence_ref": 18350144,
+    "mob_zenny": 2031678
+  },
+  "68": {
+    "tblidx": 68,
+    "level": 68,
+    "exp": 32750250,
+    "need_exp": 1773360,
+    "mob_exp": 4194593,
+    "phy_defence_ref": 2162720,
+    "eng_defence_ref": 18939970,
+    "mob_zenny": 2097216
+  },
+  "69": {
+    "tblidx": 69,
+    "level": 69,
+    "exp": 34523610,
+    "need_exp": 1833030,
+    "mob_exp": 4325675,
+    "phy_defence_ref": 2228257,
+    "eng_defence_ref": 19595332,
+    "mob_zenny": 2162754
+  },
+  "70": {
+    "tblidx": 70,
+    "level": 70,
+    "exp": 36356640,
+    "need_exp": 1893660,
+    "mob_exp": 4456757,
+    "phy_defence_ref": 2293794,
+    "eng_defence_ref": 20250694,
+    "mob_zenny": 2228292
+  },
+  "71": {
+    "tblidx": 71,
+    "level": 71,
+    "exp": 38250300,
+    "need_exp": 1956000,
+    "mob_exp": 4653375,
+    "phy_defence_ref": 2359331,
+    "eng_defence_ref": 20906056,
+    "mob_zenny": 2293831
+  },
+  "72": {
+    "tblidx": 72,
+    "level": 72,
+    "exp": 40206300,
+    "need_exp": 2019320,
+    "mob_exp": 4784458,
+    "phy_defence_ref": 2424868,
+    "eng_defence_ref": 21626954,
+    "mob_zenny": 2359369
+  },
+  "73": {
+    "tblidx": 73,
+    "level": 73,
+    "exp": 42225620,
+    "need_exp": 2083620,
+    "mob_exp": 4915540,
+    "phy_defence_ref": 2490405,
+    "eng_defence_ref": 22282316,
+    "mob_zenny": 2424907
+  },
+  "74": {
+    "tblidx": 74,
+    "level": 74,
+    "exp": 44309240,
+    "need_exp": 2149680,
+    "mob_exp": 5112159,
+    "phy_defence_ref": 2555943,
+    "eng_defence_ref": 23003214,
+    "mob_zenny": 2555982
+  },
+  "75": {
+    "tblidx": 75,
+    "level": 75,
+    "exp": 46458920,
+    "need_exp": 2215950,
+    "mob_exp": 5243241,
+    "phy_defence_ref": 2687016,
+    "eng_defence_ref": 23658578,
+    "mob_zenny": 2621520
+  },
+  "76": {
+    "tblidx": 76,
+    "level": 76,
+    "exp": 48674870,
+    "need_exp": 2284000,
+    "mob_exp": 5374324,
+    "phy_defence_ref": 2752553,
+    "eng_defence_ref": 24379476,
+    "mob_zenny": 2687058
+  },
+  "77": {
+    "tblidx": 77,
+    "level": 77,
+    "exp": 50958870,
+    "need_exp": 2353050,
+    "mob_exp": 5570943,
+    "phy_defence_ref": 2818090,
+    "eng_defence_ref": 25100374,
+    "mob_zenny": 2752597
+  },
+  "78": {
+    "tblidx": 78,
+    "level": 78,
+    "exp": 53311920,
+    "need_exp": 2423920,
+    "mob_exp": 5702027,
+    "phy_defence_ref": 2883627,
+    "eng_defence_ref": 25886808,
+    "mob_zenny": 2818135
+  },
+  "79": {
+    "tblidx": 79,
+    "level": 79,
+    "exp": 55735840,
+    "need_exp": 2494980,
+    "mob_exp": 5898646,
+    "phy_defence_ref": 3014701,
+    "eng_defence_ref": 26607708,
+    "mob_zenny": 2949210
+  },
+  "80": {
+    "tblidx": 80,
+    "level": 80,
+    "exp": 58230820,
+    "need_exp": 2567880,
+    "mob_exp": 6095266,
+    "phy_defence_ref": 3080238,
+    "eng_defence_ref": 27394142,
+    "mob_zenny": 3014749
+  },
+  "81": {
+    "tblidx": 81,
+    "level": 81,
+    "exp": 60798700,
+    "need_exp": 2641800,
+    "mob_exp": 6226350,
+    "phy_defence_ref": 3145775,
+    "eng_defence_ref": 28180576,
+    "mob_zenny": 3080287
+  },
+  "82": {
+    "tblidx": 82,
+    "level": 82,
+    "exp": 63440500,
+    "need_exp": 2716740,
+    "mob_exp": 6422969,
+    "phy_defence_ref": 3276849,
+    "eng_defence_ref": 28901476,
+    "mob_zenny": 3211362
+  },
+  "83": {
+    "tblidx": 83,
+    "level": 83,
+    "exp": 66157240,
+    "need_exp": 2792700,
+    "mob_exp": 6619590,
+    "phy_defence_ref": 3342386,
+    "eng_defence_ref": 29753446,
+    "mob_zenny": 3276901
+  },
+  "84": {
+    "tblidx": 84,
+    "level": 84,
+    "exp": 68949940,
+    "need_exp": 2870560,
+    "mob_exp": 6750675,
+    "phy_defence_ref": 3407923,
+    "eng_defence_ref": 30605416,
+    "mob_zenny": 3342439
+  },
+  "85": {
+    "tblidx": 85,
+    "level": 85,
+    "exp": 71820500,
+    "need_exp": 2949460,
+    "mob_exp": 6947295,
+    "phy_defence_ref": 3538997,
+    "eng_defence_ref": 31391852,
+    "mob_zenny": 3473514
+  },
+  "86": {
+    "tblidx": 86,
+    "level": 86,
+    "exp": 74769960,
+    "need_exp": 3029400,
+    "mob_exp": 7143916,
+    "phy_defence_ref": 3604534,
+    "eng_defence_ref": 32243822,
+    "mob_zenny": 3539053
+  },
+  "87": {
+    "tblidx": 87,
+    "level": 87,
+    "exp": 77799360,
+    "need_exp": 3110380,
+    "mob_exp": 7340537,
+    "phy_defence_ref": 3735608,
+    "eng_defence_ref": 33095794,
+    "mob_zenny": 3670128
+  },
+  "88": {
+    "tblidx": 88,
+    "level": 88,
+    "exp": 80909740,
+    "need_exp": 3192400,
+    "mob_exp": 7537158,
+    "phy_defence_ref": 3801145,
+    "eng_defence_ref": 33947764,
+    "mob_zenny": 3735667
+  },
+  "89": {
+    "tblidx": 89,
+    "level": 89,
+    "exp": 84102140,
+    "need_exp": 3276390,
+    "mob_exp": 7733779,
+    "phy_defence_ref": 3932219,
+    "eng_defence_ref": 34799736,
+    "mob_zenny": 3866742
+  },
+  "90": {
+    "tblidx": 90,
+    "level": 90,
+    "exp": 87378530,
+    "need_exp": 3360500,
+    "mob_exp": 7930401,
+    "phy_defence_ref": 3997756,
+    "eng_defence_ref": 35717242,
+    "mob_zenny": 3932281
+  },
+  "91": {
+    "tblidx": 91,
+    "level": 91,
+    "exp": 90739030,
+    "need_exp": 3446600,
+    "mob_exp": 8127023,
+    "phy_defence_ref": 4128830,
+    "eng_defence_ref": 36634750,
+    "mob_zenny": 4063356
+  },
+  "92": {
+    "tblidx": 92,
+    "level": 92,
+    "exp": 94185630,
+    "need_exp": 3533760,
+    "mob_exp": 8323645,
+    "phy_defence_ref": 4194367,
+    "eng_defence_ref": 37552256,
+    "mob_zenny": 4128895
+  },
+  "93": {
+    "tblidx": 93,
+    "level": 93,
+    "exp": 97719390,
+    "need_exp": 3622950,
+    "mob_exp": 8520267,
+    "phy_defence_ref": 4325441,
+    "eng_defence_ref": 38469764,
+    "mob_zenny": 4259970
+  },
+  "94": {
+    "tblidx": 94,
+    "level": 94,
+    "exp": 101342340,
+    "need_exp": 3712240,
+    "mob_exp": 8716890,
+    "phy_defence_ref": 4390978,
+    "eng_defence_ref": 39452806,
+    "mob_zenny": 4325509
+  },
+  "95": {
+    "tblidx": 95,
+    "level": 95,
+    "exp": 105054580,
+    "need_exp": 3803580,
+    "mob_exp": 8979049,
+    "phy_defence_ref": 4522052,
+    "eng_defence_ref": 40435850,
+    "mob_zenny": 4456585
+  },
+  "96": {
+    "tblidx": 96,
+    "level": 96,
+    "exp": 108858160,
+    "need_exp": 3896000,
+    "mob_exp": 9175671,
+    "phy_defence_ref": 4653126,
+    "eng_defence_ref": 41353358,
+    "mob_zenny": 4587660
+  },
+  "97": {
+    "tblidx": 97,
+    "level": 97,
+    "exp": 112754160,
+    "need_exp": 3989500,
+    "mob_exp": 9372295,
+    "phy_defence_ref": 4718663,
+    "eng_defence_ref": 42401936,
+    "mob_zenny": 4653199
+  },
+  "98": {
+    "tblidx": 98,
+    "level": 98,
+    "exp": 116743660,
+    "need_exp": 4084080,
+    "mob_exp": 9634454,
+    "phy_defence_ref": 4849737,
+    "eng_defence_ref": 43384980,
+    "mob_zenny": 4784275
+  },
+  "99": {
+    "tblidx": 99,
+    "level": 99,
+    "exp": 120827740,
+    "need_exp": 4180770,
+    "mob_exp": 9831077,
+    "phy_defence_ref": 4980811,
+    "eng_defence_ref": 44368024,
+    "mob_zenny": 4915350
+  },
+  "100": {
+    "tblidx": 100,
+    "level": 100,
+    "exp": 125008510,
+    "need_exp": 4277520,
+    "mob_exp": 10093237,
+    "phy_defence_ref": 5046349,
+    "eng_defence_ref": 45416602,
+    "mob_zenny": 5046426
+  }
+}

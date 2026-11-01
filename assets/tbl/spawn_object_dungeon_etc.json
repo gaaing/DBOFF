@@ -1,0 +1,282 @@
+[
+  {
+    "tblidx": 1,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": -3.77,
+      "y": 0.83,
+      "z": 42.99
+    },
+    "max": {
+      "x": 4.23,
+      "y": 8.83,
+      "z": 42.99
+    },
+    "loc": {
+      "x": 0.23,
+      "y": 0.83,
+      "z": 42.99
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 255,
+    "def_main_state": 255,
+    "def_sub_state": 255,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 5.6569,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 311,
+    "function_flags": 1,
+    "min": {
+      "x": -27.25,
+      "y": -0.04,
+      "z": -29.55
+    },
+    "max": {
+      "x": -23.4,
+      "y": 3.92,
+      "z": -25.69
+    },
+    "loc": {
+      "x": -25.32,
+      "y": 0.0,
+      "z": -27.62
+    },
+    "dir": {
+      "x": 0.6712,
+      "y": 0.0,
+      "z": 0.7413
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D7_C_KIRIEX_001",
+    "click_sounds": [],
+    "radius": 3.3691,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 311,
+    "function_flags": 1,
+    "min": {
+      "x": -27.48,
+      "y": -0.04,
+      "z": 26.06
+    },
+    "max": {
+      "x": -23.66,
+      "y": 3.92,
+      "z": 29.9
+    },
+    "loc": {
+      "x": -25.57,
+      "y": 0.0,
+      "z": 27.98
+    },
+    "dir": {
+      "x": 0.6174,
+      "y": 0.0,
+      "z": -0.7867
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D7_C_KIRIEX_001",
+    "click_sounds": [],
+    "radius": 3.3548,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 4,
+    "name": 311,
+    "function_flags": 1,
+    "min": {
+      "x": 23.52,
+      "y": -0.04,
+      "z": -29.77
+    },
+    "max": {
+      "x": 27.37,
+      "y": 3.92,
+      "z": -25.91
+    },
+    "loc": {
+      "x": 25.44,
+      "y": 0.0,
+      "z": -27.84
+    },
+    "dir": {
+      "x": -0.6712,
+      "y": 0.0,
+      "z": 0.7413
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D7_C_KIRIEX_001",
+    "click_sounds": [],
+    "radius": 3.3691,
+    "sequence": 3,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 5,
+    "name": 311,
+    "function_flags": 1,
+    "min": {
+      "x": 23.65,
+      "y": -0.04,
+      "z": 25.92
+    },
+    "max": {
+      "x": 27.47,
+      "y": 3.92,
+      "z": 29.76
+    },
+    "loc": {
+      "x": 25.56,
+      "y": 0.0,
+      "z": 27.84
+    },
+    "dir": {
+      "x": -0.6174,
+      "y": 0.0,
+      "z": -0.7867
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D7_C_KIRIEX_001",
+    "click_sounds": [],
+    "radius": 3.3548,
+    "sequence": 4,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 6,
+    "name": 310,
+    "function_flags": 1,
+    "min": {
+      "x": -2.79,
+      "y": 1.95,
+      "z": -30.18
+    },
+    "max": {
+      "x": 2.73,
+      "y": 6.14,
+      "z": -25.08
+    },
+    "loc": {
+      "x": -0.03,
+      "y": 1.96,
+      "z": -27.63
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D7_T_MAIN_CONTROLER_001",
+    "click_sounds": [],
+    "radius": 4.3022,
+    "sequence": 5,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 7,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": -21.79,
+      "y": 11.04,
+      "z": -44.84
+    },
+    "max": {
+      "x": 25.68,
+      "y": 44.37,
+      "z": -24.66
+    },
+    "loc": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "D7_KIRI_PLANT_KIRI",
+    "click_sounds": [],
+    "radius": 30.7064,
+    "sequence": 6,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

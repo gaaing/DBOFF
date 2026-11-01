@@ -1,0 +1,522 @@
+[
+  {
+    "tblidx": 1,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 8.28,
+      "y": 27.33,
+      "z": -226.27
+    },
+    "max": {
+      "x": 12.76,
+      "y": 32.13,
+      "z": -224.55
+    },
+    "loc": {
+      "x": 10.52,
+      "y": 27.33,
+      "z": -225.41
+    },
+    "dir": {
+      "x": 0.361,
+      "y": 0.0,
+      "z": 0.9326
+    },
+    "state_type": 255,
+    "def_main_state": 255,
+    "def_sub_state": 255,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 3.3937,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 255,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 354,
+    "function_flags": 1,
+    "min": {
+      "x": -0.2,
+      "y": 34.5,
+      "z": -250.91
+    },
+    "max": {
+      "x": 0.5,
+      "y": 36.64,
+      "z": -250.83
+    },
+    "loc": {
+      "x": 0.15,
+      "y": 34.5,
+      "z": -250.87
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_SWORD_001",
+    "click_sounds": [],
+    "radius": 1.1265,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 353,
+    "function_flags": 1,
+    "min": {
+      "x": -3.58,
+      "y": 34.6,
+      "z": -250.77
+    },
+    "max": {
+      "x": -2.52,
+      "y": 37.14,
+      "z": -250.69
+    },
+    "loc": {
+      "x": -3.05,
+      "y": 34.6,
+      "z": -250.73
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_STIC_001",
+    "click_sounds": [],
+    "radius": 1.3767,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 4,
+    "name": 356,
+    "function_flags": 1,
+    "min": {
+      "x": -0.49,
+      "y": 34.8,
+      "z": -250.7
+    },
+    "max": {
+      "x": 1.01,
+      "y": 36.41,
+      "z": -250.62
+    },
+    "loc": {
+      "x": 0.26,
+      "y": 34.8,
+      "z": -250.66
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_FAN_001",
+    "click_sounds": [],
+    "radius": 1.101,
+    "sequence": 3,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 5,
+    "name": 355,
+    "function_flags": 1,
+    "min": {
+      "x": -3.04,
+      "y": 34.9,
+      "z": -250.59
+    },
+    "max": {
+      "x": -2.48,
+      "y": 36.61,
+      "z": -250.35
+    },
+    "loc": {
+      "x": -2.76,
+      "y": 34.9,
+      "z": -250.47
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_WAND_001",
+    "click_sounds": [],
+    "radius": 0.9076,
+    "sequence": 4,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 6,
+    "name": 357,
+    "function_flags": 1,
+    "min": {
+      "x": -0.19,
+      "y": 34.6,
+      "z": -250.88
+    },
+    "max": {
+      "x": 0.57,
+      "y": 36.12,
+      "z": -250.56
+    },
+    "loc": {
+      "x": 0.19,
+      "y": 34.6,
+      "z": -250.72
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_CLAW_001",
+    "click_sounds": [],
+    "radius": 0.8646,
+    "sequence": 5,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 7,
+    "name": 358,
+    "function_flags": 1,
+    "min": {
+      "x": -3.26,
+      "y": 34.5,
+      "z": -250.52
+    },
+    "max": {
+      "x": -2.2,
+      "y": 36.98,
+      "z": -250.4
+    },
+    "loc": {
+      "x": -2.73,
+      "y": 34.5,
+      "z": -250.46
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_AXE_001",
+    "click_sounds": [],
+    "radius": 1.3499,
+    "sequence": 6,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 8,
+    "name": 359,
+    "function_flags": 1,
+    "min": {
+      "x": -0.23,
+      "y": 34.7,
+      "z": -250.71
+    },
+    "max": {
+      "x": 0.39,
+      "y": 36.74,
+      "z": -250.59
+    },
+    "loc": {
+      "x": 0.08,
+      "y": 34.7,
+      "z": -250.65
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_SCROLL_001",
+    "click_sounds": [],
+    "radius": 1.0678,
+    "sequence": 7,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 9,
+    "name": 360,
+    "function_flags": 1,
+    "min": {
+      "x": -3.03,
+      "y": 34.7,
+      "z": -250.82
+    },
+    "max": {
+      "x": -2.27,
+      "y": 36.38,
+      "z": -250.06
+    },
+    "loc": {
+      "x": -2.65,
+      "y": 34.7,
+      "z": -250.44
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_CRISTAL_001",
+    "click_sounds": [],
+    "radius": 0.9972,
+    "sequence": 8,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 10,
+    "name": 362,
+    "function_flags": 1,
+    "min": {
+      "x": -0.26,
+      "y": 34.8,
+      "z": -250.71
+    },
+    "max": {
+      "x": 0.62,
+      "y": 36.53,
+      "z": -250.61
+    },
+    "loc": {
+      "x": 0.18,
+      "y": 34.8,
+      "z": -250.66
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_CANDY_001",
+    "click_sounds": [],
+    "radius": 0.9718,
+    "sequence": 9,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 11,
+    "name": 361,
+    "function_flags": 1,
+    "min": {
+      "x": -2.95,
+      "y": 34.9,
+      "z": -250.47
+    },
+    "max": {
+      "x": -2.19,
+      "y": 36.65,
+      "z": -250.03
+    },
+    "loc": {
+      "x": -2.57,
+      "y": 34.9,
+      "z": -250.25
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_INSTRUMENT_001",
+    "click_sounds": [],
+    "radius": 0.979,
+    "sequence": 10,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 12,
+    "name": 364,
+    "function_flags": 1,
+    "min": {
+      "x": -0.15,
+      "y": 34.7,
+      "z": -250.64
+    },
+    "max": {
+      "x": 0.67,
+      "y": 36.63,
+      "z": -250.48
+    },
+    "loc": {
+      "x": 0.26,
+      "y": 34.7,
+      "z": -250.56
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_MASK_001",
+    "click_sounds": [],
+    "radius": 1.0515,
+    "sequence": 11,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 13,
+    "name": 363,
+    "function_flags": 1,
+    "min": {
+      "x": -4.05,
+      "y": 34.7,
+      "z": -250.83
+    },
+    "max": {
+      "x": -2.05,
+      "y": 36.64,
+      "z": -250.53
+    },
+    "loc": {
+      "x": -3.05,
+      "y": 34.7,
+      "z": -250.68
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 1,
+    "def_sub_state": 0,
+    "model_name": "00_T_DRUM_001",
+    "click_sounds": [],
+    "radius": 1.4012,
+    "sequence": 12,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

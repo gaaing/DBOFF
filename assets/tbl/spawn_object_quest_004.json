@@ -1,0 +1,122 @@
+[
+  {
+    "tblidx": 1,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 412.34,
+      "y": -37.99,
+      "z": -344.46
+    },
+    "max": {
+      "x": 419.46,
+      "y": -32.99,
+      "z": -337.34
+    },
+    "loc": {
+      "x": 415.9,
+      "y": -37.99,
+      "z": -340.9
+    },
+    "dir": {
+      "x": 0.02,
+      "y": 0.0,
+      "z": 0.9998
+    },
+    "state_type": 1,
+    "def_main_state": 1,
+    "def_sub_state": 1,
+    "model_name": "Q1_TIMEMACHINE_001",
+    "click_sounds": [],
+    "radius": 5.6211,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 743.02,
+      "y": -121.51,
+      "z": -728.67
+    },
+    "max": {
+      "x": 752.49,
+      "y": -116.51,
+      "z": -719.21
+    },
+    "loc": {
+      "x": 747.76,
+      "y": -121.51,
+      "z": -723.94
+    },
+    "dir": {
+      "x": -0.4711,
+      "y": 0.0,
+      "z": 0.8821
+    },
+    "state_type": 1,
+    "def_main_state": 3,
+    "def_sub_state": 1,
+    "model_name": "Q1_TIMEMACHINE_001",
+    "click_sounds": [],
+    "radius": 7.1444,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 4294967295,
+    "function_flags": 0,
+    "min": {
+      "x": 834.69,
+      "y": -58.7,
+      "z": -674.92
+    },
+    "max": {
+      "x": 967.16,
+      "y": -28.02,
+      "z": -538.27
+    },
+    "loc": {
+      "x": 900.93,
+      "y": -58.0,
+      "z": -606.6
+    },
+    "dir": {
+      "x": 0.5291,
+      "y": 0.0,
+      "z": -0.8486
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "TQ4_C_FREEZING",
+    "click_sounds": [],
+    "radius": 96.3882,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

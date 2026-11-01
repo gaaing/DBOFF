@@ -1,0 +1,585 @@
+{
+  "00001": [
+    {
+      "type": "Scene",
+      "args": "1, Test AI",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 90
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "say",
+          "params": {
+            "text": "Shet! 90% Life. Dat guy is killin me"
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 9991101,
+            "type": "recall"
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 9991101,
+            "type": "recall"
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 9991101,
+            "type": "recall"
+          }
+        },
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 70
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "say",
+          "params": {
+            "text": "lp : 70"
+          }
+        },
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 40
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "say",
+          "params": {
+            "text": "lp : 40"
+          }
+        }
+      ]
+    }
+  ],
+  "1881201": [
+    {
+      "type": "Scene",
+      "args": "1, Moving",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "say",
+          "params": {
+            "tblidx": 3049
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "point move",
+          "params": {
+            "loc x": 240.63,
+            "loc y": 17.49,
+            "loc z": 304.75,
+            "dir x": -0.74,
+            "dir z": 0.67,
+            "run mode": 1
+          }
+        }
+      ]
+    }
+  ],
+  "22161101": [
+    {
+      "type": "Scene",
+      "args": "1,",
+      "actions": [
+        {
+          "kind": "Action",
+          "name": "point move",
+          "params": {
+            "loc x": -621.51,
+            "loc y": 125.21,
+            "loc z": 926.71,
+            "dir x": 0,
+            "dir z": 1,
+            "run mode": 1
+          }
+        }
+      ]
+    }
+  ],
+  "25911101": [
+    {
+      "type": "Scene",
+      "args": "1,",
+      "actions": [
+        {
+          "kind": "Action",
+          "name": "target fix attack",
+          "params": {
+            "obj type": "npc",
+            "bot tblidx": 4754102,
+            "scan range": 50,
+            "end type": "percent target lp",
+            "end value": 1
+          }
+        }
+      ]
+    }
+  ],
+  "38812101": [
+    {
+      "type": "Scene",
+      "args": "1, TMQ2-3",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "recv event from wps",
+          "params": {
+            "wps index": 12321,
+            "event id": 23660
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "use skill",
+          "params": {
+            "skill index": 0
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "2, TMQ2-3",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "recv event from wps",
+          "params": {
+            "wps index": 12321,
+            "event id": 23670
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "use skill",
+          "params": {
+            "skill index": 0
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "3, TMQ2-3",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "recv event from wps",
+          "params": {
+            "wps index": 12321,
+            "event id": 23680
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "use skill",
+          "params": {
+            "skill index": 0
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "4, TMQ2-3",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "recv event from wps",
+          "params": {
+            "wps index": 12321,
+            "event id": 23690
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "use skill",
+          "params": {
+            "skill index": 0
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "5, TMQ2-3",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "recv event from wps",
+          "params": {
+            "wps index": 12321,
+            "event id": 23700
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "use skill",
+          "params": {
+            "skill index": 0
+          }
+        }
+      ]
+    }
+  ],
+  "5765101": [
+    {
+      "type": "Scene",
+      "args": "1, ̵ϱ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "say",
+          "params": {
+            "tblidx": 3048
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "point move",
+          "params": {
+            "loc x": 645.38,
+            "loc y": -14.38,
+            "loc z": -179.93,
+            "dir x": -0.22,
+            "dir z": 0.97,
+            "run mode": 1
+          }
+        }
+      ]
+    }
+  ],
+  "7111400": [
+    {
+      "type": "Scene",
+      "args": "1, tmq1-1e  ȯ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1415101,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "2, tmq1-1h  ȯ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1415107,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "3, tmq1-1e Ŀ  ȯ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1415201,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "4, tmq1-1h Ŀ  ȯ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1415204,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "5, tmq1-1e غ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1815101,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "6, tmq1-1h غ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1815107,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "7, tmq1-1e Ʋ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 5817101,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "8, tmq1-1h Ʋ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 5817107,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "9, tmq1-1L",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1415113,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "10, tmq1-1L Ŀ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1415207,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "11, tmq1-1L غ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1815119,
+            "type": "recall"
+          }
+        }
+      ]
+    },
+    {
+      "type": "Scene",
+      "args": "12, tmq1-1L Ʋ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 5817113,
+            "type": "recall"
+          }
+        }
+      ]
+    }
+  ],
+  "7113210": [
+    {
+      "type": "Scene",
+      "args": "1, tmq2-1  ȯ",
+      "actions": [
+        {
+          "kind": "Condition",
+          "name": "himself check",
+          "params": {
+            "event type": "lp",
+            "%": 50
+          }
+        },
+        {
+          "kind": "Action",
+          "name": "add mob",
+          "params": {
+            "index": 1415210,
+            "type": "recall"
+          }
+        }
+      ]
+    }
+  ]
+}

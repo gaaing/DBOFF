@@ -1,0 +1,242 @@
+[
+  {
+    "tblidx": 2,
+    "name": 100044,
+    "function_flags": 4194304,
+    "min": {
+      "x": -79.08,
+      "y": 82.58,
+      "z": -69.65
+    },
+    "max": {
+      "x": -51.88,
+      "y": 109.78,
+      "z": -69.65
+    },
+    "loc": {
+      "x": -65.48,
+      "y": 82.58,
+      "z": -69.65
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 255,
+    "def_main_state": 255,
+    "def_sub_state": 255,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 19.2333,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 5,
+    "name": 20005,
+    "function_flags": 4210689,
+    "min": {
+      "x": 21.91,
+      "y": 83.1,
+      "z": 151.7
+    },
+    "max": {
+      "x": 32.09,
+      "y": 93.74,
+      "z": 161.88
+    },
+    "loc": {
+      "x": 27.0,
+      "y": 83.1,
+      "z": 156.79
+    },
+    "dir": {
+      "x": -0.722,
+      "y": 0.0,
+      "z": -0.6919
+    },
+    "state_type": 2,
+    "def_main_state": 0,
+    "def_sub_state": 0,
+    "model_name": "DOJO_C_SEAL_001",
+    "click_sounds": [],
+    "radius": 8.9509,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 6,
+    "name": 20006,
+    "function_flags": 4210689,
+    "min": {
+      "x": -163.21,
+      "y": 83.07,
+      "z": 150.2
+    },
+    "max": {
+      "x": -153.02,
+      "y": 93.71,
+      "z": 160.38
+    },
+    "loc": {
+      "x": -158.11,
+      "y": 83.07,
+      "z": 155.29
+    },
+    "dir": {
+      "x": 0.7071,
+      "y": 0.0,
+      "z": -0.7071
+    },
+    "state_type": 2,
+    "def_main_state": 0,
+    "def_sub_state": 0,
+    "model_name": "DOJO_C_SEAL_001",
+    "click_sounds": [],
+    "radius": 8.9537,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 7,
+    "name": 20007,
+    "function_flags": 4210689,
+    "min": {
+      "x": -68.5,
+      "y": 90.13,
+      "z": 54.97
+    },
+    "max": {
+      "x": -60.94,
+      "y": 100.77,
+      "z": 62.54
+    },
+    "loc": {
+      "x": -64.72,
+      "y": 90.13,
+      "z": 58.75
+    },
+    "dir": {
+      "x": 0.0499,
+      "y": 0.0,
+      "z": -0.9988
+    },
+    "state_type": 2,
+    "def_main_state": 0,
+    "def_sub_state": 0,
+    "model_name": "DOJO_C_SEAL_001",
+    "click_sounds": [],
+    "radius": 7.5443,
+    "sequence": 3,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 8,
+    "name": 20008,
+    "function_flags": 4210689,
+    "min": {
+      "x": 21.73,
+      "y": 83.06,
+      "z": -34.43
+    },
+    "max": {
+      "x": 31.91,
+      "y": 93.7,
+      "z": -24.25
+    },
+    "loc": {
+      "x": 26.82,
+      "y": 83.06,
+      "z": -29.34
+    },
+    "dir": {
+      "x": -0.6919,
+      "y": 0.0,
+      "z": 0.722
+    },
+    "state_type": 2,
+    "def_main_state": 0,
+    "def_sub_state": 0,
+    "model_name": "DOJO_C_SEAL_001",
+    "click_sounds": [],
+    "radius": 8.9509,
+    "sequence": 4,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 9,
+    "name": 20009,
+    "function_flags": 4210689,
+    "min": {
+      "x": -163.5,
+      "y": 83.06,
+      "z": -32.14
+    },
+    "max": {
+      "x": -153.33,
+      "y": 93.7,
+      "z": -21.96
+    },
+    "loc": {
+      "x": -158.41,
+      "y": 83.06,
+      "z": -27.05
+    },
+    "dir": {
+      "x": 0.7317,
+      "y": 0.0,
+      "z": 0.6816
+    },
+    "state_type": 2,
+    "def_main_state": 0,
+    "def_sub_state": 0,
+    "model_name": "DOJO_C_SEAL_001",
+    "click_sounds": [],
+    "radius": 8.9481,
+    "sequence": 5,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

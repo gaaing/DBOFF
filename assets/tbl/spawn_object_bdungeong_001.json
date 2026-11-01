@@ -1,0 +1,42 @@
+[
+  {
+    "tblidx": 1,
+    "name": 100054,
+    "function_flags": 4194304,
+    "min": {
+      "x": -142.88,
+      "y": 110.33,
+      "z": -9.81
+    },
+    "max": {
+      "x": -85.0,
+      "y": 159.93,
+      "z": 11.25
+    },
+    "loc": {
+      "x": -113.94,
+      "y": 110.33,
+      "z": 0.72
+    },
+    "dir": {
+      "x": 0.3401,
+      "y": 0.0,
+      "z": 0.9404
+    },
+    "state_type": 255,
+    "def_main_state": 255,
+    "def_sub_state": 255,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 39.5404,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

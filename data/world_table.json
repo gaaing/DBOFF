@@ -1,0 +1,4242 @@
+{
+  "1": {
+    "world_id": 1,
+    "name": "DBO_Main_World",
+    "resource_folder": "Map_MainWorld\\\\",
+    "mob_spawn_table": "Spawn_MOB_Main_World",
+    "npc_spawn_table": "Spawn_NPC_Main_World",
+    "obj_spawn_table": "Spawn_Object_Main_World",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.746,
+      "y": -0.009,
+      "z": 0.666
+    },
+    "start1_loc": {
+      "x": 4902.533,
+      "y": 52.77,
+      "z": 4379.215
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 80000
+  },
+  "2": {
+    "world_id": 2,
+    "name": "DBO_Dungeon_001",
+    "resource_folder": "Map_Dun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_001",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_001",
+    "obj_spawn_table": "Spawn_Object_Dungeon_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "3": {
+    "world_id": 3,
+    "name": "DBO_Dungeon_002",
+    "resource_folder": "Map_Dun002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_002",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_002",
+    "obj_spawn_table": "Spawn_Object_Dungeon_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "4": {
+    "world_id": 4,
+    "name": "DBO_Dungeon_003",
+    "resource_folder": "Map_Dun003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_003",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_003",
+    "obj_spawn_table": "Spawn_Object_Dungeon_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "5": {
+    "world_id": 5,
+    "name": "DBO_Town_001",
+    "resource_folder": "Map_Town001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_001",
+    "npc_spawn_table": "Spawn_NPC_Town_001",
+    "obj_spawn_table": "Spawn_Object_Town_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 81000
+  },
+  "6": {
+    "world_id": 6,
+    "name": "DBO_Dungeon_004",
+    "resource_folder": "Map_Dun004\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_004",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_004",
+    "obj_spawn_table": "Spawn_Object_Dungeon_004",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "7": {
+    "world_id": 7,
+    "name": "DBO_Dungeon_005",
+    "resource_folder": "Map_Dun005\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_005",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_005",
+    "obj_spawn_table": "Spawn_Object_Dungeon_005",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "9": {
+    "world_id": 9,
+    "name": "DBO_Dungeon_006",
+    "resource_folder": "Map_Dun006\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_006",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_006",
+    "obj_spawn_table": "Spawn_Object_Dungeon_006",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "10": {
+    "world_id": 10,
+    "name": "DBO_Dungeon_007",
+    "resource_folder": "Map_Dun007\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_007",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_007",
+    "obj_spawn_table": "Spawn_Object_Dungeon_007",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "11": {
+    "world_id": 11,
+    "name": "DBO_SZone_001",
+    "resource_folder": "Map_SZone001\\\\",
+    "mob_spawn_table": "Spawn_MOB_SZone_001",
+    "npc_spawn_table": "Spawn_NPC_SZone_001",
+    "obj_spawn_table": "Spawn_Object_SZone_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "12": {
+    "world_id": 12,
+    "name": "DBO_SZone_002",
+    "resource_folder": "Map_SZone002\\\\",
+    "mob_spawn_table": "Spawn_MOB_SZone_002",
+    "npc_spawn_table": "Spawn_NPC_SZone_002",
+    "obj_spawn_table": "Spawn_Object_SZone_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "13": {
+    "world_id": 13,
+    "name": "DBO_Dungeon_ETC",
+    "resource_folder": "DBO_Dungeon_ETC\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_ETC",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_ETC",
+    "obj_spawn_table": "Spawn_Object_Dungeon_ETC",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "14": {
+    "world_id": 14,
+    "name": "DBO_WZone_001",
+    "resource_folder": "Map_WZone001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Wzone_001",
+    "npc_spawn_table": "Spawn_NPC_Wzone_001",
+    "obj_spawn_table": "Spawn_Object_WZone_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "15": {
+    "world_id": 15,
+    "name": "DBO_Main_World_02",
+    "resource_folder": "Map_MainWorld2\\\\",
+    "mob_spawn_table": "Spawn_MOB_Main_World_02",
+    "npc_spawn_table": "Spawn_NPC_Main_World_02",
+    "obj_spawn_table": "Spawn_Object_Main_World_02",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": -0.508,
+      "y": -0.022,
+      "z": -0.861
+    },
+    "start1_loc": {
+      "x": -2487.1,
+      "y": -105.6,
+      "z": -4219.47
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "100": {
+    "world_id": 100,
+    "name": "DBO_Budoh_001",
+    "resource_folder": "Map_Budoh001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_001",
+    "npc_spawn_table": "Spawn_NPC_Budoh_01",
+    "obj_spawn_table": "Spawn_Object_Budoh_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 209.335,
+      "y": 22.0,
+      "z": 157.348
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6404.0,
+      "y": 0.0,
+      "z": -437.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "101": {
+    "world_id": 101,
+    "name": "DBO_Budoh_001",
+    "resource_folder": "Map_Budoh001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_001",
+    "npc_spawn_table": "Spawn_NPC_Budoh_01",
+    "obj_spawn_table": "Spawn_Object_Budoh_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 209.335,
+      "y": 22.0,
+      "z": 157.348
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6404.0,
+      "y": 0.0,
+      "z": -437.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "102": {
+    "world_id": 102,
+    "name": "DBO_Budoh_001",
+    "resource_folder": "Map_Budoh001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_001",
+    "npc_spawn_table": "Spawn_NPC_Budoh_01",
+    "obj_spawn_table": "Spawn_Object_Budoh_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 209.335,
+      "y": 22.0,
+      "z": 157.348
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6404.0,
+      "y": 0.0,
+      "z": -437.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "103": {
+    "world_id": 103,
+    "name": "DBO_Budoh_001",
+    "resource_folder": "Map_Budoh001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_001",
+    "npc_spawn_table": "Spawn_NPC_Budoh_01",
+    "obj_spawn_table": "Spawn_Object_Budoh_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 209.335,
+      "y": 22.0,
+      "z": 157.348
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6404.0,
+      "y": 0.0,
+      "z": -437.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "104": {
+    "world_id": 104,
+    "name": "DBO_Budoh_001",
+    "resource_folder": "Map_Budoh001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_001",
+    "npc_spawn_table": "Spawn_NPC_Budoh_01",
+    "obj_spawn_table": "Spawn_Object_Budoh_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 209.335,
+      "y": 22.0,
+      "z": 157.348
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6404.0,
+      "y": 0.0,
+      "z": -437.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "200": {
+    "world_id": 200,
+    "name": "DBO_Budoh_001",
+    "resource_folder": "Map_Budoh001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_001",
+    "npc_spawn_table": "Spawn_NPC_Budoh_01",
+    "obj_spawn_table": "Spawn_Object_Budoh_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 209.335,
+      "y": 22.0,
+      "z": 157.348
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6404.0,
+      "y": 0.0,
+      "z": -437.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "500": {
+    "world_id": 500,
+    "name": "DBO_Dojo_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dojo_001",
+    "npc_spawn_table": "Spawn_NPC_Dojo_001",
+    "obj_spawn_table": "Spawn_Object_DBO_Dojo_001",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 95.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4337.12,
+      "y": 0.0,
+      "z": 4102.63
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "501": {
+    "world_id": 501,
+    "name": "DBO_Dojo_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dojo_001",
+    "npc_spawn_table": "Spawn_NPC_Dojo_001",
+    "obj_spawn_table": "Spawn_Object_DBO_Dojo_001",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 95.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 2810.52,
+      "y": 0.0,
+      "z": 2989.75
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "502": {
+    "world_id": 502,
+    "name": "DBO_Dojo_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dojo_001",
+    "npc_spawn_table": "Spawn_NPC_Dojo_001",
+    "obj_spawn_table": "Spawn_Object_DBO_Dojo_001",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 95.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5597.803,
+      "y": 0.0,
+      "z": -3785.917
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "503": {
+    "world_id": 503,
+    "name": "DBO_Dojo_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dojo_001",
+    "npc_spawn_table": "Spawn_NPC_Dojo_001",
+    "obj_spawn_table": "Spawn_Object_DBO_Dojo_001",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 95.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 3286.87,
+      "y": 0.0,
+      "z": -2878.01
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "504": {
+    "world_id": 504,
+    "name": "DBO_Dojo_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dojo_001",
+    "npc_spawn_table": "Spawn_NPC_Dojo_001",
+    "obj_spawn_table": "Spawn_Object_DBO_Dojo_001",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 95.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5834.142,
+      "y": 0.0,
+      "z": 560.781
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "505": {
+    "world_id": 505,
+    "name": "DBO_Dojo_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dojo_001",
+    "npc_spawn_table": "Spawn_NPC_Dojo_001",
+    "obj_spawn_table": "Spawn_Object_DBO_Dojo_001",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 95.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 1153.16,
+      "y": 0.0,
+      "z": -258.096
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "506": {
+    "world_id": 506,
+    "name": "DBO_Dojo_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dojo_001",
+    "npc_spawn_table": "Spawn_NPC_Dojo_001",
+    "obj_spawn_table": "Spawn_Object_DBO_Dojo_001",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 95.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": -1247.07,
+      "y": 0.0,
+      "z": -1343.844
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "9999": {
+    "world_id": 9999,
+    "name": "DBO_Start_001",
+    "resource_folder": "Map_Dojo001\\\\",
+    "mob_spawn_table": "0_Mob_Spawn_Data",
+    "npc_spawn_table": "0_NPC_Spawn_Data",
+    "obj_spawn_table": "0_Object_Spawn_Data",
+    "default_loc": {
+      "x": -148.51,
+      "y": 0.0,
+      "z": 131.17
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": -62.13,
+      "y": 85.62,
+      "z": -14.16
+    },
+    "start2_loc": {
+      "x": -61.06,
+      "y": 85.62,
+      "z": 146.29
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5855.0,
+      "y": 0.0,
+      "z": 1400.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "10000": {
+    "world_id": 10000,
+    "name": "DBO_Dungeon_000",
+    "resource_folder": "Map_Dun000\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_000",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_000",
+    "obj_spawn_table": "Spawn_Object_Dungeon_000",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -78.26,
+      "y": 46.95,
+      "z": -168.6
+    },
+    "start2_loc": {
+      "x": 0.78,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "11000": {
+    "world_id": 11000,
+    "name": "DBO_Quest_001",
+    "resource_folder": "Map_Quest001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_001E",
+    "npc_spawn_table": "Spawn_NPC_Quest_001E",
+    "obj_spawn_table": "Spawn_Object_Quest_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 748.77,
+      "y": -88.6,
+      "z": -940.09
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5855.0,
+      "y": 0.0,
+      "z": 1400.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "12000": {
+    "world_id": 12000,
+    "name": "DBO_Battle_001",
+    "resource_folder": "DBO_Battle001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Battle_001",
+    "default_loc": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 15.0,
+      "y": 2.2,
+      "z": 15.0
+    },
+    "start2_loc": {
+      "x": -15.0,
+      "y": 2.2,
+      "z": -15.0
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "13000": {
+    "world_id": 13000,
+    "name": "DBO_Battle_001",
+    "resource_folder": "DBO_Battle001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Battle_001",
+    "default_loc": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 15.0,
+      "y": 2.2,
+      "z": 15.0
+    },
+    "start2_loc": {
+      "x": -15.0,
+      "y": 2.2,
+      "z": -15.0
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "28000": {
+    "world_id": 28000,
+    "name": "DBO_Quest_002",
+    "resource_folder": "Map_Quest002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_002E",
+    "npc_spawn_table": "Spawn_NPC_Quest_002E",
+    "obj_spawn_table": "Spawn_Object_Quest_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -820.47,
+      "y": 46.84,
+      "z": 1099.02
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4021.0,
+      "y": 0.0,
+      "z": 1630.0
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "30000": {
+    "world_id": 30000,
+    "name": "DBO_Budoh_002",
+    "resource_folder": "DBO_Budoh_002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Budoh_002",
+    "default_loc": {
+      "x": -11.88,
+      "y": 25.0,
+      "z": 31.37
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -11.88,
+      "y": 25.0,
+      "z": 31.37
+    },
+    "start2_loc": {
+      "x": -11.88,
+      "y": 25.0,
+      "z": 31.37
+    },
+    "out_world_tblidx": 200,
+    "out_world_loc": {
+      "x": -11.0,
+      "y": 0.0,
+      "z": 103.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "31000": {
+    "world_id": 31000,
+    "name": "DBO_Budoh_003",
+    "resource_folder": "DBO_Budoh_003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Budoh_003",
+    "default_loc": {
+      "x": -12.04,
+      "y": 22.29,
+      "z": -143.43
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": 6.14,
+      "y": 25.0,
+      "z": -90.9
+    },
+    "start2_loc": {
+      "x": -28.62,
+      "y": 25.0,
+      "z": -125.92
+    },
+    "out_world_tblidx": 200,
+    "out_world_loc": {
+      "x": -11.0,
+      "y": 0.0,
+      "z": 103.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "32000": {
+    "world_id": 32000,
+    "name": "DBO_Budoh_003",
+    "resource_folder": "DBO_Budoh_003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Budoh_003",
+    "default_loc": {
+      "x": -12.04,
+      "y": 22.29,
+      "z": -143.43
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": 6.14,
+      "y": 25.0,
+      "z": -90.9
+    },
+    "start2_loc": {
+      "x": -28.62,
+      "y": 25.0,
+      "z": -125.92
+    },
+    "out_world_tblidx": 200,
+    "out_world_loc": {
+      "x": -11.0,
+      "y": 0.0,
+      "z": 103.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "40000": {
+    "world_id": 40000,
+    "name": "DBO_Budoh_002",
+    "resource_folder": "DBO_Budoh_002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Budoh_002",
+    "default_loc": {
+      "x": -11.88,
+      "y": 25.0,
+      "z": 31.37
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -11.88,
+      "y": 25.0,
+      "z": 31.37
+    },
+    "start2_loc": {
+      "x": -11.88,
+      "y": 25.0,
+      "z": 31.37
+    },
+    "out_world_tblidx": 200,
+    "out_world_loc": {
+      "x": -11.0,
+      "y": 0.0,
+      "z": 103.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "41000": {
+    "world_id": 41000,
+    "name": "DBO_Budoh_003",
+    "resource_folder": "DBO_Budoh_003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Budoh_003",
+    "default_loc": {
+      "x": -12.04,
+      "y": 22.29,
+      "z": -143.43
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": 6.14,
+      "y": 25.0,
+      "z": -90.9
+    },
+    "start2_loc": {
+      "x": -28.62,
+      "y": 25.0,
+      "z": -125.92
+    },
+    "out_world_tblidx": 200,
+    "out_world_loc": {
+      "x": -11.0,
+      "y": 0.0,
+      "z": 103.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "42000": {
+    "world_id": 42000,
+    "name": "DBO_Budoh_003",
+    "resource_folder": "DBO_Budoh_003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_001",
+    "npc_spawn_table": "Spawn_NPC_Battle_001",
+    "obj_spawn_table": "Spawn_Object_Budoh_003",
+    "default_loc": {
+      "x": -12.04,
+      "y": 22.29,
+      "z": -143.43
+    },
+    "default_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "start1_loc": {
+      "x": 6.14,
+      "y": 25.0,
+      "z": -90.9
+    },
+    "start2_loc": {
+      "x": -28.62,
+      "y": 25.0,
+      "z": -125.92
+    },
+    "out_world_tblidx": 200,
+    "out_world_loc": {
+      "x": -11.0,
+      "y": 0.0,
+      "z": 103.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "43000": {
+    "world_id": 43000,
+    "name": "DBO_Battle_002",
+    "resource_folder": "DBO_Battle002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_002",
+    "npc_spawn_table": "Spawn_NPC_Battle_002",
+    "obj_spawn_table": "Spawn_Object_Battle_002",
+    "default_loc": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 20.0,
+      "y": 2.2,
+      "z": 20.0
+    },
+    "start2_loc": {
+      "x": -20.0,
+      "y": 2.2,
+      "z": -20.0
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "44000": {
+    "world_id": 44000,
+    "name": "DBO_Battle_002",
+    "resource_folder": "DBO_Battle002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_002",
+    "npc_spawn_table": "Spawn_NPC_Battle_002",
+    "obj_spawn_table": "Spawn_Object_Battle_002",
+    "default_loc": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 20.0,
+      "y": 2.2,
+      "z": 20.0
+    },
+    "start2_loc": {
+      "x": -20.0,
+      "y": 2.2,
+      "z": -20.0
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "45000": {
+    "world_id": 45000,
+    "name": "DBO_Battle_003",
+    "resource_folder": "DBO_Battle003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_003",
+    "npc_spawn_table": "Spawn_NPC_Battle_003",
+    "obj_spawn_table": "Spawn_Object_Battle_003",
+    "default_loc": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -27.9,
+      "y": -70.35,
+      "z": -0.06
+    },
+    "start2_loc": {
+      "x": 25.48,
+      "y": -70.5,
+      "z": -0.11
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "46000": {
+    "world_id": 46000,
+    "name": "DBO_Battle_003",
+    "resource_folder": "DBO_Battle003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Battle_003",
+    "npc_spawn_table": "Spawn_NPC_Battle_003",
+    "obj_spawn_table": "Spawn_Object_Battle_003",
+    "default_loc": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -27.9,
+      "y": -70.35,
+      "z": -0.06
+    },
+    "start2_loc": {
+      "x": 25.48,
+      "y": -70.5,
+      "z": -0.11
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "60000": {
+    "world_id": 60000,
+    "name": "DBO_Quest_001",
+    "resource_folder": "Map_Quest001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_001N",
+    "npc_spawn_table": "Spawn_NPC_Quest_001N",
+    "obj_spawn_table": "Spawn_Object_Quest_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 748.77,
+      "y": -88.6,
+      "z": -940.09
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5855.0,
+      "y": 0.0,
+      "z": 1400.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "70000": {
+    "world_id": 70000,
+    "name": "DBO_Quest_002",
+    "resource_folder": "Map_Quest002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_002N",
+    "npc_spawn_table": "Spawn_NPC_Quest_002N",
+    "obj_spawn_table": "Spawn_Object_Quest_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -820.47,
+      "y": 46.84,
+      "z": 1099.02
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4021.0,
+      "y": 0.0,
+      "z": 1630.0
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "80000": {
+    "world_id": 80000,
+    "name": "DBO_Quest_003",
+    "resource_folder": "Map_Quest003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_003E",
+    "npc_spawn_table": "Spawn_NPC_Quest_003E",
+    "obj_spawn_table": "Spawn_Object_Quest_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 1001.0,
+      "y": -149.0,
+      "z": 900.0
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 2963.0,
+      "y": 0.0,
+      "z": 3743.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "90000": {
+    "world_id": 90000,
+    "name": "DBO_Dungeon_001",
+    "resource_folder": "Map_Dun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_001",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_001",
+    "obj_spawn_table": "Spawn_Object_Dungeon_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 894.0,
+      "y": -104.0,
+      "z": -1093.0
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4460.0,
+      "y": 0.0,
+      "z": 4006.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "100000": {
+    "world_id": 100000,
+    "name": "DBO_Quest_003",
+    "resource_folder": "Map_Quest003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_003N",
+    "npc_spawn_table": "Spawn_NPC_Quest_003N",
+    "obj_spawn_table": "Spawn_Object_Quest_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 1001.0,
+      "y": -149.0,
+      "z": 900.0
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 2963.0,
+      "y": 0.0,
+      "z": 3743.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "110000": {
+    "world_id": 110000,
+    "name": "DBO_Dungeon_001",
+    "resource_folder": "Map_Dun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Dungeon_001",
+    "npc_spawn_table": "Spawn_NPC_Dungeon_001",
+    "obj_spawn_table": "Spawn_Object_Dungeon_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 894.0,
+      "y": -104.0,
+      "z": -1093.0
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4460.0,
+      "y": 0.0,
+      "z": 4006.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "120000": {
+    "world_id": 120000,
+    "name": "DBO_TLQ_001",
+    "resource_folder": "Map_TLQ001\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_001",
+    "npc_spawn_table": "Spawn_NPC_Quest_003H",
+    "obj_spawn_table": "Spawn_Object_TLQ_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 792.05,
+      "y": 19.97,
+      "z": -1099.18
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5142.0,
+      "y": 0.0,
+      "z": 4240.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "130000": {
+    "world_id": 130000,
+    "name": "DBO_Quest_004",
+    "resource_folder": "Map_Quest004\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_004E",
+    "npc_spawn_table": "Spawn_NPC_Quest_003E",
+    "obj_spawn_table": "Spawn_Object_Quest_004",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 758.69,
+      "y": -121.62,
+      "z": -718.09
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 320.0,
+      "y": 0.0,
+      "z": 1825.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "140000": {
+    "world_id": 140000,
+    "name": "DBO_Quest_004",
+    "resource_folder": "Map_Quest004\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_004N",
+    "npc_spawn_table": "Spawn_NPC_Quest_003N",
+    "obj_spawn_table": "Spawn_Object_Quest_004",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 758.69,
+      "y": -121.62,
+      "z": -718.09
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 320.0,
+      "y": 0.0,
+      "z": 1825.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "150000": {
+    "world_id": 150000,
+    "name": "DBO_TLQ_001",
+    "resource_folder": "Map_TLQ001\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_001",
+    "npc_spawn_table": "Spawn_NPC_Quest_003H",
+    "obj_spawn_table": "Spawn_Object_TLQ_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 792.05,
+      "y": 19.97,
+      "z": -1099.18
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 3900.0,
+      "y": 0.0,
+      "z": -2372.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "160000": {
+    "world_id": 160000,
+    "name": "DBO_TLQ_001",
+    "resource_folder": "Map_TLQ001\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_001",
+    "npc_spawn_table": "Spawn_NPC_Quest_003H",
+    "obj_spawn_table": "Spawn_Object_TLQ_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 792.05,
+      "y": 19.97,
+      "z": -1099.18
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6323.0,
+      "y": 0.0,
+      "z": -3360.0
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "170000": {
+    "world_id": 170000,
+    "name": "DBO_TLQ_002",
+    "resource_folder": "Map_TLQ002\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_002",
+    "npc_spawn_table": "Spawn_NPC_Quest_003H",
+    "obj_spawn_table": "Spawn_Object_TLQ_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 388.86,
+      "y": -92.12,
+      "z": 142.08
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5735.0,
+      "y": 0.0,
+      "z": 4164.0
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "180000": {
+    "world_id": 180000,
+    "name": "DBO_TLQ_002",
+    "resource_folder": "Map_TLQ002\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_002",
+    "npc_spawn_table": "Spawn_NPC_Quest_003H",
+    "obj_spawn_table": "Spawn_Object_TLQ_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 388.86,
+      "y": -92.12,
+      "z": 142.08
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4124.06,
+      "y": 0.0,
+      "z": -2977.38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "190000": {
+    "world_id": 190000,
+    "name": "DBO_TLQ_002",
+    "resource_folder": "Map_TLQ002\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_002",
+    "npc_spawn_table": "Spawn_NPC_Quest_003H",
+    "obj_spawn_table": "Spawn_Object_TLQ_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 388.86,
+      "y": -92.12,
+      "z": 142.08
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6253.0,
+      "y": 0.0,
+      "z": -2824.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "191000": {
+    "world_id": 191000,
+    "name": "DBO_Quest_001",
+    "resource_folder": "Map_Quest001\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_001H",
+    "npc_spawn_table": "Spawn_NPC_Quest_001E",
+    "obj_spawn_table": "Spawn_Object_Quest_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 748.77,
+      "y": -88.6,
+      "z": -940.09
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5855.0,
+      "y": 0.0,
+      "z": 1400.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "192000": {
+    "world_id": 192000,
+    "name": "DBO_Quest_002",
+    "resource_folder": "Map_Quest002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_002H",
+    "npc_spawn_table": "Spawn_NPC_Quest_002H",
+    "obj_spawn_table": "Spawn_Object_Quest_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -820.47,
+      "y": 46.84,
+      "z": 1099.02
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4021.0,
+      "y": 0.0,
+      "z": 1630.0
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "193000": {
+    "world_id": 193000,
+    "name": "DBO_Quest_003",
+    "resource_folder": "Map_Quest003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_003H",
+    "npc_spawn_table": "Spawn_NPC_Quest_003H",
+    "obj_spawn_table": "Spawn_Object_Quest_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 1001.0,
+      "y": -149.0,
+      "z": 900.0
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 2963.0,
+      "y": 0.0,
+      "z": 3743.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "195000": {
+    "world_id": 195000,
+    "name": "DBO_Quest_005",
+    "resource_folder": "Map_Quest005\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_005N",
+    "npc_spawn_table": "Spawn_NPC_Quest_005N",
+    "obj_spawn_table": "Spawn_Object_Quest_005",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 37.4,
+      "y": 149.68,
+      "z": 261.01
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": -2984.495,
+      "y": -90.036,
+      "z": -1870.735
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "196000": {
+    "world_id": 196000,
+    "name": "DBO_Quest_006",
+    "resource_folder": "Map_Quest006\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_006N",
+    "npc_spawn_table": "Spawn_NPC_Quest_006N",
+    "obj_spawn_table": "Spawn_Object_Quest_006",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -307.528,
+      "y": 138.112,
+      "z": -119.106
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 14,
+    "out_world_loc": {
+      "x": -474.38,
+      "y": -18.376,
+      "z": -480.852
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "197000": {
+    "world_id": 197000,
+    "name": "DBO_Quest_007",
+    "resource_folder": "Map_Quest007\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_007N",
+    "npc_spawn_table": "Spawn_NPC_Quest_007N",
+    "obj_spawn_table": "Spawn_Object_Quest_007",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -307.15,
+      "y": 138.07,
+      "z": -636.01
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4905.741,
+      "y": -27.658,
+      "z": -3893.05
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "198000": {
+    "world_id": 198000,
+    "name": "DBO_Quest_005",
+    "resource_folder": "Map_Quest005\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_005H",
+    "npc_spawn_table": "Spawn_NPC_Quest_005H",
+    "obj_spawn_table": "Spawn_Object_Quest_005",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 37.4,
+      "y": 149.68,
+      "z": 261.01
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": -2984.495,
+      "y": -90.036,
+      "z": -1870.735
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "199000": {
+    "world_id": 199000,
+    "name": "DBO_Quest_006",
+    "resource_folder": "Map_Quest006\\\\",
+    "mob_spawn_table": "Spawn_MOB_Quest_006H",
+    "npc_spawn_table": "Spawn_NPC_Quest_006H",
+    "obj_spawn_table": "Spawn_Object_Quest_006",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -307.528,
+      "y": 138.112,
+      "z": -119.106
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 14,
+    "out_world_loc": {
+      "x": -474.38,
+      "y": -18.376,
+      "z": -480.852
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "200000": {
+    "world_id": 200000,
+    "name": "DBO_PDungeon_001",
+    "resource_folder": "Map_PDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_001",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_001",
+    "obj_spawn_table": "Spawn_Object_PDungeong_001",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -182.95,
+      "y": 25.81,
+      "z": 158.19
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6351.0,
+      "y": 0.0,
+      "z": 704.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 24000
+  },
+  "210000": {
+    "world_id": 210000,
+    "name": "DBO_DWC_001",
+    "resource_folder": "Map_DWC001\\\\",
+    "mob_spawn_table": "Spawn_MOB_DWC_001",
+    "npc_spawn_table": "Spawn_NPC_DWC_001",
+    "obj_spawn_table": "",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 1727.14,
+      "y": -113.65,
+      "z": -1489.02
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 70000
+  },
+  "211000": {
+    "world_id": 211000,
+    "name": "DBO_DWC_001",
+    "resource_folder": "Map_DWC001\\\\",
+    "mob_spawn_table": "Spawn_MOB_DWC_002",
+    "npc_spawn_table": "Spawn_NPC_DWC_002",
+    "obj_spawn_table": "Spawn_Object_DWC_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -878.15,
+      "y": -56.44,
+      "z": 1674.39
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 70100
+  },
+  "212000": {
+    "world_id": 212000,
+    "name": "DBO_DWC_001",
+    "resource_folder": "Map_DWC001\\\\",
+    "mob_spawn_table": "Spawn_MOB_DWC_003",
+    "npc_spawn_table": "Spawn_NPC_DWC_003",
+    "obj_spawn_table": "",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -1877.17,
+      "y": -75.142,
+      "z": 1811.454
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 70200
+  },
+  "213000": {
+    "world_id": 213000,
+    "name": "DBO_DWC_001",
+    "resource_folder": "Map_DWC001\\\\",
+    "mob_spawn_table": "Spawn_MOB_DWC_004",
+    "npc_spawn_table": "Spawn_NPC_DWC_004",
+    "obj_spawn_table": "",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 393.002,
+      "y": 46.254,
+      "z": 719.418
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 70300
+  },
+  "300000": {
+    "world_id": 300000,
+    "name": "DBO_PDungeon_001",
+    "resource_folder": "Map_PDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_001h",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_001",
+    "obj_spawn_table": "Spawn_Object_PDungeong_001",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -182.95,
+      "y": 25.81,
+      "z": 158.19
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6351.0,
+      "y": 0.0,
+      "z": 704.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 25000
+  },
+  "310000": {
+    "world_id": 310000,
+    "name": "DBO_PDungeon_001",
+    "resource_folder": "Map_PDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_001l",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_001",
+    "obj_spawn_table": "Spawn_Object_PDungeong_001",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -182.95,
+      "y": 25.81,
+      "z": 158.19
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6351.0,
+      "y": 0.0,
+      "z": 704.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 26000
+  },
+  "400000": {
+    "world_id": 400000,
+    "name": "DBO_TLQ_003",
+    "resource_folder": "Map_TLQ003\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_003",
+    "npc_spawn_table": "Spawn_NPC_TLQ_003",
+    "obj_spawn_table": "Spawn_Object_TLQ_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -186.52,
+      "y": 22.13,
+      "z": -24.15
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5219.0,
+      "y": 0.0,
+      "z": -2330.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "410000": {
+    "world_id": 410000,
+    "name": "DBO_TLQ_003",
+    "resource_folder": "Map_TLQ003\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_003",
+    "npc_spawn_table": "Spawn_NPC_TLQ_003",
+    "obj_spawn_table": "Spawn_Object_TLQ_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -186.52,
+      "y": 22.13,
+      "z": -24.15
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6703.0,
+      "y": 0.0,
+      "z": -2116.0
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "420000": {
+    "world_id": 420000,
+    "name": "DBO_TLQ_003",
+    "resource_folder": "Map_TLQ003\\\\",
+    "mob_spawn_table": "Spawn_MOB_TLQ_003",
+    "npc_spawn_table": "Spawn_NPC_TLQ_003",
+    "obj_spawn_table": "Spawn_Object_TLQ_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -186.52,
+      "y": 22.13,
+      "z": -24.15
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4974.0,
+      "y": 0.0,
+      "z": 3487.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "430000": {
+    "world_id": 430000,
+    "name": "DBO_TEST",
+    "resource_folder": "Map_Dun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_TEST",
+    "npc_spawn_table": "Spawn_NPC_TEST",
+    "obj_spawn_table": "Spawn_Object_Dungeon_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 4294967295,
+    "out_world_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "500000": {
+    "world_id": 500000,
+    "name": "DBO_PDungeon_002",
+    "resource_folder": "Map_PDun002\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_002",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_002",
+    "obj_spawn_table": "Spawn_Object_PDungeong_002",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": 55.93,
+      "y": 19.33,
+      "z": -58.84
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 878.0,
+      "y": 0.0,
+      "z": 813.67
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 22000
+  },
+  "510000": {
+    "world_id": 510000,
+    "name": "DBO_SKDungeon_001",
+    "resource_folder": "Map_SKDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_SKDungeon_001_01",
+    "npc_spawn_table": "Spawn_NPC_SKDungeon_001",
+    "obj_spawn_table": "Spawn_Object_SKDungeon_001_01",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -924.97,
+      "y": -72.07,
+      "z": -123.6
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4659.36,
+      "y": -45.08,
+      "z": -582.06
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 60010
+  },
+  "511000": {
+    "world_id": 511000,
+    "name": "DBO_SKDungeon_001",
+    "resource_folder": "Map_SKDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_SKDungeon_001_02",
+    "npc_spawn_table": "Spawn_NPC_SKDungeon_001",
+    "obj_spawn_table": "Spawn_Object_SKDungeon_001_02",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 604.48,
+      "y": -47.77,
+      "z": 751.74
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4746.55,
+      "y": 19.59,
+      "z": -666.48
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 60020
+  },
+  "512000": {
+    "world_id": 512000,
+    "name": "DBO_SKDungeon_001",
+    "resource_folder": "Map_SKDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_SKDungeon_001_03",
+    "npc_spawn_table": "Spawn_NPC_SKDungeon_001",
+    "obj_spawn_table": "Spawn_Object_SKDungeon_001_03",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 747.24,
+      "y": 28.9,
+      "z": -1378.81
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4580.9,
+      "y": 88.59,
+      "z": -807.89
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 60030
+  },
+  "600000": {
+    "world_id": 600000,
+    "name": "DBO_PDungeon_002",
+    "resource_folder": "Map_PDun002\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_002h",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_002",
+    "obj_spawn_table": "Spawn_Object_PDungeong_002",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": 55.93,
+      "y": 19.33,
+      "z": -58.84
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 878.0,
+      "y": 0.0,
+      "z": 813.67
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 23000
+  },
+  "610000": {
+    "world_id": 610000,
+    "name": "DBO_PDungeon_002",
+    "resource_folder": "Map_PDun002\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_002l",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_002",
+    "obj_spawn_table": "Spawn_Object_PDungeong_002",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": 55.93,
+      "y": 19.33,
+      "z": -58.84
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 878.0,
+      "y": 0.0,
+      "z": 813.67
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 27000
+  },
+  "700000": {
+    "world_id": 700000,
+    "name": "DBO_PDungeon_003",
+    "resource_folder": "Map_PDun003\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_003",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_003",
+    "obj_spawn_table": "Spawn_Object_PDungeong_003",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": 6.71,
+      "y": 27.92,
+      "z": -7.4
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": -690.974,
+      "y": 0.0,
+      "z": -360.768
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 20000
+  },
+  "710000": {
+    "world_id": 710000,
+    "name": "DBO_PDungeon_003",
+    "resource_folder": "Map_PDun003\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_003h",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_003",
+    "obj_spawn_table": "Spawn_Object_PDungeong_003",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": 6.71,
+      "y": 27.92,
+      "z": -7.4
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": -690.974,
+      "y": 0.0,
+      "z": -360.768
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 21000
+  },
+  "712000": {
+    "world_id": 712000,
+    "name": "DBO_PDungeon_004",
+    "resource_folder": "Map_PDun004\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_004",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_004",
+    "obj_spawn_table": "Spawn_Object_PDungeong_004",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -26.53,
+      "y": -13.24,
+      "z": -233.41
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": -358.755,
+      "y": 0.0,
+      "z": -1818.843
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 28000
+  },
+  "713000": {
+    "world_id": 713000,
+    "name": "DBO_PDungeon_004",
+    "resource_folder": "Map_PDun004\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_004h",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_004",
+    "obj_spawn_table": "Spawn_Object_PDungeong_004",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -26.53,
+      "y": -13.24,
+      "z": -233.41
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": -358.755,
+      "y": 0.0,
+      "z": -1818.843
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 29000
+  },
+  "715000": {
+    "world_id": 715000,
+    "name": "DBO_PDungeon_005",
+    "resource_folder": "Map_PDun005\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_005",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_005",
+    "obj_spawn_table": "Spawn_Object_PDungeong_005",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": -246.88,
+      "y": -40.06,
+      "z": 942.85
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 3984.41,
+      "y": 0.0,
+      "z": 5166.015
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 32000
+  },
+  "717000": {
+    "world_id": 717000,
+    "name": "DBO_PDungeon_006",
+    "resource_folder": "Map_PDun006\\\\",
+    "mob_spawn_table": "Spawn_MOB_PDungeon_006",
+    "npc_spawn_table": "Spawn_NPC_PDungeon_006",
+    "obj_spawn_table": "Spawn_Object_PDungeong_006",
+    "default_loc": {
+      "x": -321.48,
+      "y": 49.0,
+      "z": 96.16
+    },
+    "default_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "start1_loc": {
+      "x": 795.55,
+      "y": 46.16,
+      "z": -668.2
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 3265.021,
+      "y": -116.443,
+      "z": -5310.495
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 34000
+  },
+  "800000": {
+    "world_id": 800000,
+    "name": "DBO_Town_002",
+    "resource_folder": "Map_Town002\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_002",
+    "npc_spawn_table": "Spawn_NPC_Town_002",
+    "obj_spawn_table": "Spawn_Object_Town_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 11.0,
+      "y": 38.0,
+      "z": -222.0
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5881.0,
+      "y": 0.0,
+      "z": -516.0
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 4294967295
+  },
+  "801000": {
+    "world_id": 801000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 7111.4,
+      "y": 0.0,
+      "z": -2616.95
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6008
+  },
+  "802000": {
+    "world_id": 802000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6437.56,
+      "y": 0.0,
+      "z": -1662.86
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6012
+  },
+  "803000": {
+    "world_id": 803000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6242.15,
+      "y": 0.0,
+      "z": -2979.65
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6018
+  },
+  "804000": {
+    "world_id": 804000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6319.96,
+      "y": 0.0,
+      "z": -2438.58
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6022
+  },
+  "805000": {
+    "world_id": 805000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5799.11,
+      "y": 0.0,
+      "z": 3116.03
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6028
+  },
+  "806000": {
+    "world_id": 806000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 6341.98,
+      "y": 0.0,
+      "z": 4423.42
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6032
+  },
+  "807000": {
+    "world_id": 807000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5329.85,
+      "y": 0.0,
+      "z": 4646.05
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6038
+  },
+  "808000": {
+    "world_id": 808000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 7025.37,
+      "y": 0.0,
+      "z": 2934.82
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6042
+  },
+  "809000": {
+    "world_id": 809000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4817.26,
+      "y": 0.0,
+      "z": -2377.06
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6048
+  },
+  "810000": {
+    "world_id": 810000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4590.89,
+      "y": 0.0,
+      "z": -2912.61
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6052
+  },
+  "811000": {
+    "world_id": 811000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 4371.69,
+      "y": 0.0,
+      "z": -2380.76
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6058
+  },
+  "812000": {
+    "world_id": 812000,
+    "name": "DBO_Town_003",
+    "resource_folder": "Map_Town003\\\\",
+    "mob_spawn_table": "Spawn_MOB_Town_003",
+    "npc_spawn_table": "Spawn_NPC_Town_003",
+    "obj_spawn_table": "Spawn_Object_Town_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 0.591,
+      "y": 69.29,
+      "z": -18.936
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 5160.73,
+      "y": 0.0,
+      "z": -2301.23
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 6062
+  },
+  "900000": {
+    "world_id": 900000,
+    "name": "DBO_BDungeon_001",
+    "resource_folder": "Map_BDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_BDungeon_001",
+    "npc_spawn_table": "Spawn_NPC_BDungeon_001",
+    "obj_spawn_table": "Spawn_Object_BDungeong_001",
+    "default_loc": {
+      "x": -110.88,
+      "y": 112.13,
+      "z": 6.76
+    },
+    "default_dir": {
+      "x": 0.483,
+      "y": 0.0,
+      "z": 0.876
+    },
+    "start1_loc": {
+      "x": -110.88,
+      "y": 112.13,
+      "z": 6.76
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 1,
+    "out_world_loc": {
+      "x": 453.609,
+      "y": 0.0,
+      "z": -4120.341
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 82000
+  },
+  "900020": {
+    "world_id": 900020,
+    "name": "DBO_BDungeon_002",
+    "resource_folder": "Map_BDun002\\\\",
+    "mob_spawn_table": "Spawn_MOB_BDungeon_002",
+    "npc_spawn_table": "Spawn_NPC_BDungeon_002",
+    "obj_spawn_table": "Spawn_Object_BDungeong_002",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 178.69,
+      "y": 147.4,
+      "z": 126.95
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 15,
+    "out_world_loc": {
+      "x": -3664.31,
+      "y": -115.374,
+      "z": -5241.451
+    },
+    "out_world_dir": {
+      "x": -1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 85000
+  },
+  "900030": {
+    "world_id": 900030,
+    "name": "DBO_BDungeon_003",
+    "resource_folder": "Map_BDun003\\\\",
+    "mob_spawn_table": "Spawn_MOB_BDungeon_003",
+    "npc_spawn_table": "Spawn_NPC_BDungeon_003",
+    "obj_spawn_table": "Spawn_Object_BDungeong_003",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -48.03,
+      "y": -26.49,
+      "z": 59.11
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 15,
+    "out_world_loc": {
+      "x": -4387.172,
+      "y": -115.147,
+      "z": -5241.543
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 84000
+  },
+  "900040": {
+    "world_id": 900040,
+    "name": "DBO_BDungeon_004",
+    "resource_folder": "Map_BDun004\\\\",
+    "mob_spawn_table": "Spawn_MOB_BDungeon_004",
+    "npc_spawn_table": "Spawn_NPC_BDungeon_004",
+    "obj_spawn_table": "Spawn_Object_BDungeong_004",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": -122.07,
+      "y": 8.93,
+      "z": -179.77
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 15,
+    "out_world_loc": {
+      "x": -3694.28,
+      "y": -115.22,
+      "z": -7154.95
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 86000
+  },
+  "910000": {
+    "world_id": 910000,
+    "name": "DBO_CDungeon_001",
+    "resource_folder": "Map_CDun001\\\\",
+    "mob_spawn_table": "Spawn_MOB_CCBD_001",
+    "npc_spawn_table": "Spawn_NPC_CCBD_001",
+    "obj_spawn_table": "Spawn_Object_CCBD_001",
+    "default_loc": {
+      "x": 100.0,
+      "y": 0.0,
+      "z": 100.0
+    },
+    "default_dir": {
+      "x": 0.577,
+      "y": 0.577,
+      "z": 0.577
+    },
+    "start1_loc": {
+      "x": 383.867,
+      "y": -20.495,
+      "z": -332.779
+    },
+    "start2_loc": {
+      "x": 3.4028234663852886e+38,
+      "y": 3.4028234663852886e+38,
+      "z": 3.4028234663852886e+38
+    },
+    "out_world_tblidx": 5,
+    "out_world_loc": {
+      "x": 101.196,
+      "y": 0.0,
+      "z": -175.977
+    },
+    "out_world_dir": {
+      "x": 1.0,
+      "y": 0.0,
+      "z": 0.0
+    },
+    "wps_link_index": 83000
+  }
+}

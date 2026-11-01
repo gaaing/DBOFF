@@ -1,0 +1,754 @@
+{
+  "1": {
+    "tblidx": 1,
+    "race": 0,
+    "race_name": "HUMAN",
+    "class": 0,
+    "class_name": "MARTIAL_ARTIST",
+    "world_id": 1,
+    "tutorial_world_id": 10000,
+    "spawn_loc": {
+      "x": 4975.616,
+      "y": -48.87,
+      "z": 4012.614
+    },
+    "spawn_dir": {
+      "x": 0.911,
+      "y": 0.0,
+      "z": -0.412
+    },
+    "bind_loc": {
+      "x": 4975.616,
+      "y": -48.87,
+      "z": 4012.614
+    },
+    "bind_dir": {
+      "x": 0.911,
+      "y": 0.0,
+      "z": -0.412
+    },
+    "map_name_tblidx": 200101000,
+    "starter_items": [
+      {
+        "item_tblidx": 19901,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 500001,
+        "pos": 0,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 522001,
+        "pos": 2,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 522002,
+        "pos": 3,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 522003,
+        "pos": 4,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 60000000,
+        "pos": 5,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19991,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19907,
+        "pos": 255,
+        "stack": 1
+      }
+    ],
+    "starter_skills": [
+      10311,
+      20091,
+      20111
+    ],
+    "quick_slots": [
+      {
+        "tblidx": 103,
+        "type": 3,
+        "slot": 2
+      },
+      {
+        "tblidx": 20111,
+        "type": 1,
+        "slot": 1
+      },
+      {
+        "tblidx": 10311,
+        "type": 1,
+        "slot": 0
+      },
+      {
+        "tblidx": 105,
+        "type": 3,
+        "slot": 3
+      },
+      {
+        "tblidx": 106,
+        "type": 3,
+        "slot": 11
+      }
+    ],
+    "default_portals": [
+      1,
+      15,
+      8
+    ],
+    "quest_starter_item": {
+      "item_tblidx": 424,
+      "pos": 0,
+      "stack": 1
+    }
+  },
+  "2": {
+    "tblidx": 2,
+    "race": 0,
+    "race_name": "HUMAN",
+    "class": 1,
+    "class_name": "SPIRITUALIST",
+    "world_id": 1,
+    "tutorial_world_id": 10000,
+    "spawn_loc": {
+      "x": 4690.0,
+      "y": 0.0,
+      "z": 4472.0
+    },
+    "spawn_dir": {
+      "x": 0.818,
+      "y": 0.0,
+      "z": 0.575
+    },
+    "bind_loc": {
+      "x": 4690.0,
+      "y": 0.0,
+      "z": 4472.0
+    },
+    "bind_dir": {
+      "x": 0.818,
+      "y": 0.0,
+      "z": 0.575
+    },
+    "map_name_tblidx": 200101000,
+    "starter_items": [
+      {
+        "item_tblidx": 19901,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 505001,
+        "pos": 0,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 523001,
+        "pos": 2,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 523002,
+        "pos": 3,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 523003,
+        "pos": 4,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 60000000,
+        "pos": 5,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19991,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19907,
+        "pos": 255,
+        "stack": 1
+      }
+    ],
+    "starter_skills": [
+      110111,
+      120131,
+      110011
+    ],
+    "quick_slots": [
+      {
+        "tblidx": 103,
+        "type": 3,
+        "slot": 2
+      },
+      {
+        "tblidx": 110011,
+        "type": 1,
+        "slot": 1
+      },
+      {
+        "tblidx": 110111,
+        "type": 1,
+        "slot": 0
+      },
+      {
+        "tblidx": 105,
+        "type": 3,
+        "slot": 3
+      },
+      {
+        "tblidx": 106,
+        "type": 3,
+        "slot": 11
+      }
+    ],
+    "default_portals": [
+      1,
+      15,
+      8
+    ],
+    "quest_starter_item": {
+      "item_tblidx": 424,
+      "pos": 0,
+      "stack": 1
+    }
+  },
+  "3": {
+    "tblidx": 3,
+    "race": 0,
+    "race_name": "HUMAN",
+    "class": 2,
+    "class_name": "WARRIOR",
+    "world_id": 1,
+    "tutorial_world_id": 10000,
+    "spawn_loc": {
+      "x": 4690.0,
+      "y": 0.0,
+      "z": 4472.0
+    },
+    "spawn_dir": {
+      "x": 0.818,
+      "y": 0.0,
+      "z": 0.575
+    },
+    "bind_loc": {
+      "x": 4690.0,
+      "y": 0.0,
+      "z": 4472.0
+    },
+    "bind_dir": {
+      "x": 0.818,
+      "y": 0.0,
+      "z": 0.575
+    },
+    "map_name_tblidx": 200101000,
+    "starter_items": [
+      {
+        "item_tblidx": 19901,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 500001,
+        "pos": 0,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 522001,
+        "pos": 2,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 522002,
+        "pos": 3,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 522003,
+        "pos": 4,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 60000000,
+        "pos": 5,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19991,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19907,
+        "pos": 255,
+        "stack": 1
+      }
+    ],
+    "starter_skills": [],
+    "quick_slots": [],
+    "default_portals": [
+      1,
+      15,
+      8
+    ],
+    "quest_starter_item": {
+      "item_tblidx": 424,
+      "pos": 0,
+      "stack": 1
+    }
+  },
+  "4": {
+    "tblidx": 4,
+    "race": 1,
+    "race_name": "NAMEK",
+    "class": 3,
+    "class_name": "DRAGON_CLAN",
+    "world_id": 1,
+    "tutorial_world_id": 10000,
+    "spawn_loc": {
+      "x": 2902.0,
+      "y": 0.0,
+      "z": -2370.0
+    },
+    "spawn_dir": {
+      "x": -0.214,
+      "y": 0.0,
+      "z": 0.977
+    },
+    "bind_loc": {
+      "x": 2902.0,
+      "y": 0.0,
+      "z": -2370.0
+    },
+    "bind_dir": {
+      "x": -0.214,
+      "y": 0.0,
+      "z": 0.977
+    },
+    "map_name_tblidx": 200105000,
+    "starter_items": [
+      {
+        "item_tblidx": 19901,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 500001,
+        "pos": 0,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 525001,
+        "pos": 2,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 525002,
+        "pos": 3,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 525003,
+        "pos": 4,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 60000000,
+        "pos": 5,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19991,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19907,
+        "pos": 255,
+        "stack": 1
+      }
+    ],
+    "starter_skills": [
+      310111,
+      320101,
+      320111
+    ],
+    "quick_slots": [
+      {
+        "tblidx": 103,
+        "type": 3,
+        "slot": 2
+      },
+      {
+        "tblidx": 320111,
+        "type": 1,
+        "slot": 1
+      },
+      {
+        "tblidx": 310111,
+        "type": 1,
+        "slot": 0
+      },
+      {
+        "tblidx": 105,
+        "type": 3,
+        "slot": 3
+      },
+      {
+        "tblidx": 106,
+        "type": 3,
+        "slot": 11
+      }
+    ],
+    "default_portals": [
+      3,
+      15,
+      8
+    ],
+    "quest_starter_item": null
+  },
+  "5": {
+    "tblidx": 5,
+    "race": 1,
+    "race_name": "NAMEK",
+    "class": 4,
+    "class_name": "MIGHTY_MAJIN",
+    "world_id": 1,
+    "tutorial_world_id": 10000,
+    "spawn_loc": {
+      "x": 2902.0,
+      "y": 0.0,
+      "z": -2370.0
+    },
+    "spawn_dir": {
+      "x": -0.214,
+      "y": 0.0,
+      "z": 0.977
+    },
+    "bind_loc": {
+      "x": 2902.0,
+      "y": 0.0,
+      "z": -2370.0
+    },
+    "bind_dir": {
+      "x": -0.214,
+      "y": 0.0,
+      "z": 0.977
+    },
+    "map_name_tblidx": 200105000,
+    "starter_items": [
+      {
+        "item_tblidx": 19901,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 506001,
+        "pos": 0,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 526001,
+        "pos": 2,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 526002,
+        "pos": 3,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 526003,
+        "pos": 4,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 60000000,
+        "pos": 5,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19991,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19907,
+        "pos": 255,
+        "stack": 1
+      }
+    ],
+    "starter_skills": [
+      410111,
+      420141,
+      420111
+    ],
+    "quick_slots": [
+      {
+        "tblidx": 103,
+        "type": 3,
+        "slot": 2
+      },
+      {
+        "tblidx": 420111,
+        "type": 1,
+        "slot": 1
+      },
+      {
+        "tblidx": 410111,
+        "type": 1,
+        "slot": 0
+      },
+      {
+        "tblidx": 105,
+        "type": 3,
+        "slot": 3
+      },
+      {
+        "tblidx": 106,
+        "type": 3,
+        "slot": 11
+      }
+    ],
+    "default_portals": [
+      3,
+      15,
+      8
+    ],
+    "quest_starter_item": null
+  },
+  "6": {
+    "tblidx": 6,
+    "race": 2,
+    "race_name": "MAJIN",
+    "class": 5,
+    "class_name": "WONDER_MAJIN",
+    "world_id": 1,
+    "tutorial_world_id": 10000,
+    "spawn_loc": {
+      "x": 6056.92,
+      "y": -85.33,
+      "z": -4215.77
+    },
+    "spawn_dir": {
+      "x": -0.19,
+      "y": 0.0,
+      "z": -0.982
+    },
+    "bind_loc": {
+      "x": 6056.92,
+      "y": -85.33,
+      "z": -4215.77
+    },
+    "bind_dir": {
+      "x": -0.19,
+      "y": 0.0,
+      "z": -0.982
+    },
+    "map_name_tblidx": 200101000,
+    "starter_items": [
+      {
+        "item_tblidx": 19901,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 500001,
+        "pos": 0,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 527001,
+        "pos": 2,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 527002,
+        "pos": 3,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 527003,
+        "pos": 4,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 60000000,
+        "pos": 5,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19991,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19907,
+        "pos": 255,
+        "stack": 1
+      }
+    ],
+    "starter_skills": [
+      510111,
+      521171,
+      510121
+    ],
+    "quick_slots": [
+      {
+        "tblidx": 103,
+        "type": 3,
+        "slot": 2
+      },
+      {
+        "tblidx": 510121,
+        "type": 1,
+        "slot": 1
+      },
+      {
+        "tblidx": 510111,
+        "type": 1,
+        "slot": 0
+      },
+      {
+        "tblidx": 105,
+        "type": 3,
+        "slot": 3
+      },
+      {
+        "tblidx": 106,
+        "type": 3,
+        "slot": 11
+      }
+    ],
+    "default_portals": [
+      5,
+      15,
+      8
+    ],
+    "quest_starter_item": null
+  },
+  "7": {
+    "tblidx": 7,
+    "race": 2,
+    "race_name": "MAJIN",
+    "class": 6,
+    "class_name": "UNKNOWN_6",
+    "world_id": 1,
+    "tutorial_world_id": 10000,
+    "spawn_loc": {
+      "x": 6056.92,
+      "y": -85.33,
+      "z": -4215.77
+    },
+    "spawn_dir": {
+      "x": -0.19,
+      "y": 0.0,
+      "z": -0.982
+    },
+    "bind_loc": {
+      "x": 6056.92,
+      "y": -85.33,
+      "z": -4215.77
+    },
+    "bind_dir": {
+      "x": -0.19,
+      "y": 0.0,
+      "z": -0.982
+    },
+    "map_name_tblidx": 200101000,
+    "starter_items": [
+      {
+        "item_tblidx": 19901,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 505001,
+        "pos": 0,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 528001,
+        "pos": 2,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 528002,
+        "pos": 3,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 528003,
+        "pos": 4,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 60000000,
+        "pos": 5,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19991,
+        "pos": 255,
+        "stack": 1
+      },
+      {
+        "item_tblidx": 19907,
+        "pos": 255,
+        "stack": 1
+      }
+    ],
+    "starter_skills": [
+      610111,
+      620101,
+      620111
+    ],
+    "quick_slots": [
+      {
+        "tblidx": 103,
+        "type": 3,
+        "slot": 2
+      },
+      {
+        "tblidx": 620111,
+        "type": 1,
+        "slot": 1
+      },
+      {
+        "tblidx": 610111,
+        "type": 1,
+        "slot": 0
+      },
+      {
+        "tblidx": 105,
+        "type": 3,
+        "slot": 3
+      },
+      {
+        "tblidx": 106,
+        "type": 3,
+        "slot": 11
+      }
+    ],
+    "default_portals": [
+      5,
+      15,
+      8
+    ],
+    "quest_starter_item": null
+  }
+}

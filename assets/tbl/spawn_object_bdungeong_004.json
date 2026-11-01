@@ -1,0 +1,202 @@
+[
+  {
+    "tblidx": 1,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": -151.37,
+      "y": 8.93,
+      "z": -190.71
+    },
+    "max": {
+      "x": -150.68,
+      "y": 38.93,
+      "z": -182.74
+    },
+    "loc": {
+      "x": -151.03,
+      "y": 8.93,
+      "z": -186.72
+    },
+    "dir": {
+      "x": 0.996,
+      "y": 0.0,
+      "z": 0.0896
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 15.5242,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 2,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": -57.87,
+      "y": 1.12,
+      "z": -98.19
+    },
+    "max": {
+      "x": -39.09,
+      "y": 24.14,
+      "z": -85.71
+    },
+    "loc": {
+      "x": -48.32,
+      "y": 1.72,
+      "z": -92.05
+    },
+    "dir": {
+      "x": -0.8412,
+      "y": 0.0,
+      "z": 0.5408
+    },
+    "state_type": 1,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "BID04_T_GATE_01",
+    "click_sounds": [],
+    "radius": 16.1118,
+    "sequence": 1,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 3,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": 99.68,
+      "y": 1.18,
+      "z": 25.04
+    },
+    "max": {
+      "x": 104.45,
+      "y": 24.2,
+      "z": 46.76
+    },
+    "loc": {
+      "x": 102.1,
+      "y": 1.78,
+      "z": 35.71
+    },
+    "dir": {
+      "x": -0.1903,
+      "y": 0.0,
+      "z": 0.9817
+    },
+    "state_type": 1,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "BID04_T_GATE_01",
+    "click_sounds": [],
+    "radius": 16.0034,
+    "sequence": 2,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 4,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": 296.65,
+      "y": 4.85,
+      "z": 131.03
+    },
+    "max": {
+      "x": 298.85,
+      "y": 34.85,
+      "z": 138.72
+    },
+    "loc": {
+      "x": 297.75,
+      "y": 4.85,
+      "z": 134.88
+    },
+    "dir": {
+      "x": -0.96,
+      "y": 0.0,
+      "z": 0.28
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 0,
+    "model_name": "PORTAL_COLLISION",
+    "click_sounds": [],
+    "radius": 15.524,
+    "sequence": 3,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  },
+  {
+    "tblidx": 5,
+    "name": 4294967295,
+    "function_flags": 1,
+    "min": {
+      "x": 242.83,
+      "y": 1.5,
+      "z": 133.18
+    },
+    "max": {
+      "x": 248.19,
+      "y": 12.55,
+      "z": 142.56
+    },
+    "loc": {
+      "x": 245.55,
+      "y": 1.79,
+      "z": 137.79
+    },
+    "dir": {
+      "x": -0.4831,
+      "y": 0.0,
+      "z": 0.8756
+    },
+    "state_type": 1,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "BID04_T_GATE_01",
+    "click_sounds": [],
+    "radius": 7.7268,
+    "sequence": 4,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 4,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]

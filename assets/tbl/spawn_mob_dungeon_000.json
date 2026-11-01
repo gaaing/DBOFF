@@ -1,0 +1,104 @@
+[
+  {
+    "tblidx": 1,
+    "mob_tblidx": 1411104,
+    "spawn_loc": {
+      "x": -105.06,
+      "y": 49.36,
+      "z": -155.07
+    },
+    "spawn_dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 5,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 1
+  },
+  {
+    "tblidx": 2,
+    "mob_tblidx": 4911110,
+    "spawn_loc": {
+      "x": -95.86,
+      "y": 48.94,
+      "z": -157.37
+    },
+    "spawn_dir": {
+      "x": -0.769,
+      "y": 0.0,
+      "z": 0.6392
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 5,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 2
+  },
+  {
+    "tblidx": 3,
+    "mob_tblidx": 7211113,
+    "spawn_loc": {
+      "x": -83.46,
+      "y": 47.4,
+      "z": -157.59
+    },
+    "spawn_dir": {
+      "x": -0.9507,
+      "y": 0.0,
+      "z": 0.3102
+    },
+    "spawn_loc_range": 1,
+    "spawn_quantity": 1,
+    "spawn_cool_time": 5,
+    "spawn_move_type": 1,
+    "wander_range": 5,
+    "move_range": 5,
+    "action_pattern_tblidx": 8,
+    "path_table_index": 4294967295,
+    "follow_distance": {
+      "x": 3.4028234663852886e+38,
+      "y": 0.0,
+      "z": 3.4028234663852886e+38
+    },
+    "play_script": 4294967295,
+    "play_script_scene": 4294967295,
+    "ai_script": 4294967295,
+    "ai_script_scene": 4294967295,
+    "party_index": 4294967295,
+    "party_leader": false,
+    "spawn_group_id": 3
+  }
+]

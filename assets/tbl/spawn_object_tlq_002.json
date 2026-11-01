@@ -1,0 +1,42 @@
+[
+  {
+    "tblidx": 1,
+    "name": 100056,
+    "function_flags": 4194305,
+    "min": {
+      "x": 389.29,
+      "y": -91.77,
+      "z": 144.55
+    },
+    "max": {
+      "x": 393.34,
+      "y": -87.02,
+      "z": 147.49
+    },
+    "loc": {
+      "x": 391.32,
+      "y": -91.98,
+      "z": 146.02
+    },
+    "dir": {
+      "x": 0.0,
+      "y": 0.0,
+      "z": 1.0
+    },
+    "state_type": 0,
+    "def_main_state": 0,
+    "def_sub_state": 1,
+    "model_name": "TLQ_T_TIMECRACK_001",
+    "click_sounds": [],
+    "radius": 3.4499,
+    "sequence": 0,
+    "contents_tblidx": 4294967295,
+    "object_direction_index": 4294967295,
+    "boundary_distance": 3,
+    "min_quest_id": 65535,
+    "max_quest_id": 65535,
+    "warfog": 255,
+    "zone_id": 4294967295,
+    "world_id": 4294967295
+  }
+]
