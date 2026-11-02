@@ -610,3 +610,84 @@ README 明确说明：
 - 用户决定现阶段放弃将完整资产库放入 R2；暂停资产上传计划，未来 R2 只重新评估客户端发布物分发。
 - 将 raw→export 覆盖率对比和 OpenDBO-Core ExecutionEnv 数据文件清单核对设为两项明确任务。
 - 强调 ExecutionEnv 扩展名数量是服务端仓库统计基准，不等于客户端 pak 预期数量；必须按路径和加载代码判定用途。
+
+
+## 18. Antigravity 全量资产审计报告首轮核查（2026-11-01）
+
+### 18.1 GitHub 交付物与审计范围
+
+用户确认已将报告和所需清单推送至 GitHub。已检查 `gaaing/DBOFF` 的 `main` 分支，最新提交为 `c297e0f723b3e1b996280b4003c1d0f33da5544e`（本地时间 2026-11-01 21:08 左右）。该提交新增 `docs/asset_audit/` 下 12 个审计工件：
+- `ASSET_AUDIT_REPORT.md`
+- `raw_inventory.csv`
+- `export_inventory.csv`
+- `raw_to_export.csv`
+- `missing_exports.csv`
+- `failed_exports.csv`
+- `unknown_files.csv`
+- `duplicate_files.csv`
+- `opendbo_data_comparison.csv`
+- `opendbo_missing_data.csv`
+- `extraction_coverage.json`
+- `data_type_inventory.json`
+
+已读取综合报告、覆盖率 JSON、类型识别 JSON、失败清单和未知文件清单；核对了 GitHub commit 文件变更统计及当前仓库目录。大型 CSV（数 MB 至 30 MB）已确认存在并核对 GitHub 行数/文件大小元数据，但当前读取接口无法返回其完整正文，因此尚未逐行独立重算映射结果。
+
+### 18.2 报告数字（均为 Antigravity 扫描结果，尚非独立重扫）
+
+报告声称：
+- 原始客户端 pak：469 个、合计 8.08 GB；
+- 解码 raw：120,234 个文件、7,921,411,207 bytes（约 7.377 GB）；
+- 本地 Godot 导出目录：129,928 个文件、4,790,934,092 bytes（约 4.462 GB），其中 78,562 个纯资产/数据文件及 51,366 个 `.import` 元数据；
+- raw 状态分布：52,997 已转换导出、7,806 直接保留、47,915 重复副本、11,478 尚未导出、38 暂时无法识别；
+- 16,336 个重复组，涉及 64,251 个文件；重复副本数 47,915；
+- 失败清单只有 CSV 表头，覆盖率 JSON 各类型 `failed_count` 均为 0；
+- 66 个 `sound*.pak`（报告估算 1.25 GB）尚未解包，raw 的 `extracted/sound` 为空。
+
+覆盖率 JSON 的状态总数可正确相加：52,997 + 7,806 + 47,915 + 11,478 + 38 = 120,234。已匹配/转换数 60,803 = 52,997 + 7,806。以上只反映该次报告记录的本地扫描结果，不证明资源运行质量或完整可用。
+
+### 18.3 已发现的报告内部矛盾与分类问题
+
+1. **动画覆盖率百分比计算错误**：JSON 给出 26,398 个 `.anm`，其中 13,320 个重复、12,936 个已匹配、142 个未匹配；唯一文件数为 13,078。按报告所列分子/分母计算，12,936 / 13,078 ≈ **98.91%**，不是摘要所写的 **99.46%**。若 142 个确实全部属于杂项动作，必须给出可复核的分类清单，才能单独声称“核心动作 100%”。
+2. **SWF 数量混淆**：扩展名统计和 JSON 均为 `.swf` raw_count=427、duplicate=1、unmatched=426；报告另一处却称“1,812 个 .swf”。1,812 是 `extracted/flash` 目录总文件数，不是报告自身统计的 `.swf` 文件数。应更正为 427 个 SWF，并另外说明 flash 目录其余文件的类型。
+3. **未知文件清单误分类**：`unknown_files.csv` 中包含 15 个以 `glTF`（`676c5446`）开头的标准 GLB 文件、带 UTF-16 BOM 的 HTML 页面，以及以 OLE Compound File 签名 `D0 CF 11 E0` 开头的 `thumbs.db`。这些至少应先归为已识别格式/候选格式，不能全部描述成空文件、损坏碎片或未知二进制。未知清单应区分“格式已知但用途待判”和“格式本身未知”。
+4. **missing_exports.csv 口径需说明**：GitHub commit 显示该文件有 11,516 条数据记录（另有表头），正好等于 11,478 个未导出状态 + 38 个暂时无法识别项。因此它并非全部都是“已确认有效资产缺失”；应拆分有效未导出、未知待识别、疑似无用/缓存等类别。
+5. **失败数为零不等于转换过程没有失败**：`failed_exports.csv` 只有表头；报告同时指出部分工具使用 `except Exception: pass` 静默吞错。故当前只能说“没有记录到失败条目”，不能据此证明转换失败为零。
+6. **ExecutionEnv 汇总数字不一致**：报告表格所列七种扩展名的本地实际数量相加为 28,517（23,082 + 237 + 352 + 352 + 357 + 533 + 3,604），但表格总计写 28,817，报告开头/CSV 行数又指向 28,821。至少有 300/304 个文件未在七类扩展名明细中解释，且表格总计与目录文件总数还差 4。需要从 `opendbo_data_comparison.csv` 明确列出其他扩展名、目录过滤规则和计数口径。
+7. **OpenDBO 版本基准未锁定**：报告使用本地 `E:\\OpenDBO-Core-master`，未记录 commit SHA。此前 DBOFF 审计锁定的参考版本为 `23cb305a6cf20048fec75595a8fa1ee2f1a0e83d`。在确认本地 checkout 与该 commit 一致前，不得把本次本地数量直接替换固定版本基线。
+8. **RDF 文件数不能代表有效解析率**：报告称 raw 有 251 个 RDF、200 个 JSON 导出，其中 50 个重复、1 个唯一文件未导出；同时指出仅 4 张表有真实解析器，其余 196 张导出为仅含文件大小/十六进制样本的占位 JSON。因此“导出 200 个”不能表述成“成功解析 200 张表”，实际具备结构化字段解析的表目前报告为 4 张。
+9. **文件数量覆盖不等于模型质量覆盖**：报告自己指出模型导出会丢失单 Geometry 多材质表面。即使 12,561 个 DFF 都有 GLB 对应，也不代表几何、材质分面、贴图引用和视觉表现正确。
+
+### 18.4 首轮可采纳的资产缺口
+
+以下按报告中的 raw/coverage 数据可作为高优先级待处理项，但仍需后续清单和源码核验：
+- 1,385 个 TGA，其中 785 个重复，约 600 个唯一文件未导出；
+- 427 个 SWF，其中 1 个重复，约 426 个唯一文件未导出（不能写成 1,812 个 SWF）；
+- 311 个 FRM（300 个非重复未导出）；
+- 229 个 SRF（221 个非重复未导出）；
+- 19 个 SCR 未导出；
+- 142 个非重复 ANM 未匹配（其“杂项”分类尚待证明）；
+- 2 个独立 DFF 未匹配：报告列为 `mesh_npc/e_pos_a1.dff` 与 `effect/magma_03.dff`；
+- 66 个 sound pak 尚未解码，意味着 raw 目录并不覆盖全部原始 pak 内容；
+- RDF 其余 196 张表仍是占位导出，不应接入正式玩法逻辑作为真实表数据。
+
+### 18.5 GitHub 当前可见范围与缺少材料
+
+当前 `gaaing/DBOFF` 的根目录仅有 `assets/tbl/` 等白名单目录；`.gitignore` 明确忽略 `assets/` 下除 `assets/tbl/` 以外的内容。当前仓库中没有上传报告所统计的完整模型/贴图/动画二进制导出库，也没有 `tools/` 目录。
+本次尝试在 `gaaing/DragonballOfflineClient/tools/` 读取报告点名的脚本也未找到。因此，以下材料仍缺少，不能独立确认报告中的源码结论：
+- `batch_export_all_items.py`
+- `batch_convert_textures.py`
+- `export_all_rdf_to_dboff.py`
+- `batch_master_asset_pipeline.py`
+- `batch_sync_audio_and_tga.py`
+- `build_dboff_all_worlds.py`
+- 实际解码器/ pak 解码脚本及版本；
+- 原始 pak 文件清单（特别是 66 个 sound pak 的准确文件名、大小和解码状态）；
+- 若要验证模型转换质量，需提供报告点名的 DFF 样本及对应 GLB，或允许从用户本地导出目录抽样核验。
+
+大型 CSV 已上传，但当前连接读取接口无法返回其完整正文；后续仍需通过可读取的分段/抽样方式核查具体路径映射，特别是 `raw_to_export.csv`、`missing_exports.csv` 和 `opendbo_data_comparison.csv`。
+
+### 2026-11-01 更新记录
+- 读取 GitHub `docs/asset_audit/ASSET_AUDIT_REPORT.md`、`extraction_coverage.json`、`data_type_inventory.json`、`failed_exports.csv`、`unknown_files.csv`，并检查最新提交新增的 CSV 清单及文件行数。
+- 记录 raw 120,234 个/7.377 GB、导出 129,928 个/4.462 GB 等为 Antigravity 报告值，而非独立重扫结论。
+- 发现并记录 ANM 百分比、SWF 数量、未知文件类型、missing_exports 口径、ExecutionEnv 总数、OpenDBO commit 锁定及 RDF 占位解析等问题。
+- 确认 DBOFF GitHub 当前没有上传完整导出二进制资源和报告引用的工具脚本；后续源码/模型质量核验仍受这些缺失材料限制。
