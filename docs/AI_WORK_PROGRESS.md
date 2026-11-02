@@ -896,7 +896,7 @@ Next: inspect CSV row count and group by category, role, and source_pack_dir; co
 - 第一条名称为 IK_GKN_SKL_A02_02，第二条名称为空。无法仅凭当前导出判断是原始内容相同还是导出/命名流程重复；暂不删除或合并。
 
 ### 25.2 assets/gui/
-- ui_atlas_dictionary.json：6,071 个字典键、3,039 个不同 surface_name、107 个纹理名、57 个不同 resource_file；发现 3,032 组与小写键内容完全相同的大小写别名。加载器需明确大小写归一化策略，不能把所有键都当成独立图集元素。
+- ui_atlas_dictionary.json：6,071 个字典键、3,039 个不同 surface_name、107 个纹理名、57 个不同 resource_file；发现 3,032 组大小写折叠后重名的键，其中 3,028 组内容完全相同，另有 4 组包含不同资源定义（DlgMain、srfBackground、srfHuman_fighter、srfcbbStatic）。因此不能对键名统一转小写或无条件合并；必须保留原始大小写，并在加载器中处理大小写冲突。
 - ui_layout_dictionary.json：311 个 .frm、5,423 个控件，包含 dialog、button、staticbox、panel、flash、progressbar、scrollbar、combobox 等类型。
 - 布局引用 1,255 个不同 surface 名称，其中 30 个未在 atlas 字典找到；引用 190 个不同 .srf 文件，其中 30 个未出现在 atlas 的 srf_file 集合。这里只能认定两份字典间存在未闭合引用，不能直接断言原版 UI 资源丢失；需按 .frm → .srf → .rsr/纹理文件链继续核对。
 
