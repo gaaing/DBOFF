@@ -1564,7 +1564,7 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 3. 工厂的 `_resolve_item_glb_path()` 会先用 itemproperty 中的 `mesh_path/mesh_file` 解析资源，并在儿童状态先尝试 `child/` 路径；若儿童路径不存在，当前代码仍继续尝试成人路径。这是危险的静默回退：儿童资源缺失时不应把成人网格当作儿童装备使用。
 4. `equip_item_to_character()` 对儿童角色仍保留 `if not is_adult: return`。因此当前上衣、裤子、鞋子和蒙皮手套不会挂载。此处与用户报告相符，是直接代码原因。
 5. `newbie_table.json` 当前为对象结构，`DBOSaveManager._load_newbie_table()` 会将 Dictionary 转为 values 数组；`get_newbie_starter_items()` 过滤 `pos != 255`。例如人类格斗家初始项目包含武器 500001（pos 0）、上衣 522001（pos 2）、裤子 522002（pos 3）、鞋子 522003（pos 4）、史考特 60000000（pos 5）。新手装备数据不是本轮缺口。
-6. 当前 `_slot_flag_to_name()` 将装备表 `equip_slot_flag` 映射到视觉槽位；需要在后续逐项核实 item table 中该字段的真实语义与 bit flag 组合，不能只凭字段名或注释认定映射正确。
+6. 对照 OpenDBO `NtlItem.h` 后确认，`Equip_Slot_Type_Bit_Flag` 是装备槽 bit mask：HAND=1、SUB_WEAPON=2、JACKET=4、PANTS=8、BOOTS=16、SCOUTER=32、QUEST=64、COSTUME_SET=4096、COSTUME_HAIR_STYLE=8192 等；当前 DBOFF `_slot_flag_to_name()` 对上述常用单一 flag 的映射值一致。装备栏 `pos` 是 0-based slot index，与 bit flag 是不同字段，不能互换。仍需核对目标 item 数据实际值及是否存在多 bit 组合。
 
 ### 41.2 OpenDBO 原版源码对照（证据 B）
 已读取 OpenDBO/OpenDBO-Core master：
@@ -1605,3 +1605,10 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 这确认原版儿童体型不是靠把成人装备静态模型缩小，而是角色骨骼动画/矩阵管线参与骨骼缩放。常规装备模型名按角色种族/性别生成，原版不要求常规上衣/裤子/靴子全部改用独立 `child` 文件名。
 - 因此 DBOFF 后续应先明确当前儿童基础模型的骨骼比例是“已烘焙进顶点”还是“运行时骨骼缩放”，再决定装备 Skin 的导出和绑定策略。不能将成人静态网格、成人 Skin GLB、已烘焙儿童基础模型三者默认视为可直接互换。
 - 本轮尚未追踪 OpenDBO 中装备主体网格与角色骨骼层级共享/绑定的全部底层实现；此项仍是 B 级对照未完成项。
+
+
+### 41.6 装备槽 bit flag 映射核实（证据 B）
+- 读取 OpenDBO `DboShared/NtlShared2/NtlItem.h` 的 `eEQUIP_SLOT_TYPE` 与 `eEQUIP_SLOT_FLAG`。
+- 原版槽位索引依次为 HAND=0、SUB_WEAPON=1、JACKET=2、PANTS=3、BOOTS=4、SCOUTER=5、QUEST=6 等；对应 bit flag 是 `1 << slot_index`，所以 HAND=1、SUB_WEAPON=2、JACKET=4、PANTS=8、BOOTS=16、SCOUTER=32、QUEST=64、COSTUME_SET=4096、COSTUME_HAIR_STYLE=8192。
+- 当前 DBOFF `_slot_flag_to_name()` 对常见单 bit 值的映射与原版定义一致；先前将其标为可能字段混淆需要修正：当前代码使用 `equip_slot_flag` 做视觉槽分类本身并非已证实错误。真正仍需确认的是每个 tblidx 的实际 flag 值、手套/武器的进一步区分，以及多 bit mask 是否会出现。
+- `newbie_table.json` 中的 `pos` 是装备容器位置，不能拿它替代 `equip_slot_flag`。原版 `abyPos[]` 负责装备容器槽位置，而 ItemTable 的 `Equip_Slot_Type_Bit_Flag` 用于允许装备槽类型判断。
