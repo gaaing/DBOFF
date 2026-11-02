@@ -286,3 +286,19 @@ OpenDBO 源码文件入口（后续按系统扩展，不代表本轮已逐函数
 - dbo-web 当前 Worker 源码已确认包含注册、登录、登出、会话检查、ADMIN 角色管理和 GM 管理路由；源码中尚未发现健康检查或 API 版本端点。必须先以现有 Worker 为基准设计客户端最小接入，不得直接假设已有 health/version API。
 - Pages Function 的路由规则是 canonical 生产域名转发生产 Worker，其余 Pages 预览域名转发 staging Worker。Godot 开发客户端应使用明确的开发环境端点，不能把 Pages 预览路由规则误认为客户端自动继承。
 - dbo-web 当前根目录可见 ARCHITECTURE.md、functions/、worker/、index.html、login.html；本轮目录核查未见 wrangler 配置文件。实际部署绑定仍需从 Cloudflare 配置/部署信息核实。
+
+
+### 11.6 OpenDBO 原版登录协议初步映射（2026-11-02）
+
+已锁定 OpenDBO-Core master HEAD：23cb305a6cf20048fec75595a8fa1ee2f1a0e83d（2026-10-29）。初步源码证据显示，原版客户端通过 TCP 二进制协议分别连接 AuthServer、CharServer、GameServer；MasterServer 在服务端内部协调登录/迁移与临时 AuthKey，QueryServer 负责数据库访问。它不是一组 HTTP API，也不是 WebSocket JSON 协议。
+
+基础流程：
+1. 客户端连接 AuthServer，发送 UA_LOGIN_REQ（账号名、密码字段、客户端版本、MAC）；AuthServer 校验版本、账号状态/密码、连接限制、CharServer 可用性与在线重复登录，并通过 MasterServer 做在线状态协调。成功的 AU_LOGIN_RES 携带 accountId、AuthKey、lastServerFarmId、服务器列表和 GM/开发权限字段。
+2. 客户端连接选定 CharServer，发送 UC_LOGIN_REQ（accountId、AuthKey、serverFarmId）。CharServer 将 CM_LOGIN_REQ 转发给 MasterServer 验证 AuthKey；之后客户端通过 CharServer 请求角色数据、创建/删除/重命名角色。
+3. 客户端发送 UC_CHARACTER_SELECT_REQ（charId、serverChannelId）。CharServer 校验角色归属、服务器/频道状态、可见性、锁定和负载，再通过 MasterServer 生成新的迁移 AuthKey。CU_CHARACTER_SELECT_RES 返回 charId、AuthKey、GameServer IP 和端口。
+4. 客户端连接指定 GameServer，发送 UG_GAME_ENTER_REQ（accountId、charId、AuthKey、tutorial flag）。GameServer 再向 MasterServer 发送 GM_LOGIN_REQ 验证 AuthKey 和账号/频道归属；验证通过后才完成游戏进入响应和后续世界加载。
+
+协议结构初步确认：NtlPacket.h 定义 4 字节基础头（15-bit packet length、1-bit encrypt 标志、16-bit sequence）；数据体以 16-bit opcode 开始。NtlPacketCommon.h 的协议结构与相关 packet header 使用 packed C/C++ struct。实现 Godot 适配器前必须继续核对完整帧长度语义、字节序、编码/加密、连接生命周期、超时和重连。
+
+**账号桥接是当前关键未决项：** dbo-account-api 使用 Cloudflare D1 账号与 session_token；OpenDBO AuthServer 则从自己的账号数据库查询账号记录，并在登录成功后由 MasterServer 体系发放原版 AuthKey。Cloudflare session_token、OpenDBO 数字 accountId 和原版 AuthKey 是不同凭证/标识，不能直接互换。必须设计明确的账号映射或受信任的服务端令牌交换，不得把 Cloudflare session_token 填进原版 AuthKey 字段，也不得让 Godot 客户端自行伪造 AuthKey。
+
