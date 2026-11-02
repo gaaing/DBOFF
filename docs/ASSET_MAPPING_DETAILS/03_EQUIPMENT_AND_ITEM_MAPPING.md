@@ -67,9 +67,10 @@
 
 ## 3. 关键架构结论与避坑说明
 
-1. **儿童素体与新手装备分离陷阱**：
-   - 原版客户端中，所有种族儿童素体（`human_m_child.glb` 等）均已将新手服装（上衣、裤子、鞋靴）烘焙入自身网格；
-   - 严禁对儿童期角色调用外挂防具蒙皮管线，否则会隐藏内建表面并因骨骼层级差异导致拉伸破皮；儿童仅允许挂载武器与史考特。
+1. **儿童初始服装挂载策略（DBOFF 当前实现）**：
+   - 不再将“儿童素体已内嵌全部新手服装”作为代码前提；创角与选角统一将儿童基础素体视为身体模型，并通过装备系统挂载上衣、裤子、靴子及手套。
+   - `DBOCharacterFactory._resolve_item_glb_path()` 对儿童角色优先查找装备目录下的 `child/` 子目录；若不存在则回退到普通装备路径。
+   - `equip_item_to_character()` 已取消儿童角色跳过独立防具挂载的提前返回。儿童装备的实际 Skin/骨骼兼容性仍须在 Godot 运行时验证；如有拉伸或错位，应修复具体绑定，不恢复一刀切跳过。
 2. **机器可读完整数据**：
    - CSV 格式：[`equipment_item_mapping.csv`](equipment_item_mapping.csv)
    - JSON 格式：[`equipment_item_mapping.json`](equipment_item_mapping.json)
