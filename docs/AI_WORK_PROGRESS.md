@@ -922,3 +922,26 @@ Next: inspect CSV row count and group by category, role, and source_pack_dir; co
 4. objectproperty bbox 的 min/max 方向待原始结构核对。
 5. 两个 visualeffect 文件完全相同，保留待查。
 6. 本轮只读审查 GitHub 数据并维护文档；未修改本地代码、场景、JSON 或二进制资产。
+
+
+## 26. GitHub Markdown 全量目录核对与文档路径纠正（2026-11-02）
+
+### 26.1 仓库文档实际位置
+- 当前仓库为 `gaaing/DBOFF`，分支 `main`。
+- 通过 Git tree 递归清单确认，当前仓库共有 **49 份 Markdown 文件**，全部位于 `docs/` 或其子目录。
+- 核心协作文档实际路径为：
+  - `docs/AI_DEVELOPMENT_RULES.md`
+  - `docs/AI_WORK_PROGRESS.md`
+- 此前对根目录路径 `AI_WORK_PROGRESS.md`、`VALIDATION_LOG.md`、`OFFICIAL_DATA_INDEX.md`、`AI_DEVELOPMENT_RULES.md` 的读取返回 404，是因为路径/文件名假设错误；不能据此推断文档不存在或文件太大。
+- 本次已按实际 Git tree 读取仓库 49 份 Markdown 文档，并分段读取大型文档。后续开始 DBOFF 工作必须先读 `docs/AI_DEVELOPMENT_RULES.md` 与 `docs/AI_WORK_PROGRESS.md`，再根据任务读取相关报告。
+
+### 26.2 文档证据规则再次确认
+- `AI_DEVELOPMENT_RULES.md` 明确规定：历史报告、完成勾选和“100%”措辞均不是当前实现证据；当前代码、数据、OpenDBO 对照和运行证据优先。
+- 历史报告中存在互相冲突的技术结论与旧实现状态。不得把它们直接合并成当前事实；必须回到当前代码/数据核验。
+- `AI_WORK_PROGRESS.md` 是当前项目状态记录：当前阶段仍为旧代码清理与架构重整；创角/选角已有初步实现但仍有 Bug；当前没有任何系统可认定为完美完成。该状态与历史报告中的大量“100% 已完成”声明冲突时，以本文件的证据规则为准。
+
+### 26.3 当前审计任务的文档基准
+- 原版资源审计根目录是用户本机 `E:\\DBO_CT_TW(1.57.51)\\` 的完整客户端根目录，不限于 `pack\\`。
+- `docs/pak_audit_1_69/pak_inventory.csv` 目前只证明 469 个 PAK 条目（427 个位于 `pack\\`，42 个位于 `localize\\TAIWAN\\pack\\`）；它不是完整客户端根目录清单，也不证明包内资源已成功解码。
+- 仍缺少完整客户端根目录 manifest（包含 PAK 外文件）、版本证据、解码器源码/版本/配置、逐包解码兼容性与日志，以及经批准后生成的完整解包验证结果。
+- 本次 GitHub 文档核对为只读检查；未修改代码、场景或资产，也未执行本地 PAK 解包。
