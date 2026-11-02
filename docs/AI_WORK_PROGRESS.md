@@ -885,3 +885,40 @@ The visible sample contains entries under `localize\\TAIWAN\\pack\\`, all with `
 The CSV's full row count, category/role distribution, path coverage, generation timestamp/tool, and relationship to the full-root inventory remain unknown. Do not yet describe it as a complete 1.69 TW client manifest. The user also appended a final newline to local `.gitignore` and ran `git add .gitignore`; Git's CRLF-to-LF warning is a line-ending normalization notice, not a failure.
 
 Next: inspect CSV row count and group by category, role, and source_pack_dir; confirm whether every row is a PAK and whether paths span only `localize\\TAIWAN\\pack\\` or additional directories. Keep the CSV untracked until its scope and reproducibility are clear. No commit/push has been reported.
+
+
+## 25. GitHub 资产白名单数据首次结构审查（2026-11-02）
+
+用户确认已推送 11 个 JSON 与 pak_inventory.csv。已从当前 main 读取并解析全部 11 个 JSON；以下是仓库文件的直接检查结果（证据等级 A），不代表原始 PAK 或运行行为已验证。
+
+### 25.1 assets/effect/
+- visualeffect_01.json 与 visualeffect_02.json 的 Git blob SHA 完全相同；两者均为 310 字节、total=2，含 2 条 effect 记录。
+- 第一条名称为 IK_GKN_SKL_A02_02，第二条名称为空。无法仅凭当前导出判断是原始内容相同还是导出/命名流程重复；暂不删除或合并。
+
+### 25.2 assets/gui/
+- ui_atlas_dictionary.json：6,071 个字典键、3,039 个不同 surface_name、107 个纹理名、57 个不同 resource_file；发现 3,032 组与小写键内容完全相同的大小写别名。加载器需明确大小写归一化策略，不能把所有键都当成独立图集元素。
+- ui_layout_dictionary.json：311 个 .frm、5,423 个控件，包含 dialog、button、staticbox、panel、flash、progressbar、scrollbar、combobox 等类型。
+- 布局引用 1,255 个不同 surface 名称，其中 30 个未在 atlas 字典找到；引用 190 个不同 .srf 文件，其中 30 个未出现在 atlas 的 srf_file 集合。这里只能认定两份字典间存在未闭合引用，不能直接断言原版 UI 资源丢失；需按 .frm → .srf → .rsr/纹理文件链继续核对。
+
+### 25.3 assets/prop/property/
+- characterproperty.json：1,499 条角色记录；35,620 个动画条目、11,802 个不同动画名、37,495 个动画事件，事件包括声音、特效、命中、脚步、技能取消、子武器、透明度/颜色变化等。
+- default_item_list.json：10 种种族/年龄/性别体型配置；10 组的 default_parts、scouter_attach_info、face_ani_multi_texture、head_base_texture 均为空对象。空值不能证明对应机制不存在。
+- direct_project.json：704 个节点，25 个文件夹、679 个对象。
+- direct_splines.json：声明及实际 spline 均为 679；全部 679 个 spline 名称均能在 direct_project 对象节点找到，未发现名称孤儿。
+- itemproperty.json：5,930 条物品记录；76,512 个 upgrade_effect.effects[] 条目，其中 63,549 个 effect 字符串含控制字符或非 ASCII 字符，12,963 个为可打印 ASCII。该字段存在明显非文本/编码异常风险，可能是二进制字段误解释、编码转换或导出器字段偏移；回查原始结构前，不得当作正常特效名称或直接清洗。
+- objectproperty.json：4,521 条对象记录，1,141 个动画条目、440 个动画事件；3,729 条记录至少一个轴向出现 bbox.min > bbox.max。可能涉及字段命名或坐标约定，必须对照原始结构，暂不批量交换 min/max。
+- tenkaichi_direction.json：11 个 controller、33 个节点（27 EFFECT、6 SOUND）。
+
+### 25.4 pak_inventory.csv 范围确认
+- 469 条记录，全部为 .pak；来源目录 pack 427 条、localize\\TAIWAN\\pack 42 条。
+- 类别：World/Terrain Mesh & Heightfield 163；3D Model & Animation 106；Audio/Sound 66；Texture 64；UI/Flash 50；其余 RDF/EDF、FRM/SRF、语言字符串、GUI/Quest 脚本、Engine Properties、World/Terrain Index 合计 20。
+- 角色：453 data_volume、16 header_index。
+- CSV 覆盖 pack 与 localize\\TAIWAN\\pack 两处，但仍只是 PAK 清单，不含非 PAK 文件，也不证明解包成功、包内条目完整或客户端根目录扫描完整。
+
+### 25.5 当前结论
+1. 11 个 JSON 均可解析；direct_project 与 direct_splines 的 679 个对象/spline 名称完全对应。
+2. GUI 字典存在 30 个 surface 名称与 30 个 SRF 文件的跨文件未匹配项。
+3. itemproperty 的 upgrade_effect.effect 大量非文本值是优先级较高的数据解析风险。
+4. objectproperty bbox 的 min/max 方向待原始结构核对。
+5. 两个 visualeffect 文件完全相同，保留待查。
+6. 本轮只读审查 GitHub 数据并维护文档；未修改本地代码、场景、JSON 或二进制资产。
