@@ -1125,3 +1125,54 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 5. 保持角色创建/选择等现存 Bug 修复工作继续推进；服务器接入研究不应阻断客户端修复。
 
 本轮只更新项目规划与进度记录；未修改 GDScript、场景、资源、Worker 代码或本地工程。
+
+
+## 30. 当前网络接入点与旧路径初步扫描（2026-11-02）
+
+### 30.1 DBOFF 当前分支只读扫描（证据 A）
+
+- 当前 GitHub main 的递归 Git tree 返回 15,961 个条目。
+- 对 project.godot、src 下 GDScript 和 scenes 下场景文件进行第一轮文本扫描，共 42 个文件。
+- 该 42 文件范围内未命中 E:/DBO_Offline、旧仓库 DragonballOfflineClient、DBO_Offline_V2 等旧项目路径/名称。
+- 同一范围内未发现 HTTPRequest、HTTPClient、WebSocketPeer、WebSocketMultiplayerPeer、ENetMultiplayerPeer、PacketPeer、session_token、/api/session/check、/api/login、/api/logout 或 /api/register 等客户端网络/认证接入代码标记。
+- 当前结论：在已扫描的客户端脚本、场景与项目配置范围内，尚未发现可复用的统一网络层或账号 API 客户端。此为静态搜索结果，不排除其他未扫描文件、插件、导出配置或本地未推送差异中存在相关实现。
+- 尚未扫描所有资产 JSON、资源二进制、仓库全部 Markdown 与未推送本地文件；因此不能声称整个仓库已经完全清除旧引用。
+
+### 30.2 dbo-web 当前架构文档与目录（证据 A）
+
+- 已定位并读取私有仓库 gaaing/dbo-web 根目录 ARCHITECTURE.md；之前 README.md 返回 404 是因为该路径不存在，当前架构文档实际位于根目录 ARCHITECTURE.md。
+- 当前根目录可见 ARCHITECTURE.md、functions/、worker/、index.html、login.html 与 favicon.ico。
+- functions/api/[[path]].js 将 canonical 生产 Pages 主机 dbo-web.pages.dev 的请求转发到 dbo-account-api.hoipoi.workers.dev；其他 Pages 预览主机转发到 dbo-account-api-staging.hoipoi.workers.dev。
+- 本轮目录核查未见根目录 wrangler.toml、wrangler.jsonc 或 package.json；这不排除部署配置由 Cloudflare Dashboard 或其他外部流程管理，仍需核实实际 Worker/D1 绑定和当前部署版本。
+
+### 30.3 当前 dbo-account-api Worker 源码路由（证据 A，仅源码，不代表线上部署版本）
+
+已读取 worker/worker.js，当前源码可见路由：
+- POST /api/register：普通注册固定创建 PLAYER，创建账号、设备绑定和会话。
+- POST /api/login：验证账号密码、设备封禁与绑定，创建会话；支持旧 SHA-256 密码哈希登录后升级为 PBKDF2。
+- POST /api/logout：根据提交的 session_token 摘要撤销服务端会话。
+- POST /api/session/check：检查会话是否存在、未过期且账号 ACTIVE，返回 account_type。
+- POST /api/admin/set-role：仅 ADMIN 会话可修改目标账号为 PLAYER 或 GM。
+- POST /api/gm/stats、/api/gm/list-accounts、/api/gm/ban-chain、/api/gm/delete-account、/api/gm/unban-account：GM/ADMIN 管理操作，按源码中的权限检查执行。
+
+当前源码还包含：16 KiB 请求体上限、登录/注册 IP 限流、登录账号标识限流、PBKDF2-HMAC-SHA-256（100,000 iterations）新密码哈希、旧 64 位十六进制 SHA-256 渐进升级逻辑，以及对 dbo-web Pages 生产/预览域名的 CORS 来源限制。上述均为源码观察，尚未在本轮验证当前生产 Worker 与仓库源码一致。
+
+**未发现** /api/health 或 /api/version 路由。因此 Cloudflare 最小接入第一阶段应先使用现有登录/会话/登出/权限接口；健康检查与版本接口需先评估是否有必要新增，不能把它们写成现有能力。
+
+### 30.4 当前缺少的材料与证据
+
+- DBOFF 当前本地网络相关脚本/插件/未推送差异的清单；当前 GitHub 已扫描范围未找到网络客户端实现。
+- dbo-account-api 当前生产与 staging Worker 的实际部署版本、D1 binding 和非敏感配置清单；仓库源码不等于线上运行版本。
+- DBOFF 客户端准备使用的开发 API 基址，以及脱敏的登录/会话/登出请求响应样本。
+- OpenDBO AuthServer、CharServer、GameServer 的具体握手流程、packet 定义、状态转换和服务端处理调用链；本轮尚未完成该部分对照。
+- 如果需要新增 API health/version，需要明确它服务于什么客户端行为、是否需要鉴权、版本兼容规则和失败降级策略。
+
+### 30.5 下一步
+
+1. 先检查当前本地 DBOFF 是否存在未推送的网络脚本或插件差异；若没有，按新建统一网络层进行设计，而不是寻找旧项目代码搬运。
+2. 读取 Cloudflare 当前生产与 staging Worker 部署配置，确认源码版本、域名和 D1 绑定；先保持只读。
+3. 从 OpenDBO Auth/Char/Game Server 源码建立协议流程与 packet 对照，不将 Cloudflare 账号 API 误当作原版 MMO 登录协议。
+4. 基于现有 Worker 契约设计 Godot 账号服务客户端，先完成登录/会话/登出/权限读取的最小闭环设计。
+5. 继续推进角色创建/选择等客户端 Bug 修复，不等待服务器接入研究完成。
+
+本轮只读检查 GitHub 源码和文档，并维护 DBOFF 文档；没有修改游戏代码、场景、资源、Worker 或 Cloudflare 部署。
