@@ -1541,7 +1541,7 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 
 ### 40.4 当前缺少的材料 / 验证
 - GitHub main 当前递归树中没有任何 `.glb/.gltf/.obj/.fbx` 模型文件（0 个），包括代码引用的 `assets/obj/character/mesh_pc/` 与 `assets/obj/item/`。这是仓库当前未提供模型资产的证据，不代表用户本地没有这些文件。
-- 需要针对初始装备项目取得本地儿童装备 GLB 的实际文件名/路径，至少覆盖上衣、裤子、鞋子；按职业/种族映射扩展检查。若本地有对应 child GLB，可提供相关目录清单或将所需模型推送到当前仓库。
+- 不再要求用户重复提供历史报告中已有的装备 ID / 模型 key 映射。当前仍无法从 GitHub 验证用户本地模型文件是否存在及其 GLB Skin 结构；只有进入实际资源兼容性验证时，才针对具体缺失项提出最小材料请求。
 - `assets/tbl/table_item_data.json`（约 6.99 MB）与 `assets/prop/property/itemproperty.json`（约 15.96 MB）在本轮 GitHub 文件读取接口中返回空正文，虽确认文件存在于树中，但尚未核实上述每个 tblidx 对应的 model、equip_slot_flag、mesh_path/mesh_file 具体值。
 - 需要当前本地运行时日志，确认上述初始装备项目的 item 数据命中、解析出的 GLB 路径、文件存在状态和加载结果；并在 Godot 4.7.2 下分别验证创角预览、选角预览、人类/那美克/魔人、男女及至少一个不同职业。
 
@@ -1596,3 +1596,12 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 原版对照已经证明装备数据从 NewbieTable/角色装备栏进入统一装备代理，并由 ItemTable 模型字段和角色属性生成模型名；仍需继续查原版角色骨骼缩放/装备蒙皮绑定细节，以及 DBOFF 当前 GLB 的实际 Skin/骨骼结构。
 - 尚未完成：读取 DBOFF 当前 `table_item_data.json` 中目标 tblidx 的完整字段值；读取 `itemproperty.json` 中对应模型 key 的 mesh path/file；核实本地模型物理文件与 GLB Skin 结构；核实 `equip_slot_flag` 映射；进一步检查原版角色骨骼缩放与装备蒙皮的坐标/IBM 兼容；Godot 4.7.2 创角/选角运行验证。
 - 本轮未修改 Godot 源码、场景、模型资源；仅更新本进度文档，没有执行代码修复或运行验证。
+
+
+### 41.5 原版儿童骨骼缩放机制补充（证据 B）
+继续读取 OpenDBO `DboClient/Lib/NtlPresentation/NtlPLCharacter.cpp` 中 `UpdatePreBoneScale()` 与 `UpdatePostBoneScale()`：
+- `UpdatePreBoneScale()` 遍历角色动画层级，将动画帧的骨骼平移分量分别乘以 `BoneScale[parentIndex].fLength` 与 `fWidth`。
+- `UpdatePostBoneScale()` 再将 `BoneScale[i]` 的 length/width 缩放应用到骨骼矩阵数组。
+- 这确认原版儿童体型不是靠把成人装备静态模型缩小，而是角色骨骼动画/矩阵管线参与骨骼缩放。常规装备模型名按角色种族/性别生成，原版不要求常规上衣/裤子/靴子全部改用独立 `child` 文件名。
+- 因此 DBOFF 后续应先明确当前儿童基础模型的骨骼比例是“已烘焙进顶点”还是“运行时骨骼缩放”，再决定装备 Skin 的导出和绑定策略。不能将成人静态网格、成人 Skin GLB、已烘焙儿童基础模型三者默认视为可直接互换。
+- 本轮尚未追踪 OpenDBO 中装备主体网格与角色骨骼层级共享/绑定的全部底层实现；此项仍是 B 级对照未完成项。
