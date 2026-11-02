@@ -333,3 +333,22 @@ OpenDBO-Core README 列出 AuthServer、CharServer、ChatServer、GameServer（�
 真人玩家之间的实时联机才需要 P2P，或轻量信令服务提供连接发现和握手。信令不负责游戏模拟或转发流量；不提供 TURN/中继，穿透失败则本次真人连接失败。
 
 因此优先审计本地 Doll 生成、存档字段、战斗行为和各原版玩法的 Doll 适配；真人 P2P 是可选能力。当前尚缺 Doll 实际实现文件、玩家存档字段结构、跨玩家 Doll 分享/导入方案，以及 OpenDBO 各共斗/对战玩法的参与者和奖励规则。详见 `docs/OPENDBO_SERVER_FUNCTION_AUDIT.md` 第 10 节。
+
+
+### 11.10 本地存档、账号与云存档接入基线（2026-11-02）
+
+用户将当前开发范围明确收敛为：先接通本地存档、Cloudflare 账号身份和云存档；启动器、好友、公共大厅、Doll 分享、P2P 与其他在线功能均暂不开发，等游戏完善或出现明确需求时再处理。
+
+当前 main 分支实际存档脚本是 `src/core/dbo_save_manager.gd`，不是此前文档误记的 `src/managers/dbo_save_manager.gd`。本地路径为 `user://saves/account_meta.json` 和 `user://saves/char_{id}.json`。当前已具备基础 JSON 读写和角色创建/选择数据，但尚未发现 60 秒自动保存调度、完整运行时状态回写、原子写入、schema migration、修订号或损坏恢复。角色大厅和世界场景读取存档；背包/任务管理器持有运行时状态，但尚未接入完整存档写回。
+
+当前 `dbo-web/worker/worker.js` 具备注册、登录、登出、会话检查及 GM/ADMIN 接口，没有云存档上传/下载 API。生产 Worker version 14 只绑定生产 D1，staging version 10 只绑定 staging D1；两个 D1 目前均无云存档元数据表。Cloudflare R2 bucket 查询返回 403 / code 10042，要求先在 Dashboard 启用 R2；当前没有 R2 bucket 或 Worker R2 binding 的证据。
+
+开发顺序：
+1. 完成本地存档可靠写入与运行时状态快照，每 60 秒本地保存。
+2. 在 Godot 客户端内接账号注册/登录/session check/logout，且离线启动不受影响。
+3. 用户启用 R2 后先在 staging 建立 R2 bucket/binding 与 D1 云存档元数据。
+4. staging Worker 增加鉴权上传/下载和 revision 冲突保护。
+5. Godot 每 30 分钟上传 dirty revision，并预留特殊动作前 checkpoint。
+6. staging 全流程通过后再考虑生产部署。
+
+缺失/待办：用户需在 Cloudflare Dashboard 启用 R2；继续核查世界位置、属性、背包/装备、技能、任务的运行时持有者和存档回写点；特殊动作清单及上传失败策略尚未定义。详见 `docs/CLOUD_SAVE_AND_IDENTITY_MODEL.md` 第 9 节。
