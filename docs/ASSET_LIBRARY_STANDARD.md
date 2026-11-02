@@ -235,3 +235,12 @@ The user confirms these directories exist in the local DBOFF project:
 - `assets/prop/property/`
 
 Their absence from the GitHub tree is not evidence that they are absent locally. The current repository `.gitignore` uses an assets whitelist that explicitly allows `assets/tbl/` but does not yet allow these three roots. Before tracking them, inventory file counts, total size, largest files, extensions, and cache/temp content. Then adjust ignore rules narrowly and stage only these three paths. Do not stage the entire `assets/` tree. The contents and completeness of `assets/gui/`, including the suspected two SWF-derived JSON files, remain unverified until their names/content are inspected.
+
+
+## 15. Narrow asset whitelist staged locally (2026-11-02)
+
+The user corrected the assets ignore rules and locally staged only .gitignore, assets/effect/, assets/gui/, and assets/prop/property/ (also re-added assets/tbl/ in case it had staged changes). The reported staged additions are 2 effect JSON files, 2 GUI dictionary JSON files, and 7 property JSON files. A staged-path filter for assets outside tbl/, effect/, gui/, and prop/property/ returned no matches, so the accidentally exposed GLB files do not appear in the supplied staged listing.
+
+Git emitted CRLF-to-LF normalization warnings for these JSON files; these are line-ending notices, not evidence of content corruption. The local status also showed docs/pak_audit_1_69/ as untracked and not staged. Inspect that directory separately before deciding whether it belongs in the repository.
+
+This is based on the user's pasted local command output. The complete staged diff, final ignore file, file-size audit, and commit/push status have not yet been inspected. Do not commit or push until those checks are reviewed.
