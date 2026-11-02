@@ -225,3 +225,13 @@ The source archive can be called a complete client-resource baseline only after:
 - all original resource-bearing files outside PAK have been preserved alongside the validated PAK extraction outputs.
 
 A complete PAK extraction alone is not proof that the complete client resource set has been captured.
+
+
+## 14. Additional local project asset roots identified (2026-11-01)
+
+The user confirms these directories exist in the local DBOFF project:
+- `assets/effect/`
+- `assets/gui/`
+- `assets/prop/property/`
+
+Their absence from the GitHub tree is not evidence that they are absent locally. The current repository `.gitignore` uses an assets whitelist that explicitly allows `assets/tbl/` but does not yet allow these three roots. Before tracking them, inventory file counts, total size, largest files, extensions, and cache/temp content. Then adjust ignore rules narrowly and stage only these three paths. Do not stage the entire `assets/` tree. The contents and completeness of `assets/gui/`, including the suspected two SWF-derived JSON files, remain unverified until their names/content are inspected.
