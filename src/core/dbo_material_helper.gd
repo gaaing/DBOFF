@@ -162,36 +162,44 @@ static func load_gltf_scene_safe(glb_path: String, flags: int = 0) -> Node:
 		if json_chunk_type == 0x4E4F534A and bytes.size() >= 20 + json_chunk_len:
 			var json_bytes := bytes.slice(20, 20 + json_chunk_len)
 			var json_text := json_bytes.get_string_from_utf8()
-			if json_text.contains("texture/item/\""):
-				var parsed = JSON.parse_string(json_text)
-				if parsed is Dictionary and parsed.has("images"):
-					var modified := false
-					for img in parsed["images"]:
-						if img is Dictionary and str(img.get("uri", "")).ends_with("/"):
+			var parsed = JSON.parse_string(json_text)
+			if parsed is Dictionary and parsed.has("images"):
+				var modified := false
+				for img in parsed["images"]:
+					if img is Dictionary:
+						var u: String = str(img.get("uri", "")).strip_edges()
+						# 修正无效路径：指向目录以 / 结尾、为空、或者指向不存在的损坏文件名 (如 69.png, e.png, ad.png 等)
+						if u.is_empty() or u.ends_with("/") or u.ends_with("texture/item") or not u.ends_with(".png"):
 							img["uri"] = "../../../tex/texture/item/i_sct_01.png"
 							modified = true
-					if modified:
-						var new_json_text := JSON.stringify(parsed)
-						while new_json_text.length() % 4 != 0:
-							new_json_text += " "
-						var new_json_bytes := new_json_text.to_utf8_buffer()
-						var new_json_len := new_json_bytes.size()
-						var bin_chunk := bytes.slice(20 + json_chunk_len)
-						var new_total_len := 12 + 8 + new_json_len + bin_chunk.size()
+						elif u.contains("texture/item/"):
+							var fname := u.get_file()
+							var check_path := "res://assets/tex/texture/item/" + fname
+							if not FileAccess.file_exists(check_path):
+								img["uri"] = "../../../tex/texture/item/i_sct_01.png"
+								modified = true
+				if modified:
+					var new_json_text := JSON.stringify(parsed)
+					while new_json_text.length() % 4 != 0:
+						new_json_text += " "
+					var new_json_bytes := new_json_text.to_utf8_buffer()
+					var new_json_len := new_json_bytes.size()
+					var bin_chunk := bytes.slice(20 + json_chunk_len)
+					var new_total_len := 12 + 8 + new_json_len + bin_chunk.size()
 
-						var new_bytes := PackedByteArray()
-						new_bytes.resize(new_total_len)
-						new_bytes.encode_u32(0, 0x46546C67)
-						new_bytes.encode_u32(4, 2)
-						new_bytes.encode_u32(8, new_total_len)
-						new_bytes.encode_u32(12, new_json_len)
-						new_bytes.encode_u32(16, 0x4E4F534A)
-						for i in range(new_json_len):
-							new_bytes[20 + i] = new_json_bytes[i]
-						var bin_offset := 20 + new_json_len
-						for i in range(bin_chunk.size()):
-							new_bytes[bin_offset + i] = bin_chunk[i]
-						bytes = new_bytes
+					var new_bytes := PackedByteArray()
+					new_bytes.resize(new_total_len)
+					new_bytes.encode_u32(0, 0x46546C67)
+					new_bytes.encode_u32(4, 2)
+					new_bytes.encode_u32(8, new_total_len)
+					new_bytes.encode_u32(12, new_json_len)
+					new_bytes.encode_u32(16, 0x4E4F534A)
+					for i in range(new_json_len):
+						new_bytes[20 + i] = new_json_bytes[i]
+					var bin_offset := 20 + new_json_len
+					for i in range(bin_chunk.size()):
+						new_bytes[bin_offset + i] = bin_chunk[i]
+					bytes = new_bytes
 
 	var doc := GLTFDocument.new()
 	var state := GLTFState.new()

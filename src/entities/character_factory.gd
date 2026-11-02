@@ -743,7 +743,9 @@ static func _find_majin_jacket_scarf_texture(glb_path: String, is_female: bool) 
 	var gender_str := "f_" if is_female else "m_"
 	var candidates: Array[String] = [
 		"res://assets/tex/texture/item/%s%sjacket%s_2.png" % [pfx, gender_str, num_str],
-		"res://assets/tex/texture/item/%s%sjacket04_01_2.png" % [pfx, gender_str]
+		"res://assets/tex/texture/item/%s%sjacket04_01_2.png" % [pfx, gender_str],
+		"res://assets/tex/texture/item/a_mwo_%sjacket%s_2.png" % [gender_str, num_str],
+		"res://assets/tex/texture/item/a_mwo_%sjacket04_01_2.png" % gender_str
 	]
 
 	for tc in candidates:
@@ -803,20 +805,25 @@ static func _apply_majin_jacket_materials(mesh_inst: MeshInstance3D, glb_path: S
 				mesh_inst.set_surface_override_material(s, cmat)
 		else:
 			# 非皮肤表面（围巾、领圈、灯笼袖衣物部件等）
-			var mat := StandardMaterial3D.new()
-			mat.roughness = 0.8
-			mat.cull_mode = BaseMaterial3D.CULL_BACK
 			var tex: Texture2D = null
 			if base_mat is BaseMaterial3D and (base_mat as BaseMaterial3D).albedo_texture:
 				tex = (base_mat as BaseMaterial3D).albedo_texture
+			if not tex and not mat_name.is_empty():
+				var direct_tex_path := "res://assets/tex/texture/item/" + mat_name + ".png"
+				tex = load_texture_safe(direct_tex_path)
 			if not tex:
 				if "jacket" in mat_name and not ("01_2" in mat_name or "04_01_2" in mat_name or "04_02_2" in mat_name):
 					tex = cloth_shirt_tex
 				else:
 					tex = scarf_tex
-			mat.albedo_texture = tex
-			mat.albedo_color = Color.WHITE
-			mesh_inst.set_surface_override_material(s, mat)
+
+			if tex:
+				var mat := StandardMaterial3D.new()
+				mat.roughness = 0.8
+				mat.cull_mode = BaseMaterial3D.CULL_BACK
+				mat.albedo_texture = tex
+				mat.albedo_color = Color.WHITE
+				mesh_inst.set_surface_override_material(s, mat)
 
 
 ## 将魔人上装镂空布料动态合成至肤色底层（消除露胸/腹黑块与色差）

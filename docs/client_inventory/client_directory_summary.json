@@ -1,0 +1,174 @@
+{
+  "client_root": "E:\\DBO_CT_TW(1.57.51)",
+  "total_files": 537,
+  "total_size_bytes": 8979604941,
+  "total_size_mb": 8563.62,
+  "total_size_gb": 8.363,
+  "directory_count": 11,
+  "directory_statistics": {
+    "<root>": {
+      "file_count": 21,
+      "total_size_bytes": 34404233
+    },
+    "cursor": {
+      "file_count": 36,
+      "total_size_bytes": 142630
+    },
+    "font": {
+      "file_count": 1,
+      "total_size_bytes": 792280
+    },
+    "localize": {
+      "file_count": 0,
+      "total_size_bytes": 0
+    },
+    "localize\\TAIWAN": {
+      "file_count": 0,
+      "total_size_bytes": 0
+    },
+    "localize\\TAIWAN\\font": {
+      "file_count": 2,
+      "total_size_bytes": 25069300
+    },
+    "localize\\TAIWAN\\movie": {
+      "file_count": 3,
+      "total_size_bytes": 241934396
+    },
+    "localize\\TAIWAN\\pack": {
+      "file_count": 42,
+      "total_size_bytes": 577750040
+    },
+    "pack": {
+      "file_count": 427,
+      "total_size_bytes": 8096834066
+    },
+    "screenshot": {
+      "file_count": 1,
+      "total_size_bytes": 20
+    },
+    "ts": {
+      "file_count": 4,
+      "total_size_bytes": 2677976
+    }
+  },
+  "extension_statistics": {
+    ".dll": {
+      "count": 8,
+      "total_size_bytes": 13531112
+    },
+    ".dat": {
+      "count": 3,
+      "total_size_bytes": 6623657
+    },
+    ".xml": {
+      "count": 5,
+      "total_size_bytes": 3930
+    },
+    ".exe": {
+      "count": 2,
+      "total_size_bytes": 13938688
+    },
+    ".ini": {
+      "count": 1,
+      "total_size_bytes": 327
+    },
+    ".des": {
+      "count": 1,
+      "total_size_bytes": 297665
+    },
+    ".ico": {
+      "count": 1,
+      "total_size_bytes": 8854
+    },
+    ".cur": {
+      "count": 33,
+      "total_size_bytes": 109614
+    },
+    ".ani": {
+      "count": 3,
+      "total_size_bytes": 33016
+    },
+    ".ttf": {
+      "count": 3,
+      "total_size_bytes": 25861580
+    },
+    ".avi": {
+      "count": 3,
+      "total_size_bytes": 241934396
+    },
+    ".pak": {
+      "count": 469,
+      "total_size_bytes": 8674584106
+    },
+    ".txt": {
+      "count": 1,
+      "total_size_bytes": 20
+    },
+    ".e": {
+      "count": 4,
+      "total_size_bytes": 2677976
+    }
+  },
+  "category_statistics": {
+    "UI / GUI": {
+      "file_count": 54,
+      "total_size_bytes": 758291102
+    },
+    "Cursor": {
+      "file_count": 37,
+      "total_size_bytes": 142750
+    },
+    "Icon": {
+      "file_count": 1,
+      "total_size_bytes": 8854
+    },
+    "Font": {
+      "file_count": 3,
+      "total_size_bytes": 25861580
+    },
+    "Texture": {
+      "file_count": 64,
+      "total_size_bytes": 1216265658
+    },
+    "Model": {
+      "file_count": 107,
+      "total_size_bytes": 2084759229
+    },
+    "Animation": {
+      "file_count": 0,
+      "total_size_bytes": 0
+    },
+    "Effect": {
+      "file_count": 0,
+      "total_size_bytes": 0
+    },
+    "Sound / Audio": {
+      "file_count": 66,
+      "total_size_bytes": 1289645555
+    },
+    "World": {
+      "file_count": 0,
+      "total_size_bytes": 0
+    },
+    "Terrain": {
+      "file_count": 164,
+      "total_size_bytes": 3254514509
+    },
+    "Script": {
+      "file_count": 5,
+      "total_size_bytes": 1049895
+    },
+    "Table": {
+      "file_count": 5,
+      "total_size_bytes": 49349040
+    },
+    "Language": {
+      "file_count": 49,
+      "total_size_bytes": 845707690
+    },
+    "Other / Unknown": {
+      "file_count": 24,
+      "total_size_bytes": 55927409
+    }
+  }
+}

@@ -1,0 +1,538 @@
+﻿relative_path,filename,extension,size_bytes,categories
+bdvid32.dll,bdvid32.dll,.dll,5718016,Other / Unknown
+BugTrap.dll,BugTrap.dll,.dll,299008,Other / Unknown
+BugTrapU.dll,BugTrapU.dll,.dll,307200,Other / Unknown
+c.dat,c.dat,.dat,6600024,Other / Unknown
+ConfigOptions.xml,ConfigOptions.xml,.xml,323,Other / Unknown
+CurrentPatchVer.XML,CurrentPatchVer.XML,.xml,120,Cursor
+d3dx9_27.dll,d3dx9_27.dll,.dll,2319568,Other / Unknown
+d3dx9_32.dll,d3dx9_32.dll,.dll,3426072,Other / Unknown
+DBO.exe,DBO.exe,.exe,6971392,Other / Unknown
+DBOLauncher.exe,DBOLauncher.exe,.exe,6967296,Other / Unknown
+DBOLauncherLog.dat,DBOLauncherLog.dat,.dat,340,Other / Unknown
+DevIL.dll,DevIL.dll,.dll,876032,Other / Unknown
+DragonBallTW.ini,DragonBallTW.ini,.ini,327,Other / Unknown
+fmodex.dll,fmodex.dll,.dll,377344,Other / Unknown
+GameGuard.des,GameGuard.des,.des,297665,Other / Unknown
+Integrity.dat,Integrity.dat,.dat,23293,Other / Unknown
+LauncherConfig.xml,LauncherConfig.xml,.xml,307,Other / Unknown
+PatchVerList.XML,PatchVerList.XML,.xml,3101,Other / Unknown
+patchw32.dll,patchw32.dll,.dll,207872,Other / Unknown
+Uninstall.ico,Uninstall.ico,.ico,8854,Icon
+UserOptions.xml,UserOptions.xml,.xml,79,Other / Unknown
+cursor\00.cur,00.cur,.cur,4286,Cursor
+cursor\01.cur,01.cur,.cur,4286,Cursor
+cursor\02.cur,02.cur,.cur,4286,Cursor
+cursor\03.cur,03.cur,.cur,2238,Cursor
+cursor\04.cur,04.cur,.cur,2238,Cursor
+cursor\05.cur,05.cur,.cur,2238,Cursor
+cursor\06.cur,06.cur,.cur,4286,Cursor
+cursor\07.cur,07.cur,.cur,4286,Cursor
+cursor\08.cur,08.cur,.cur,2238,Cursor
+cursor\09.cur,09.cur,.cur,2238,Cursor
+cursor\10.cur,10.cur,.cur,2238,Cursor
+cursor\11.cur,11.cur,.cur,2238,Cursor
+cursor\12.cur,12.cur,.cur,2238,Cursor
+cursor\13.cur,13.cur,.cur,2238,Cursor
+cursor\14.cur,14.cur,.cur,4286,Cursor
+cursor\15.cur,15.cur,.cur,4286,Cursor
+cursor\16.cur,16.cur,.cur,4286,Cursor
+cursor\17.cur,17.cur,.cur,3262,Cursor
+cursor\18.cur,18.cur,.cur,4286,Cursor
+cursor\19.cur,19.cur,.cur,4286,Cursor
+cursor\20.cur,20.cur,.cur,4286,Cursor
+cursor\21.cur,21.cur,.cur,4286,Cursor
+cursor\22.cur,22.cur,.cur,4286,Cursor
+cursor\23.cur,23.cur,.cur,4286,Cursor
+cursor\24.cur,24.cur,.cur,4286,Cursor
+cursor\25.cur,25.cur,.cur,6254,Cursor
+cursor\26.ani,26.ani,.ani,6624,Cursor
+cursor\26.cur,26.cur,.cur,2238,Cursor
+cursor\27.ani,27.ani,.ani,19768,Cursor
+cursor\28.ani,28.ani,.ani,6624,Cursor
+cursor\28.cur,28.cur,.cur,2238,Cursor
+cursor\28_1.cur,28_1.cur,.cur,2238,Cursor
+cursor\29.cur,29.cur,.cur,2238,Cursor
+cursor\30.cur,30.cur,.cur,2238,Cursor
+cursor\31.cur,31.cur,.cur,2238,Cursor
+cursor\32.cur,32.cur,.cur,2238,Cursor
+font\SomaM.ttf,SomaM.ttf,.ttf,792280,Font
+localize\TAIWAN\font\DFU_HMD.TTF,DFU_HMD.TTF,.ttf,10559544,Font; Language
+localize\TAIWAN\font\MSJHBD.TTF,MSJHBD.TTF,.ttf,14509756,Font; Language
+localize\TAIWAN\movie\Age1000.avi,Age1000.avi,.avi,93189928,Language
+localize\TAIWAN\movie\logo.avi,logo.avi,.avi,2230386,Language
+localize\TAIWAN\movie\The_base_of_Tenkaichi.avi,The_base_of_Tenkaichi.avi,.avi,146514082,Language
+localize\TAIWAN\pack\flash.pak,flash.pak,.pak,111728,UI / GUI; Language
+localize\TAIWAN\pack\flash0.pak,flash0.pak,.pak,18044782,UI / GUI; Language
+localize\TAIWAN\pack\flash1.pak,flash1.pak,.pak,19359620,UI / GUI; Language
+localize\TAIWAN\pack\flash10.pak,flash10.pak,.pak,18016534,UI / GUI; Language
+localize\TAIWAN\pack\flash11.pak,flash11.pak,.pak,17668715,UI / GUI; Language
+localize\TAIWAN\pack\flash12.pak,flash12.pak,.pak,19983963,UI / GUI; Language
+localize\TAIWAN\pack\flash13.pak,flash13.pak,.pak,19915196,UI / GUI; Language
+localize\TAIWAN\pack\flash14.pak,flash14.pak,.pak,10708816,UI / GUI; Language
+localize\TAIWAN\pack\flash15.pak,flash15.pak,.pak,19385630,UI / GUI; Language
+localize\TAIWAN\pack\flash16.pak,flash16.pak,.pak,18567287,UI / GUI; Language
+localize\TAIWAN\pack\flash17.pak,flash17.pak,.pak,19564276,UI / GUI; Language
+localize\TAIWAN\pack\flash18.pak,flash18.pak,.pak,18050145,UI / GUI; Language
+localize\TAIWAN\pack\flash19.pak,flash19.pak,.pak,19965198,UI / GUI; Language
+localize\TAIWAN\pack\flash2.pak,flash2.pak,.pak,19000342,UI / GUI; Language
+localize\TAIWAN\pack\flash20.pak,flash20.pak,.pak,18315226,UI / GUI; Language
+localize\TAIWAN\pack\flash21.pak,flash21.pak,.pak,18083104,UI / GUI; Language
+localize\TAIWAN\pack\flash22.pak,flash22.pak,.pak,19305367,UI / GUI; Language
+localize\TAIWAN\pack\flash23.pak,flash23.pak,.pak,19546199,UI / GUI; Language
+localize\TAIWAN\pack\flash24.pak,flash24.pak,.pak,18821077,UI / GUI; Language
+localize\TAIWAN\pack\flash25.pak,flash25.pak,.pak,19884233,UI / GUI; Language
+localize\TAIWAN\pack\flash26.pak,flash26.pak,.pak,19274159,UI / GUI; Language
+localize\TAIWAN\pack\flash27.pak,flash27.pak,.pak,19513121,UI / GUI; Language
+localize\TAIWAN\pack\flash28.pak,flash28.pak,.pak,19273628,UI / GUI; Language
+localize\TAIWAN\pack\flash29.pak,flash29.pak,.pak,19626729,UI / GUI; Language
+localize\TAIWAN\pack\flash3.pak,flash3.pak,.pak,16129047,UI / GUI; Language
+localize\TAIWAN\pack\flash30.pak,flash30.pak,.pak,2636053,UI / GUI; Language
+localize\TAIWAN\pack\flash4.pak,flash4.pak,.pak,12888853,UI / GUI; Language
+localize\TAIWAN\pack\flash5.pak,flash5.pak,.pak,18127744,UI / GUI; Language
+localize\TAIWAN\pack\flash6.pak,flash6.pak,.pak,19260809,UI / GUI; Language
+localize\TAIWAN\pack\flash7.pak,flash7.pak,.pak,19220841,UI / GUI; Language
+localize\TAIWAN\pack\flash8.pak,flash8.pak,.pak,19222510,UI / GUI; Language
+localize\TAIWAN\pack\flash9.pak,flash9.pak,.pak,19336334,UI / GUI; Language
+localize\TAIWAN\pack\gui.pak,gui.pak,.pak,424,UI / GUI; Language
+localize\TAIWAN\pack\gui0.pak,gui0.pak,.pak,878,UI / GUI; Language
+localize\TAIWAN\pack\lang.pak,lang.pak,.pak,568,Language
+localize\TAIWAN\pack\lang0.pak,lang0.pak,.pak,900442,Language
+localize\TAIWAN\pack\scr.pak,scr.pak,.pak,12608,Script; Language
+localize\TAIWAN\pack\scr0.pak,scr0.pak,.pak,124622,Script; Language
+localize\TAIWAN\pack\tbl.pak,tbl.pak,.pak,2528,Table; Language
+localize\TAIWAN\pack\tbl0.pak,tbl0.pak,.pak,9713457,Table; Language
+localize\TAIWAN\pack\tex.pak,tex.pak,.pak,24224,Texture; Language
+localize\TAIWAN\pack\tex0.pak,tex0.pak,.pak,10163023,Texture; Language
+pack\flash.pak,flash.pak,.pak,167168,UI / GUI
+pack\flash0.pak,flash0.pak,.pak,19998812,UI / GUI
+pack\flash1.pak,flash1.pak,.pak,19978830,UI / GUI
+pack\flash10.pak,flash10.pak,.pak,15136956,UI / GUI
+pack\flash11.pak,flash11.pak,.pak,19420639,UI / GUI
+pack\flash12.pak,flash12.pak,.pak,18511547,UI / GUI
+pack\flash13.pak,flash13.pak,.pak,19848290,UI / GUI
+pack\flash14.pak,flash14.pak,.pak,18099720,UI / GUI
+pack\flash15.pak,flash15.pak,.pak,11805269,UI / GUI
+pack\flash2.pak,flash2.pak,.pak,2649003,UI / GUI
+pack\flash27.pak,flash27.pak,.pak,15965906,UI / GUI
+pack\flash3.pak,flash3.pak,.pak,1788,UI / GUI
+pack\flash4.pak,flash4.pak,.pak,18514,UI / GUI
+pack\flash5.pak,flash5.pak,.pak,2359314,UI / GUI
+pack\flash6.pak,flash6.pak,.pak,26951,UI / GUI
+pack\flash7.pak,flash7.pak,.pak,2121791,UI / GUI
+pack\flash8.pak,flash8.pak,.pak,15221844,UI / GUI
+pack\flash9.pak,flash9.pak,.pak,16890872,UI / GUI
+pack\gui.pak,gui.pak,.pak,93104,UI / GUI
+pack\gui0.pak,gui0.pak,.pak,3166216,UI / GUI
+pack\lang.pak,lang.pak,.pak,568,Language
+pack\lang0.pak,lang0.pak,.pak,953386,Language
+pack\obj.pak,obj.pak,.pak,3919864,Model
+pack\obj0.pak,obj0.pak,.pak,19999923,Model
+pack\obj1.pak,obj1.pak,.pak,19999924,Model
+pack\obj10.pak,obj10.pak,.pak,19999865,Model
+pack\obj100.pak,obj100.pak,.pak,19989880,Model
+pack\obj101.pak,obj101.pak,.pak,19997937,Model
+pack\obj102.pak,obj102.pak,.pak,19997697,Model
+pack\obj103.pak,obj103.pak,.pak,19995633,Model
+pack\obj104.pak,obj104.pak,.pak,650933,Model
+pack\obj11.pak,obj11.pak,.pak,19999889,Model
+pack\obj12.pak,obj12.pak,.pak,19999920,Model
+pack\obj13.pak,obj13.pak,.pak,19999856,Model
+pack\obj14.pak,obj14.pak,.pak,19999981,Model
+pack\obj15.pak,obj15.pak,.pak,19999891,Model
+pack\obj16.pak,obj16.pak,.pak,19999936,Model
+pack\obj17.pak,obj17.pak,.pak,19999888,Model
+pack\obj18.pak,obj18.pak,.pak,19999880,Model
+pack\obj19.pak,obj19.pak,.pak,19999909,Model
+pack\obj2.pak,obj2.pak,.pak,19999900,Model
+pack\obj20.pak,obj20.pak,.pak,19999920,Model
+pack\obj21.pak,obj21.pak,.pak,19999940,Model
+pack\obj22.pak,obj22.pak,.pak,19999118,Model
+pack\obj23.pak,obj23.pak,.pak,19999945,Model
+pack\obj24.pak,obj24.pak,.pak,19999869,Model
+pack\obj25.pak,obj25.pak,.pak,19999936,Model
+pack\obj26.pak,obj26.pak,.pak,19999985,Model
+pack\obj27.pak,obj27.pak,.pak,19999964,Model
+pack\obj28.pak,obj28.pak,.pak,19999864,Model
+pack\obj29.pak,obj29.pak,.pak,19999990,Model
+pack\obj3.pak,obj3.pak,.pak,19999928,Model
+pack\obj30.pak,obj30.pak,.pak,19999923,Model
+pack\obj31.pak,obj31.pak,.pak,19999950,Model
+pack\obj32.pak,obj32.pak,.pak,19999879,Model
+pack\obj33.pak,obj33.pak,.pak,19999824,Model
+pack\obj34.pak,obj34.pak,.pak,19999872,Model
+pack\obj35.pak,obj35.pak,.pak,19999900,Model
+pack\obj36.pak,obj36.pak,.pak,19999808,Model
+pack\obj37.pak,obj37.pak,.pak,19983915,Model
+pack\obj38.pak,obj38.pak,.pak,19999995,Model
+pack\obj39.pak,obj39.pak,.pak,19999988,Model
+pack\obj4.pak,obj4.pak,.pak,19999958,Model
+pack\obj40.pak,obj40.pak,.pak,19999936,Model
+pack\obj41.pak,obj41.pak,.pak,19998837,Model
+pack\obj42.pak,obj42.pak,.pak,19999293,Model
+pack\obj43.pak,obj43.pak,.pak,19999929,Model
+pack\obj44.pak,obj44.pak,.pak,19999898,Model
+pack\obj45.pak,obj45.pak,.pak,19999573,Model
+pack\obj46.pak,obj46.pak,.pak,19999990,Model
+pack\obj47.pak,obj47.pak,.pak,19999984,Model
+pack\obj48.pak,obj48.pak,.pak,19999884,Model
+pack\obj49.pak,obj49.pak,.pak,19999967,Model
+pack\obj5.pak,obj5.pak,.pak,19999976,Model
+pack\obj50.pak,obj50.pak,.pak,19999997,Model
+pack\obj51.pak,obj51.pak,.pak,19999826,Model
+pack\obj52.pak,obj52.pak,.pak,19999678,Model
+pack\obj53.pak,obj53.pak,.pak,19999997,Model
+pack\obj54.pak,obj54.pak,.pak,19999906,Model
+pack\obj55.pak,obj55.pak,.pak,19999828,Model
+pack\obj56.pak,obj56.pak,.pak,19999935,Model
+pack\obj57.pak,obj57.pak,.pak,19999982,Model
+pack\obj58.pak,obj58.pak,.pak,19999880,Model
+pack\obj59.pak,obj59.pak,.pak,19999985,Model
+pack\obj6.pak,obj6.pak,.pak,19999860,Model
+pack\obj60.pak,obj60.pak,.pak,19999835,Model
+pack\obj61.pak,obj61.pak,.pak,19999982,Model
+pack\obj62.pak,obj62.pak,.pak,19999843,Model
+pack\obj63.pak,obj63.pak,.pak,19999874,Model
+pack\obj64.pak,obj64.pak,.pak,19999989,Model
+pack\obj65.pak,obj65.pak,.pak,19999815,Model
+pack\obj66.pak,obj66.pak,.pak,19999020,Model
+pack\obj67.pak,obj67.pak,.pak,19999972,Model
+pack\obj68.pak,obj68.pak,.pak,19996461,Model
+pack\obj69.pak,obj69.pak,.pak,19999908,Model
+pack\obj7.pak,obj7.pak,.pak,19999940,Model
+pack\obj70.pak,obj70.pak,.pak,19999982,Model
+pack\obj71.pak,obj71.pak,.pak,19999843,Model
+pack\obj72.pak,obj72.pak,.pak,19998430,Model
+pack\obj73.pak,obj73.pak,.pak,19999867,Model
+pack\obj74.pak,obj74.pak,.pak,19999629,Model
+pack\obj75.pak,obj75.pak,.pak,19983253,Model
+pack\obj76.pak,obj76.pak,.pak,19999783,Model
+pack\obj77.pak,obj77.pak,.pak,19982899,Model
+pack\obj78.pak,obj78.pak,.pak,19999889,Model
+pack\obj79.pak,obj79.pak,.pak,19999629,Model
+pack\obj8.pak,obj8.pak,.pak,19999995,Model
+pack\obj80.pak,obj80.pak,.pak,19999595,Model
+pack\obj81.pak,obj81.pak,.pak,19999617,Model
+pack\obj82.pak,obj82.pak,.pak,19991654,Model
+pack\obj83.pak,obj83.pak,.pak,19999360,Model
+pack\obj84.pak,obj84.pak,.pak,19998981,Model
+pack\obj85.pak,obj85.pak,.pak,19981850,Model
+pack\obj86.pak,obj86.pak,.pak,19997492,Model
+pack\obj87.pak,obj87.pak,.pak,19996390,Model
+pack\obj88.pak,obj88.pak,.pak,19999835,Model
+pack\obj89.pak,obj89.pak,.pak,19997692,Model
+pack\obj9.pak,obj9.pak,.pak,19999973,Model
+pack\obj90.pak,obj90.pak,.pak,19990932,Model
+pack\obj91.pak,obj91.pak,.pak,19999832,Model
+pack\obj92.pak,obj92.pak,.pak,19998652,Model
+pack\obj93.pak,obj93.pak,.pak,19999851,Model
+pack\obj94.pak,obj94.pak,.pak,19999571,Model
+pack\obj95.pak,obj95.pak,.pak,19999705,Model
+pack\obj96.pak,obj96.pak,.pak,19999172,Model
+pack\obj97.pak,obj97.pak,.pak,19999669,Model
+pack\obj98.pak,obj98.pak,.pak,19998880,Model
+pack\obj99.pak,obj99.pak,.pak,19998782,Model
+pack\prop.pak,prop.pak,.pak,848,Other / Unknown
+pack\prop0.pak,prop0.pak,.pak,19178914,Other / Unknown
+pack\scr.pak,scr.pak,.pak,18208,Script
+pack\scr0.pak,scr0.pak,.pak,894437,Script
+pack\sound.pak,sound.pak,.pak,484408,Sound / Audio
+pack\sound0.pak,sound0.pak,.pak,19994674,Sound / Audio
+pack\sound1.pak,sound1.pak,.pak,19995586,Sound / Audio
+pack\sound10.pak,sound10.pak,.pak,19982004,Sound / Audio
+pack\sound11.pak,sound11.pak,.pak,19999737,Sound / Audio
+pack\sound12.pak,sound12.pak,.pak,19995355,Sound / Audio
+pack\sound13.pak,sound13.pak,.pak,19992553,Sound / Audio
+pack\sound14.pak,sound14.pak,.pak,19992292,Sound / Audio
+pack\sound15.pak,sound15.pak,.pak,19971404,Sound / Audio
+pack\sound16.pak,sound16.pak,.pak,19999615,Sound / Audio
+pack\sound17.pak,sound17.pak,.pak,19995007,Sound / Audio
+pack\sound18.pak,sound18.pak,.pak,19985804,Sound / Audio
+pack\sound19.pak,sound19.pak,.pak,19998877,Sound / Audio
+pack\sound2.pak,sound2.pak,.pak,19995339,Sound / Audio
+pack\sound20.pak,sound20.pak,.pak,19979242,Sound / Audio
+pack\sound21.pak,sound21.pak,.pak,19990328,Sound / Audio
+pack\sound22.pak,sound22.pak,.pak,19983080,Sound / Audio
+pack\sound23.pak,sound23.pak,.pak,19994398,Sound / Audio
+pack\sound24.pak,sound24.pak,.pak,19996296,Sound / Audio
+pack\sound25.pak,sound25.pak,.pak,19998604,Sound / Audio
+pack\sound26.pak,sound26.pak,.pak,19979216,Sound / Audio
+pack\sound27.pak,sound27.pak,.pak,19997750,Sound / Audio
+pack\sound28.pak,sound28.pak,.pak,19975940,Sound / Audio
+pack\sound29.pak,sound29.pak,.pak,19998280,Sound / Audio
+pack\sound3.pak,sound3.pak,.pak,19991276,Sound / Audio
+pack\sound30.pak,sound30.pak,.pak,19986672,Sound / Audio
+pack\sound31.pak,sound31.pak,.pak,19987746,Sound / Audio
+pack\sound32.pak,sound32.pak,.pak,19990730,Sound / Audio
+pack\sound33.pak,sound33.pak,.pak,19989514,Sound / Audio
+pack\sound34.pak,sound34.pak,.pak,19983740,Sound / Audio
+pack\sound35.pak,sound35.pak,.pak,19972938,Sound / Audio
+pack\sound36.pak,sound36.pak,.pak,19998158,Sound / Audio
+pack\sound37.pak,sound37.pak,.pak,19986518,Sound / Audio
+pack\sound38.pak,sound38.pak,.pak,19986040,Sound / Audio
+pack\sound39.pak,sound39.pak,.pak,19998060,Sound / Audio
+pack\sound4.pak,sound4.pak,.pak,19983230,Sound / Audio
+pack\sound40.pak,sound40.pak,.pak,19989942,Sound / Audio
+pack\sound41.pak,sound41.pak,.pak,19983570,Sound / Audio
+pack\sound42.pak,sound42.pak,.pak,19986864,Sound / Audio
+pack\sound43.pak,sound43.pak,.pak,19981990,Sound / Audio
+pack\sound44.pak,sound44.pak,.pak,19996464,Sound / Audio
+pack\sound45.pak,sound45.pak,.pak,19997289,Sound / Audio
+pack\sound46.pak,sound46.pak,.pak,19998606,Sound / Audio
+pack\sound47.pak,sound47.pak,.pak,19989948,Sound / Audio
+pack\sound48.pak,sound48.pak,.pak,19996656,Sound / Audio
+pack\sound49.pak,sound49.pak,.pak,19977804,Sound / Audio
+pack\sound5.pak,sound5.pak,.pak,19984161,Sound / Audio
+pack\sound50.pak,sound50.pak,.pak,19992110,Sound / Audio
+pack\sound51.pak,sound51.pak,.pak,19972655,Sound / Audio
+pack\sound52.pak,sound52.pak,.pak,19989068,Sound / Audio
+pack\sound53.pak,sound53.pak,.pak,19992168,Sound / Audio
+pack\sound54.pak,sound54.pak,.pak,19972685,Sound / Audio
+pack\sound55.pak,sound55.pak,.pak,19980628,Sound / Audio
+pack\sound56.pak,sound56.pak,.pak,19990816,Sound / Audio
+pack\sound57.pak,sound57.pak,.pak,19992604,Sound / Audio
+pack\sound58.pak,sound58.pak,.pak,19996210,Sound / Audio
+pack\sound59.pak,sound59.pak,.pak,19982228,Sound / Audio
+pack\sound6.pak,sound6.pak,.pak,19985947,Sound / Audio
+pack\sound60.pak,sound60.pak,.pak,19968328,Sound / Audio
+pack\sound61.pak,sound61.pak,.pak,19990546,Sound / Audio
+pack\sound62.pak,sound62.pak,.pak,19992296,Sound / Audio
+pack\sound63.pak,sound63.pak,.pak,19968164,Sound / Audio
+pack\sound64.pak,sound64.pak,.pak,9881828,Sound / Audio
+pack\sound7.pak,sound7.pak,.pak,19997331,Sound / Audio
+pack\sound8.pak,sound8.pak,.pak,19989465,Sound / Audio
+pack\sound9.pak,sound9.pak,.pak,19996773,Sound / Audio
+pack\tan.pak,tan.pak,.pak,6960808,Terrain
+pack\tbl.pak,tbl.pak,.pak,38368,Table
+pack\tbl0.pak,tbl0.pak,.pak,19603352,Table
+pack\tbl1.pak,tbl1.pak,.pak,19991335,Table
+pack\terrain0.pak,terrain0.pak,.pak,19999999,Terrain
+pack\terrain1.pak,terrain1.pak,.pak,19999996,Terrain
+pack\terrain10.pak,terrain10.pak,.pak,19999999,Terrain
+pack\terrain100.pak,terrain100.pak,.pak,19984701,Terrain
+pack\terrain101.pak,terrain101.pak,.pak,19989818,Terrain
+pack\terrain102.pak,terrain102.pak,.pak,19993977,Terrain
+pack\terrain103.pak,terrain103.pak,.pak,19993326,Terrain
+pack\terrain104.pak,terrain104.pak,.pak,19996315,Terrain
+pack\terrain105.pak,terrain105.pak,.pak,19986408,Terrain
+pack\terrain106.pak,terrain106.pak,.pak,19996135,Terrain
+pack\terrain107.pak,terrain107.pak,.pak,19994443,Terrain
+pack\terrain108.pak,terrain108.pak,.pak,19987472,Terrain
+pack\terrain109.pak,terrain109.pak,.pak,19988128,Terrain
+pack\terrain11.pak,terrain11.pak,.pak,19999998,Terrain
+pack\terrain110.pak,terrain110.pak,.pak,19984138,Terrain
+pack\terrain111.pak,terrain111.pak,.pak,19993987,Terrain
+pack\terrain112.pak,terrain112.pak,.pak,19990217,Terrain
+pack\terrain113.pak,terrain113.pak,.pak,19994569,Terrain
+pack\terrain114.pak,terrain114.pak,.pak,19986975,Terrain
+pack\terrain115.pak,terrain115.pak,.pak,19985772,Terrain
+pack\terrain116.pak,terrain116.pak,.pak,19996392,Terrain
+pack\terrain117.pak,terrain117.pak,.pak,19990100,Terrain
+pack\terrain118.pak,terrain118.pak,.pak,19987601,Terrain
+pack\terrain119.pak,terrain119.pak,.pak,19984189,Terrain
+pack\terrain12.pak,terrain12.pak,.pak,19999997,Terrain
+pack\terrain120.pak,terrain120.pak,.pak,19991558,Terrain
+pack\terrain121.pak,terrain121.pak,.pak,19996113,Terrain
+pack\terrain122.pak,terrain122.pak,.pak,19913460,Terrain
+pack\terrain123.pak,terrain123.pak,.pak,19996296,Terrain
+pack\terrain124.pak,terrain124.pak,.pak,19979518,Terrain
+pack\terrain125.pak,terrain125.pak,.pak,19989846,Terrain
+pack\terrain126.pak,terrain126.pak,.pak,19997043,Terrain
+pack\terrain127.pak,terrain127.pak,.pak,19981345,Terrain
+pack\terrain128.pak,terrain128.pak,.pak,19919407,Terrain
+pack\terrain129.pak,terrain129.pak,.pak,19996245,Terrain
+pack\terrain13.pak,terrain13.pak,.pak,19999999,Terrain
+pack\terrain130.pak,terrain130.pak,.pak,19986353,Terrain
+pack\terrain131.pak,terrain131.pak,.pak,19982158,Terrain
+pack\terrain132.pak,terrain132.pak,.pak,19998431,Terrain
+pack\terrain133.pak,terrain133.pak,.pak,19988579,Terrain
+pack\terrain134.pak,terrain134.pak,.pak,19986857,Terrain
+pack\terrain135.pak,terrain135.pak,.pak,19985391,Terrain
+pack\terrain136.pak,terrain136.pak,.pak,19979283,Terrain
+pack\terrain137.pak,terrain137.pak,.pak,19992995,Terrain
+pack\terrain138.pak,terrain138.pak,.pak,19985293,Terrain
+pack\terrain139.pak,terrain139.pak,.pak,19986546,Terrain
+pack\terrain14.pak,terrain14.pak,.pak,19999996,Terrain
+pack\terrain140.pak,terrain140.pak,.pak,19998125,Terrain
+pack\terrain141.pak,terrain141.pak,.pak,19996196,Terrain
+pack\terrain142.pak,terrain142.pak,.pak,19980096,Terrain
+pack\terrain143.pak,terrain143.pak,.pak,19997997,Terrain
+pack\terrain144.pak,terrain144.pak,.pak,19989214,Terrain
+pack\terrain145.pak,terrain145.pak,.pak,19986950,Terrain
+pack\terrain146.pak,terrain146.pak,.pak,19992859,Terrain
+pack\terrain147.pak,terrain147.pak,.pak,19988908,Terrain
+pack\terrain148.pak,terrain148.pak,.pak,19987589,Terrain
+pack\terrain149.pak,terrain149.pak,.pak,19997989,Terrain
+pack\terrain15.pak,terrain15.pak,.pak,19999997,Terrain
+pack\terrain150.pak,terrain150.pak,.pak,19999672,Terrain
+pack\terrain151.pak,terrain151.pak,.pak,19981904,Terrain
+pack\terrain152.pak,terrain152.pak,.pak,19989940,Terrain
+pack\terrain153.pak,terrain153.pak,.pak,19986701,Terrain
+pack\terrain154.pak,terrain154.pak,.pak,19987842,Terrain
+pack\terrain155.pak,terrain155.pak,.pak,19993000,Terrain
+pack\terrain156.pak,terrain156.pak,.pak,19998282,Terrain
+pack\terrain157.pak,terrain157.pak,.pak,19980934,Terrain
+pack\terrain158.pak,terrain158.pak,.pak,19996387,Terrain
+pack\terrain159.pak,terrain159.pak,.pak,19999947,Terrain
+pack\terrain16.pak,terrain16.pak,.pak,19999997,Terrain
+pack\terrain160.pak,terrain160.pak,.pak,19985846,Terrain
+pack\terrain161.pak,terrain161.pak,.pak,19994464,Terrain
+pack\terrain162.pak,terrain162.pak,.pak,16079067,Terrain
+pack\terrain17.pak,terrain17.pak,.pak,19999997,Terrain
+pack\terrain18.pak,terrain18.pak,.pak,19999997,Terrain
+pack\terrain19.pak,terrain19.pak,.pak,19999998,Terrain
+pack\terrain2.pak,terrain2.pak,.pak,19999999,Terrain
+pack\terrain20.pak,terrain20.pak,.pak,19999999,Terrain
+pack\terrain21.pak,terrain21.pak,.pak,19999996,Terrain
+pack\terrain22.pak,terrain22.pak,.pak,19999997,Terrain
+pack\terrain23.pak,terrain23.pak,.pak,19999997,Terrain
+pack\terrain24.pak,terrain24.pak,.pak,19999998,Terrain
+pack\terrain25.pak,terrain25.pak,.pak,19999999,Terrain
+pack\terrain26.pak,terrain26.pak,.pak,19999996,Terrain
+pack\terrain27.pak,terrain27.pak,.pak,19999996,Terrain
+pack\terrain28.pak,terrain28.pak,.pak,19999996,Terrain
+pack\terrain29.pak,terrain29.pak,.pak,19999999,Terrain
+pack\terrain3.pak,terrain3.pak,.pak,19999997,Terrain
+pack\terrain30.pak,terrain30.pak,.pak,19999996,Terrain
+pack\terrain31.pak,terrain31.pak,.pak,19999996,Terrain
+pack\terrain32.pak,terrain32.pak,.pak,19999998,Terrain
+pack\terrain33.pak,terrain33.pak,.pak,19999999,Terrain
+pack\terrain34.pak,terrain34.pak,.pak,19999977,Terrain
+pack\terrain35.pak,terrain35.pak,.pak,19999982,Terrain
+pack\terrain36.pak,terrain36.pak,.pak,19999973,Terrain
+pack\terrain37.pak,terrain37.pak,.pak,19999970,Terrain
+pack\terrain38.pak,terrain38.pak,.pak,19999986,Terrain
+pack\terrain39.pak,terrain39.pak,.pak,19999993,Terrain
+pack\terrain4.pak,terrain4.pak,.pak,19999996,Terrain
+pack\terrain40.pak,terrain40.pak,.pak,19999977,Terrain
+pack\terrain41.pak,terrain41.pak,.pak,19999973,Terrain
+pack\terrain42.pak,terrain42.pak,.pak,19999998,Terrain
+pack\terrain43.pak,terrain43.pak,.pak,19999968,Terrain
+pack\terrain44.pak,terrain44.pak,.pak,19999973,Terrain
+pack\terrain45.pak,terrain45.pak,.pak,19999969,Terrain
+pack\terrain46.pak,terrain46.pak,.pak,19999990,Terrain
+pack\terrain47.pak,terrain47.pak,.pak,19999991,Terrain
+pack\terrain48.pak,terrain48.pak,.pak,19999999,Terrain
+pack\terrain49.pak,terrain49.pak,.pak,19999968,Terrain
+pack\terrain5.pak,terrain5.pak,.pak,19999999,Terrain
+pack\terrain50.pak,terrain50.pak,.pak,19999990,Terrain
+pack\terrain51.pak,terrain51.pak,.pak,19999354,Terrain
+pack\terrain52.pak,terrain52.pak,.pak,19999965,Terrain
+pack\terrain53.pak,terrain53.pak,.pak,19997017,Terrain
+pack\terrain54.pak,terrain54.pak,.pak,19999672,Terrain
+pack\terrain55.pak,terrain55.pak,.pak,19996946,Terrain
+pack\terrain56.pak,terrain56.pak,.pak,19999289,Terrain
+pack\terrain57.pak,terrain57.pak,.pak,19999628,Terrain
+pack\terrain58.pak,terrain58.pak,.pak,19999876,Terrain
+pack\terrain59.pak,terrain59.pak,.pak,19997247,Terrain
+pack\terrain6.pak,terrain6.pak,.pak,17134405,Terrain
+pack\terrain60.pak,terrain60.pak,.pak,19997464,Terrain
+pack\terrain61.pak,terrain61.pak,.pak,19996989,Terrain
+pack\terrain62.pak,terrain62.pak,.pak,19996407,Terrain
+pack\terrain63.pak,terrain63.pak,.pak,19998522,Terrain
+pack\terrain64.pak,terrain64.pak,.pak,19999574,Terrain
+pack\terrain65.pak,terrain65.pak,.pak,19998424,Terrain
+pack\terrain66.pak,terrain66.pak,.pak,19999938,Terrain
+pack\terrain67.pak,terrain67.pak,.pak,19997034,Terrain
+pack\terrain68.pak,terrain68.pak,.pak,19999913,Terrain
+pack\terrain69.pak,terrain69.pak,.pak,19997591,Terrain
+pack\terrain7.pak,terrain7.pak,.pak,19999997,Terrain
+pack\terrain70.pak,terrain70.pak,.pak,19996323,Terrain
+pack\terrain71.pak,terrain71.pak,.pak,19999493,Terrain
+pack\terrain72.pak,terrain72.pak,.pak,19999225,Terrain
+pack\terrain73.pak,terrain73.pak,.pak,19999532,Terrain
+pack\terrain74.pak,terrain74.pak,.pak,19996110,Terrain
+pack\terrain75.pak,terrain75.pak,.pak,19996821,Terrain
+pack\terrain76.pak,terrain76.pak,.pak,19998068,Terrain
+pack\terrain77.pak,terrain77.pak,.pak,19999775,Terrain
+pack\terrain78.pak,terrain78.pak,.pak,19998414,Terrain
+pack\terrain79.pak,terrain79.pak,.pak,19998726,Terrain
+pack\terrain8.pak,terrain8.pak,.pak,19999998,Terrain
+pack\terrain80.pak,terrain80.pak,.pak,19999592,Terrain
+pack\terrain81.pak,terrain81.pak,.pak,19996601,Terrain
+pack\terrain82.pak,terrain82.pak,.pak,19996191,Terrain
+pack\terrain83.pak,terrain83.pak,.pak,19997339,Terrain
+pack\terrain84.pak,terrain84.pak,.pak,19998181,Terrain
+pack\terrain85.pak,terrain85.pak,.pak,19998513,Terrain
+pack\terrain86.pak,terrain86.pak,.pak,19996280,Terrain
+pack\terrain87.pak,terrain87.pak,.pak,19996925,Terrain
+pack\terrain88.pak,terrain88.pak,.pak,19998023,Terrain
+pack\terrain89.pak,terrain89.pak,.pak,19999125,Terrain
+pack\terrain9.pak,terrain9.pak,.pak,19999998,Terrain
+pack\terrain90.pak,terrain90.pak,.pak,19996206,Terrain
+pack\terrain91.pak,terrain91.pak,.pak,19998426,Terrain
+pack\terrain92.pak,terrain92.pak,.pak,19999520,Terrain
+pack\terrain93.pak,terrain93.pak,.pak,19999349,Terrain
+pack\terrain94.pak,terrain94.pak,.pak,19997287,Terrain
+pack\terrain95.pak,terrain95.pak,.pak,15221197,Terrain
+pack\terrain96.pak,terrain96.pak,.pak,19989308,Terrain
+pack\terrain97.pak,terrain97.pak,.pak,19984664,Terrain
+pack\terrain98.pak,terrain98.pak,.pak,19987416,Terrain
+pack\terrain99.pak,terrain99.pak,.pak,19988934,Terrain
+pack\tex.pak,tex.pak,.pak,3958504,Texture
+pack\tex0.pak,tex0.pak,.pak,19999933,Texture
+pack\tex1.pak,tex1.pak,.pak,19999746,Texture
+pack\tex10.pak,tex10.pak,.pak,19999912,Texture
+pack\tex11.pak,tex11.pak,.pak,19999727,Texture
+pack\tex12.pak,tex12.pak,.pak,19999808,Texture
+pack\tex13.pak,tex13.pak,.pak,19999748,Texture
+pack\tex14.pak,tex14.pak,.pak,19999656,Texture
+pack\tex15.pak,tex15.pak,.pak,19999984,Texture
+pack\tex16.pak,tex16.pak,.pak,19999602,Texture
+pack\tex17.pak,tex17.pak,.pak,19998871,Texture
+pack\tex18.pak,tex18.pak,.pak,19998008,Texture
+pack\tex19.pak,tex19.pak,.pak,19999684,Texture
+pack\tex2.pak,tex2.pak,.pak,19999545,Texture
+pack\tex20.pak,tex20.pak,.pak,19999272,Texture
+pack\tex21.pak,tex21.pak,.pak,19999604,Texture
+pack\tex22.pak,tex22.pak,.pak,19998887,Texture
+pack\tex23.pak,tex23.pak,.pak,19998976,Texture
+pack\tex24.pak,tex24.pak,.pak,19999974,Texture
+pack\tex25.pak,tex25.pak,.pak,19999616,Texture
+pack\tex26.pak,tex26.pak,.pak,19998794,Texture
+pack\tex27.pak,tex27.pak,.pak,19988608,Texture
+pack\tex28.pak,tex28.pak,.pak,19999352,Texture
+pack\tex29.pak,tex29.pak,.pak,19999734,Texture
+pack\tex3.pak,tex3.pak,.pak,19999560,Texture
+pack\tex30.pak,tex30.pak,.pak,19999968,Texture
+pack\tex31.pak,tex31.pak,.pak,19999410,Texture
+pack\tex32.pak,tex32.pak,.pak,19998609,Texture
+pack\tex33.pak,tex33.pak,.pak,19998488,Texture
+pack\tex34.pak,tex34.pak,.pak,19998620,Texture
+pack\tex35.pak,tex35.pak,.pak,19999633,Texture
+pack\tex36.pak,tex36.pak,.pak,19997896,Texture
+pack\tex37.pak,tex37.pak,.pak,19999656,Texture
+pack\tex38.pak,tex38.pak,.pak,19999096,Texture
+pack\tex39.pak,tex39.pak,.pak,19999232,Texture
+pack\tex4.pak,tex4.pak,.pak,19998578,Texture
+pack\tex40.pak,tex40.pak,.pak,19999064,Texture
+pack\tex41.pak,tex41.pak,.pak,19998572,Texture
+pack\tex42.pak,tex42.pak,.pak,19999223,Texture
+pack\tex43.pak,tex43.pak,.pak,19999277,Texture
+pack\tex44.pak,tex44.pak,.pak,19999714,Texture
+pack\tex45.pak,tex45.pak,.pak,19999120,Texture
+pack\tex46.pak,tex46.pak,.pak,19999183,Texture
+pack\tex47.pak,tex47.pak,.pak,19999099,Texture
+pack\tex48.pak,tex48.pak,.pak,19998912,Texture
+pack\tex49.pak,tex49.pak,.pak,19999723,Texture
+pack\tex5.pak,tex5.pak,.pak,19999002,Texture
+pack\tex50.pak,tex50.pak,.pak,19997104,Texture
+pack\tex51.pak,tex51.pak,.pak,19999616,Texture
+pack\tex52.pak,tex52.pak,.pak,19998760,Texture
+pack\tex53.pak,tex53.pak,.pak,19997432,Texture
+pack\tex54.pak,tex54.pak,.pak,19998832,Texture
+pack\tex55.pak,tex55.pak,.pak,19997336,Texture
+pack\tex56.pak,tex56.pak,.pak,19998504,Texture
+pack\tex57.pak,tex57.pak,.pak,19995920,Texture
+pack\tex58.pak,tex58.pak,.pak,19675871,Texture
+pack\tex59.pak,tex59.pak,.pak,19998820,Texture
+pack\tex6.pak,tex6.pak,.pak,19999920,Texture
+pack\tex60.pak,tex60.pak,.pak,2506928,Texture
+pack\tex7.pak,tex7.pak,.pak,19999205,Texture
+pack\tex8.pak,tex8.pak,.pak,19999201,Texture
+pack\tex9.pak,tex9.pak,.pak,19999782,Texture
+screenshot\readme.txt,readme.txt,.txt,20,Script
+ts\evt.e,evt.e,.e,67676,Other / Unknown
+ts\objtrigger.e,objtrigger.e,.e,325588,Model
+ts\pctrigger.e,pctrigger.e,.e,63260,Other / Unknown
+ts\quest.e,quest.e,.e,2221452,Other / Unknown

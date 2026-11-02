@@ -9,6 +9,17 @@ extends Node3D
 signal animation_started(anim_name: String)
 signal animation_finished(anim_name: String)
 
+enum Race {
+	HUMAN = 0,
+	NAMEK = 1,
+	MAJIN = 2
+}
+
+enum Gender {
+	MALE = 0,
+	FEMALE = 1
+}
+
 @export var character_property_name: String = ""
 @export var race: int = 0
 @export var gender: int = 0
@@ -222,31 +233,31 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 	attachment.bone_name = _skeleton.get_bone_name(bone_idx)
 	_skeleton.add_child(attachment)
 
-	# 严格按照官方 tbl/linkitemtrasformlist.xml 与各族儿童骨骼比例设定位置与旋转
+	# 严格按照官方 tbl/linkitemtrasformlist.xml 与各族骨骼比例设定位置与旋转
 	if slot_name == "face":
 		var sct_scale := 1.30
 		var sct_pos := Vector3(-0.005, -0.010, -0.010)
 		var rot_x_deg := 0.0
 
-		if race == 2: # Majin
-			if gender == 0: # Male
+		if race == Race.MAJIN or race == 2:
+			if gender == Gender.MALE or gender == 0:
 				sct_scale = 0.95
 				sct_pos = Vector3(-0.005, -0.010, -0.010)
 				rot_x_deg = 0.0
-			else: # Female
+			else:
 				sct_scale = 1.20
 				sct_pos = Vector3(0.0, -0.010, 0.0)
 				rot_x_deg = 0.0
-		elif race == 1: # Namek
+		elif race == Race.NAMEK or race == 1:
 			sct_scale = 1.20
 			sct_pos = Vector3(-0.020, -0.030, -0.010)
 			rot_x_deg = -8.0
 		else: # Human
-			if gender == 1: # Female
+			if gender == Gender.FEMALE or gender == 1:
 				sct_scale = 1.30
 				sct_pos = Vector3(-0.010, -0.015, -0.020)
 				rot_x_deg = 5.0
-			else: # Male
+			else:
 				sct_scale = 1.30
 				sct_pos = Vector3(-0.005, -0.010, -0.010)
 				rot_x_deg = 0.0
@@ -260,16 +271,35 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 		var basis := Basis.from_euler(sct_rot).scaled(Vector3(sct_scale, sct_scale, sct_scale))
 		mesh_inst.transform = Transform3D(basis, sct_pos)
 
-		# 史考特镜片半透明与双面深度渲染 (对标 OpenDBO: I_SCT 原版镜片透光度)
-		var sct_mat := StandardMaterial3D.new()
-		var sct_tex_path := "res://assets/tex/texture/item/i_sct_01.png"
-		if ResourceLoader.exists(sct_tex_path):
-			sct_mat.albedo_texture = ResourceLoader.load(sct_tex_path)
-		sct_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA_DEPTH_PRE_PASS
-		sct_mat.cull_mode = BaseMaterial3D.CULL_DISABLED
-		sct_mat.roughness = 0.3
+		# 史考特耳机材质精细分工 (Surface 0: 结实不透明耳机外壳，Surface 1: 双面晶莹半透明镜片)
+		var sct_tex_name := raw_model.to_lower()
+		var sct_tex_path := "res://assets/tex/texture/item/" + sct_tex_name + ".png"
+		if not ResourceLoader.exists(sct_tex_path):
+			sct_tex_path = "res://assets/tex/texture/item/i_sct_01.png"
+		var sct_albedo: Texture2D = (ResourceLoader.load(sct_tex_path) as Texture2D) if ResourceLoader.exists(sct_tex_path) else null
+
 		for s in range(mesh_inst.mesh.get_surface_count()):
-			mesh_inst.set_surface_override_material(s, sct_mat)
+			if s == 0:
+				var body_mat := StandardMaterial3D.new()
+				body_mat.roughness = 0.5
+				body_mat.metallic = 0.1
+				body_mat.cull_mode = BaseMaterial3D.CULL_BACK
+				body_mat.transparency = BaseMaterial3D.TRANSPARENCY_DISABLED
+				if sct_albedo:
+					body_mat.albedo_texture = sct_albedo
+				body_mat.albedo_color = Color.WHITE
+				mesh_inst.set_surface_override_material(0, body_mat)
+			else:
+				var lens_mat := StandardMaterial3D.new()
+				lens_mat.transparency = BaseMaterial3D.TRANSPARENCY_ALPHA
+				lens_mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+				lens_mat.roughness = 0.1
+				lens_mat.metallic = 0.0
+				lens_mat.albedo_color = Color(0.2, 0.95, 0.35, 0.45)
+				lens_mat.emission_enabled = true
+				lens_mat.emission = Color(0.1, 0.85, 0.25)
+				lens_mat.emission_energy_multiplier = 0.5
+				mesh_inst.set_surface_override_material(s, lens_mat)
 	else:
 		if not is_adult:
 			mesh_inst.scale = Vector3(0.65, 0.65, 0.65)
@@ -277,6 +307,7 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 		mesh_inst.position = Vector3.ZERO
 
 	_clear_owner_recursive(mesh_inst)
+	mesh_inst.owner = null
 	attachment.add_child(mesh_inst)
 	_slots[slot_name] = mesh_inst
 
@@ -669,12 +700,14 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 				smat.set_shader_parameter("race_mode", c_race)
 				mesh_inst.set_surface_override_material(s, smat)
 		elif is_underwear:
-			# 内衣/底裤：当角色穿着对应外装时隐藏，若无外装时显式保留，保证无装备时内裤/内衣绝不丢失
+			# 内衣/底裤：当角色穿着对应外装时隐藏，若无外装或外装为开胸/围巾时显式保留，保证绝不露洞
 			var should_hide_underwear := false
 			if "pants" in mat_name or "pants" in tex_name:
 				should_hide_underwear = has_legs
 			elif "jacket" in mat_name or "jacket" in tex_name:
-				should_hide_underwear = has_torso
+				var torso_path := str(equipped_glb_paths.get("torso", "")).to_lower()
+				var is_scarf_or_open_torso := ("mwo" in torso_path) or ("scarf" in torso_path)
+				should_hide_underwear = has_torso and not is_scarf_or_open_torso
 
 			if should_hide_underwear:
 				mesh_inst.set_surface_override_material(s, inv_mat)
@@ -690,9 +723,12 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 				mesh_inst.set_surface_override_material(s, umat)
 		elif is_jacket:
 			# 素体躯干与手臂表面（包含 jacket_skin 露胸/腹/臂皮肤与新手外套）
-			var is_hand := false
+			var is_majin_hand := (c_race == 2 and ((c_gender == 1 and (s == 2 or s == 10)) or (c_gender == 0 and (s == 4 or s == 7))))
+			var is_namek_hand := (c_race == 1 and (s == 2 or s == 3))
+			var is_human_hand := false
+
 			var arrays := mesh_inst.mesh.surface_get_arrays(s)
-			if arrays.size() > Mesh.ARRAY_VERTEX and arrays[Mesh.ARRAY_VERTEX].size() > 0:
+			if c_race == 0 and arrays.size() > Mesh.ARRAY_VERTEX and arrays[Mesh.ARRAY_VERTEX].size() > 0:
 				var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
 				var min_x := 999.0
 				var max_x := -999.0
@@ -700,43 +736,33 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 					if v.x < min_x: min_x = v.x
 					if v.x > max_x: max_x = v.x
 				if min_x > 0.35 or max_x < -0.35:
-					is_hand = true
+					is_human_hand = true
 
-			if is_hand:
-				# 手臂与小臂皮肤表面（对标旧工程 CharacterVisualEquipment.gd: surface_hands）
-				# 穿戴手套时隐藏素体小臂与手掌，彻底消除素体手掌穿透手套模型的穿模破皮；脱下手套时精准恢复皮肤
+			var is_hand_surface := is_majin_hand or is_namek_hand or is_human_hand
+
+			if is_hand_surface:
+				# 角色手掌与小臂手腕表面 (对标 OpenDBO: surface_hands)
+				# 穿戴手套时隐藏手掌，彻底消除素体手掌穿透手套的穿模破皮；脱下手套时精准恢复
 				if has_hands:
 					mesh_inst.set_surface_override_material(s, inv_mat)
 				else:
-					var skin_tex: Texture2D = orig_tex
 					if c_race == 1:
+						# 那美克星人手掌：直接采用原生烘焙高精纹理 (StandardMaterial3D 保真)
+						var nmat := StandardMaterial3D.new()
+						nmat.roughness = 0.65
+						nmat.cull_mode = BaseMaterial3D.CULL_BACK
 						var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
 						if ResourceLoader.exists(stex_path):
-							skin_tex = ResourceLoader.load(stex_path)
-					elif c_race == 2:
-						var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
-						skin_tex = DBOCharacterFactory.load_texture_safe(arm_path)
-					var smat := ShaderMaterial.new()
-					smat.shader = CHARACTER_SKIN_SHADER
-					if skin_tex:
-						smat.set_shader_parameter("base_tex", skin_tex)
-					smat.set_shader_parameter("skin_tint", body_skin_tint)
-					smat.set_shader_parameter("race_mode", c_race)
-					mesh_inst.set_surface_override_material(s, smat)
-			else:
-				# 躯干胸腹/颈肩表面（对标旧工程 surface_torso）
-				# 那美克星人：新手上衣为无袖开襟马甲，素体颈肩胸腹皮肤必须始终保持显示！
-				# 人类与魔人：穿戴上衣外套时隐藏素体胸腹，避免穿透衣物破皮
-				var should_hide_torso := has_torso and c_race != 1
-				if should_hide_torso:
-					mesh_inst.set_surface_override_material(s, inv_mat)
-				else:
-					if is_skin:
+							nmat.albedo_texture = ResourceLoader.load(stex_path)
+						elif orig_tex:
+							nmat.albedo_texture = orig_tex
+						nmat.albedo_color = Color.WHITE
+						mesh_inst.set_surface_override_material(s, nmat)
+					else:
 						var skin_tex: Texture2D = orig_tex
-						if c_race == 1:
-							var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
-							if ResourceLoader.exists(stex_path):
-								skin_tex = ResourceLoader.load(stex_path)
+						if c_race == 2:
+							var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
+							skin_tex = DBOCharacterFactory.load_texture_safe(arm_path)
 						var smat := ShaderMaterial.new()
 						smat.shader = CHARACTER_SKIN_SHADER
 						if skin_tex:
@@ -744,29 +770,88 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 						smat.set_shader_parameter("skin_tint", body_skin_tint)
 						smat.set_shader_parameter("race_mode", c_race)
 						mesh_inst.set_surface_override_material(s, smat)
+			else:
+				# 躯干胸腹/颈肩/大臂表面
+				# 魔人族：Surface 7(女)/Surface 8(男)为双臂，Surface 8(女)/Surface 9(男)为胸腹
+				var is_majin_arm := (c_race == 2 and ((c_gender == 1 and s == 7) or (c_gender == 0 and s == 8)))
+				var is_majin_torso_skin := (c_race == 2 and ((c_gender == 1 and s == 8) or (c_gender == 0 and s == 9)))
+
+				# 检查已穿戴上衣是否自带手臂模型 (若自带手臂，则隐藏素体手臂避免双重重叠导致 Z-fighting 白模)
+				var torso_path := str(equipped_glb_paths.get("torso", "")).to_lower()
+				var torso_has_its_own_arm := ("mmi" in torso_path)
+
+				if is_majin_arm:
+					if has_torso and torso_has_its_own_arm:
+						# 上衣模型已内建手臂网格，隐藏素体手臂，彻底根除双层网格重叠引起的白模走样
+						mesh_inst.set_surface_override_material(s, inv_mat)
 					else:
-						var cmat := StandardMaterial3D.new()
-						cmat.cull_mode = BaseMaterial3D.CULL_BACK
-						cmat.roughness = 0.65
-						if orig_tex:
-							cmat.albedo_texture = orig_tex
-						cmat.albedo_color = Color.WHITE
-						mesh_inst.set_surface_override_material(s, cmat)
+						# 意魔人上装(围巾)或无上衣：显示素体手臂
+						var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
+						var arm_tex: Texture2D = DBOCharacterFactory.load_texture_safe(arm_path)
+						var smat := ShaderMaterial.new()
+						smat.shader = CHARACTER_SKIN_SHADER
+						smat.set_shader_parameter("base_tex", arm_tex if arm_tex else orig_tex)
+						smat.set_shader_parameter("skin_tint", body_skin_tint)
+						smat.set_shader_parameter("race_mode", 2)
+						mesh_inst.set_surface_override_material(s, smat)
+				elif is_majin_torso_skin:
+					# 魔人胸腹皮肤：意魔人围巾与新手背心均为开胸款，素体胸腹必须显示并正确染色
+					var torso_skin_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin1.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin1.png"
+					var torso_tex: Texture2D = DBOCharacterFactory.load_texture_safe(torso_skin_path)
+					var smat := ShaderMaterial.new()
+					smat.shader = CHARACTER_SKIN_SHADER
+					smat.set_shader_parameter("base_tex", torso_tex if torso_tex else orig_tex)
+					smat.set_shader_parameter("skin_tint", body_skin_tint)
+					smat.set_shader_parameter("race_mode", 2)
+					mesh_inst.set_surface_override_material(s, smat)
+				elif c_race == 1:
+					# 那美克星人：新手上装为无袖开胸小马甲，素体颈肩胸腹皮肤必须显式保留！直接使用原生烘焙贴图
+					var nmat := StandardMaterial3D.new()
+					nmat.roughness = 0.65
+					nmat.cull_mode = BaseMaterial3D.CULL_BACK
+					var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
+					if ResourceLoader.exists(stex_path):
+						nmat.albedo_texture = ResourceLoader.load(stex_path)
+					elif orig_tex:
+						nmat.albedo_texture = orig_tex
+					nmat.albedo_color = Color.WHITE
+					mesh_inst.set_surface_override_material(s, nmat)
+				else:
+					# 人类躯干
+					var should_hide_torso := has_torso
+					if should_hide_torso:
+						mesh_inst.set_surface_override_material(s, inv_mat)
+					else:
+						if is_skin:
+							var smat := ShaderMaterial.new()
+							smat.shader = CHARACTER_SKIN_SHADER
+							if orig_tex:
+								smat.set_shader_parameter("base_tex", orig_tex)
+							smat.set_shader_parameter("skin_tint", body_skin_tint)
+							smat.set_shader_parameter("race_mode", c_race)
+							mesh_inst.set_surface_override_material(s, smat)
+						else:
+							var cmat := StandardMaterial3D.new()
+							cmat.cull_mode = BaseMaterial3D.CULL_BACK
+							cmat.roughness = 0.65
+							if orig_tex:
+								cmat.albedo_texture = orig_tex
+							cmat.albedo_color = Color.WHITE
+							mesh_inst.set_surface_override_material(s, cmat)
 		elif is_pants:
 			# 素体下装表面（包含 pants_skin 腿部皮肤与新手裤子）
 			if c_race == 1 and is_skin:
-				# 那美克星人：裤子表面为露踝皮肤 A_NAM_pants_skin01 时，始终保持显示以与新手灯笼裤自然衔接
-				var skin_tex: Texture2D = orig_tex
+				# 那美克星人：裤子表面为露踝皮肤 A_NAM_pants_skin01 时，直接使用官方原生烘焙贴图
+				var nmat := StandardMaterial3D.new()
+				nmat.roughness = 0.65
+				nmat.cull_mode = BaseMaterial3D.CULL_BACK
 				var stex_path := "res://assets/tex/texture/item/a_nam_pants_skin%02d.png" % skin_col_num
 				if ResourceLoader.exists(stex_path):
-					skin_tex = ResourceLoader.load(stex_path)
-				var smat := ShaderMaterial.new()
-				smat.shader = CHARACTER_SKIN_SHADER
-				if skin_tex:
-					smat.set_shader_parameter("base_tex", skin_tex)
-				smat.set_shader_parameter("skin_tint", Color.WHITE)
-				smat.set_shader_parameter("race_mode", 1)
-				mesh_inst.set_surface_override_material(s, smat)
+					nmat.albedo_texture = ResourceLoader.load(stex_path)
+				elif orig_tex:
+					nmat.albedo_texture = orig_tex
+				nmat.albedo_color = Color.WHITE
+				mesh_inst.set_surface_override_material(s, nmat)
 			elif has_legs:
 				mesh_inst.set_surface_override_material(s, inv_mat)
 			else:
