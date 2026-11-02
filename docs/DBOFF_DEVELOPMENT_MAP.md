@@ -272,7 +272,7 @@ OpenDBO 源码文件入口（后续按系统扩展，不代表本轮已逐函数
 
 ### 11.4 当前待补材料
 
-- dbo-web 当前架构/开发 Markdown、Worker 路由清单、认证接口定义、环境变量名称（不提供任何密钥值）、部署配置与最新部署状态。
+- dbo-web 根目录 ARCHITECTURE.md 已找到并读取；仍缺实际部署绑定/配置来源、非敏感环境配置说明、完整认证接口请求响应样本与当前生产/staging 运行时行为核验。
 - DBOFF 当前网络/HTTP/WebSocket/会话相关脚本、配置入口及调用方清单。
 - OpenDBO AuthServer、CharServer、GameServer 的登录/角色/频道握手协议、相关 packet 定义和服务端处理调用链。
 - 当前可用的开发 API 基址、测试账号/测试方式及脱敏请求/响应样本；不得在文档中记录密码、令牌或密钥。
@@ -302,3 +302,12 @@ OpenDBO 源码文件入口（后续按系统扩展，不代表本轮已逐函数
 
 **账号桥接是当前关键未决项：** dbo-account-api 使用 Cloudflare D1 账号与 session_token；OpenDBO AuthServer 则从自己的账号数据库查询账号记录，并在登录成功后由 MasterServer 体系发放原版 AuthKey。Cloudflare session_token、OpenDBO 数字 accountId 和原版 AuthKey 是不同凭证/标识，不能直接互换。必须设计明确的账号映射或受信任的服务端令牌交换，不得把 Cloudflare session_token 填进原版 AuthKey 字段，也不得让 Godot 客户端自行伪造 AuthKey。
 
+
+
+### 11.7 Cloudflare 当前 Worker 部署只读核对（2026-11-02）
+
+- Cloudflare 账户 DragonBallOffline 下，生产 dbo-account-api 当前最新部署为 version 14（version ID ad2618da-0e09-4884-97d9-dba86f064351，deployment ID 32ffd587-5398-4678-82de-ca702bb9ff36），100% 生产流量，部署时间 2026-10-23；绑定 D1 数据库 ID edb91621-24f3-47af-8798-54d1b3914154。
+- staging dbo-account-api-staging 当前最新部署为 version 10（version ID f5bdf929-66f1-4c8d-a2c8-a818a8cd7281，deployment ID cf0df87e-8cfd-4496-b908-4940d7ce9642），100% staging 流量，部署时间 2026-10-23；绑定独立 staging D1 ID 0d555faf-0ae3-486e-bafd-b3100534f7de。
+- 生产 Worker 当前 script-settings 的 observability 为 null；staging Worker 已启用 100% head sampling、持久化 invocation logs 和 traces。生产与 staging 资源仍保持独立。
+- 两个已部署版本的 script etag 元数据相同（d4a095...），但本轮没有下载部署包并与 GitHub worker.js 做字节级比对，因此不能声称仓库源码与线上版本完全一致。
+- 本轮仅调用 Cloudflare GET 读取部署、版本元数据和 settings；未修改 Worker、D1、Pages、Secrets 或部署流量。
