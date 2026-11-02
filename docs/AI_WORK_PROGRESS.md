@@ -872,3 +872,16 @@ The user supplied the next local PowerShell outputs:
 - No commit or push has been reported. Keep the change set uncommitted until the CSV header/sample and staged contents are reviewed.
 
 Next evidence requested: show the first several CSV rows (including the header) and, if needed, its column names/row count. Do not add the audit directory wholesale before review. The current staged asset whitelist appears correct based on the supplied diff and earlier staged-path filter; this does not validate the semantic correctness or completeness of the JSON data.
+
+
+## 17. PAK inventory CSV schema inspected (2026-11-02)
+
+The user supplied the CSV header and first 9 data rows from `docs/pak_audit_1_69/pak_inventory.csv`. The schema is:
+
+`relative_path, source_pack_dir, file_name, extension, size_bytes, size_mb, sha256, category, role, indexed_files_count`.
+
+The visible sample contains entries under `localize\\TAIWAN\\pack\\`, all with `.pak` extensions. The `flash.pak` row is categorized as UI / Flash Interactivity (SWF, GFX), role `header_index`, and reports `indexed_files_count=798`; the visible `flash0.pak` through `flash15.pak` rows are categorized as data volumes. This indicates a PAK-focused inventory with package hashes and some role/category metadata. It does **not** establish that the CSV covers the complete client root, non-PAK files, every package directory, or successful extraction. The 798 value is the indexed-files count reported for the flash header entry, not a verified total of all extracted files.
+
+The CSV's full row count, category/role distribution, path coverage, generation timestamp/tool, and relationship to the full-root inventory remain unknown. Do not yet describe it as a complete 1.69 TW client manifest. The user also appended a final newline to local `.gitignore` and ran `git add .gitignore`; Git's CRLF-to-LF warning is a line-ending normalization notice, not a failure.
+
+Next: inspect CSV row count and group by category, role, and source_pack_dir; confirm whether every row is a PAK and whether paths span only `localize\\TAIWAN\\pack\\` or additional directories. Keep the CSV untracked until its scope and reproducibility are clear. No commit/push has been reported.
