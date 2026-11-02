@@ -247,3 +247,12 @@ Godot 客户端应使用明确配置的 Worker API 基址；开发期使用 stag
 - 需要进一步定义 GM 发放的业务范围与服务端接口。
 
 本节记录产品方向与架构约束；没有创建启动器工程、修改 Godot/Worker/D1/R2 或部署。
+
+
+## 12. 本地存档可靠性第一阶段审计（2026-11-02）
+
+当前 main 分支第一轮代码审计发现：SaveManager 对账号/角色 JSON 直接以 `FileAccess.WRITE` 覆盖，没有观察到原子替换、备份轮换、校验或损坏恢复；尚无统一运行时快照聚合入口。世界位置/方向、玩家生命/能量/RP/属性、背包/装备/胶囊盒/货币、任务进度等运行时状态在已读脚本中没有形成完整序列化闭环。InventoryManager 持有背包/装备/胶囊盒/zenny；QuestManager 持有 active/completed quests；CharacterBase 持有生命、能量、RP 和六维属性。默认 account_meta 仍含本地 account_id、username、gm_level 占位字段，不能用于真实身份或权限。
+
+OpenDBO-Core 的 CPlayer::SaveToDB 汇总定时运行时数据与完整保存数据；完整保存覆盖世界位置/方向、经验、LP/EP/RP/AP、地图、教程标记，并触发物品冷却、技能、Buff、HTB、宠物及任务数据保存。QueryServer CharacterRepository 分组加载角色核心和扩展数据（items、skills、buffs、quests、quickslots、宠物等）。DBOFF 应建立本地统一快照，不需要复刻 QueryServer 数据库架构。
+
+下一步先定位技能/快捷栏、成长属性/货币、任务奖励/任务物品、绑定点/传送等数据的运行时权威持有者与全部修改入口，再定义 schema 和序列化契约。详细文件和 OpenDBO 行范围见 AI_WORK_PROGRESS.md 第 38 节。本节是第一轮审计结论，不表示保存机制已修复或通过运行验证。
