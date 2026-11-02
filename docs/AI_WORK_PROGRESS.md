@@ -1255,3 +1255,30 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - Cloudflare 与 OpenDBO 账号 ID 映射、唯一账号体验、账号恢复和封禁同步策略的用户决策与实现方案。
 
 本轮只读检查 OpenDBO-Core 与 DBOFF/dbo-web 文档源码；未连接或启动任何游戏服务器，未执行数据库写入，也未修改 OpenDBO 源码。
+
+
+## 32. Cloudflare Worker 当前部署状态只读核对（2026-11-02）
+
+### 32.1 生产 Worker
+
+- 账户：DragonBallOffline（account ID abd019218b27f70e7c90ac6fc54563b3）。
+- Worker：dbo-account-api。
+- 当前最新部署：version 14，version ID ad2618da-0e09-4884-97d9-dba86f064351；deployment ID 32ffd587-5398-4678-82de-ca702bb9ff36。
+- 流量：100% 指向 version 14；部署时间 2026-10-23T00:15:38Z。
+- D1 binding DB 指向生产数据库 ID edb91621-24f3-47af-8798-54d1b3914154。
+- Worker script-settings 返回 observability=null；本轮未改变该设置。
+
+### 32.2 Staging Worker
+
+- Worker：dbo-account-api-staging。
+- 当前最新部署：version 10，version ID f5bdf929-66f1-4c8d-a2c8-a818a8cd7281；deployment ID cf0df87e-8cfd-4496-b908-4940d7ce9642。
+- 流量：100% 指向 version 10；部署时间 2026-10-23T00:01:20Z。
+- D1 binding DB 指向独立 staging 数据库 ID 0d555faf-0ae3-486e-bafd-b3100534f7de。
+- Observability 已启用，head_sampling_rate=1；invocation logs、logs persist 与 traces persist 均已启用，destinations 为 cloudflare。
+
+### 32.3 核对限制
+
+- 生产与 staging 的部署 version 元数据均已从 Cloudflare API GET 读取；两者 script etag 相同（d4a095c5efe4e5f1dc2499174678ad9706febcabad15dde617a6567c81582f9a）。
+- 本轮未下载当前部署包并与 GitHub worker/worker.js 做字节级对比，不能据相同 etag 推断仓库源码与部署内容一定完全一致。
+- 当前部署时间为 2026-10-23；没有证据表明本轮之后有新部署。Worker 源码中路由的存在仍不能替代线上 HTTP 行为测试。
+- 本轮全部是 Cloudflare API GET 只读操作，没有修改生产/staging Worker、D1、Pages、Secrets、绑定或流量分配。
