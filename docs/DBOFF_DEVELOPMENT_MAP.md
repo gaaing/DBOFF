@@ -352,3 +352,22 @@ OpenDBO-Core README 列出 AuthServer、CharServer、ChatServer、GameServer（�
 6. staging 全流程通过后再考虑生产部署。
 
 缺失/待办：用户需在 Cloudflare Dashboard 启用 R2；继续核查世界位置、属性、背包/装备、技能、任务的运行时持有者和存档回写点；特殊动作清单及上传失败策略尚未定义。详见 `docs/CLOUD_SAVE_AND_IDENTITY_MODEL.md` 第 9 节。
+
+
+## 11.11 游客优先与云存档额度保护（2026-11-02）
+
+### 产品规则（用户确认）
+- 未登录允许创建角色、正常进入游戏并保存本地进度。
+- 游戏默认鼓励游客/离线游玩；注册、登录和云存档均为可选，不应反复弹窗或设置玩法惩罚。
+- 本地存档是主存档。玩家以后主动登录时，才进入本地/云端存档关联与冲突选择流程。
+- 云服务暂停、额度耗尽或网络不可用均不得影响单机游戏。
+
+### R2 费用保护（设计要求）
+- R2 已由用户在 Dashboard 启用；2026-11-02 API 检查显示 bucket 数量为 0，Standard 与 Infrequent Access metrics 当前对象数/数据量均为 0。
+- Cloudflare R2 免费额度按账户/月计算：Standard 10 GB-month、1M Class A、10M Class B；Infrequent Access 不适用免费额度。出站流量免费。
+- 没有可依赖的 Cloudflare 原生免费额度硬封顶；必须由 Worker 统一拦截所有 R2 操作，采用 D1 月度用量账本，阈值达到前 fail-closed 暂停。
+- 初始安全阈值建议 70%：7 GB 活跃存储、700k Class A/月、7M Class B/月。该值仍需结合账户其他 R2 使用量确认。
+- 暂停时关闭云存档上传和下载，保留本地存档。bucket 必须私有，客户端不得持有 R2 凭据或直连 URL。
+- 用量未知、账本不可用、月度边界无法确认时暂停云功能；绝不以可能产生账单换取可用性。
+
+本节只记录规则和设计，不表示 bucket、配额账本或 Worker 保护已实现。
