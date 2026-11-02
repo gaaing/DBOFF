@@ -1509,3 +1509,40 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 
 ### 39.3 本轮范围与限制
 本轮只确认开发方向和缺失模块的性质；没有修改 Godot 源码、场景、资源、Worker、D1、R2 或部署。下一步应以当前 main 中实际存在的游戏功能和用户正在修复的结果为起点，不要求用户提供尚未开发的模块。
+
+
+## 40. 2026-11-02 角色大厅创角/选角预览缺少初始装备（用户报告 + 当前代码证据）
+
+### 40.1 用户报告（证据 D）
+用户报告：创建角色界面与选择角色界面的人物都没有穿戴初始存档自带装备，显示为白色底裤素体。两个界面共用同一套 CharacterLobbyStage 角色预览模型与装备挂载路径。
+
+### 40.2 已确认的代码路径（证据 A）
+当前 main 分支读取：
+- `src/ui/lobby/character_lobby_stage.gd` SHA `fb64f3fc104b12a081c9d05891cec8a989639a88`
+- `src/ui/lobby/character_lobby_ui.gd` SHA `dc91e58dd2d86e3a41cb4d9cf027f95cefbfd73e`
+- `src/entities/character_factory.gd` SHA `856841f164c5b512f46ddfcecce8e49907914345`
+- `src/core/dbo_save_manager.gd` SHA `912aef25a9842ecaf892c0a27ce249b82b2cca4e`
+- `data/newbie_table.json` SHA `48ef855d9945369798dca46777b7ccffe3c2a2ad`
+
+数据与调用链：
+1. `character_lobby_ui.gd::_update_avatar_preview()` 通过当前 race/class 调用 `DBOSaveManager.get_newbie_starter_items()`，并通过 `avatar_visual_changed` 信号把初始穿戴清单传给舞台。
+2. 选择已有角色时，`_on_slot_character_selected()` 从角色存档 `containers.inventory_items` 中筛选 `place/byPlace == 0` 且 `pos/byPosition != 255` 的物品，再发出同一信号。
+3. `character_lobby_stage.gd::_on_avatar_visual_changed()` 接收装备列表，并逐个调用 `DBOCharacterFactory.equip_item_to_character()`。
+4. 舞台统一通过 `build_player_visual(race, gender, false)` 创建儿童期角色模型；因此创角和选角都会走儿童模型分支。
+5. `character_factory.gd::equip_item_to_character()` 在处理武器/史考特挂载后，存在 `if not is_adult: return`，直接跳过儿童角色的上衣、裤子、鞋子、手套等蒙皮装备网格挂载。这与用户报告的“仅剩底裤素体”高度吻合，是当前最明确的代码级根因候选。
+6. 同一个工厂的 `_resolve_item_glb_path()` 已经为儿童模型尝试解析 `res://assets/obj/item/<目录>/child/<模型>.glb`，但挂载函数随后又对儿童角色提前 return，说明儿童装备解析与挂载逻辑互相矛盾。
+7. `newbie_table.json` 的初始穿戴数据确实包含装备栏项目，例如人类武术家配置：武器 500001（pos 0）、上衣 522001（pos 2）、裤子 522002（pos 3）、鞋子 522003（pos 4）、史考特 60000000（pos 5）；胶囊盒等 pos 255 项目不应当作为穿戴外观挂载。
+
+### 40.3 当前结论与修复约束
+- 当前已定位到预览共用路径中的儿童装备提前 return；不能只在 UI 层重复调用装备函数来解决。
+- 不应简单删除 `if not is_adult: return` 后就直接加载成人装备：儿童模型必须使用与儿童骨骼/比例匹配的 child GLB；若 child GLB 不存在，应明确报告缺失并保留安全回退，不能把成人蒙皮网格强行挂到儿童骨骼上。
+- 修复应让同一套装备应用逻辑同时服务创角预览和选角预览，并正确处理模型重建后的装备重应用与空装备列表时的旧槽位清理。
+- 当前尚未完成 OpenDBO 对应装备模型选择、儿童/成人装备绑定与 CharacterStage 生命周期的源码对照，也未运行 Godot 验证；不能将本轮诊断标记为修复完成。
+
+### 40.4 当前缺少的材料 / 验证
+- GitHub main 当前递归树中没有任何 `.glb/.gltf/.obj/.fbx` 模型文件（0 个），包括代码引用的 `assets/obj/character/mesh_pc/` 与 `assets/obj/item/`。这是仓库当前未提供模型资产的证据，不代表用户本地没有这些文件。
+- 需要针对初始装备项目取得本地儿童装备 GLB 的实际文件名/路径，至少覆盖上衣、裤子、鞋子；按职业/种族映射扩展检查。若本地有对应 child GLB，可提供相关目录清单或将所需模型推送到当前仓库。
+- `assets/tbl/table_item_data.json`（约 6.99 MB）与 `assets/prop/property/itemproperty.json`（约 15.96 MB）在本轮 GitHub 文件读取接口中返回空正文，虽确认文件存在于树中，但尚未核实上述每个 tblidx 对应的 model、equip_slot_flag、mesh_path/mesh_file 具体值。
+- 需要当前本地运行时日志，确认上述初始装备项目的 item 数据命中、解析出的 GLB 路径、文件存在状态和加载结果；并在 Godot 4.7.2 下分别验证创角预览、选角预览、人类/那美克/魔人、男女及至少一个不同职业。
+
+本轮只读诊断并记录 Markdown；未修改 Godot 源码、场景、模型资源或提交任何代码修复。
