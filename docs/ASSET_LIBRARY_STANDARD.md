@@ -187,3 +187,14 @@ The authoritative source archive should therefore be built from the selected 1.6
 - separate OpenDBO asset/raw inventory and provenance where available.
 
 The selected version is the project policy decision; completeness and package integrity remain validation tasks.
+
+
+## 13. Local 1.69 TW PAK inventory handoff
+
+The user identifies `E:\DBO_CT_TW(1.57.51)\pack` as the local directory containing PAK files from the client they downloaded as the final pre-shutdown 1.69 TW update. This is a user-reported local path; remote reviewers cannot inspect it directly.
+
+The first action is a read-only Antigravity inventory and decoder audit. Do not bulk-extract yet. Recursively inventory all files (not only `.pak`) with relative path, extension, size and SHA-256; record totals; identify package categories only when evidence supports the classification; and inspect client-root version/update metadata rather than trusting the folder name alone.
+
+Locate the decoder source, dependencies, configuration, batch scripts and historical logs. Determine per-package compatibility, including sound and non-model packages, and document filtering, silent exception handling, collision/overwrite behavior and validation coverage. Produce an isolated extraction plan with per-package logs, counts, hashes/integrity checks, failure handling and collision checks. Stop for user approval.
+
+Safety: do not modify the PAK input directory; do not extract, overwrite, move, rename, delete, convert or upload files during this inspection. File enumeration alone does not prove extraction completeness.
