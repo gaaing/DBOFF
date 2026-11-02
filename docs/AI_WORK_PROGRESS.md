@@ -1374,3 +1374,29 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 需要继续追踪完整运行时状态持有者与回写点，尤其世界位置、属性、背包/装备、技能、任务。
 - 特殊动作清单与上传失败策略未定义；暂不擅自阻止任何游戏动作。
 - 本轮只读审查并更新文档；未修改 Godot 源码、Worker、D1 schema、R2 或 Cloudflare 部署。
+
+
+## 36. 2026-11-02 游客优先与 R2 零超额费用要求
+
+用户明确确认：
+- 未登录玩家可直接创建角色、正常进入游戏并保存本地进度；并且产品应主动偏向游客/离线体验，尽量不诱导联网。
+- 账号、云存档是可选服务，不是单机游戏的入口门槛；以后主动登录时再处理本地与云端存档关联，冲突不得静默覆盖。
+- R2 云存档达到免费额度安全阈值前必须自动暂停，用户不接受任何超额账单；费用安全优先于云功能可用性。
+
+2026-11-02 Cloudflare API 只读复核：
+- 用户已在 Dashboard 启用 R2。
+- bucket 列表 API 已成功返回，当前 bucket 数量为 0。
+- R2 metrics 的 Standard / Infrequent Access uploaded 与 published 对象数、payloadSize、metadataSize 均为 0。
+- 尚未创建 DBOFF staging bucket、尚未绑定 Worker；没有执行任何 R2 写入。
+
+官方 R2 Standard 免费额度（查阅 2026-11-02 官方 Pricing）：10 GB-month、1M Class A/月、10M Class B/月，出站免费；Infrequent Access 不享有免费额度。R2 超额用量按账户计费。Cloudflare 未提供可依赖的原生“免费额度硬封顶”配置，因此 DBOFF 必须在 Worker 层实现 fail-closed 用量账本和硬停止。
+
+拟定保护阈值：DBOFF 使用量达到免费额度的 70% 即暂停云存档，即最多 7 GB 活跃对象、700,000 Class A/月、7,000,000 Class B/月；此为待实现设计值，不代表当前已配置。暂停上传和下载等 R2 读写，但不影响本地保存/游戏。所有 R2 访问必须经过私有 bucket + Worker，禁止客户端直连。若用量账本、metrics 状态或月度周期状态不明，默认暂停。
+
+当前缺少/待办：
+1. 尚未创建 staging bucket 和 Worker R2 binding。
+2. 尚未实现 D1 用量账本、配额检查、quota_paused 状态与客户端提示。
+3. 尚未核对 Cloudflare 账户是否有其他项目/服务消耗 R2 免费额度；必须保留安全余量。
+4. 尚未设计本地游客存档在后续登录时的无损关联/冲突选择界面。
+
+本轮仅审计并更新 Markdown，没有创建 R2 bucket、修改 D1/Worker、部署代码或调整账单设置。
