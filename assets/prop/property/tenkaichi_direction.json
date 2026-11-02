@@ -1,0 +1,389 @@
+{
+  "version": 1.3,
+  "controller_count": 11,
+  "controllers": {
+    "Basic_Step": {
+      "key_name": "Basic_Step",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 2,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect0",
+          "effect_name": "obj_TenKaiChi_Crowd_Normal"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect15",
+          "effect_name": "obj_TenKaiChi_Text_02"
+        }
+      ]
+    },
+    "Match_Ready": {
+      "key_name": "Match_Ready",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 2,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect1",
+          "effect_name": "obj_TenKaiChi_Crowd_Normal"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect10",
+          "effect_name": "obj_TenKaiChi_FlashLight_01"
+        }
+      ]
+    },
+    "Stage_Ready": {
+      "key_name": "Stage_Ready",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 2,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect2",
+          "effect_name": "obj_TenKaiChi_Crowd_Normal"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect11",
+          "effect_name": "obj_TenKaiChi_FlashLight_01"
+        }
+      ]
+    },
+    "Stage_Run": {
+      "key_name": "Stage_Run",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 4,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect3",
+          "effect_name": "obj_TenKaiChi_Crowd_Normal"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect12",
+          "effect_name": "obj_TenKaiChi_FlashLight_02"
+        },
+        {
+          "type_id": 1,
+          "type_name": "SOUND",
+          "name": "Sound1",
+          "sound_file": "System\\\\SYSTEM_RB_CROWD_1.WAV",
+          "loop": true,
+          "pos": [
+            -11.61,
+            22.0,
+            -155.29
+          ],
+          "channel_group": 9
+        },
+        {
+          "type_id": 1,
+          "type_name": "SOUND",
+          "name": "Sound5",
+          "sound_file": "System\\\\SYSTEM_TB_SHUTTER.WAV",
+          "loop": true,
+          "pos": [
+            -11.61,
+            22.0,
+            -155.29
+          ],
+          "channel_group": 9
+        }
+      ]
+    },
+    "Stage_Finish": {
+      "key_name": "Stage_Finish",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 2,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect4",
+          "effect_name": "obj_TenKaiChi_Crowd_Excite"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect13",
+          "effect_name": "obj_TenKaiChi_Text_01"
+        }
+      ]
+    },
+    "Match_Finish": {
+      "key_name": "Match_Finish",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 2,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect5",
+          "effect_name": "obj_TenKaiChi_Crowd_Normal"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect14",
+          "effect_name": "obj_TenKaiChi_Text_01"
+        }
+      ]
+    },
+    "End_Time": {
+      "key_name": "End_Time",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 1,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect6",
+          "effect_name": "obj_TenKaiChi_Crowd_Normal"
+        }
+      ]
+    },
+    "Knock_Down": {
+      "key_name": "Knock_Down",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 3,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect7",
+          "effect_name": "obj_TenKaiChi_Crowd_Excite"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect16",
+          "effect_name": "obj_TenKaiChi_FlashLight_02"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect17",
+          "effect_name": "obj_TenKaiChi_Text_01"
+        }
+      ]
+    },
+    "KO": {
+      "key_name": "KO",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 4,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect8",
+          "effect_name": "obj_TenKaiChi_Crowd_Excite"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect18",
+          "effect_name": "obj_TenKaiChi_FlashLight_02"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect19",
+          "effect_name": "obj_TenKaiChi_Text_01"
+        },
+        {
+          "type_id": 1,
+          "type_name": "SOUND",
+          "name": "Sound3",
+          "sound_file": "System\\\\SYSTEM_RB_CROWD_1.WAV",
+          "loop": false,
+          "pos": [
+            -11.61,
+            22.0,
+            -155.29
+          ],
+          "channel_group": 9
+        }
+      ]
+    },
+    "HTB": {
+      "key_name": "HTB",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 4,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect9",
+          "effect_name": "obj_TenKaiChi_Crowd_Excite"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect20",
+          "effect_name": "obj_TenKaiChi_Stuffs_01"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect21",
+          "effect_name": "obj_TenKaiChi_FlashLight_02"
+        },
+        {
+          "type_id": 1,
+          "type_name": "SOUND",
+          "name": "Sound4",
+          "sound_file": "System\\\\SYSTEM_RB_CROWD_1.WAV",
+          "loop": false,
+          "pos": [
+            -11.61,
+            22.0,
+            -155.29
+          ],
+          "channel_group": 9
+        }
+      ]
+    },
+    "Award": {
+      "key_name": "Award",
+      "loop": true,
+      "lifetime": 0.0,
+      "position": [
+        -11.61,
+        22.0,
+        -155.29
+      ],
+      "node_count": 7,
+      "nodes": [
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect22",
+          "effect_name": "obj_TenKaiChi_Crowd_Excite"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect23",
+          "effect_name": "obj_TenKaiChi_Text_01"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect24",
+          "effect_name": "obj_TenKaiChi_FlashLight_02"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect25",
+          "effect_name": "obj_TenKaiChi_Stuffs_01"
+        },
+        {
+          "type_id": 0,
+          "type_name": "EFFECT",
+          "name": "Effect26",
+          "effect_name": "obj_TenKaiChi_fireworks_01"
+        },
+        {
+          "type_id": 1,
+          "type_name": "SOUND",
+          "name": "Sound0",
+          "sound_file": "System\\\\GENERAL_FIREWORK_1.wav",
+          "loop": true,
+          "pos": [
+            -11.61,
+            22.0,
+            -155.29
+          ],
+          "channel_group": 9
+        },
+        {
+          "type_id": 1,
+          "type_name": "SOUND",
+          "name": "Sound2",
+          "sound_file": "System\\\\SYSTEM_RB_CROWD_2.WAV",
+          "loop": true,
+          "pos": [
+            -11.61,
+            22.0,
+            -155.29
+          ],
+          "channel_group": 9
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,1206 @@
+{
+  "HUMAN_ADULT_MALE": {
+    "face_mesh": {
+      "1": "A_HUM_FACE_H_M"
+    },
+    "face_base_texture": {
+      "1_1": "A_HUM_AD_FSKIN01",
+      "2_1": "A_HUM_AD_FSKIN02",
+      "3_1": "A_HUM_AD_FSKIN03",
+      "4_1": "A_HUM_AD_FSKIN04",
+      "5_1": "A_HUM_AD_FSKIN05",
+      "6_1": "A_HUM_AD_FSKIN06",
+      "7_1": "A_HUM_AD_FSKIN07",
+      "8_1": "A_HUM_AD_FSKIN08",
+      "9_1": "A_HUM_AD_FSKIN09",
+      "10_1": "A_HUM_AD_FSKIN10"
+    },
+    "face_multi_texture": {
+      "1_1": "A_HUM_AD_FACE01",
+      "2_1": "A_HUM_AD_FACE02",
+      "3_1": "A_HUM_AD_FACE03",
+      "4_1": "A_HUM_AD_FACE04",
+      "5_1": "A_HUM_AD_FACE05",
+      "6_1": "A_HUM_AD_FACE06",
+      "7_1": "A_HUM_AD_FACE07",
+      "8_1": "A_HUM_AD_FACE08",
+      "9_1": "A_HUM_AD_FACE09",
+      "10_1": "A_HUM_AD_FACE10"
+    },
+    "face_multi_texture_ss": {
+      "1_1": "A_HUM_AD_FACE01_S",
+      "2_1": "A_HUM_AD_FACE02_S",
+      "3_1": "A_HUM_AD_FACE03_S",
+      "4_1": "A_HUM_AD_FACE04_S",
+      "5_1": "A_HUM_AD_FACE05_S",
+      "6_1": "A_HUM_AD_FACE06_S",
+      "7_1": "A_HUM_AD_FACE07_S",
+      "8_1": "A_HUM_AD_FACE08_S",
+      "9_1": "A_HUM_AD_FACE09_S",
+      "10_1": "A_HUM_AD_FACE10_S"
+    },
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_HUM_HEAD01_H_M",
+      "2": "A_HUM_HEAD02_H_M",
+      "3": "A_HUM_HEAD03_H_M",
+      "4": "A_HUM_HEAD04_H_M",
+      "5": "A_HUM_HEAD05_H_M",
+      "6": "A_HUM_HEAD06_H_M",
+      "7": "A_HUM_HEAD07_H_M",
+      "8": "A_HUM_HEAD08_H_M",
+      "9": "A_HUM_HEAD09_H_M",
+      "10": "A_HUM_HEAD10_H_M"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.5765,
+        0.3569,
+        0.3412
+      ],
+      "2": [
+        0.7373,
+        0.1137,
+        0.1294
+      ],
+      "3": [
+        0.6549,
+        0.6431,
+        0.2118
+      ],
+      "4": [
+        0.1686,
+        0.1686,
+        0.2353
+      ],
+      "5": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "6": [
+        0.5059,
+        0.5725,
+        0.8275
+      ],
+      "7": [
+        0.9451,
+        0.4706,
+        0.8863
+      ],
+      "8": [
+        0.4549,
+        0.9882,
+        0.7216
+      ],
+      "9": [
+        0.851,
+        0.2667,
+        0.1843
+      ],
+      "10": [
+        0.7765,
+        0.3216,
+        0.9961
+      ],
+      "11": [
+        0.0,
+        0.3137,
+        1.0
+      ],
+      "12": [
+        0.9882,
+        0.5765,
+        0.0
+      ],
+      "13": [
+        0.502,
+        0.502,
+        0.549
+      ]
+    },
+    "skin_color": {
+      "1": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "2": [
+        1.0,
+        0.9137,
+        0.8706
+      ],
+      "3": [
+        0.9059,
+        0.8039,
+        0.7137
+      ],
+      "4": [
+        0.7882,
+        0.6745,
+        0.6118
+      ],
+      "5": [
+        0.6235,
+        0.502,
+        0.3843
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "HUMAN_CHILD_MALE": {
+    "face_mesh": {
+      "1": "A_HCH_FACE_H_M"
+    },
+    "face_base_texture": {
+      "1_1": "A_HUM_M_CH_FSKIN01",
+      "2_1": "A_HUM_M_CH_FSKIN02",
+      "3_1": "A_HUM_M_CH_FSKIN03",
+      "4_1": "A_HUM_M_CH_FSKIN04",
+      "5_1": "A_HUM_M_CH_FSKIN05",
+      "6_1": "A_HUM_M_CH_FSKIN06",
+      "7_1": "A_HUM_M_CH_FSKIN07",
+      "8_1": "A_HUM_M_CH_FSKIN08",
+      "9_1": "A_HUM_M_CH_FSKIN09",
+      "10_1": "A_HUM_M_CH_FSKIN10"
+    },
+    "face_multi_texture": {
+      "1_1": "A_HUM_M_CH_FACE01",
+      "2_1": "A_HUM_M_CH_FACE02",
+      "3_1": "A_HUM_M_CH_FACE03",
+      "4_1": "A_HUM_M_CH_FACE04",
+      "5_1": "A_HUM_M_CH_FACE05",
+      "6_1": "A_HUM_M_CH_FACE06",
+      "7_1": "A_HUM_M_CH_FACE07",
+      "8_1": "A_HUM_M_CH_FACE08",
+      "9_1": "A_HUM_M_CH_FACE09",
+      "10_1": "A_HUM_M_CH_FACE10"
+    },
+    "face_multi_texture_ss": {
+      "1_1": "A_HUM_M_CH_FACE01_S",
+      "2_1": "A_HUM_M_CH_FACE02_S",
+      "3_1": "A_HUM_M_CH_FACE03_S",
+      "4_1": "A_HUM_M_CH_FACE04_S",
+      "5_1": "A_HUM_M_CH_FACE05_S",
+      "6_1": "A_HUM_M_CH_FACE06_S",
+      "7_1": "A_HUM_M_CH_FACE07_S",
+      "8_1": "A_HUM_M_CH_FACE08_S",
+      "9_1": "A_HUM_M_CH_FACE09_S",
+      "10_1": "A_HUM_M_CH_FACE10_S"
+    },
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_HCH_HEAD01_H_M",
+      "2": "A_HCH_HEAD02_H_M",
+      "3": "A_HCH_HEAD03_H_M",
+      "4": "A_HCH_HEAD04_H_M",
+      "5": "A_HCH_HEAD05_H_M",
+      "6": "A_HCH_HEAD06_H_M",
+      "7": "A_HCH_HEAD07_H_M",
+      "8": "A_HCH_HEAD08_H_M",
+      "9": "A_HCH_HEAD09_H_M",
+      "10": "A_HCH_HEAD10_H_M"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.5765,
+        0.3569,
+        0.3412
+      ],
+      "2": [
+        0.7373,
+        0.1137,
+        0.1294
+      ],
+      "3": [
+        0.6549,
+        0.6431,
+        0.2118
+      ],
+      "4": [
+        0.1686,
+        0.1686,
+        0.2353
+      ],
+      "5": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "6": [
+        0.5059,
+        0.5725,
+        0.8275
+      ],
+      "7": [
+        0.9451,
+        0.4706,
+        0.8863
+      ],
+      "8": [
+        0.4549,
+        0.9882,
+        0.7216
+      ],
+      "9": [
+        0.851,
+        0.2667,
+        0.1843
+      ],
+      "10": [
+        0.7765,
+        0.3216,
+        0.9961
+      ],
+      "11": [
+        0.0,
+        0.3137,
+        1.0
+      ],
+      "12": [
+        0.9882,
+        0.5765,
+        0.0
+      ],
+      "13": [
+        0.502,
+        0.502,
+        0.549
+      ]
+    },
+    "skin_color": {
+      "1": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "2": [
+        1.0,
+        0.9137,
+        0.8706
+      ],
+      "3": [
+        0.9059,
+        0.8039,
+        0.7137
+      ],
+      "4": [
+        0.7882,
+        0.6745,
+        0.6118
+      ],
+      "5": [
+        0.6235,
+        0.502,
+        0.3843
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "HUMAN_ADULT_FEMALE": {
+    "face_mesh": {
+      "1": "A_HUM_FACE_H_F"
+    },
+    "face_base_texture": {
+      "1_1": "A_HUM_F_AD_FSKIN01",
+      "2_1": "A_HUM_F_AD_FSKIN02",
+      "3_1": "A_HUM_F_AD_FSKIN03",
+      "4_1": "A_HUM_F_AD_FSKIN04",
+      "5_1": "A_HUM_F_AD_FSKIN05",
+      "6_1": "A_HUM_F_AD_FSKIN06",
+      "7_1": "A_HUM_F_AD_FSKIN07",
+      "8_1": "A_HUM_F_AD_FSKIN08",
+      "9_1": "A_HUM_F_AD_FSKIN09",
+      "10_1": "A_HUM_F_AD_FSKIN10"
+    },
+    "face_multi_texture": {
+      "1_1": "A_HUM_F_AD_FACE01",
+      "2_1": "A_HUM_F_AD_FACE02",
+      "3_1": "A_HUM_F_AD_FACE03",
+      "4_1": "A_HUM_F_AD_FACE04",
+      "5_1": "A_HUM_F_AD_FACE05",
+      "6_1": "A_HUM_F_AD_FACE06",
+      "7_1": "A_HUM_F_AD_FACE07",
+      "8_1": "A_HUM_F_AD_FACE08",
+      "9_1": "A_HUM_F_AD_FACE09",
+      "10_1": "A_HUM_F_AD_FACE10"
+    },
+    "face_multi_texture_ss": {
+      "1_1": "A_HUM_F_AD_FACE01_S",
+      "2_1": "A_HUM_F_AD_FACE02_S",
+      "3_1": "A_HUM_F_AD_FACE03_S",
+      "4_1": "A_HUM_F_AD_FACE04_S",
+      "5_1": "A_HUM_F_AD_FACE05_S",
+      "6_1": "A_HUM_F_AD_FACE06_S",
+      "7_1": "A_HUM_F_AD_FACE07_S",
+      "8_1": "A_HUM_F_AD_FACE08_S",
+      "9_1": "A_HUM_F_AD_FACE09_S",
+      "10_1": "A_HUM_F_AD_FACE10_S"
+    },
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_HUM_HEAD01_H_F",
+      "2": "A_HUM_HEAD02_H_F",
+      "3": "A_HUM_HEAD03_H_F",
+      "4": "A_HUM_HEAD04_H_F",
+      "5": "A_HUM_HEAD05_H_F",
+      "6": "A_HUM_HEAD06_H_F",
+      "7": "A_HUM_HEAD07_H_F",
+      "8": "A_HUM_HEAD08_H_F",
+      "9": "A_HUM_HEAD09_H_F",
+      "10": "A_HUM_HEAD10_H_F"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.5059,
+        0.5725,
+        0.8275
+      ],
+      "2": [
+        0.9451,
+        0.4706,
+        0.8863
+      ],
+      "3": [
+        0.4549,
+        0.9882,
+        0.7216
+      ],
+      "4": [
+        0.851,
+        0.2667,
+        0.1843
+      ],
+      "5": [
+        0.7765,
+        0.3216,
+        0.9961
+      ],
+      "6": [
+        0.5765,
+        0.3569,
+        0.3412
+      ],
+      "7": [
+        0.7373,
+        0.1137,
+        0.1294
+      ],
+      "8": [
+        0.6549,
+        0.6431,
+        0.2118
+      ],
+      "9": [
+        0.1686,
+        0.1686,
+        0.2353
+      ],
+      "10": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "11": [
+        0.0,
+        0.3137,
+        1.0
+      ],
+      "12": [
+        0.9882,
+        0.5765,
+        0.0
+      ],
+      "13": [
+        0.502,
+        0.502,
+        0.549
+      ]
+    },
+    "skin_color": {
+      "1": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "2": [
+        0.9961,
+        0.9137,
+        0.8706
+      ],
+      "3": [
+        0.9059,
+        0.8039,
+        0.7137
+      ],
+      "4": [
+        0.7882,
+        0.6745,
+        0.6118
+      ],
+      "5": [
+        0.6235,
+        0.502,
+        0.3843
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "HUMAN_CHILD_FEMALE": {
+    "face_mesh": {
+      "1": "A_HCH_FACE_H_F"
+    },
+    "face_base_texture": {
+      "1_1": "A_HUM_F_CH_FSKIN01",
+      "2_1": "A_HUM_F_CH_FSKIN02",
+      "3_1": "A_HUM_F_CH_FSKIN03",
+      "4_1": "A_HUM_F_CH_FSKIN04",
+      "5_1": "A_HUM_F_CH_FSKIN05",
+      "6_1": "A_HUM_F_CH_FSKIN06",
+      "7_1": "A_HUM_F_CH_FSKIN07",
+      "8_1": "A_HUM_F_CH_FSKIN08",
+      "9_1": "A_HUM_F_CH_FSKIN09",
+      "10_1": "A_HUM_F_CH_FSKIN10"
+    },
+    "face_multi_texture": {
+      "1_1": "A_HUM_F_CH_FACE01",
+      "2_1": "A_HUM_F_CH_FACE02",
+      "3_1": "A_HUM_F_CH_FACE03",
+      "4_1": "A_HUM_F_CH_FACE04",
+      "5_1": "A_HUM_F_CH_FACE05",
+      "6_1": "A_HUM_F_CH_FACE06",
+      "7_1": "A_HUM_F_CH_FACE07",
+      "8_1": "A_HUM_F_CH_FACE08",
+      "9_1": "A_HUM_F_CH_FACE09",
+      "10_1": "A_HUM_F_CH_FACE10"
+    },
+    "face_multi_texture_ss": {
+      "1_1": "A_HUM_F_CH_FACE01_S",
+      "2_1": "A_HUM_F_CH_FACE02_S",
+      "3_1": "A_HUM_F_CH_FACE03_S",
+      "4_1": "A_HUM_F_CH_FACE04_S",
+      "5_1": "A_HUM_F_CH_FACE05_S",
+      "6_1": "A_HUM_F_CH_FACE06_S",
+      "7_1": "A_HUM_F_CH_FACE07_S",
+      "8_1": "A_HUM_F_CH_FACE08_S",
+      "9_1": "A_HUM_F_CH_FACE09_S",
+      "10_1": "A_HUM_F_CH_FACE10_S"
+    },
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_HCH_HEAD01_H_F",
+      "2": "A_HCH_HEAD02_H_F",
+      "3": "A_HCH_HEAD03_H_F",
+      "4": "A_HCH_HEAD04_H_F",
+      "5": "A_HCH_HEAD05_H_F",
+      "6": "A_HCH_HEAD06_H_F",
+      "7": "A_HCH_HEAD07_H_F",
+      "8": "A_HCH_HEAD08_H_F",
+      "9": "A_HCH_HEAD09_H_F",
+      "10": "A_HCH_HEAD10_H_F"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.5059,
+        0.5725,
+        0.8275
+      ],
+      "2": [
+        0.9451,
+        0.4706,
+        0.8863
+      ],
+      "3": [
+        0.4549,
+        0.9882,
+        0.7216
+      ],
+      "4": [
+        0.851,
+        0.2667,
+        0.1843
+      ],
+      "5": [
+        0.7765,
+        0.3216,
+        0.9961
+      ],
+      "6": [
+        0.5765,
+        0.3569,
+        0.3412
+      ],
+      "7": [
+        0.7373,
+        0.1137,
+        0.1294
+      ],
+      "8": [
+        0.6549,
+        0.6431,
+        0.2118
+      ],
+      "9": [
+        0.1686,
+        0.1686,
+        0.2353
+      ],
+      "10": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "11": [
+        0.0,
+        0.3137,
+        1.0
+      ],
+      "12": [
+        0.9882,
+        0.5765,
+        0.0
+      ],
+      "13": [
+        0.502,
+        0.502,
+        0.549
+      ]
+    },
+    "skin_color": {
+      "1": [
+        1.0,
+        1.0,
+        1.0
+      ],
+      "2": [
+        0.9961,
+        0.9137,
+        0.8706
+      ],
+      "3": [
+        0.9059,
+        0.8039,
+        0.7137
+      ],
+      "4": [
+        0.7882,
+        0.6745,
+        0.6118
+      ],
+      "5": [
+        0.6235,
+        0.502,
+        0.3843
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "NAMEK_ADULT": {
+    "face_mesh": {
+      "1": "A_NAM_FACE_N_O_S1"
+    },
+    "face_base_texture": {
+      "1_1": "A_NAM_AD_FSKIN01_01",
+      "2_1": "A_NAM_AD_FSKIN02_01",
+      "3_1": "A_NAM_AD_FSKIN05_01",
+      "4_1": "A_NAM_AD_FSKIN05_01",
+      "5_1": "A_NAM_AD_FSKIN05_01",
+      "6_1": "A_NAM_AD_FSKIN01_01",
+      "7_1": "A_NAM_AD_FSKIN05_01",
+      "8_1": "A_NAM_AD_FSKIN01_01",
+      "9_1": "A_NAM_AD_FSKIN01_01",
+      "10_1": "A_NAM_AD_FSKIN10_01"
+    },
+    "face_multi_texture": {
+      "1_1": "A_NAM_AD_FACE01",
+      "2_1": "A_NAM_AD_FACE02",
+      "3_1": "A_NAM_AD_FACE03",
+      "4_1": "A_NAM_AD_FACE04",
+      "5_1": "A_NAM_AD_FACE05",
+      "6_1": "A_NAM_AD_FACE06",
+      "7_1": "A_NAM_AD_FACE07",
+      "8_1": "A_NAM_AD_FACE08",
+      "9_1": "A_NAM_AD_FACE09",
+      "10_1": "A_NAM_AD_FACE10"
+    },
+    "face_multi_texture_ss": {},
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_NAM_HEAD01_N_O_S1",
+      "2": "A_NAM_HEAD02_N_O_S1",
+      "3": "A_NAM_HEAD03_N_O_S1",
+      "4": "A_NAM_HEAD04_N_O_S1",
+      "5": "A_NAM_HEAD05_N_O_S1",
+      "6": "A_NAM_HEAD06_N_O_S1",
+      "7": "A_NAM_HEAD07_N_O_S1",
+      "8": "A_NAM_HEAD08_N_O_S1",
+      "9": "A_NAM_HEAD09_N_O_S1",
+      "10": "A_NAM_HEAD10_N_O_S1"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "skin_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "NAMEK_CHILD": {
+    "face_mesh": {
+      "1": "A_NCH_FACE_N_O_S1"
+    },
+    "face_base_texture": {
+      "1_1": "A_NAM_CH_FSKIN01_01",
+      "2_1": "A_NAM_CH_FSKIN02_01",
+      "3_1": "A_NAM_CH_FSKIN05_01",
+      "4_1": "A_NAM_CH_FSKIN05_01",
+      "5_1": "A_NAM_CH_FSKIN05_01",
+      "6_1": "A_NAM_CH_FSKIN01_01",
+      "7_1": "A_NAM_CH_FSKIN05_01",
+      "8_1": "A_NAM_CH_FSKIN01_01",
+      "9_1": "A_NAM_CH_FSKIN01_01",
+      "10_1": "A_NAM_CH_FSKIN10_01"
+    },
+    "face_multi_texture": {
+      "1_1": "A_NAM_CH_FACE01",
+      "2_1": "A_NAM_CH_FACE02",
+      "3_1": "A_NAM_CH_FACE03",
+      "4_1": "A_NAM_CH_FACE04",
+      "5_1": "A_NAM_CH_FACE05",
+      "6_1": "A_NAM_CH_FACE06",
+      "7_1": "A_NAM_CH_FACE07",
+      "8_1": "A_NAM_CH_FACE08",
+      "9_1": "A_NAM_CH_FACE09",
+      "10_1": "A_NAM_CH_FACE10"
+    },
+    "face_multi_texture_ss": {},
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_NCH_HEAD01_N_O_S1",
+      "2": "A_NCH_HEAD02_N_O_S1",
+      "3": "A_NCH_HEAD03_N_O_S1",
+      "4": "A_NCH_HEAD04_N_O_S1",
+      "5": "A_NCH_HEAD05_N_O_S1",
+      "6": "A_NCH_HEAD06_N_O_S1",
+      "7": "A_NCH_HEAD07_N_O_S1",
+      "8": "A_NCH_HEAD08_N_O_S1",
+      "9": "A_NCH_HEAD09_N_O_S1",
+      "10": "A_NCH_HEAD10_N_O_S1"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "skin_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "MAJIN_ADULT_MALE": {
+    "face_mesh": {
+      "1": "A_MAJ_FACE_M_M"
+    },
+    "face_base_texture": {
+      "1_1": "A_MAJ_M_FSKIN",
+      "2_1": "A_MAJ_M_FSKIN",
+      "3_1": "A_MAJ_M_FSKIN",
+      "4_1": "A_MAJ_M_FSKIN",
+      "5_1": "A_MAJ_M_FSKIN",
+      "6_1": "A_MAJ_M_FSKIN",
+      "7_1": "A_MAJ_M_FSKIN",
+      "8_1": "A_MAJ_M_FSKIN",
+      "9_1": "A_MAJ_M_FSKIN",
+      "10_1": "A_MAJ_M_FSKIN"
+    },
+    "face_multi_texture": {
+      "1_1": "A_MAJ_M_FACE01",
+      "2_1": "A_MAJ_M_FACE02",
+      "3_1": "A_MAJ_M_FACE03",
+      "4_1": "A_MAJ_M_FACE04",
+      "5_1": "A_MAJ_M_FACE05",
+      "6_1": "A_MAJ_M_FACE06",
+      "7_1": "A_MAJ_M_FACE07",
+      "8_1": "A_MAJ_M_FACE08",
+      "9_1": "A_MAJ_M_FACE09",
+      "10_1": "A_MAJ_M_FACE10"
+    },
+    "face_multi_texture_ss": {},
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_MAJ_HEAD01_M_M",
+      "2": "A_MAJ_HEAD02_M_M",
+      "3": "A_MAJ_HEAD03_M_M",
+      "4": "A_MAJ_HEAD04_M_M",
+      "5": "A_MAJ_HEAD05_M_M",
+      "6": "A_MAJ_HEAD06_M_M",
+      "7": "A_MAJ_HEAD07_M_M",
+      "8": "A_MAJ_HEAD08_M_M",
+      "9": "A_MAJ_HEAD09_M_M",
+      "10": "A_MAJ_HEAD10_M_M"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "skin_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "MAJIN_CHILD_MALE": {
+    "face_mesh": {
+      "1": "A_MAJ_FACE_M_M"
+    },
+    "face_base_texture": {
+      "1_1": "A_MAJ_M_FSKIN",
+      "2_1": "A_MAJ_M_FSKIN",
+      "3_1": "A_MAJ_M_FSKIN",
+      "4_1": "A_MAJ_M_FSKIN",
+      "5_1": "A_MAJ_M_FSKIN",
+      "6_1": "A_MAJ_M_FSKIN",
+      "7_1": "A_MAJ_M_FSKIN",
+      "8_1": "A_MAJ_M_FSKIN",
+      "9_1": "A_MAJ_M_FSKIN",
+      "10_1": "A_MAJ_M_FSKIN"
+    },
+    "face_multi_texture": {
+      "1_1": "A_MAJ_M_FACE01",
+      "2_1": "A_MAJ_M_FACE02",
+      "3_1": "A_MAJ_M_FACE03",
+      "4_1": "A_MAJ_M_FACE04",
+      "5_1": "A_MAJ_M_FACE05",
+      "6_1": "A_MAJ_M_FACE06",
+      "7_1": "A_MAJ_M_FACE07",
+      "8_1": "A_MAJ_M_FACE08",
+      "9_1": "A_MAJ_M_FACE09",
+      "10_1": "A_MAJ_M_FACE10"
+    },
+    "face_multi_texture_ss": {},
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_MAJ_HEAD01_M_M",
+      "2": "A_MAJ_HEAD02_M_M",
+      "3": "A_MAJ_HEAD03_M_M",
+      "4": "A_MAJ_HEAD04_M_M",
+      "5": "A_MAJ_HEAD05_M_M",
+      "6": "A_MAJ_HEAD06_M_M",
+      "7": "A_MAJ_HEAD07_M_M",
+      "8": "A_MAJ_HEAD08_M_M",
+      "9": "A_MAJ_HEAD09_M_M",
+      "10": "A_MAJ_HEAD10_M_M"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "skin_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "MAJIN_ADULT_FEMALE": {
+    "face_mesh": {
+      "1": "A_MAJ_FACE_M_F"
+    },
+    "face_base_texture": {
+      "1_1": "A_MAJ_F_FSKIN",
+      "2_1": "A_MAJ_F_FSKIN",
+      "3_1": "A_MAJ_F_FSKIN",
+      "4_1": "A_MAJ_F_FSKIN",
+      "5_1": "A_MAJ_F_FSKIN",
+      "6_1": "A_MAJ_F_FSKIN",
+      "7_1": "A_MAJ_F_FSKIN",
+      "8_1": "A_MAJ_F_FSKIN",
+      "9_1": "A_MAJ_F_FSKIN",
+      "10_1": "A_MAJ_F_FSKIN"
+    },
+    "face_multi_texture": {
+      "1_1": "A_MAJ_F_FACE01",
+      "2_1": "A_MAJ_F_FACE02",
+      "3_1": "A_MAJ_F_FACE03",
+      "4_1": "A_MAJ_F_FACE04",
+      "5_1": "A_MAJ_F_FACE05",
+      "6_1": "A_MAJ_F_FACE06",
+      "7_1": "A_MAJ_F_FACE07",
+      "8_1": "A_MAJ_F_FACE08",
+      "9_1": "A_MAJ_F_FACE09",
+      "10_1": "A_MAJ_F_FACE10"
+    },
+    "face_multi_texture_ss": {},
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_MAJ_HEAD01_M_F",
+      "2": "A_MAJ_HEAD02_M_F",
+      "3": "A_MAJ_HEAD03_M_F",
+      "4": "A_MAJ_HEAD04_M_F",
+      "5": "A_MAJ_HEAD05_M_F",
+      "6": "A_MAJ_HEAD06_M_F",
+      "7": "A_MAJ_HEAD07_M_F",
+      "8": "A_MAJ_HEAD08_M_F",
+      "9": "A_MAJ_HEAD09_M_F",
+      "10": "A_MAJ_HEAD10_M_F"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "skin_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  },
+  "MAJIN_CHILD_FEMALE": {
+    "face_mesh": {
+      "1": "A_MCH_FACE_M_F"
+    },
+    "face_base_texture": {
+      "1_1": "A_MAJ_F_FSKIN",
+      "2_1": "A_MAJ_F_FSKIN",
+      "3_1": "A_MAJ_F_FSKIN",
+      "4_1": "A_MAJ_F_FSKIN",
+      "5_1": "A_MAJ_F_FSKIN",
+      "6_1": "A_MAJ_F_FSKIN",
+      "7_1": "A_MAJ_F_FSKIN",
+      "8_1": "A_MAJ_F_FSKIN",
+      "9_1": "A_MAJ_F_FSKIN",
+      "10_1": "A_MAJ_F_FSKIN"
+    },
+    "face_multi_texture": {
+      "1_1": "A_MAJ_F_FACE01",
+      "2_1": "A_MAJ_F_FACE02",
+      "3_1": "A_MAJ_F_FACE03",
+      "4_1": "A_MAJ_F_FACE04",
+      "5_1": "A_MAJ_F_FACE05",
+      "6_1": "A_MAJ_F_FACE06",
+      "7_1": "A_MAJ_F_FACE07",
+      "8_1": "A_MAJ_F_FACE08",
+      "9_1": "A_MAJ_F_FACE09",
+      "10_1": "A_MAJ_F_FACE10"
+    },
+    "face_multi_texture_ss": {},
+    "face_ani_multi_texture": {},
+    "head_mesh": {
+      "1": "A_MCH_HEAD01_M_F",
+      "2": "A_MCH_HEAD02_M_F",
+      "3": "A_MCH_HEAD03_M_F",
+      "4": "A_MCH_HEAD04_M_F",
+      "5": "A_MCH_HEAD05_M_F",
+      "6": "A_MCH_HEAD06_M_F",
+      "7": "A_MCH_HEAD07_M_F",
+      "8": "A_MCH_HEAD08_M_F",
+      "9": "A_MCH_HEAD09_M_F",
+      "10": "A_MCH_HEAD10_M_F"
+    },
+    "head_base_texture": {},
+    "head_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "skin_color": {
+      "1": [
+        0.9922,
+        0.7412,
+        0.8627
+      ],
+      "2": [
+        0.9216,
+        0.9922,
+        0.5098
+      ],
+      "3": [
+        0.7529,
+        0.9451,
+        0.9961
+      ],
+      "4": [
+        0.8431,
+        0.6706,
+        0.9961
+      ],
+      "5": [
+        0.9961,
+        0.451,
+        0.4392
+      ]
+    },
+    "default_parts": {},
+    "scouter_attach_info": {}
+  }
+}

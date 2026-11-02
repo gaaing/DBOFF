@@ -1,0 +1,25 @@
+{
+  "total": 2,
+  "effects": [
+    {
+      "index": 1,
+      "name": "IK_GKN_SKL_A02_02",
+      "properties": [
+        1,
+        0,
+        0,
+        10
+      ]
+    },
+    {
+      "index": 2,
+      "name": "",
+      "properties": [
+        0,
+        4161536,
+        37715968,
+        0
+      ]
+    }
+  ]
+}

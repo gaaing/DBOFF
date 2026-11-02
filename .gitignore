@@ -7,6 +7,11 @@
 !/assets/
 /assets/*
 !/assets/tbl/
+!/assets/effect/
+!/assets/gui/
+!/assets/prop/
+/assets/prop/*
+!/assets/prop/property/
 !/data/
 
 !/.gitignore
