@@ -1176,3 +1176,82 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 5. 继续推进角色创建/选择等客户端 Bug 修复，不等待服务器接入研究完成。
 
 本轮只读检查 GitHub 源码和文档，并维护 DBOFF 文档；没有修改游戏代码、场景、资源、Worker 或 Cloudflare 部署。
+
+
+## 31. OpenDBO Auth / Char / Game Server 协议首轮映射（2026-11-02）
+
+### 31.1 审计版本与源码范围
+
+- OpenDBO-Core 仓库：OpenDBO/OpenDBO-Core，分支 master。
+- 当前锁定 HEAD：23cb305a6cf20048fec75595a8fa1ee2f1a0e83d，提交时间 2026-10-29T22:42:53Z。
+- 已读取 README.md、NtlPacketUA.h、NtlPacketAU.h、NtlPacketUC.h、NtlPacketCU.h、NtlPacketUG.h、NtlPacketGU.h、NtlPacketCM.h、NtlPacketMC.h、NtlPacketGM.h、NtlPacketMG.h、NtlPacketCommon.h、NtlPacket.h/.cpp、NtlClientNet.cpp、NtlNetSender.cpp，以及 AuthServer、CharServer、MasterServer、GameServer 的相关 packet/session 处理函数和客户端 LogInStage/CharStage 状态流程。
+- 这是登录与进入世界链路的首轮映射，不代表所有认证分支、加密细节、断线恢复或服务器迁移已审计完成。
+
+### 31.2 原版连接与协议形态（证据 B）
+
+- 原版客户端通过 NtlClientNet 的 socket 网络层与 AuthServer、CharServer、GameServer 建立独立连接；连接入口使用 IP/端口，不是 HTTP REST 或 WebSocket JSON。
+- NtlPacket.h 的 STHeaderBase 使用 15-bit packet length、1-bit encrypt 标志和 16-bit packet sequence；包体包含 opcode 和对应 packed C/C++ protocol struct。NtlPacketCommon.h 定义包体 opcode 结构。
+- 当前已见 AuthServer/CharServer 连接路径显式使用 NETCLIENT_ENCODE_NONE，但不能据此推断 GameServer 的全部传输加密/编码配置；需继续检查各连接和运行配置。
+
+### 31.3 AuthServer 登录
+
+关键文件：
+- DboShared/NtlShared2/NtlPacketUA.h / NtlPacketAU.h
+- DboServer/Server/AuthServer/ClientSession.cpp
+- DboServer/Server/AuthServer/PacketAuthServer.cpp
+- DboServer/Server/AuthServer/MasterServerPacket.cpp
+- DboClient/Client/Stage/LogInStage.cpp / LogInStageState.cpp
+- DboClient/Client/Main/DboPacketGenerator.cpp
+
+流程：
+1. 客户端连接配置中的 AuthServer IP/port。
+2. 客户端发送 UA_LOGIN_REQ：用户名、密码字段、客户端 L/R 版本、MAC 地址。
+3. AuthServer 检查客户端版本、账号长度/密码长度、临时封锁、账号数据库记录、密码校验、账号封禁/连接锁定、CharServer 负载和重复在线状态；并向 MasterServer 请求在线状态协调。
+4. MasterServer 返回结果后，AuthServer 发 AU_LOGIN_RES。成功响应结构包含 result code、用户 ID、AuthKey、accountId、lastServerFarmId、开发功能权限、GM 标志及 CharServer 列表。
+5. 客户端根据返回的服务器信息进入 CharServer 连接状态；原版状态机还管理连接超时、登录请求超时和 AuthServer 断开后的状态切换。
+
+### 31.4 CharServer 角色大厅
+
+关键文件：
+- DboShared/NtlShared2/NtlPacketUC.h / NtlPacketCU.h
+- DboServer/Server/CharServer/ClientSession.cpp / PacketCharServer.cpp / MasterServerPacket.cpp
+- DboClient/Client/Stage/CharStageState.cpp / CharacterStage.cpp
+- DboClient/Client/Main/DboPacketGenerator.cpp
+
+流程：
+1. 客户端向 CharServer 发送 UC_LOGIN_REQ，字段为 accountId、AuthKey 和 serverFarmId；CharServer 将 CM_LOGIN_REQ 发给 MasterServer 验证 AuthKey。
+2. 角色数据加载通过 UC_CHARACTER_LOAD_REQ 等请求进入 CharServer，再由 CharServer 向 QueryServer 请求数据库数据。
+3. 创建角色使用 UC_CHARACTER_ADD_REQ；服务端检查名称、种族/外观字段范围、允许种族、角色槽位数量及账号角色归属，然后转发 QueryServer 写入。删除、恢复和重命名也由 CharServer 校验归属和条件。
+4. 选择角色使用 UC_CHARACTER_SELECT_REQ（charId、serverChannelId）。服务端校验角色是否属于当前账号、服务器频道是否 UP/可见/未锁定以及负载限制。
+5. CharServer 通过 CM_MOVE_REQ 向 MasterServer 请求迁移认证；MasterServer 生成新的 AuthKey。CharServer 返回 CU_CHARACTER_SELECT_RES，包含角色 ID、AuthKey、GameServer 公网 IP 和客户端端口。
+
+### 31.5 GameServer 进入游戏
+
+关键文件：
+- DboShared/NtlShared2/NtlPacketUG.h / NtlPacketGU.h / NtlPacketGM.h / NtlPacketMG.h
+- DboServer/Server/GameServer/PacketGameServer.cpp / MasterServerPacket.cpp
+- DboServer/Server/MasterServer/GamePacket.cpp
+
+流程：
+1. 客户端连接 CharServer 返回的 GameServer IP/port。
+2. 客户端发送 UG_GAME_ENTER_REQ：accountId、charId、AuthKey、tutorial mode。
+3. GameServer 检查 ID 和当前对象冲突，再向 MasterServer 发送 GM_LOGIN_REQ（accountId、AuthKey、serverFarmId、serverChannelId）。
+4. MasterServer 校验 AuthKey；GameServer 收到 MG_LOGIN_RES 后返回 GU_GAME_ENTER_RES。之后客户端继续发送进入世界请求，服务端加载世界信息、位置/状态并完成 loading/ready 流程。
+
+### 31.6 与 Cloudflare 账号体系的关键差异
+
+- dbo-account-api 当前使用 Cloudflare D1 的账号记录与 session_token；登录/会话/登出接口属于 HTTP JSON API。
+- OpenDBO AuthServer 当前从自己的账号数据库查询 accounts 表，并以 OpenDBO 的账号记录、在线状态、AuthKey 机制完成认证；accountId 是原版内部标识。
+- Cloudflare session_token、OpenDBO accountId、OpenDBO AuthKey 不是同一数据类型，也不是同一信任域。现有源码中没有发现把 Cloudflare session_token 兑换成 OpenDBO AuthKey 的桥接接口。
+- 因此 C 方案必须明确账号桥接设计：Cloudflare 账号如何映射到 OpenDBO accountId，以及由哪个可信服务端验证 Cloudflare 会话并发放/交换原版 AuthKey。不能让客户端伪造 AuthKey，也不能直接把 session_token 填入 AuthKey 字段。
+
+### 31.7 当前尚缺的协议材料
+
+- 完整 AuthServer 密码校验/密码编码函数与客户端密码生成路径；本轮只确认请求字段与服务器验证位置。
+- MasterServer AuthKey 生成、有效期、一次性消费、账号绑定和迁移时序的完整实现。
+- 完整 TCP 帧拼接/拆包、大小端、序号、加密位、编码器选择及各服务器配置的核对。
+- CharServer 的完整角色列表响应、创建角色默认装备/出生点字段和 QueryServer 数据结构映射。
+- GameServer 登录成功后的完整世界进入、数据加载、断线重连和跨频道迁移流程。
+- Cloudflare 与 OpenDBO 账号 ID 映射、唯一账号体验、账号恢复和封禁同步策略的用户决策与实现方案。
+
+本轮只读检查 OpenDBO-Core 与 DBOFF/dbo-web 文档源码；未连接或启动任何游戏服务器，未执行数据库写入，也未修改 OpenDBO 源码。
