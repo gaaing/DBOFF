@@ -1336,3 +1336,41 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 尚缺玩家存档中可供 Doll 使用的字段清单，以及跨玩家 Doll 分享/导入的具体数据方式。
 - 尚未逐项审计 OpenDBO 共斗/对战玩法的参与者限制、奖励归属和持久化逻辑。
 - 本轮只更新产品边界记录，未修改 Godot、Worker、D1、R2 或 OpenDBO 源码。
+
+
+## 35. 本地存档、账号与云存档接入基线审计（2026-11-02）
+
+### 35.1 本阶段范围（用户明确）
+当前只接通三项基础能力：本地存档、Cloudflare 云存档、账号身份。暂不开发启动器、好友、公共大厅、Doll 分享、P2P、真人组队或其他在线功能；遇到明确需求时再处理。
+
+### 35.2 当前 DBOFF 代码证据（A）
+已读取 `src/core/dbo_save_manager.gd`、`src/ui/lobby/character_lobby_ui.gd`、`src/world/world_scene_driver.gd`、背包/任务管理器及 `project.godot`：
+- 本地存档路径：`user://saves/account_meta.json`、`user://saves/char_{id}.json`。
+- 创建角色时会写入本地角色数据、角色简报和最后选择角色；大厅读取账号元数据/角色数据，世界场景读取激活角色数据。
+- 目前未发现 60 秒自动保存调度、完整运行时状态回写、云上传/下载、冲突修订号、原子写入或损坏恢复。
+- 当前 JSON 直接以 `FileAccess.WRITE` 覆盖；`DEFAULT_ACCOUNT_META` 中的 account_id=1001、username=dbo_player、gm_level=10 是本地占位值，不得作为真实账号身份或权限。
+- 当前 main scene 是角色大厅；`project.godot` 没有账号/API/云同步 Autoload。DBOSaveManager 以静态 class_name 使用。
+- 旧文档中 `src/managers/dbo_save_manager.gd` 的路径记录已更正；当前实际路径是 `src/core/dbo_save_manager.gd`。
+
+### 35.3 dbo-web 与 Cloudflare 当前证据（A）
+已读取 `dbo-web/worker/worker.js`、`functions/api/[[path]].js`、`ARCHITECTURE.md`：
+- 当前 Worker 有注册、登录、登出、session check 和 GM/ADMIN API；没有云存档上传/下载/元数据 API。
+- 注册/登录成功返回 account_id、username、account_type、session_token；session 有效期 30 天。注册要求 device_id 与 public_key；登录要求 device_id。
+- Godot 应直接配置 Worker API 基址，开发使用 `https://dbo-account-api-staging.hoipoi.workers.dev`，生产使用 `https://dbo-account-api.hoipoi.workers.dev`，不依赖 Pages 相对路径代理。
+- 生产 Worker version 14 仅绑定生产 D1；staging version 10 仅绑定 staging D1；两个版本都没有 R2 binding。
+- 生产与 staging D1 当前只有账号/会话/设备/封禁/限流相关表，没有云存档元数据表。
+- Cloudflare R2 bucket 列表 API 返回 HTTP 403 / code 10042，提示需先在 Dashboard 启用 R2。当前没有可用 R2 bucket 证据。
+
+### 35.4 本阶段实施顺序
+1. 修复本地存档写入可靠性，并建立运行时完整状态快照/回写。
+2. Godot 内接账号注册、登录、session check、logout；离线模式不得被登录阻断。
+3. 用户启用 R2 后，先建立 staging bucket/binding 和 D1 云存档元数据表。
+4. staging Worker 实现 session 鉴权的云存档上传、下载与 revision 冲突保护。
+5. Godot 按 30 分钟上传 dirty revision，并预留特殊动作前的统一 checkpoint 入口。
+6. 通过 staging 端到端验证后，才考虑生产部署。
+
+### 35.5 缺失材料与操作
+- 需用户在 Cloudflare Dashboard 启用 R2；当前 API 明确报告未启用。
+- 需要继续追踪完整运行时状态持有者与回写点，尤其世界位置、属性、背包/装备、技能、任务。
+- 特殊动作清单与上传失败策略未定义；暂不擅自阻止任何游戏动作。
+- 本轮只读审查并更新文档；未修改 Godot 源码、Worker、D1 schema、R2 或 Cloudflare 部署。
