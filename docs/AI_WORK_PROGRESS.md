@@ -1282,3 +1282,35 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 本轮未下载当前部署包并与 GitHub worker/worker.js 做字节级对比，不能据相同 etag 推断仓库源码与部署内容一定完全一致。
 - 当前部署时间为 2026-10-23；没有证据表明本轮之后有新部署。Worker 源码中路由的存在仍不能替代线上 HTTP 行为测试。
 - 本轮全部是 Cloudflare API GET 只读操作，没有修改生产/staging Worker、D1、Pages、Secrets、绑定或流量分配。
+
+
+## 33. OpenDBO 服务端职责盘点与无中心社交方案（2026-11-02）
+
+### 33.1 用户本轮新增决策边界（证据 D）
+
+- 好友、公共大厅、组队尚未决定采用服务器方案；必须先寻找完全不依赖中心服务器的方案。
+- OpenDBO 原版服务器功能必须先明确列出，再逐项决定是否保留服务器依赖；用户预计最终只有极少数功能会继续依靠服务器。
+- 不得默认把 Cloudflare Worker 作为好友、公共大厅、组队的必需后端。
+- 不得因 OpenDBO 原版采用服务端权威架构，就要求 DBOFF 离线单机流程也依赖远端服务器。
+
+### 33.2 OpenDBO-Core 服务器清单（证据 B）
+
+已重新读取 OpenDBO-Core README.md：服务器进程为 AuthServer、CharServer、ChatServer、GameServer（每个频道一个进程）、MasterServer、QueryServer；README 明确说明 QueryServer 是唯一直接访问数据库的服务器。
+
+已读取 GameServer/PacketGameServer.cpp（约 645 KB），通过处理函数名盘点到 309 个 CClientSession 请求处理入口，覆盖世界进入/退出、移动、战斗、技能、任务、背包、商店、银行、邮件、交易、拍卖、队伍、匹配、公会、Dojo、Budokai、TimeQuest、Dragonball Scramble、宠物/吉祥物、载具等大量系统。具体完整分类见 docs/OPENDBO_SERVER_FUNCTION_AUDIT.md。
+
+已读取 ChatServer/PacketChatServer.cpp 与 ClientSession.cpp 的相关范围，确认其处理 Say、Shout、Whisper、Party Chat、Guild Chat、Trade Chat、Find Party Chat，以及公会邀请响应、解散、离会、踢人、任命副会长、公告等社区操作；公会持久化请求交由 QueryServer。
+
+### 33.3 初步架构判断（不是最终批准）
+
+- AuthServer / CharServer / MasterServer / QueryServer 是原版 MMO 认证、角色大厅、服务协调和数据库访问架构；DBOFF 的离线角色与存档可采用本地机制替代。
+- GameServer 承载大量原版权威游戏规则；这些规则需要在 DBOFF 还原，但不等于必须部署远端 GameServer，单机可由本地 Godot 承担。
+- ChatServer 的聊天和社区广播可研究 P2P；好友、公会与在线状态仍需继续追踪完整 handler 和数据流。
+- 组队合作战斗可研究房主权威 P2P；全球公共大厅、离线消息、全局在线状态和全局排行榜存在发现/持久化/权威性问题，不能承诺在无任何在线节点时仍能提供完整全球服务。
+- 完全不依赖第三方基础设施时，LAN 发现和手动公网直连/端口转发可行；STUN/TURN 会引入外部映射发现或中继服务。
+
+### 33.4 新增审计文档
+
+- 新增 docs/OPENDBO_SERVER_FUNCTION_AUDIT.md，列出六类原版服务职责、GameServer/ChatServer 功能面、无中心服务可行边界、材料缺口与后续审计顺序。
+- 当前只完成第一轮职责盘点，不代表全部服务器功能已经逐函数审计，也未决定最终保留哪些在线功能。
+- 本轮未修改 Godot 代码、OpenDBO 源码、Cloudflare Worker、D1 或 R2。
