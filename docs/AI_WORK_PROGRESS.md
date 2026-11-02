@@ -860,3 +860,15 @@ README 明确说明：
 - docs/pak_audit_1_69/ 显示为未跟踪（??），尚未暂存；其内容和是否应纳入仓库需另行检查。
 
 当前状态只依据用户贴出的本地命令输出；尚未看到修正后的完整 .gitignore、暂存 diff、文件大小统计或最终提交结果。不要 commit/push，先检查暂存差异和未跟踪审计目录。
+
+
+## 16. Staged data review and local audit CSV inspection (2026-11-02)
+
+The user supplied the next local PowerShell outputs:
+
+- `git diff --cached --stat` reports 12 staged files and 2,392,365 insertions: `.gitignore` plus 11 JSON files across `assets/effect/` (2), `assets/gui/` (2), and `assets/prop/property/` (7).
+- The staged `.gitignore` contains the intended narrow rules: allow `assets/`, ignore its children by default, then allow only `tbl/`, `effect/`, `gui/`, and `prop/property/`; under `prop/`, ignore other children. No trailing newline is present in the staged file. This does not change the matching behavior, but adding a final newline is recommended for file hygiene.
+- The local `docs/pak_audit_1_69/` directory currently contains only `pak_inventory.csv`, reported size 79,872 bytes. Its contents have not been inspected, so its purpose, provenance, completeness and suitability for version control remain unknown.
+- No commit or push has been reported. Keep the change set uncommitted until the CSV header/sample and staged contents are reviewed.
+
+Next evidence requested: show the first several CSV rows (including the header) and, if needed, its column names/row count. Do not add the audit directory wholesale before review. The current staged asset whitelist appears correct based on the supplied diff and earlier staged-path filter; this does not validate the semantic correctness or completeness of the JSON data.
