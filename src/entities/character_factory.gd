@@ -92,7 +92,7 @@ static func get_pc_anim_dirs() -> Dictionary:
 	}
 
 
-## 检索素体模型路径 (儿童期使用官方绑定骨骼与新手服饰模型，成人期使用对应族群成人素体)
+## 检索素体模型路径（儿童与成人均使用基础素体，装备由独立装备系统挂载）
 static func get_pc_model_path(race: int, gender: int, is_adult: bool, _prop_name: String = "") -> String:
 	# 选角与创角及童年期角色：必须使用内嵌标准骨骼架构与初始新手服饰的儿童模型
 	if not is_adult:
@@ -578,9 +578,7 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 		visual.attach_item_to_bone(slot_name, glb_path, raw_model)
 		return
 
-	# 童年期角色：基础素体已内嵌官方初始服装与纹理，除武器与史考特外禁止强行挂载成人独立防具网格，避免骨骼不匹配导致拉伸撕裂
-	if not is_adult:
-		return
+	# 儿童与成人角色均通过装备系统挂载上衣、裤子、靴子及手套；儿童模型优先解析 child/ 装备资源。
 
 	# 上装/下装/靴子/手套：蒙皮网格，必须用 GLTFDocument 动态加载保留 Skin
 	var skeleton := visual._skeleton
