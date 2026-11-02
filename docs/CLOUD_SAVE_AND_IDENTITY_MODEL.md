@@ -82,8 +82,12 @@ OpenDBO 协议继续研究；是否提供可选的在线/多人模式、哪些�
 截至 2026-11-02 的 GitHub 只读检查：
 - DBOFF docs/AI_DEVELOPMENT_RULES.md、docs/DBOFF_DEVELOPMENT_MAP.md、docs/AI_WORK_PROGRESS.md 已读取。
 - dbo-web 根目录 ARCHITECTURE.md 已读取；其中已写明本地进度为主、云存档用于账号迁移而非实时双设备同步，但尚未包含用户本轮明确的 60 秒/30 分钟/特殊动作前上传节奏。
-- 尝试读取 DBOFF src/managers/dbo_save_manager.gd 返回 404。开发地图中曾将该路径列为存档审计入口，但当前 main 分支该路径未能读取；这表示当前 GitHub 该路径缺失/路径不匹配，不代表用户本地一定不存在。
-- 尚缺当前实际本地存档实现、存档格式/版本结构、云存档 Worker API、R2/D1 元数据设计、上传队列/冲突处理代码及特殊动作清单。
+- 当前 main 分支实际本地存档脚本为 `src/core/dbo_save_manager.gd`（已读取）；此前记录的 `src/managers/dbo_save_manager.gd` 路径错误，已由本轮核实更正。
+- `src/core/dbo_save_manager.gd` 已实现本地账号元数据与角色 JSON 的基础读写，但没有 60 秒自动保存调度、云端上传、修订号/冲突控制、原子写入或损坏恢复机制。
+- `project.godot` 当前主场景仍是角色大厅；Autoload 列表没有账号网络服务或云存档服务。DBOSaveManager 以 `class_name` 静态类形式被大厅和世界场景调用。
+- 当前 dbo-web `worker/worker.js` 只有账号注册、登录、登出、会话检查及 GM/ADMIN 接口；没有云存档上传、下载或元数据接口。
+- 生产与 staging Worker 当前版本都只绑定 D1 `DB`，未绑定 R2。Cloudflare 账户的 R2 bucket 列表 API 返回 403 / code 10042，提示需先在 Dashboard 启用 R2。
+- 生产与 staging D1 当前只有 accounts、sessions、devices、account_devices、auth_rate_limits、banned_devices、banned_ips、gm_invite_codes 等账号/认证表；没有云存档元数据表。
 - 当前没有证据证明 60 秒本地保存、30 分钟云上传或特殊动作前上传已经实现。
 
 ## 8. 后续工作顺序
@@ -95,3 +99,63 @@ OpenDBO 协议继续研究；是否提供可选的在线/多人模式、哪些�
 6. 在 staging 完成验证后，再考虑生产部署。
 
 本轮仅新增设计记录；未修改 Godot 代码、Worker、D1、R2 或 Cloudflare 部署。
+
+## 9. 2026-11-02 当前代码与 Cloudflare 资源审计（证据 A）
+
+### 9.1 DBOFF 本地存档现状
+
+已读取：
+- `src/core/dbo_save_manager.gd`
+- `src/ui/lobby/character_lobby_ui.gd`
+- `src/world/world_scene_driver.gd`
+- `src/core/dbo_inventory_manager.gd`
+- `src/core/dbo_quest_manager.gd`
+- `project.godot`
+
+确认：
+- 当前本地文件为 `user://saves/account_meta.json` 与 `user://saves/char_{id}.json`。
+- 新建角色时会写入角色 JSON、账号角色简报和最后选择角色。
+- 角色大厅会读取账号元数据/角色数据；世界场景会读取激活角色数据。
+- 存档脚本目前直接使用 `FileAccess.WRITE` 覆盖 JSON 文件，没有临时文件+原子替换、备份、校验和或 schema migration。
+- `DEFAULT_ACCOUNT_META` 仍包含本地占位值 account_id=1001、username=dbo_player、gm_level=10；这些不能作为真实 Cloudflare 身份或 GM 授权。
+- 角色运行期间尚未发现已接入 60 秒自动保存的调度器；本轮读取的背包与任务管理器持有运行时数据，但没有直接调用 DBOSaveManager 的保存接口。
+- `world_scene_driver.gd` 目前从存档读取角色与世界初始状态；没有发现对应的完整退出/定时回写闭环。
+- 当前已读取范围内未发现账号登录 UI、HTTP API client、session token 持久化或云同步协调器。
+
+### 9.2 dbo-web 账号接口现状
+
+当前 `worker/worker.js` 已有：
+- `POST /api/register`：注册并返回 account_id、username、account_type、device_id、session_token。
+- `POST /api/login`：登录并返回上述身份字段及 session_token。
+- `POST /api/logout`：撤销 session。
+- `POST /api/session/check`：检查 session 是否有效并返回 account_type。
+
+session 默认有效期为 30 天。注册请求要求 username、password、device_id、public_key；登录要求 username、password、device_id，public_key 可选。Worker 当前 JSON body 读取上限为 16 KiB；未来存档文件不能沿用该 JSON 小请求处理器直接接收大文件。
+
+Godot 客户端应使用明确配置的 Worker API 基址；开发期使用 staging：
+`https://dbo-account-api-staging.hoipoi.workers.dev`。
+生产基址为：
+`https://dbo-account-api.hoipoi.workers.dev`。
+不依赖网页 Pages 的相对路径代理。
+
+### 9.3 Cloudflare 存储现状
+
+- 生产 Worker version 14 仅绑定 D1 `DB`（生产 D1：`edb91621-24f3-47af-8798-54d1b3914154`）。
+- staging Worker version 10 仅绑定 D1 `DB`（staging D1：`0d555faf-0ae3-486e-bafd-b3100534f7de`）。
+- 两个 D1 数据库的 sqlite_master 均未发现云存档元数据表。
+- 通过 Cloudflare API 读取 R2 bucket 列表时，账户返回 HTTP 403、错误码 10042：需先在 Cloudflare Dashboard 启用 R2。当前不能假设已有可用 R2 bucket 或 Worker R2 binding。
+- 本轮只读检查，没有创建 R2 bucket、D1 表、Worker binding 或修改任何部署。
+
+### 9.4 当前缺口与实施顺序
+
+1. 先补齐本地存档可靠性与完整运行时快照回写：60 秒本地保存、原子写入、schema 版本、dirty/revision 状态。
+2. 在 Godot 内接入账号 UI/API：设备标识、注册/登录、session check、logout；无网络时允许离线进入游戏。
+3. 在 Cloudflare 启用 R2，并建立 staging R2 bucket 与 staging Worker binding。
+4. 在 staging D1 增加云存档元数据表；Worker 增加经过 session 鉴权的上传、下载、元数据/冲突检查接口。
+5. Godot 云同步器按 30 分钟上传 dirty revision；特殊动作使用统一 checkpoint 入口。
+6. 完成 staging 的注册/登录/离线启动/上传/下载/旧版本冲突/中断恢复验证后，再单独评估生产上线。
+
+当前缺少或需用户操作的材料：
+- **需要用户在 Cloudflare Dashboard 启用 R2**；当前 API 明确返回未启用，工具不能替用户完成 Dashboard 激活。
+- 尚未取得本地运行时完整状态采集的验证结果；需要逐项确认玩家世界位置、属性、背包/装备、技能、任务等状态由哪些运行时对象持有。
+- 特殊动作清单与“上传失败是否阻止该动作”的策略仍未定义；先预留通用 checkpoint 接口，不擅自阻断游戏流程。
