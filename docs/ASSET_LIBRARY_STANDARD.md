@@ -244,3 +244,10 @@ The user corrected the assets ignore rules and locally staged only .gitignore, a
 Git emitted CRLF-to-LF normalization warnings for these JSON files; these are line-ending notices, not evidence of content corruption. The local status also showed docs/pak_audit_1_69/ as untracked and not staged. Inspect that directory separately before deciding whether it belongs in the repository.
 
 This is based on the user's pasted local command output. The complete staged diff, final ignore file, file-size audit, and commit/push status have not yet been inspected. Do not commit or push until those checks are reviewed.
+
+
+## 16. Local audit inventory CSV pending review (2026-11-02)
+
+The user reports that `docs/pak_audit_1_69/` contains one file, `pak_inventory.csv`, sized 79,872 bytes. Its header, rows, generation tool, source roots, timestamp and validation status have not yet been inspected. Do not treat it as the complete 1.69 TW client-root manifest merely from its filename. Review its schema and sample rows, then compare its documented scope with the full-client-root inventory requirements in Section 13 before deciding whether to track it.
+
+The local staged asset change set reports 12 files and 2,392,365 insertions: `.gitignore`, 2 effect JSON files, 2 GUI dictionary JSON files, and 7 property JSON files. The staged ignore rules narrowly allow `assets/tbl/`, `assets/effect/`, `assets/gui/`, and `assets/prop/property/` while excluding other asset children. The staged `.gitignore` lacks a final newline; this is a hygiene issue, not an ignore-rule logic error. No commit or push has been reported. Keep the change set uncommitted pending final review.
