@@ -108,16 +108,19 @@ func _ready() -> void:
 	load_localization_data()
 
 
-## 加载官方全并集文本库
+## 加载官方全并集文本库（支持语言隔离与动态切换）
 func load_localization_data() -> bool:
 	if _is_loaded:
 		return true
 
-	if not FileAccess.file_exists(LOCALIZATION_FILE_PATH):
-		push_error("[DBOLocalizer] 找不到语言数据文件: " + LOCALIZATION_FILE_PATH)
+	var lang_path := "res://assets/lang/%s/table_text_all_data.json" % _current_language
+	var target_path := lang_path if FileAccess.file_exists(lang_path) else LOCALIZATION_FILE_PATH
+
+	if not FileAccess.file_exists(target_path):
+		push_error("[DBOLocalizer] 找不到语言数据文件: " + target_path)
 		return false
 
-	var file := FileAccess.open(LOCALIZATION_FILE_PATH, FileAccess.READ)
+	var file := FileAccess.open(target_path, FileAccess.READ)
 	if file == null:
 		push_error("[DBOLocalizer] 无法打开语言文件: " + str(FileAccess.get_open_error()))
 		return false
@@ -131,6 +134,30 @@ func load_localization_data() -> bool:
 		return false
 
 	_text_database = json_parsed
+
+	# 尝试挂载任务文本
+	var quest_path := "res://assets/lang/%s/table_quest_text_data.json" % _current_language
+	if FileAccess.file_exists(quest_path):
+		var qf := FileAccess.open(quest_path, FileAccess.READ)
+		if qf != null:
+			var q_parsed = JSON.parse_string(qf.get_as_text())
+			qf.close()
+			if q_parsed is Dictionary:
+				_text_database["QUEST_TEXT"] = q_parsed
+
+	# 尝试合并当前语言的 GUI 专有文本
+	var gui_path := "res://assets/lang/%s/gui.json" % _current_language
+	if FileAccess.file_exists(gui_path):
+		var gf := FileAccess.open(gui_path, FileAccess.READ)
+		if gf != null:
+			var g_parsed = JSON.parse_string(gf.get_as_text())
+			gf.close()
+			if g_parsed is Dictionary:
+				if not _text_database.has("GUI_TEXT"):
+					_text_database["GUI_TEXT"] = {}
+				for gk in g_parsed.keys():
+					_text_database["GUI_TEXT"][str(gk)] = g_parsed[gk]
+
 	_is_loaded = true
 	return true
 
@@ -189,10 +216,12 @@ func get_current_language() -> String:
 	return _current_language
 
 
-## 设置当前语言并广播变更信号
+## 设置当前语言并广播变更信号（自动热重载语言资产）
 func set_language(new_language: String) -> void:
 	if _current_language != new_language:
 		_current_language = new_language
+		_is_loaded = false
+		load_localization_data()
 		language_changed.emit(new_language)
 
 

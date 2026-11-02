@@ -1,0 +1,452 @@
+{
+  "1": {
+    "tblidx": 1,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "2": {
+    "tblidx": 2,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "3": {
+    "tblidx": 3,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "4": {
+    "tblidx": 4,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "5": {
+    "tblidx": 5,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "6": {
+    "tblidx": 6,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "7": {
+    "tblidx": 7,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "8": {
+    "tblidx": 8,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "9": {
+    "tblidx": 9,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "10": {
+    "tblidx": 10,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 101,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "11": {
+    "tblidx": 11,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "12": {
+    "tblidx": 12,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "13": {
+    "tblidx": 13,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "14": {
+    "tblidx": 14,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "15": {
+    "tblidx": 15,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "16": {
+    "tblidx": 16,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "17": {
+    "tblidx": 17,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "18": {
+    "tblidx": 18,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "19": {
+    "tblidx": 19,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "20": {
+    "tblidx": 20,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 102,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "21": {
+    "tblidx": 21,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "22": {
+    "tblidx": 22,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "23": {
+    "tblidx": 23,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "24": {
+    "tblidx": 24,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "25": {
+    "tblidx": 25,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "26": {
+    "tblidx": 26,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "27": {
+    "tblidx": 27,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "28": {
+    "tblidx": 28,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "29": {
+    "tblidx": 29,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "30": {
+    "tblidx": 30,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 103,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "31": {
+    "tblidx": 31,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "32": {
+    "tblidx": 32,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "33": {
+    "tblidx": 33,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "34": {
+    "tblidx": 34,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "35": {
+    "tblidx": 35,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "36": {
+    "tblidx": 36,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "37": {
+    "tblidx": 37,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "38": {
+    "tblidx": 38,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "39": {
+    "tblidx": 39,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "40": {
+    "tblidx": 40,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 104,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "41": {
+    "tblidx": 41,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "42": {
+    "tblidx": 42,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "43": {
+    "tblidx": 43,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "44": {
+    "tblidx": 44,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "45": {
+    "tblidx": 45,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "46": {
+    "tblidx": 46,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "47": {
+    "tblidx": 47,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "48": {
+    "tblidx": 48,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "49": {
+    "tblidx": 49,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  },
+  "50": {
+    "tblidx": 50,
+    "name": "",
+    "active": true,
+    "slot_machine_tblidx": 201,
+    "cash_item_tblidx": 2200040,
+    "stack_count": 0,
+    "percent": 10
+  }
+}
