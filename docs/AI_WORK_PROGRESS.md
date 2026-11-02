@@ -1546,3 +1546,53 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 需要当前本地运行时日志，确认上述初始装备项目的 item 数据命中、解析出的 GLB 路径、文件存在状态和加载结果；并在 Godot 4.7.2 下分别验证创角预览、选角预览、人类/那美克/魔人、男女及至少一个不同职业。
 
 本轮只读诊断并记录 Markdown；未修改 Godot 源码、场景、模型资源或提交任何代码修复。
+
+
+
+## 41. 2026-11-02 创角/选角初始装备问题：OpenDBO 装备管线对照补充
+
+### 41.1 本轮重新核对的当前代码（证据 A）
+重新读取当前 main：
+- `src/entities/character_factory.gd` SHA `856841f164c5b512f46ddfcecce8e49907914345`
+- `src/ui/lobby/character_lobby_stage.gd` SHA `fb64f3fc104b12a081c9d05891cec8a989639a88`
+- `src/ui/lobby/character_lobby_ui.gd` SHA `dc91e58dd2d86e3a41cb4d9cf027f95cefbfd73e`
+- `data/newbie_table.json` SHA `48ef855d9945369798dca46777b7ccffe3c2a2ad`
+
+补充确认：
+1. 当前舞台 `_on_avatar_visual_changed()` 对所有传入的装备项目调用 `DBOCharacterFactory.equip_item_to_character()`，当前版本没有额外的 `is_adult` 循环门控。
+2. `_load_character_model()` 固定通过 `build_player_visual(race, gender, false)` 创建儿童模型。
+3. 工厂的 `_resolve_item_glb_path()` 会先用 itemproperty 中的 `mesh_path/mesh_file` 解析资源，并在儿童状态先尝试 `child/` 路径；若儿童路径不存在，当前代码仍继续尝试成人路径。这是危险的静默回退：儿童资源缺失时不应把成人网格当作儿童装备使用。
+4. `equip_item_to_character()` 对儿童角色仍保留 `if not is_adult: return`。因此当前上衣、裤子、鞋子和蒙皮手套不会挂载。此处与用户报告相符，是直接代码原因。
+5. `newbie_table.json` 当前为对象结构，`DBOSaveManager._load_newbie_table()` 会将 Dictionary 转为 values 数组；`get_newbie_starter_items()` 过滤 `pos != 255`。例如人类格斗家初始项目包含武器 500001（pos 0）、上衣 522001（pos 2）、裤子 522002（pos 3）、鞋子 522003（pos 4）、史考特 60000000（pos 5）。新手装备数据不是本轮缺口。
+6. 当前 `_slot_flag_to_name()` 将装备表 `equip_slot_flag` 映射到视觉槽位；需要在后续逐项核实 item table 中该字段的真实语义与 bit flag 组合，不能只凭字段名或注释认定映射正确。
+
+### 41.2 OpenDBO 原版源码对照（证据 B）
+已读取 OpenDBO/OpenDBO-Core master：
+- `DboClient/Client/Stage/CharacterStage.cpp` SHA `d4bafd3fde4124f4f2b05876c55064f0e126e631`
+- `DboClient/Client/Stage/LobbyStage.cpp` SHA `d54cbddcd672f7b90f459065adf7decd6247b3f5`
+- `DboClient/Lib/NtlSimulation/NtlSobCharProxyEquip.cpp` SHA `345a1eb13edd473fca3b4fd05f1dbe2d41064fd0`
+- `DboClient/Lib/NtlPresentation/NtlPLCharacter.cpp` SHA `2fe5c39ebeb41d6128a96aa0ed77ba27ae020849`
+- `DboShared/NtlGameTable/ItemTable.cpp` SHA `e6ab55da5e790079f4a56afac96a0054a0262211`
+- `DboShared/NtlShared2/NtlItem.h` SHA `6870fc3552ef51337dcff1e77b3474b67dd3505a`
+
+已确认的原版流程：
+1. 创角 `CharacterStage.cpp::CreateDummyAvatar()` 从 NewbieTable 读取 `aitem_Tblidx[]` 与 `abyPos[]`，跳过 INVALID_TBLIDX 和 UNKNOWN 装备位置，构造装备容器数据后创建 Avatar。
+2. 选角 `CharacterStage.cpp::CreateDownLoadAvatar()` 从角色摘要装备数组逐栏读取 tblidx；查找 ItemTable，跳过不存在或 `EQUIP_TYPE_UNKNOWN` 的项目，再构造装备容器。
+3. `LobbyStage.cpp::CreateDummyAvatar()` 同样从 NewbieTable 读取装备；另外查找 ItemTable 并跳过 `byEquip_Type == EQUIP_SLOT_TYPE_UNKNOWN` 的不可装备项目。
+4. `NtlSobCharProxyEquip.cpp::SobEquipCreateEventHandler()` 统一遍历装备槽，读取 ItemTable 的 `szModel`、`byModel_Type`，通过 `MakeItemModelName()` 加上角色种族/性别后调用 `CreatePLItem()`，再由 `CNtlPLCharacter::SetChangeEquipItem()` 纳入角色装备表现。
+5. 原版 `MakeItemModelName()` 对常规装备根据种族和性别追加后缀；儿童状态仅对 Costume Mask / Hair Style 特殊追加 `_CH`，不能将旧报告中“所有儿童常规防具都必须使用独立 child 文件名”的说法当作 OpenDBO 原版规则。
+6. `ItemTable.cpp` 分别读取 `Model_Type`、`Model`、`Equip_Type` 与 `Equip_Slot_Type_Bit_Flag`。这些字段语义不同，DBOFF 不能将 equip type、装备栏位置和装备槽 bit flag 混为一谈。
+
+### 41.3 对旧报告的纠正与当前资源证据
+- 历史报告 `starter_equipment_restoration_report.md` 声称 24 个儿童装备 GLB 已在 `assets/obj/item/mesh_armor_*/child/` 确认存在；`child_dual_body_and_equipment_diagnosis_report.md` 与 `starter_equipment_cause_and_solution_report.md` 则称当前儿童装备 GLB 为无 Skin 的成人静态网格。
+- 上述历史文档结论互相矛盾，且均不能覆盖当前分支代码与文件树证据。
+- 本轮递归读取当前 GitHub main tree：当前仓库没有提交 `.glb/.gltf/.obj/.fbx` 模型文件，也没有可供 GitHub 读取的 `assets/obj/item/` 资源树。此结论只表示 GitHub 当前分支未上传模型，不代表用户本地资源不存在。
+- 因此，既有装备 ID → model key → 资源文件名映射可继续使用；但当前无法仅凭 GitHub 验证本地模型文件是否存在、是否含 Skin、骨骼名/IBM 是否兼容。不能再要求用户重复提供已经存在于历史报告中的 ID 与文件名映射。
+
+### 41.4 当前诊断结论与后续工作
+- 当前直接原因：儿童角色装备挂载函数提前返回；儿童资源缺失时解析器又允许继续尝试成人路径，存在错误回退风险。
+- 不可采取的修复：单纯删除儿童提前返回，或将成人静态 GLB 强制挂到儿童 Skeleton3D。
+- 正确方向：保留创角/选角共用装备入口；明确区分刚体武器/史考特与需要 Skin 的防具/手套；儿童装备只有在资源的 Skin、骨骼映射和绑定矩阵通过检查后才允许挂载；缺失/不兼容时明确记录，不静默使用成人资源。
+- 原版对照已经证明装备数据从 NewbieTable/角色装备栏进入统一装备代理，并由 ItemTable 模型字段和角色属性生成模型名；仍需继续查原版角色骨骼缩放/装备蒙皮绑定细节，以及 DBOFF 当前 GLB 的实际 Skin/骨骼结构。
+- 尚未完成：读取 DBOFF 当前 `table_item_data.json` 中目标 tblidx 的完整字段值；读取 `itemproperty.json` 中对应模型 key 的 mesh path/file；核实本地模型物理文件与 GLB Skin 结构；核实 `equip_slot_flag` 映射；进一步检查原版角色骨骼缩放与装备蒙皮的坐标/IBM 兼容；Godot 4.7.2 创角/选角运行验证。
+- 本轮未修改 Godot 源码、场景、模型资源；仅更新本进度文档，没有执行代码修复或运行验证。
