@@ -1,0 +1,17 @@
+﻿scope,family,header_pak_path,volume_pattern,volume_count,min_unit,max_unit,entry_count,mapping_rule,validation_status
+main,obj,pack\obj.pak,obj%d.pak,105,0,104,27999,Standard series,VERIFIED
+main,tex,pack\tex.pak,tex%d.pak,61,0,60,28275,Standard series,VERIFIED
+main,tan,pack\tan.pak,terrain%d.pak,163,0,162,49720,CRITICAL ALIAS: tan -> terrain,VERIFIED
+main,sound,pack\sound.pak,sound%d.pak,66,0,65,3460,"Standard series, raw PCM WAV & Ogg Vorbis",VERIFIED
+main,gui,pack\gui.pak,gui%d.pak,9,0,8,665,Standard series,VERIFIED
+main,flash,pack\flash.pak,flash%d.pak,16,0,15,1194,Standard series,VERIFIED
+main,lang,pack\lang.pak,lang%d.pak,1,0,0,4,Standard series,VERIFIED
+main,scr,pack\scr.pak,scr%d.pak,1,0,0,130,Standard series,VERIFIED
+main,tbl,pack\tbl.pak,tbl%d.pak,2,0,1,274,Standard series (tbl0.pak and tbl1.pak),VERIFIED
+main,prop,pack\prop.pak,prop.pak,0,0,0,6,Self-contained / single pack index,VERIFIED
+localize,flash,localize\TAIWAN\pack\flash.pak,flash%d.pak,31,0,30,798,Localized override series,VERIFIED
+localize,gui,localize\TAIWAN\pack\gui.pak,gui%d.pak,1,0,0,3,Localized override series,VERIFIED
+localize,lang,localize\TAIWAN\pack\lang.pak,lang%d.pak,1,0,0,4,Localized override series,VERIFIED
+localize,scr,localize\TAIWAN\pack\scr.pak,scr%d.pak,1,0,0,90,Localized override series,VERIFIED
+localize,tbl,localize\TAIWAN\pack\tbl.pak,tbl%d.pak,1,0,0,18,Localized override series,VERIFIED
+localize,tex,localize\TAIWAN\pack\tex.pak,tex%d.pak,1,0,0,173,Localized override series,VERIFIED
