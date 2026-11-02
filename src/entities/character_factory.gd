@@ -548,11 +548,25 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 	var is_adult: bool = visual.is_adult
 
 	var slot_flag: int = item_data.get("equip_slot_flag", 0)
-	var slot_name := _slot_flag_to_name(slot_flag)
+	var is_glove := (slot_flag == 1 or slot_flag == 2) and "glv" in raw_model.to_lower()
+	var slot_name := "hands" if is_glove else _slot_flag_to_name(slot_flag)
 
 	var glb_path := _resolve_item_glb_path(raw_model, race, gender, is_adult)
 	if glb_path.is_empty() or not FileAccess.file_exists(glb_path):
 		return
+
+	# 互斥清理：若穿戴手套，清除可能存在的旧双手/右手武器；若穿戴主手武器，清除可能存在的手套
+	if is_glove:
+		for old_k in ["weapon_r", "hands"]:
+			if visual._slots.has(old_k) and is_instance_valid(visual._slots[old_k]):
+				visual._slots[old_k].queue_free()
+				visual._slots[old_k] = null
+			visual.equipped_glb_paths.erase(old_k)
+	elif slot_flag == 1 or slot_flag == 2:
+		if visual._slots.has("hands") and is_instance_valid(visual._slots["hands"]):
+			visual._slots["hands"].queue_free()
+			visual._slots["hands"] = null
+			visual.equipped_glb_paths.erase("hands")
 
 	# 史考特（Scouter）挂载到头部骨骼附件节点
 	if slot_flag == 32:
@@ -560,7 +574,7 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 		return
 
 	# 非手套类武器（杖、剑、斧等）挂到手部骨骼附件节点；手套是蒙皮网格走主管线
-	if (slot_flag == 1 or slot_flag == 2) and "glv" not in raw_model.to_lower():
+	if (slot_flag == 1 or slot_flag == 2) and not is_glove:
 		visual.attach_item_to_bone(slot_name, glb_path, raw_model)
 		return
 
@@ -622,19 +636,22 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 
 	# 皮肤与布料材质派发及肤色同步染色（对标 OpenDBO-Core 逆向与旧工程魔人修复标准）
 	var c_skin_col := visual.current_skin_color
-	if c_skin_col == Color.WHITE and visual._last_customization_args.size() >= 6:
-		var c_skin_col_num: int = clampi(int(visual._last_customization_args[5]), 1, 5)
-		var def_tbl := DBOTableManager.get_default_item_list()
-		var type_str := visual._get_character_type_string(race, gender, is_adult)
-		var type_data: Dictionary = def_tbl.get(type_str, {})
-		var skin_cols: Dictionary = type_data.get("skin_color", {})
-		var sc_arr: Array = skin_cols.get(str(c_skin_col_num), [1.0, 1.0, 1.0])
-		if sc_arr.size() >= 3 and race != 1:
-			c_skin_col = Color(sc_arr[0], sc_arr[1], sc_arr[2])
+	if race == 1:
+		c_skin_col = Color.WHITE
+	else:
+		if c_skin_col == Color.WHITE and visual._last_customization_args.size() >= 6:
+			var c_skin_col_num: int = clampi(int(visual._last_customization_args[5]), 1, 5)
+			var def_tbl := DBOTableManager.get_default_item_list()
+			var type_str := visual._get_character_type_string(race, gender, is_adult)
+			var type_data: Dictionary = def_tbl.get(type_str, {})
+			var skin_cols: Dictionary = type_data.get("skin_color", {})
+			var sc_arr: Array = skin_cols.get(str(c_skin_col_num), [1.0, 1.0, 1.0])
+			if sc_arr.size() >= 3:
+				c_skin_col = Color(sc_arr[0], sc_arr[1], sc_arr[2])
 
-	# 魔人默认粉红保底，严禁退回纯白导致白模
-	if race == 2 and (c_skin_col == Color.WHITE or c_skin_col.a < 0.01):
-		c_skin_col = Color(0.9922, 0.7412, 0.8627)
+		# 魔人默认粉红保底，严禁退回纯白导致白模
+		if race == 2 and (c_skin_col == Color.WHITE or c_skin_col.a < 0.01):
+			c_skin_col = Color(0.9922, 0.7412, 0.8627)
 	visual.current_skin_color = c_skin_col
 
 	var is_majin_jacket := (race == 2 and slot_name == "torso")

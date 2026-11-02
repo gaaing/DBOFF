@@ -1,0 +1,481 @@
+{
+  "timestamp": "2026-11-01 18:49:11",
+  "summary": {
+    "total_raw_files": 120234,
+    "total_raw_size_bytes": 7921411207,
+    "total_raw_size_gb": 7.377,
+    "total_export_files_all": 129928,
+    "total_export_files_clean_assets": 78562,
+    "total_export_godot_import_meta": 51366,
+    "total_export_size_bytes": 4790934092,
+    "total_export_size_gb": 4.462,
+    "duplicate_groups": 16336,
+    "duplicate_files_total": 64251,
+    "status_distribution": {
+      "已成功转换并导出": 52997,
+      "尚未导出": 11478,
+      "重复文件": 47915,
+      "暂时无法识别": 38,
+      "已直接保留": 7806
+    }
+  },
+  "extension_statistics": {
+    ".anm": {
+      "raw_count": 26398,
+      "raw_bytes": 1468579856,
+      "matched_count": 12936,
+      "exported_count": 12936,
+      "failed_count": 0,
+      "unmatched_count": 142,
+      "direct_kept": 0,
+      "duplicate": 13320
+    },
+    "(no_ext)": {
+      "raw_count": 39421,
+      "raw_bytes": 3219053803,
+      "matched_count": 9374,
+      "exported_count": 9374,
+      "failed_count": 0,
+      "unmatched_count": 9562,
+      "direct_kept": 0,
+      "duplicate": 20485
+    },
+    ".glb": {
+      "raw_count": 15,
+      "raw_bytes": 921844,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 15,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".rdf": {
+      "raw_count": 251,
+      "raw_bytes": 60460209,
+      "matched_count": 200,
+      "exported_count": 200,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 50
+    },
+    ".tga": {
+      "raw_count": 1385,
+      "raw_bytes": 508687686,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 600,
+      "direct_kept": 0,
+      "duplicate": 785
+    },
+    ".swf": {
+      "raw_count": 427,
+      "raw_bytes": 190819859,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 426,
+      "direct_kept": 0,
+      "duplicate": 1
+    },
+    ".eff": {
+      "raw_count": 1028,
+      "raw_bytes": 45771466,
+      "matched_count": 8,
+      "exported_count": 8,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 1020
+    },
+    ".srf": {
+      "raw_count": 229,
+      "raw_bytes": 1391447,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 221,
+      "direct_kept": 0,
+      "duplicate": 8
+    },
+    ".frm": {
+      "raw_count": 311,
+      "raw_bytes": 861669,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 300,
+      "direct_kept": 0,
+      "duplicate": 11
+    },
+    ".rsr": {
+      "raw_count": 74,
+      "raw_bytes": 15577,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 73,
+      "direct_kept": 0,
+      "duplicate": 1
+    },
+    ".def": {
+      "raw_count": 2,
+      "raw_bytes": 634,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 2,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".2ps": {
+      "raw_count": 1,
+      "raw_bytes": 3587,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".scr": {
+      "raw_count": 19,
+      "raw_bytes": 749100,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 19,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".dat": {
+      "raw_count": 3,
+      "raw_bytes": 337262,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 3,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".alm": {
+      "raw_count": 2,
+      "raw_bytes": 301973,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 2,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".dff": {
+      "raw_count": 12627,
+      "raw_bytes": 1143916261,
+      "matched_count": 12561,
+      "exported_count": 12561,
+      "failed_count": 0,
+      "unmatched_count": 2,
+      "direct_kept": 0,
+      "duplicate": 64
+    },
+    ".uva": {
+      "raw_count": 158,
+      "raw_bytes": 41568,
+      "matched_count": 158,
+      "exported_count": 158,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".bak": {
+      "raw_count": 4,
+      "raw_bytes": 20788594,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 4,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".bak2": {
+      "raw_count": 1,
+      "raw_bytes": 9287090,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".dpf": {
+      "raw_count": 1,
+      "raw_bytes": 22465,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".tbl": {
+      "raw_count": 3,
+      "raw_bytes": 1957,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 3,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".dsf": {
+      "raw_count": 1,
+      "raw_bytes": 189654,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".dtf": {
+      "raw_count": 1,
+      "raw_bytes": 1766,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".fx": {
+      "raw_count": 1,
+      "raw_bytes": 4602,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".xml": {
+      "raw_count": 16,
+      "raw_bytes": 206374,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 16,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".htm": {
+      "raw_count": 80,
+      "raw_bytes": 89271,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 80,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".lua": {
+      "raw_count": 9,
+      "raw_bytes": 452677,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 9,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".ph": {
+      "raw_count": 1,
+      "raw_bytes": 1,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 1,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".html": {
+      "raw_count": 9,
+      "raw_bytes": 9050,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 9,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".gwp": {
+      "raw_count": 50,
+      "raw_bytes": 12500,
+      "matched_count": 48,
+      "exported_count": 48,
+      "failed_count": 0,
+      "unmatched_count": 2,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".bsp": {
+      "raw_count": 7,
+      "raw_bytes": 19373114,
+      "matched_count": 7,
+      "exported_count": 7,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".sdw": {
+      "raw_count": 1024,
+      "raw_bytes": 28672,
+      "matched_count": 3,
+      "exported_count": 3,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 1021
+    },
+    ".dif": {
+      "raw_count": 1024,
+      "raw_bytes": 4460544,
+      "matched_count": 317,
+      "exported_count": 317,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 707
+    },
+    ".hho": {
+      "raw_count": 1024,
+      "raw_bytes": 4096,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 1024
+    },
+    ".ld": {
+      "raw_count": 1024,
+      "raw_bytes": 4096,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 1024
+    },
+    ".obj": {
+      "raw_count": 1028,
+      "raw_bytes": 46703,
+      "matched_count": 36,
+      "exported_count": 36,
+      "failed_count": 0,
+      "unmatched_count": 4,
+      "direct_kept": 0,
+      "duplicate": 988
+    },
+    ".objt": {
+      "raw_count": 1024,
+      "raw_bytes": 4244,
+      "matched_count": 1,
+      "exported_count": 1,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 1023
+    },
+    ".ocq": {
+      "raw_count": 1024,
+      "raw_bytes": 4096,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 1024
+    },
+    ".pe": {
+      "raw_count": 1025,
+      "raw_bytes": 4194308,
+      "matched_count": 163,
+      "exported_count": 163,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 862
+    },
+    ".sl": {
+      "raw_count": 1024,
+      "raw_bytes": 32768,
+      "matched_count": 2,
+      "exported_count": 2,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 1022
+    },
+    ".old": {
+      "raw_count": 1,
+      "raw_bytes": 77824,
+      "matched_count": 1,
+      "exported_count": 1,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".dds": {
+      "raw_count": 20432,
+      "raw_bytes": 1069358976,
+      "matched_count": 17182,
+      "exported_count": 17182,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 0,
+      "duplicate": 3250
+    },
+    ".db": {
+      "raw_count": 10,
+      "raw_bytes": 14589372,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 10,
+      "direct_kept": 0,
+      "duplicate": 0
+    },
+    ".png": {
+      "raw_count": 8031,
+      "raw_bytes": 136251994,
+      "matched_count": 7806,
+      "exported_count": 7806,
+      "failed_count": 0,
+      "unmatched_count": 0,
+      "direct_kept": 7806,
+      "duplicate": 225
+    },
+    ".mtl": {
+      "raw_count": 4,
+      "raw_bytes": 598,
+      "matched_count": 0,
+      "exported_count": 0,
+      "failed_count": 0,
+      "unmatched_count": 4,
+      "direct_kept": 0,
+      "duplicate": 0
+    }
+  },
+  "directories": {
+    "pak_client_dir": "E:\\DBO_CT_TW(1.57.51)",
+    "raw_dir": "E:\\DBO_Offline\\pipeline\\raw_source",
+    "export_dir": "E:\\DBOFF",
+    "tools_dir": "E:\\DBO_Offline\\tools",
+    "opendbo_dir": "E:\\OpenDBO-Core-master"
+  }
+}

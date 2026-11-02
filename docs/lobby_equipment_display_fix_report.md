@@ -90,20 +90,44 @@
        - 围巾与衣袖装饰表面：优先继承 GLB 内部内嵌纹理，若为空则自动检索装配对应 `jacket_2` 围巾贴图，基色保持 `Color.WHITE`；
     2. 穿戴装备时将 `mesh_inst.material_override` 显式置为 `null`，确保所有 Surface Override Materials 100% 独立生效。
 
+- [x] **目标 16：那美克星人素体皮肤异常（仅头部正常）修复与绿色比克皮质还原** (进度: 100%)
+  - 根因：
+    1. 那美克星人童年素体（`namek_m_child.glb`）中，表面 2、3（双小臂皮肤）、表面 6（颈肩与胸腹皮肤）均被命名为 `A_NFI_AD_jacket_skin01`，表面 8（露踝小腿皮肤）被命名为 `A_NAM_pants_skin01`。
+    2. 此前由于目标 14 针对魔人上装穿模引入了遮罩判定，将非魔人的全部 `is_jacket` 表面在 `has_torso == true` 时一律强制隐藏（`inv_mat`），且将 `is_pants` 表面在 `has_legs == true` 时强制隐藏。但那美克星人新手上衣（`A_NFI_04_01_J`）是无袖开襟短马甲，新手裤子是灯笼短裤，防具本身不含手臂和露踝网格！这导致素体的胸颈、双臂及脚踝皮肤全被误抹除，只剩下浮空头部和一件马甲；
+    3. `default_item_list.json` 中配置的那美克星人 `skin_color` 为浅粉/黄绿条纹色（`Color(0.9922, 0.7412, 0.8627)`）。此前刷新装备外露皮肤时盲目将 `skin_mat.albedo_color` 乘以此粉色，导致原版绿色皮肤被染成粉褐色。
+  - 修复：
+    1. 引入空间几何拓扑判定（对标旧工程 `CharacterVisualEquipment.gd:117-122`）：以局部 X 轴坐标 $X > 0.35$ 或 $X < -0.35$ 精准分离手臂表面（`surface_hands`）与胸腹表面（`surface_torso`）；
+    2. 那美克星人新手马甲为无袖开襟，素体颈肩胸腹皮肤表面 6 与露踝表面 8 始终保持显示；
+    3. 严格遵循那美克星原版肤色规范：贴图（`a_nfi_ad_jacket_skin%02d.png` / `a_nam_pants_skin%02d.png`）已自带官方比克绿底色与红色肌肉条纹，素体与装备上所有皮肤材质基准色一律固定为 `Color.WHITE`，配合 `CHARACTER_SKIN_SHADER`（`race_mode = 1`）保真渲染，彻底恢复全身纯正原画质感。
+
+- [x] **目标 17：魔人素体手臂穿戴手套时穿模破皮消除** (进度: 100%)
+  - 根因：
+    1. 魔人新手武器手套（`500001` / `W_GLV_16`、`505001` / `W_GLV_01`）配置在武器槽位（`equip_slot_flag = 1`），模型是涵盖整个小臂至手指的完整独立蒙皮网格（`child/w_glv_16_m_m.glb` / `child/w_glv_16_m_f.glb`）；
+    2. 原代码未建立 `has_hands` 手套检测机制，导致魔人男素体表面 4、7（小臂与手掌）以及魔人女素体表面 2、10 在穿戴手套时依然保持渲染；
+    3. 由于魔人素体手掌及手指顶点模型较为丰满，直接穿透贴合度极高的手套蒙皮，导致黑色手套边缘与指尖露出一截粉红肉块穿模破皮。
+  - 修复：
+    1. 在 `DBOCharacterFactory.equip_item_to_character()` 中新增手套专属类型判定：若装备为 `glv` 蒙皮手套，自动定向分配至 `"hands"` 槽位，并执行主副武器互斥清理；
+    2. 在 `DBOCharacterVisual.apply_character_customization()` 中注入 `has_hands` 判定：当检测到角色穿戴手套（`_slots.has("hands")`）时，动态将素体手臂表面（`is_hand`，即男素体表面 4、7 与女素体表面 2、10）替换为透明遮罩材质（`inv_mat`）；
+    3. 当脱下手套时，精准重置并恢复对应性别的魔人纯正粉红小臂皮肤，彻底根治穿戴手套时的穿模破皮。
+
 ---
 
 ## 2. 修改文件清单
 
 1. [`src/ui/lobby/character_lobby_ui.gd`](file:///E:/DBOFF/src/ui/lobby/character_lobby_ui.gd#L521-L535)
    - 修复选角界面的 `equipped_items` 过滤逻辑，允许有效槽位装备正常打包触发 `avatar_visual_changed`。
-2. [`src/entities/character_factory.gd`](file:///E:/DBOFF/src/entities/character_factory.gd#L533-L730)
+2. [`src/entities/character_factory.gd`](file:///E:/DBOFF/src/entities/character_factory.gd)
    - 提前确保 `visual._ensure_skeleton()` 初始化；
    - 解析装备模型启用 `GLTFDocument.IMPORT_FLAG_USE_NAMED_SKIN_BINDS`；
    - 检索链优先对齐已验证的儿童烘焙装备与武器模型库；
-   - 装备挂载后同步外露皮肤表面的肤色材质。
-3. [`src/entities/character_visual.gd`](file:///E:/DBOFF/src/entities/character_visual.gd#L143-L278)
+   - 装备挂载后同步外露皮肤表面的肤色材质；
+   - 支持 `glv` 蒙皮手套定向分配到 `"hands"` 槽位，并执行主副武器互斥清理；
+   - 那美克星人装备外露皮肤一律强制保底为 `Color.WHITE`，杜绝被粉色条纹调色污染。
+3. [`src/entities/character_visual.gd`](file:///E:/DBOFF/src/entities/character_visual.gd)
    - `_update_base_body_visibility` 统一使用 `_find_main_mesh_instance()` 避免被 `Skeleton3D` 阻断；
-   - `attach_item_to_bone` 严格按官方规范注入种族专属史考特和武器挂接矩阵。
+   - `attach_item_to_bone` 严格按官方规范注入种族专属史考特和武器挂接矩阵；
+   - 几何坐标判定分离手臂表面与躯干表面，穿戴手套时隐藏素体小臂手掌消除穿模，脱下时精准复原；
+   - 那美克星人开襟马甲与灯笼裤保留胸颈与露踝皮肤原生比克绿纹理与着色器渲染。
 4. [`src/ui/lobby/character_lobby_stage.gd`](file:///E:/DBOFF/src/ui/lobby/character_lobby_stage.gd#L185-L192)
    - 舞台首次加载保障装备初始新手防具与武器，杜绝白板裸模。
 

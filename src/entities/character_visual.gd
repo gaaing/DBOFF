@@ -122,10 +122,15 @@ func equip_mesh_part(slot_name: String, mesh: Mesh, material: Material = null) -
 ## 卸下指定槽位装备
 func unequip_slot(slot_name: String) -> void:
 	var slot_key := slot_name.to_lower().strip_edges()
-	if _slots.has(slot_key) and is_instance_valid(_slots[slot_key]):
-		var old_part: Node = _slots[slot_key]
-		old_part.queue_free()
-		_slots[slot_key] = null
+	var keys_to_clear: Array[String] = [slot_key]
+	if slot_key == "weapon_r" or slot_key == "hands":
+		keys_to_clear = ["weapon_r", "hands"]
+	for k in keys_to_clear:
+		if _slots.has(k) and is_instance_valid(_slots[k]):
+			var old_part: Node = _slots[k]
+			old_part.queue_free()
+			_slots[k] = null
+		equipped_glb_paths.erase(k)
 	_update_base_body_visibility()
 
 
@@ -533,9 +538,9 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 	if c_race == 2 and (skin_col == Color.WHITE or skin_col.a < 0.01):
 		skin_col = Color(0.9922, 0.7412, 0.8627)
 
-	current_skin_color = skin_col
+	# 那美克星人：原版基础贴图已内嵌经典绿与肌肉红，基准色保持纯白，触角采用原生纹理
+	current_skin_color = Color.WHITE if c_race == 1 else skin_col
 
-	# 那美克星人：面部与身体基准色采用官方经典比克绿 (Color.WHITE 乘法保真)，触角条纹采用所选配色
 	var face_skin_tint := Color.WHITE if c_race == 1 else skin_col
 	var body_skin_tint := Color.WHITE if c_race == 1 else skin_col
 
@@ -547,6 +552,7 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 	var has_torso := (_slots.get("torso") != null)
 	var has_legs := (_slots.get("legs") != null)
 	var has_feet := (_slots.get("feet") != null)
+	var has_hands := (_slots.get("hands") != null or (_slots.get("weapon_r") != null and "glv" in str(equipped_glb_paths.get("weapon_r", "")).to_lower()))
 
 	var target_hair_slot := "mat_hair_%02d" % hair_num
 
@@ -683,28 +689,31 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 				umat.albedo_color = Color.WHITE
 				mesh_inst.set_surface_override_material(s, umat)
 		elif is_jacket:
-			# 素体躯干表面（包含 jacket_skin 露胸/腹/臂皮肤与新手外套）
-			var is_majin_arm := false
-			if c_race == 2:
-				if c_gender == 0:
-					# 男魔人童年素体: Surface 4 (左臂), Surface 7 (右臂) 必须保留显示！Surface 8 (颈肩), Surface 9 (胸腹) 穿外套时隐藏
-					if s == 4 or s == 7:
-						is_majin_arm = true
-				else:
-					# 女魔人童年素体: Surface 2 (左臂), Surface 10 (右臂) 必须保留显示！Surface 6 (内衣), Surface 7 (颈肩), Surface 8 (胸腹) 穿外套时隐藏
-					if s == 2 or s == 10:
-						is_majin_arm = true
+			# 素体躯干与手臂表面（包含 jacket_skin 露胸/腹/臂皮肤与新手外套）
+			var is_hand := false
+			var arrays := mesh_inst.mesh.surface_get_arrays(s)
+			if arrays.size() > Mesh.ARRAY_VERTEX and arrays[Mesh.ARRAY_VERTEX].size() > 0:
+				var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+				var min_x := 999.0
+				var max_x := -999.0
+				for v in verts:
+					if v.x < min_x: min_x = v.x
+					if v.x > max_x: max_x = v.x
+				if min_x > 0.35 or max_x < -0.35:
+					is_hand = true
 
-			if has_torso and not is_majin_arm:
-				mesh_inst.set_surface_override_material(s, inv_mat)
-			else:
-				if is_skin:
+			if is_hand:
+				# 手臂与小臂皮肤表面（对标旧工程 CharacterVisualEquipment.gd: surface_hands）
+				# 穿戴手套时隐藏素体小臂与手掌，彻底消除素体手掌穿透手套模型的穿模破皮；脱下手套时精准恢复皮肤
+				if has_hands:
+					mesh_inst.set_surface_override_material(s, inv_mat)
+				else:
 					var skin_tex: Texture2D = orig_tex
 					if c_race == 1:
 						var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
 						if ResourceLoader.exists(stex_path):
 							skin_tex = ResourceLoader.load(stex_path)
-					elif c_race == 2 and is_majin_arm:
+					elif c_race == 2:
 						var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
 						skin_tex = DBOCharacterFactory.load_texture_safe(arm_path)
 					var smat := ShaderMaterial.new()
@@ -714,25 +723,55 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 					smat.set_shader_parameter("skin_tint", body_skin_tint)
 					smat.set_shader_parameter("race_mode", c_race)
 					mesh_inst.set_surface_override_material(s, smat)
+			else:
+				# 躯干胸腹/颈肩表面（对标旧工程 surface_torso）
+				# 那美克星人：新手上衣为无袖开襟马甲，素体颈肩胸腹皮肤必须始终保持显示！
+				# 人类与魔人：穿戴上衣外套时隐藏素体胸腹，避免穿透衣物破皮
+				var should_hide_torso := has_torso and c_race != 1
+				if should_hide_torso:
+					mesh_inst.set_surface_override_material(s, inv_mat)
 				else:
-					var cmat := StandardMaterial3D.new()
-					cmat.cull_mode = BaseMaterial3D.CULL_BACK
-					cmat.roughness = 0.65
-					if orig_tex:
-						cmat.albedo_texture = orig_tex
-					cmat.albedo_color = Color.WHITE
-					mesh_inst.set_surface_override_material(s, cmat)
+					if is_skin:
+						var skin_tex: Texture2D = orig_tex
+						if c_race == 1:
+							var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
+							if ResourceLoader.exists(stex_path):
+								skin_tex = ResourceLoader.load(stex_path)
+						var smat := ShaderMaterial.new()
+						smat.shader = CHARACTER_SKIN_SHADER
+						if skin_tex:
+							smat.set_shader_parameter("base_tex", skin_tex)
+						smat.set_shader_parameter("skin_tint", body_skin_tint)
+						smat.set_shader_parameter("race_mode", c_race)
+						mesh_inst.set_surface_override_material(s, smat)
+					else:
+						var cmat := StandardMaterial3D.new()
+						cmat.cull_mode = BaseMaterial3D.CULL_BACK
+						cmat.roughness = 0.65
+						if orig_tex:
+							cmat.albedo_texture = orig_tex
+						cmat.albedo_color = Color.WHITE
+						mesh_inst.set_surface_override_material(s, cmat)
 		elif is_pants:
 			# 素体下装表面（包含 pants_skin 腿部皮肤与新手裤子）
-			if has_legs:
+			if c_race == 1 and is_skin:
+				# 那美克星人：裤子表面为露踝皮肤 A_NAM_pants_skin01 时，始终保持显示以与新手灯笼裤自然衔接
+				var skin_tex: Texture2D = orig_tex
+				var stex_path := "res://assets/tex/texture/item/a_nam_pants_skin%02d.png" % skin_col_num
+				if ResourceLoader.exists(stex_path):
+					skin_tex = ResourceLoader.load(stex_path)
+				var smat := ShaderMaterial.new()
+				smat.shader = CHARACTER_SKIN_SHADER
+				if skin_tex:
+					smat.set_shader_parameter("base_tex", skin_tex)
+				smat.set_shader_parameter("skin_tint", Color.WHITE)
+				smat.set_shader_parameter("race_mode", 1)
+				mesh_inst.set_surface_override_material(s, smat)
+			elif has_legs:
 				mesh_inst.set_surface_override_material(s, inv_mat)
 			else:
 				if is_skin:
 					var skin_tex: Texture2D = orig_tex
-					if c_race == 1:
-						var stex_path := "res://assets/tex/texture/item/a_nam_pants_skin%02d.png" % skin_col_num
-						if ResourceLoader.exists(stex_path):
-							skin_tex = ResourceLoader.load(stex_path)
 					var smat := ShaderMaterial.new()
 					smat.shader = CHARACTER_SKIN_SHADER
 					if skin_tex:
@@ -780,6 +819,7 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 				var t_path: String = str(equipped_glb_paths.get("torso", ""))
 				DBOCharacterFactory._apply_majin_jacket_materials(torso_mesh, t_path, c_gender == 1, current_skin_color)
 			else:
+				var target_skin_col := Color.WHITE if c_race == 1 else current_skin_color
 				for s in range(torso_mesh.mesh.get_surface_count()):
 					var smat := torso_mesh.get_surface_override_material(s)
 					if smat == null:
@@ -787,13 +827,14 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 					if smat and "skin" in smat.resource_name.to_lower():
 						var skin_mat := smat.duplicate() as StandardMaterial3D
 						if skin_mat:
-							skin_mat.albedo_color = current_skin_color
+							skin_mat.albedo_color = target_skin_col
 							torso_mesh.set_surface_override_material(s, skin_mat)
 
-	for slot_key in ["legs", "feet", "hands"]:
+	for slot_key in ["legs", "feet", "hands", "weapon_r"]:
 		if _slots.get(slot_key) != null and is_instance_valid(_slots[slot_key]):
 			var part_mesh := _slots[slot_key] as MeshInstance3D
 			if part_mesh and part_mesh.mesh:
+				var target_skin_col := Color.WHITE if c_race == 1 else current_skin_color
 				for s in range(part_mesh.mesh.get_surface_count()):
 					var smat := part_mesh.get_surface_override_material(s)
 					if smat == null:
@@ -801,7 +842,7 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 					if smat and "skin" in smat.resource_name.to_lower():
 						var skin_mat := smat.duplicate() as StandardMaterial3D
 						if skin_mat:
-							skin_mat.albedo_color = current_skin_color
+							skin_mat.albedo_color = target_skin_col
 							part_mesh.set_surface_override_material(s, skin_mat)
 
 

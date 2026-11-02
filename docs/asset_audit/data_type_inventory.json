@@ -1,0 +1,89 @@
+{
+  "timestamp": "2026-11-01 18:49:11",
+  "recognized_types": {
+    "dff": {
+      "name": "RenderWare Clump",
+      "category": "3D Model",
+      "magic": "0x10 / RwStream",
+      "tool": "batch_master_asset_pipeline.py",
+      "export_format": "GLB"
+    },
+    "anm": {
+      "name": "RenderWare Animation",
+      "category": "Animation",
+      "magic": "0x1B / RwStream",
+      "tool": "batch_master_asset_pipeline.py",
+      "export_format": "GLB"
+    },
+    "dds": {
+      "name": "DirectDraw Surface",
+      "category": "Texture",
+      "magic": "DDS ",
+      "tool": "batch_convert_textures.py",
+      "export_format": "PNG"
+    },
+    "png": {
+      "name": "Portable Network Graphics",
+      "category": "Texture",
+      "magic": "PNG",
+      "tool": "batch_convert_textures.py",
+      "export_format": "PNG (Direct Copy)"
+    },
+    "tga": {
+      "name": "Truevision Targa",
+      "category": "Texture",
+      "magic": "TGA",
+      "tool": "batch_sync_audio_and_tga.py",
+      "export_format": "PNG"
+    },
+    "rdf": {
+      "name": "Resource Description Framework",
+      "category": "Table/Property",
+      "magic": "DBO Encrypted",
+      "tool": "export_all_rdf_to_dboff.py",
+      "export_format": "JSON"
+    },
+    "eff": {
+      "name": "Visual Effect Definition",
+      "category": "VFX",
+      "magic": "ASCII/Binary",
+      "tool": "batch_master_asset_pipeline.py",
+      "export_format": "JSON"
+    },
+    "uva": {
+      "name": "UV Animation",
+      "category": "VFX/Animation",
+      "magic": "ASCII/Binary",
+      "tool": "batch_master_asset_pipeline.py",
+      "export_format": "JSON"
+    },
+    "wfp/wfif": {
+      "name": "DBO World Field Terrain",
+      "category": "Terrain",
+      "magic": "200233000 / Binary",
+      "tool": "build_dboff_all_worlds.py",
+      "export_format": "JSON/GLB"
+    },
+    "swf": {
+      "name": "Shockwave Flash",
+      "category": "UI",
+      "magic": "FWS/CWS/ZWS",
+      "tool": "None (Missing)",
+      "export_format": "None"
+    },
+    "frm/srf": {
+      "name": "GUI Frame & Surface",
+      "category": "UI",
+      "magic": "ASCII/Binary",
+      "tool": "None (Missing)",
+      "export_format": "None"
+    },
+    "scr": {
+      "name": "Client GUI Script",
+      "category": "Script",
+      "magic": "ASCII/Binary",
+      "tool": "None (Missing)",
+      "export_format": "None"
+    }
+  }
+}
