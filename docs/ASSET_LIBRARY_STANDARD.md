@@ -270,7 +270,7 @@ The user confirmed that the selected asset whitelist and pak_inventory.csv have 
 - visualeffect_01.json and visualeffect_02.json have identical Git blob SHA values and identical two-entry content; one effect name is blank. Preserve both until source/export provenance explains the duplication.
 
 ### GUI
-- ui_atlas_dictionary.json contains 6,071 keys, 3,039 distinct surface_name values, 107 texture names and 57 resource_file values. 3,032 case-variant aliases were exact content matches to their lowercase keys.
+- ui_atlas_dictionary.json contains 6,071 keys, 3,039 distinct surface_name values, 107 texture names and 57 resource_file values. There are 3,032 case-folded duplicate-key groups: 3,028 groups have identical content, but 4 groups contain distinct resource definitions (`DlgMain`, `srfBackground`, `srfHuman_fighter`, `srfcbbStatic`). Preserve original key casing; do not lowercase all keys or merge every case variant.
 - ui_layout_dictionary.json contains 311 forms and 5,423 controls. Its references include 1,255 distinct surface names and 190 distinct SRF filenames.
 - 30 surface names and 30 SRF filenames were not found in the atlas dictionary. Treat these as unresolved cross-file references, not confirmed missing source assets. Resolve against the actual SRF/RSR/texture inventory before implementing strict validation.
 
