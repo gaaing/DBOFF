@@ -1037,3 +1037,29 @@ Next: inspect CSV row count and group by category, role, and source_pack_dir; co
 - 当前缺少的验证材料：完整的 EventBus/AudioManager 调用方清单（当前 GitHub 搜索未返回可用索引结果，需通过完整脚本读取或本地只读搜索生成命中清单）；Godot 运行日志/复现证据；本地音频资源 manifest 与实际同时播放压力结果；共享材质资源是否被多个场景/网格复用的证据。
 - 本轮只读审查 GitHub 与 OpenDBO-Core 公开源码；未修改 GDScript、场景、资源或配置。
 
+
+
+### 28.8 调用方追踪补充（2026-11-02）
+
+本轮额外读取了 `combat_engine.gd`、`dbo_inventory_manager.gd`、`dbo_quest_manager.gd`、`world_scene_driver.gd`、`player_controller_3d.gd`、`dbo_hud.gd`、`mob_entity_3d.gd`、`npc_entity_3d.gd`、`character_base_3d.gd`、`dbo_character_state_machine.gd`、`anim_event_dispatcher.gd`、`world_spawn_manager.gd`、`world_prop_manager.gd` 与 `dbo_effect_manager.gd` 的相关调用位置。
+
+**发现一项可由当前代码直接确认的音频路径问题：**
+- `AudioManager.load_sound()` 只有在输入以 `res://` 开头时才将其视为完整资源路径。
+- 但 `player_controller_3d.gd`、`mob_entity_3d.gd`、`npc_entity_3d.gd` 等调用方传入的是 `assets/sound/.../file.wav`，没有 `res://` 前缀。
+- 由于这些字符串包含目录分隔符，加载器不会再逐个搜索 SOUND_SUBDIRS，而会拼接成 `res://assets/sound/assets/sound/.../file.wav`。这与预期资源路径不符，相关 3D 音效请求会无法命中，除非工程中恰好存在该重复目录。
+- 该结论是路径拼接逻辑的静态证据；实际资源是否有重复目录仍需本地文件系统验证。修复应统一资源路径契约，并扫描全部调用点，不能只改一处。
+
+其他调用关系：
+- `dbo_quest_manager.gd` 订阅 `combat_entity_died`，并派发任务状态/目标进度事件。
+- `dbo_inventory_manager.gd` 派发背包和装备更新事件。
+- `player_controller_3d.gd` 派发 NPC 交互和传送菜单事件，并多处调用 3D 音频。
+- `world_scene_driver.gd` 以短名称请求 BGM（`BGM_Field_01`），与加载器的子目录搜索策略不同于上述错误的完整相对路径调用。
+- `world_prop_manager.gd` 在 `add_child(prop_inst)` 之前已主动调用 `DBOMaterialHelper.fix_node_materials(prop_inst)`；加入场景树后 EventBus 的全局 `node_added` 回调还会再次处理其中的 MeshInstance3D，形成重复处理路径。需确认是否保留显式调用或全局自动调用，不应两套机制长期并存。
+
+### 28.9 OpenDBO 音频管理机制入口
+
+已定位并读取：
+- `DboClient/Lib/NtlSound/NtlSoundManager.h`
+- `DboClient/Lib/NtlSound/NtlSoundManager.cpp`
+
+OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释放、Listener 位置与朝向、播放/重播、系统 Update、Master Volume/Mute、Channel Group 管理和环境音更新；其 Update 还处理通道组更新与环境声音优先级重播。由此可见，当前 DBOFF AudioManager 只覆盖了基本 BGM/SFX 播放，不应标记为完整对齐。后续至少需核查声音分类/通道组、音量设置、3D Listener、环境音/循环音、优先级、最大同时播放数、资源缓存与生命周期；具体还原范围以原版调用和游戏行为为准。
