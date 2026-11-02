@@ -1063,3 +1063,65 @@ Next: inspect CSV row count and group by category, role, and source_pack_dir; co
 - `DboClient/Lib/NtlSound/NtlSoundManager.cpp`
 
 OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释放、Listener 位置与朝向、播放/重播、系统 Update、Master Volume/Mute、Channel Group 管理和环境音更新；其 Update 还处理通道组更新与环境声音优先级重播。由此可见，当前 DBOFF AudioManager 只覆盖了基本 BGM/SFX 播放，不应标记为完整对齐。后续至少需核查声音分类/通道组、音量设置、3D Listener、环境音/循环音、优先级、最大同时播放数、资源缓存与生命周期；具体还原范围以原版调用和游戏行为为准。
+
+
+## 29. 双轨服务器接入决策与旧项目隔离（2026-11-02）
+
+### 29.1 用户确认的架构决策（证据 D）
+
+用户明确选择 **C：Cloudflare 基础服务 + OpenDBO Auth/Char/Game Server 两条线都接入**。
+
+职责边界：
+- Cloudflare / dbo-web：账号认证、会话、GM 权限、在线状态、配置分发，以及后续云存档和在线社交业务。
+- OpenDBO AuthServer / CharServer / GameServer：原版登录、角色、频道、世界和游戏协议/权威行为的研究与逐步接入。
+- Godot DBOFF：离线核心玩法继续本地运行，通过统一网络层接入在线服务，不让业务脚本各自直接处理 HTTP、令牌和协议。
+
+接入顺序：
+1. 先保持 Godot 工程可独立运行，建立可重复的开发运行/导出基线。
+2. 审查当前 DBOFF 网络层与 dbo-web 实际 Worker/API 后，再确定统一客户端网络层契约。
+3. Cloudflare 先接开发最小闭环：健康/版本、登录、会话验证/登出、权限读取和必要配置。
+4. 并行研究 OpenDBO Auth/Char/Game 协议和服务端处理链，不因协议研究暂停现有客户端 Bug 修复。
+5. 在线业务按系统需要逐步接入；云存档、社交、组队、交易和重要奖励分别设计数据权威边界。
+6. 启动器暂缓，待导出、版本清单、更新/补丁接口与恢复策略稳定后再做。
+
+该决策是架构方向批准，不表示任何 API、协议或客户端网络层已经实现/验证。队长 Host 合作模型仍为候选方向，安全模型尚待独立设计。
+
+### 29.2 用户报告：旧项目工作目录已删除（证据 D）
+
+用户说明：此前旧项目文件夹及其中工具已删除，目的是隔离旧工程，避免 Antigravity 再次引用或找回旧项目。若后续确实需要某个旧工具，用户会按具体需要从回收站恢复。
+
+执行边界：
+- 旧项目路径、旧脚本和旧工具一律视为当前不可用，不得作为 DBOFF 依赖或默认工作目录。
+- 不能因为历史对话或旧文档出现某个工具路径，就假定该工具仍然存在。
+- 只有在某个具体任务确实需要时，先列出准确文件/工具名、用途和必要性，再由用户决定是否恢复；不要求恢复整个旧项目。
+- 新代码和配置不得残留旧工程的绝对路径或隐式依赖。
+
+### 29.3 最新 Git 推送的初步核对（证据 A/D）
+
+用户报告已推送修复旧项目引用路径的变更。当前 GitHub gaaing/DBOFF main 的最新可见提交序列包含：
+- 4db0be5a93e7f96b7b3fd476f5aaa2c596db9f9e — 修复路径引用错误，大量bug存在
+- 6ba2b949118a141103ab8ad8ed45ac8c2a015b0c — merge commit，时间为 2026-11-02。
+
+已读取 4db0be5 的提交 diff，确认 src/entities/character_factory.gd 移除了两组指向 E:/DBO_Offline/assets/models/items/... 的旧项目绝对路径回退；相关查找改为使用当前工程 res://assets/obj/item/... 路径。src/entities/character_visual.gd 的史考特纹理名解析也改为使用传入模型名或 GLB 文件名，而不再直接依赖旧变量。另有 dbo_material_helper.gd 的 GLB URI 修正规则调整，以及儿童角色装备挂载分支变化。
+
+注意：本轮只确认提交 diff 中的具体变更，不代表整个仓库所有文件已完成旧路径扫描，也不代表这些改动已通过 Godot 运行验收。GitHub 代码搜索没有返回可用命中，但不能将其视为完整仓库无旧路径的证明；后续仍需在当前完整工程范围内做一次只读旧路径扫描。
+
+### 29.4 本轮新增材料缺口
+
+当前不能直接进入接口实现，仍缺：
+- dbo-web 的架构/开发 Markdown、Worker 路由、认证 API 定义和部署配置。已确认 gaaing/dbo-web 是私有仓库，但尝试读取根目录 README.md 返回 404；尚未获得其实际文档路径和文件内容。
+- DBOFF 当前网络层/会话/HTTP/WebSocket 相关脚本与调用方的完整审查结果。
+- OpenDBO AuthServer、CharServer、GameServer 的协议握手、packet 定义和服务端处理链的系统性对照。
+- 可用于开发验证的 API 基址与脱敏请求/响应样本；不得提供或写入密码、令牌、密钥。
+
+以上缺口是“当前尚未从仓库读取/验证”，不代表用户本地不存在。
+
+### 29.5 当前下一步
+
+1. 先对当前 DBOFF main 做一次只读旧项目绝对路径/资源引用扫描，确认用户本轮路径清理覆盖范围；不要求恢复旧项目。
+2. 定位并读取 dbo-web 的实际 Markdown 与 Worker 文件，再确定 Cloudflare 最小闭环，不臆造 API。
+3. 逐段研究 OpenDBO Auth/Char/Game 协议入口和服务端处理链，建立 packet/state 映射。
+4. 检查 DBOFF 当前网络接入点，提出统一网络层设计；在证据齐备前不把具体接口写死。
+5. 保持角色创建/选择等现存 Bug 修复工作继续推进；服务器接入研究不应阻断客户端修复。
+
+本轮只更新项目规划与进度记录；未修改 GDScript、场景、资源、Worker 代码或本地工程。
