@@ -846,3 +846,17 @@ README 明确说明：
 `assets/gui/` 中是否包含 SWF 转换后的两个 JSON，以及其结构是否完整，尚未直接读取验证；此前 426 个 SWF unmatched 不能据此判定 UI 资源缺失。
 
 本次只更新项目记录，没有修改本地资源、代码或 GitHub 忽略规则。
+
+
+## 24. 资源目录白名单暂存检查（2026-11-02）
+
+用户在本地修正 .gitignore 的 assets 规则后，执行了以下暂存操作：
+- git restore --staged assets/
+- 分别暂存 assets/tbl/、assets/effect/、assets/gui/、assets/prop/property/ 和 .gitignore。
+- git status --short 显示本轮新增暂存文件为 effect 下 2 个 JSON、gui 下 2 个 JSON、prop/property 下 7 个 JSON，以及 .gitignore 修改。
+- 用户随后运行白名单检查：git diff --cached --name-only | Select-String -Pattern '^assets/(?!tbl/|effect/|gui/|prop/property/)'，无输出，说明当前暂存清单中没有匹配到白名单以外的 assets 路径；本次误放行的 GLB 未出现在贴出的暂存清单中。
+- assets/tbl/ 未出现在状态输出中，表示本次没有显示其新增/修改暂存项，不代表该目录未被 Git 跟踪。
+- Git 对若干 JSON 提示 CRLF 将规范化为 LF；这是换行符提示，不是文件损坏报告。
+- docs/pak_audit_1_69/ 显示为未跟踪（??），尚未暂存；其内容和是否应纳入仓库需另行检查。
+
+当前状态只依据用户贴出的本地命令输出；尚未看到修正后的完整 .gitignore、暂存 diff、文件大小统计或最终提交结果。不要 commit/push，先检查暂存差异和未跟踪审计目录。
