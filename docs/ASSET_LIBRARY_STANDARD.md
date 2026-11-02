@@ -150,3 +150,40 @@ Start with a **read-only inspection**, not a bulk extraction:
 ## 11. Acceptance rule
 
 The library is not considered clean merely because duplicate files were removed or folders look tidy. It is ready for systematic game reconstruction only when source provenance, variants, references, conversion lineage and runtime validation are queryable and reproducible.
+
+
+## 12. Version authority and untrusted reference assets
+
+### 12.1 Preferred source baseline
+
+The user has selected the DBO_CT_TW 1.69 TW package set as DBOFF's preferred original-resource baseline. The user identifies the associated client/table label as DBO_CT_TW (1.57.51), corresponding to 1.69 TW. This version mapping is currently user-reported; verify it against package/client metadata and a complete pak manifest before declaring every package confirmed.
+
+The authoritative source archive should therefore be built from the selected 1.69 TW original PAK files plus their complete, validated extraction outputs. Keep the original PAK files immutable.
+
+### 12.2 OpenDBO source separation
+
+- OpenDBO-Core remains an independent code and behavior reference for mechanisms, structures, resource references and implementation research.
+- OpenDBO repository assets/ and previously extracted raw/ are **not** presumed to be official or version-pure DBO assets. They may contain private-server customizations, replacements or resources from other client versions.
+- Treat those files as untrusted reference candidates until provenance and content are checked against the selected 1.69 TW source.
+- Do not copy, merge, overwrite or promote OpenDBO assets into the canonical source archive solely because they exist in OpenDBO or are referenced by its code.
+
+### 12.3 Revised source comparison workflow
+
+1. Inventory every selected 1.69 TW PAK with relative path, size, SHA-256, detectable version/region metadata and package type.
+2. Verify decoder compatibility for all package categories, including sound and non-model packages.
+3. Extract into a new isolated destination with per-package logs and integrity checks; never overwrite existing raw or project assets.
+4. Build the source inventory from the validated 1.69 TW extraction, then perform bidirectional mapping against all project assets.
+5. Inventory OpenDBO assets/raw separately and compare candidates by provenance, internal identifiers, content and format-aware structure. Filename similarity alone is not proof of identity or official origin.
+6. Preserve disagreements as separate records. Classify them as matching, modified/custom candidate, other-version candidate or unresolved; do not automatically merge or delete.
+7. Preserve existing project assets. Reclassify them by provenance and conversion quality; only regenerate individual assets when evidence shows they are missing, incorrect or lossy.
+
+### 12.4 Required evidence before the baseline is accepted as complete
+
+- Complete 1.69 TW PAK manifest and hashes;
+- package/client metadata supporting version and region identity;
+- decoder source/version/configuration and per-package extraction logs;
+- complete project inventory, including audio, UI, effects and fonts;
+- All Text Table file manifest and version evidence;
+- separate OpenDBO asset/raw inventory and provenance where available.
+
+The selected version is the project policy decision; completeness and package integrity remain validation tasks.
