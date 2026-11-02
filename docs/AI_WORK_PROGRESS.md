@@ -1486,3 +1486,9 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - OpenDBO 物品、技能、任务、绑定点的具体保存处理函数/Repository SQL 仍需逐项追踪；本轮只完成角色核心保存与扩展数据加载入口初步映射。
 
 本轮只读审计并记录证据；没有修改 Godot 源码、场景、资源、Cloudflare 或部署。
+### 38.6 当前源码目录结构补充核对（2026-11-02）
+- 当前 `src/core/` 目录可见 `dbo_save_manager.gd`、`dbo_inventory_manager.gd`、`dbo_quest_manager.gd` 等，但没有独立的 SkillManager/QuickSlotManager。
+- 当前 `src/entities/` 有 `dbo_buff_component.gd`、`dbo_character_state_machine.gd`、`character_base_3d.gd`、`player_controller_3d.gd`；尚不能据此认定 Buff/技能完整系统已实现，需继续读取具体组件与调用方。
+- 当前 `src/ui/` 只有 hud、lobby 两个子目录；当前目录树中没有独立 inventory 或 quest UI 目录。角色大厅脚本是已确认的角色数据读写调用方之一。
+- 当前 `scenes/` 仅列出 entities、lobby、world 子目录；本轮没有发现专门的背包/任务场景目录。
+- 以上是 GitHub 当前 main 目录树证据，不排除其他目录、场景脚本或尚未推送的本地文件中存在相关逻辑。
