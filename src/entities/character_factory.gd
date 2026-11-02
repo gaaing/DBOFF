@@ -578,6 +578,10 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 		visual.attach_item_to_bone(slot_name, glb_path, raw_model)
 		return
 
+	# 童年期角色：基础素体已内嵌官方初始服装与纹理，除武器与史考特外禁止强行挂载成人独立防具网格，避免骨骼不匹配导致拉伸撕裂
+	if not is_adult:
+		return
+
 	# 上装/下装/靴子/手套：蒙皮网格，必须用 GLTFDocument 动态加载保留 Skin
 	var skeleton := visual._skeleton
 	if skeleton == null:
@@ -911,12 +915,6 @@ static func _resolve_item_glb_path(raw_model: String, race: int = 0, gender: int
 					var clean_dir := m_path.trim_prefix(".\\Item\\").trim_prefix(".\\item\\").replace("\\", "/").to_lower()
 					var clean_file := m_file.to_lower().replace(".dff", ".glb")
 					if not is_adult:
-						var dbo_child_armor := "E:/DBO_Offline/assets/models/items/armors/child/" + clean_file
-						if FileAccess.file_exists(dbo_child_armor):
-							return dbo_child_armor
-						var dbo_child_weapon := "E:/DBO_Offline/assets/models/items/weapons/child/" + clean_file
-						if FileAccess.file_exists(dbo_child_weapon):
-							return dbo_child_weapon
 						var child_url := "res://assets/obj/item/%schild/%s" % [clean_dir, clean_file]
 						if FileAccess.file_exists(child_url):
 							return child_url
@@ -944,13 +942,6 @@ static func _resolve_item_glb_path(raw_model: String, race: int = 0, gender: int
 	for p in prefixes:
 		for s in suffixes:
 			var target_file: String = (p + s).to_lower() + ".glb"
-			if not is_adult:
-				var dbo_child_armor := "E:/DBO_Offline/assets/models/items/armors/child/" + target_file
-				if FileAccess.file_exists(dbo_child_armor):
-					return dbo_child_armor
-				var dbo_child_weapon := "E:/DBO_Offline/assets/models/items/weapons/child/" + target_file
-				if FileAccess.file_exists(dbo_child_weapon):
-					return dbo_child_weapon
 			for sdir: String in search_dirs:
 				if not is_adult:
 					var child_path: String = sdir + "child/" + target_file

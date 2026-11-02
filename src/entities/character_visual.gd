@@ -272,7 +272,7 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 		mesh_inst.transform = Transform3D(basis, sct_pos)
 
 		# 史考特耳机材质精细分工 (Surface 0: 结实不透明耳机外壳，Surface 1: 双面晶莹半透明镜片)
-		var sct_tex_name := raw_model.to_lower()
+		var sct_tex_name := (model_name if not model_name.is_empty() else glb_path.get_file().get_basename()).to_lower()
 		var sct_tex_path := "res://assets/tex/texture/item/" + sct_tex_name + ".png"
 		if not ResourceLoader.exists(sct_tex_path):
 			sct_tex_path = "res://assets/tex/texture/item/i_sct_01.png"
