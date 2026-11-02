@@ -388,3 +388,16 @@ OpenDBO-Core README 列出 AuthServer、CharServer、ChatServer、GameServer（�
 - 本地运行时完整快照、原子写入/校验、Worker 云存档 API、R2 staging bucket 与配额账本仍是前置缺口。
 
 本节记录用户已确认的产品方向，不代表启动器或云存档同步已经实现。
+
+
+## 11.13 本地存档闭环第一轮审计（2026-11-02）
+
+- 已重新读取 AI 开发规则、工作进度和云存档设计，再读取当前 main 的 SaveManager、角色大厅、WorldSceneDriver、InventoryManager、QuestManager、PlayerController、CharacterBase 与 project.godot。
+- 当前确认的缺口：JSON 直接覆盖且无备份/校验；无统一运行时快照采集；世界位置/方向、玩家数值、背包/装备/货币、任务状态均未在已读代码中形成完整读写闭环；技能/快捷栏持有者仍待定位。
+- InventoryManager 持有 bags/equipped_items/bag_capsules/zenny；QuestManager 持有 active_quests/completed_quests；已读脚本没有角色存档序列化接口。
+- CharacterBase 持有生命、能量、RP 和六维属性；WorldSceneDriver 已读初始化路径只映射 race/gender/is_adult，尚未发现 stats 的加载/回写。
+- DEFAULT_ACCOUNT_META 仍含 account_id/username/gm_level 占位值，不得作为真实身份或权限。
+- OpenDBO 对照已读取 CPlayer::SaveToDB 与 CharacterRepository：原版完整保存汇总角色核心状态、技能/冷却、物品/宠物与任务数据；DBOFF 应复刻状态覆盖范围与生命周期，不必复刻远端数据库架构。
+- 详细证据、文件 SHA、实施顺序和材料缺口见 AI_WORK_PROGRESS.md 第 38 节。
+- 状态：第一轮只读审计；未修改代码、未新增场景、未执行运行测试。
+
