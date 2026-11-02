@@ -1,0 +1,445 @@
+{
+  "audit_target": "E:\\DBO_CT_TW(1.57.51)",
+  "audit_timestamp": "2026-11-02",
+  "baseline_comparison": {
+    "status": "PASS",
+    "total_files": 537,
+    "expected_total_files": 537,
+    "pak_files": 469,
+    "expected_pak_files": 469,
+    "non_pak_files": 68,
+    "expected_non_pak_files": 68,
+    "main_pack_files": 427,
+    "expected_main_pack_files": 427,
+    "localize_pack_files": 42,
+    "expected_localize_pack_files": 42
+  },
+  "total_size_bytes": 8979604941,
+  "total_size_gb": 8.3629,
+  "directories_count": 11,
+  "directories_statistics": {
+    "<root>": {
+      "file_count": 21,
+      "total_bytes": 34404233
+    },
+    "cursor": {
+      "file_count": 36,
+      "total_bytes": 142630
+    },
+    "font": {
+      "file_count": 1,
+      "total_bytes": 792280
+    },
+    "localize": {
+      "file_count": 0,
+      "total_bytes": 0
+    },
+    "localize\\TAIWAN": {
+      "file_count": 0,
+      "total_bytes": 0
+    },
+    "localize\\TAIWAN\\font": {
+      "file_count": 2,
+      "total_bytes": 25069300
+    },
+    "localize\\TAIWAN\\movie": {
+      "file_count": 3,
+      "total_bytes": 241934396
+    },
+    "localize\\TAIWAN\\pack": {
+      "file_count": 42,
+      "total_bytes": 577750040
+    },
+    "pack": {
+      "file_count": 427,
+      "total_bytes": 8096834066
+    },
+    "screenshot": {
+      "file_count": 1,
+      "total_bytes": 20
+    },
+    "ts": {
+      "file_count": 4,
+      "total_bytes": 2677976
+    }
+  },
+  "extensions_statistics": {
+    ".dll": {
+      "count": 8,
+      "total_bytes": 13531112
+    },
+    ".dat": {
+      "count": 3,
+      "total_bytes": 6623657
+    },
+    ".xml": {
+      "count": 5,
+      "total_bytes": 3930
+    },
+    ".exe": {
+      "count": 2,
+      "total_bytes": 13938688
+    },
+    ".ini": {
+      "count": 1,
+      "total_bytes": 327
+    },
+    ".des": {
+      "count": 1,
+      "total_bytes": 297665
+    },
+    ".ico": {
+      "count": 1,
+      "total_bytes": 8854
+    },
+    ".cur": {
+      "count": 33,
+      "total_bytes": 109614
+    },
+    ".ani": {
+      "count": 3,
+      "total_bytes": 33016
+    },
+    ".ttf": {
+      "count": 3,
+      "total_bytes": 25861580
+    },
+    ".avi": {
+      "count": 3,
+      "total_bytes": 241934396
+    },
+    ".pak": {
+      "count": 469,
+      "total_bytes": 8674584106
+    },
+    ".txt": {
+      "count": 1,
+      "total_bytes": 20
+    },
+    ".e": {
+      "count": 4,
+      "total_bytes": 2677976
+    }
+  },
+  "duplicate_analysis": {
+    "identical_content_groups_count": 0,
+    "identical_content_groups": {},
+    "identical_filename_groups_count": 28,
+    "identical_filename_groups": {
+      "flash.pak": [
+        "localize\\TAIWAN\\pack\\flash.pak",
+        "pack\\flash.pak"
+      ],
+      "flash0.pak": [
+        "localize\\TAIWAN\\pack\\flash0.pak",
+        "pack\\flash0.pak"
+      ],
+      "flash1.pak": [
+        "localize\\TAIWAN\\pack\\flash1.pak",
+        "pack\\flash1.pak"
+      ],
+      "flash10.pak": [
+        "localize\\TAIWAN\\pack\\flash10.pak",
+        "pack\\flash10.pak"
+      ],
+      "flash11.pak": [
+        "localize\\TAIWAN\\pack\\flash11.pak",
+        "pack\\flash11.pak"
+      ],
+      "flash12.pak": [
+        "localize\\TAIWAN\\pack\\flash12.pak",
+        "pack\\flash12.pak"
+      ],
+      "flash13.pak": [
+        "localize\\TAIWAN\\pack\\flash13.pak",
+        "pack\\flash13.pak"
+      ],
+      "flash14.pak": [
+        "localize\\TAIWAN\\pack\\flash14.pak",
+        "pack\\flash14.pak"
+      ],
+      "flash15.pak": [
+        "localize\\TAIWAN\\pack\\flash15.pak",
+        "pack\\flash15.pak"
+      ],
+      "flash2.pak": [
+        "localize\\TAIWAN\\pack\\flash2.pak",
+        "pack\\flash2.pak"
+      ],
+      "flash27.pak": [
+        "localize\\TAIWAN\\pack\\flash27.pak",
+        "pack\\flash27.pak"
+      ],
+      "flash3.pak": [
+        "localize\\TAIWAN\\pack\\flash3.pak",
+        "pack\\flash3.pak"
+      ],
+      "flash4.pak": [
+        "localize\\TAIWAN\\pack\\flash4.pak",
+        "pack\\flash4.pak"
+      ],
+      "flash5.pak": [
+        "localize\\TAIWAN\\pack\\flash5.pak",
+        "pack\\flash5.pak"
+      ],
+      "flash6.pak": [
+        "localize\\TAIWAN\\pack\\flash6.pak",
+        "pack\\flash6.pak"
+      ],
+      "flash7.pak": [
+        "localize\\TAIWAN\\pack\\flash7.pak",
+        "pack\\flash7.pak"
+      ],
+      "flash8.pak": [
+        "localize\\TAIWAN\\pack\\flash8.pak",
+        "pack\\flash8.pak"
+      ],
+      "flash9.pak": [
+        "localize\\TAIWAN\\pack\\flash9.pak",
+        "pack\\flash9.pak"
+      ],
+      "gui.pak": [
+        "localize\\TAIWAN\\pack\\gui.pak",
+        "pack\\gui.pak"
+      ],
+      "gui0.pak": [
+        "localize\\TAIWAN\\pack\\gui0.pak",
+        "pack\\gui0.pak"
+      ],
+      "lang.pak": [
+        "localize\\TAIWAN\\pack\\lang.pak",
+        "pack\\lang.pak"
+      ],
+      "lang0.pak": [
+        "localize\\TAIWAN\\pack\\lang0.pak",
+        "pack\\lang0.pak"
+      ],
+      "scr.pak": [
+        "localize\\TAIWAN\\pack\\scr.pak",
+        "pack\\scr.pak"
+      ],
+      "scr0.pak": [
+        "localize\\TAIWAN\\pack\\scr0.pak",
+        "pack\\scr0.pak"
+      ],
+      "tbl.pak": [
+        "localize\\TAIWAN\\pack\\tbl.pak",
+        "pack\\tbl.pak"
+      ],
+      "tbl0.pak": [
+        "localize\\TAIWAN\\pack\\tbl0.pak",
+        "pack\\tbl0.pak"
+      ],
+      "tex.pak": [
+        "localize\\TAIWAN\\pack\\tex.pak",
+        "pack\\tex.pak"
+      ],
+      "tex0.pak": [
+        "localize\\TAIWAN\\pack\\tex0.pak",
+        "pack\\tex0.pak"
+      ]
+    },
+    "same_size_diff_hash_count": 31,
+    "empty_files_count": 0,
+    "empty_files": []
+  },
+  "anomalies_and_exceptions_count": 0,
+  "internal_pak_audit": {
+    "header_pak_count": 16,
+    "data_volume_pak_count": 453,
+    "total_internal_entries": 112813,
+    "total_internal_data_bytes": 8642824272,
+    "total_internal_data_gb": 8.049,
+    "unresolved_entries_count": 275,
+    "internal_extension_statistics": {
+      ".tga": {
+        "count": 1529,
+        "total_bytes": 649127637
+      },
+      ".gfx": {
+        "count": 460,
+        "total_bytes": 88108635
+      },
+      ".def": {
+        "count": 4,
+        "total_bytes": 1692
+      },
+      ".txt": {
+        "count": 76,
+        "total_bytes": 2941
+      },
+      ".dat": {
+        "count": 5,
+        "total_bytes": 1263557
+      },
+      ".alm": {
+        "count": 4,
+        "total_bytes": 592586
+      },
+      ".htm": {
+        "count": 161,
+        "total_bytes": 227637
+      },
+      ".xml": {
+        "count": 25,
+        "total_bytes": 325894
+      },
+      ".html": {
+        "count": 18,
+        "total_bytes": 11576
+      },
+      ".edf": {
+        "count": 292,
+        "total_bytes": 49308144
+      },
+      ".dds": {
+        "count": 20349,
+        "total_bytes": 1062760936
+      },
+      ".png": {
+        "count": 8021,
+        "total_bytes": 137264565
+      },
+      ".bat": {
+        "count": 4,
+        "total_bytes": 1227
+      },
+      ".exe": {
+        "count": 2,
+        "total_bytes": 1832448
+      },
+      ".frm": {
+        "count": 324,
+        "total_bytes": 919104
+      },
+      ".srf": {
+        "count": 242,
+        "total_bytes": 1478762
+      },
+      ".rsr": {
+        "count": 77,
+        "total_bytes": 14832
+      },
+      ".2ps": {
+        "count": 1,
+        "total_bytes": 3587
+      },
+      ".scr": {
+        "count": 19,
+        "total_bytes": 749100
+      },
+      ".anm": {
+        "count": 13193,
+        "total_bytes": 734243296
+      },
+      ".dff": {
+        "count": 14647,
+        "total_bytes": 1325447027
+      },
+      ".uva": {
+        "count": 157,
+        "total_bytes": 41212
+      },
+      ".eff": {
+        "count": 1026,
+        "total_bytes": 20786706
+      },
+      ".rdf": {
+        "count": 3,
+        "total_bytes": 18965544
+      },
+      ".dpf": {
+        "count": 1,
+        "total_bytes": 21950
+      },
+      ".dsf": {
+        "count": 1,
+        "total_bytes": 189654
+      },
+      ".dtf": {
+        "count": 1,
+        "total_bytes": 1766
+      },
+      ".tbl": {
+        "count": 3,
+        "total_bytes": 1957
+      },
+      ".fx": {
+        "count": 2,
+        "total_bytes": 6243
+      },
+      ".lua": {
+        "count": 9,
+        "total_bytes": 443436
+      },
+      ".ph": {
+        "count": 1,
+        "total_bytes": 1
+      },
+      ".wav": {
+        "count": 3255,
+        "total_bytes": 938037210
+      },
+      ".ogg": {
+        "count": 204,
+        "total_bytes": 351122833
+      },
+      ".gwp": {
+        "count": 50,
+        "total_bytes": 12500
+      },
+      "<no_ext>": {
+        "count": 39417,
+        "total_bytes": 3219053803
+      },
+      ".bsp": {
+        "count": 7,
+        "total_bytes": 19373114
+      },
+      ".dif": {
+        "count": 1024,
+        "total_bytes": 4460544
+      },
+      ".sdw": {
+        "count": 1024,
+        "total_bytes": 28672
+      },
+      ".hho": {
+        "count": 1024,
+        "total_bytes": 4096
+      },
+      ".ld": {
+        "count": 1024,
+        "total_bytes": 4096
+      },
+      ".old": {
+        "count": 1,
+        "total_bytes": 77824
+      },
+      ".obj": {
+        "count": 1024,
+        "total_bytes": 14324
+      },
+      ".objt": {
+        "count": 1024,
+        "total_bytes": 4244
+      },
+      ".ocq": {
+        "count": 1024,
+        "total_bytes": 4096
+      },
+      ".pe": {
+        "count": 1025,
+        "total_bytes": 4194308
+      },
+      ".sl": {
+        "count": 1024,
+        "total_bytes": 32768
+      },
+      ".db": {
+        "count": 5,
+        "total_bytes": 12256188
+      }
+    }
+  }
+}
