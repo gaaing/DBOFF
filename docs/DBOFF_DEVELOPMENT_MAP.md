@@ -311,3 +311,16 @@ OpenDBO 源码文件入口（后续按系统扩展，不代表本轮已逐函数
 - 生产 Worker 当前 script-settings 的 observability 为 null；staging Worker 已启用 100% head sampling、持久化 invocation logs 和 traces。生产与 staging 资源仍保持独立。
 - 两个已部署版本的 script etag 元数据相同（d4a095...），但本轮没有下载部署包并与 GitHub worker.js 做字节级比对，因此不能声称仓库源码与线上版本完全一致。
 - 本轮仅调用 Cloudflare GET 读取部署、版本元数据和 settings；未修改 Worker、D1、Pages、Secrets 或部署流量。
+
+
+### 11.8 OpenDBO 服务端职责与去中心化评估（2026-11-02）
+
+新增审计文档：`docs/OPENDBO_SERVER_FUNCTION_AUDIT.md`。
+
+用户明确要求好友、公共大厅、组队优先寻找完全不依赖中心服务器的方案；OpenDBO 原版服务器必须先完整列出职责，再逐项判断是否需要服务器，预计最终只有极少数功能继续依赖服务器。
+
+OpenDBO-Core README 列出 AuthServer、CharServer、ChatServer、GameServer（每频道一个进程）、MasterServer、QueryServer，并明确 QueryServer 是唯一直接访问数据库的服务。第一轮读取 GameServer/PacketGameServer.cpp，盘点到 309 个客户端请求处理入口，覆盖世界/移动/战斗/技能/任务/物品经济/队伍匹配/公会/活动等。ChatServer 源码确认 Say、Shout、Whisper、Party/Guild/Trade/Find Party Chat，以及部分公会管理操作。
+
+初步方向：单机规则本地化；多人合作评估房主权威 P2P；LAN 发现和手动公网直连不需要中央游戏服务；全球公共大厅、离线消息、全局在线状态等若要完整提供，仍需可发现节点或其他在线基础设施。好友/公共大厅/组队尚未做最终方案决定，不能预设由 Cloudflare 承担。
+
+本轮仅只读 OpenDBO 源码并更新文档，未修改游戏或服务器代码。
