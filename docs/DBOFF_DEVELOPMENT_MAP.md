@@ -276,3 +276,13 @@ OpenDBO 源码文件入口（后续按系统扩展，不代表本轮已逐函数
 - DBOFF 当前网络/HTTP/WebSocket/会话相关脚本、配置入口及调用方清单。
 - OpenDBO AuthServer、CharServer、GameServer 的登录/角色/频道握手协议、相关 packet 定义和服务端处理调用链。
 - 当前可用的开发 API 基址、测试账号/测试方式及脱敏请求/响应样本；不得在文档中记录密码、令牌或密钥。
+
+
+### 11.5 当前仓库初步核查补充（2026-11-02）
+
+- 已找到并读取 dbo-web 私有仓库根目录的 ARCHITECTURE.md；此前按 README.md 路径读取返回 404，是路径假设错误，不代表仓库没有架构文档。
+- 当前 DBOFF main 中，已对 project.godot、src 下 GDScript 与 scenes 下场景文件进行第一轮只读文本扫描（共 42 个文件）。该范围内未命中旧项目目录/仓库名称引用，也未发现 HTTPRequest、HTTPClient、WebSocketPeer、PacketPeer、session_token 或 /api/login 等网络接入实现关键词。
+- 这只是当前扫描范围内的静态结果，不等于对所有资产 JSON、文档、二进制或本地未推送文件完成全仓库验证。
+- dbo-web 当前 Worker 源码已确认包含注册、登录、登出、会话检查、ADMIN 角色管理和 GM 管理路由；源码中尚未发现健康检查或 API 版本端点。必须先以现有 Worker 为基准设计客户端最小接入，不得直接假设已有 health/version API。
+- Pages Function 的路由规则是 canonical 生产域名转发生产 Worker，其余 Pages 预览域名转发 staging Worker。Godot 开发客户端应使用明确的开发环境端点，不能把 Pages 预览路由规则误认为客户端自动继承。
+- dbo-web 当前根目录可见 ARCHITECTURE.md、functions/、worker/、index.html、login.html；本轮目录核查未见 wrangler 配置文件。实际部署绑定仍需从 Cloudflare 配置/部署信息核实。
