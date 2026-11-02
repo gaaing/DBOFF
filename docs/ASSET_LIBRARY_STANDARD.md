@@ -235,3 +235,28 @@ The user confirms these directories exist in the local DBOFF project:
 - `assets/prop/property/`
 
 Their absence from the GitHub tree is not evidence that they are absent locally. The current repository `.gitignore` uses an assets whitelist that explicitly allows `assets/tbl/` but does not yet allow these three roots. Before tracking them, inventory file counts, total size, largest files, extensions, and cache/temp content. Then adjust ignore rules narrowly and stage only these three paths. Do not stage the entire `assets/` tree. The contents and completeness of `assets/gui/`, including the suspected two SWF-derived JSON files, remain unverified until their names/content are inspected.
+
+
+## 15. Narrow asset whitelist staged locally (2026-11-02)
+
+The user corrected the assets ignore rules and locally staged only .gitignore, assets/effect/, assets/gui/, and assets/prop/property/ (also re-added assets/tbl/ in case it had staged changes). The reported staged additions are 2 effect JSON files, 2 GUI dictionary JSON files, and 7 property JSON files. A staged-path filter for assets outside tbl/, effect/, gui/, and prop/property/ returned no matches, so the accidentally exposed GLB files do not appear in the supplied staged listing.
+
+Git emitted CRLF-to-LF normalization warnings for these JSON files; these are line-ending notices, not evidence of content corruption. The local status also showed docs/pak_audit_1_69/ as untracked and not staged. Inspect that directory separately before deciding whether it belongs in the repository.
+
+This is based on the user's pasted local command output. The complete staged diff, final ignore file, file-size audit, and commit/push status have not yet been inspected. Do not commit or push until those checks are reviewed.
+
+
+## 16. Local audit inventory CSV pending review (2026-11-02)
+
+The user reports that `docs/pak_audit_1_69/` contains one file, `pak_inventory.csv`, sized 79,872 bytes. Its header, rows, generation tool, source roots, timestamp and validation status have not yet been inspected. Do not treat it as the complete 1.69 TW client-root manifest merely from its filename. Review its schema and sample rows, then compare its documented scope with the full-client-root inventory requirements in Section 13 before deciding whether to track it.
+
+The local staged asset change set reports 12 files and 2,392,365 insertions: `.gitignore`, 2 effect JSON files, 2 GUI dictionary JSON files, and 7 property JSON files. The staged ignore rules narrowly allow `assets/tbl/`, `assets/effect/`, `assets/gui/`, and `assets/prop/property/` while excluding other asset children. The staged `.gitignore` lacks a final newline; this is a hygiene issue, not an ignore-rule logic error. No commit or push has been reported. Keep the change set uncommitted pending final review.
+
+
+## 17. PAK inventory CSV: initial schema and scope limits (2026-11-02)
+
+The user showed the header and first 9 data rows of `docs/pak_audit_1_69/pak_inventory.csv`. Columns are `relative_path, source_pack_dir, file_name, extension, size_bytes, size_mb, sha256, category, role, indexed_files_count`. The visible rows are PAK files under `localize\\TAIWAN\\pack\\`; `flash.pak` is tagged as the Flash UI header index with `indexed_files_count=798`, while `flash0.pak` through `flash15.pak` are tagged as data volumes.
+
+This is useful package-level inventory evidence (paths, sizes, hashes and tentative package roles), but the sample does not establish complete client-root coverage, non-PAK inventory, extraction success, or package-format compatibility. In particular, 798 is the index count reported on the flash header row, not a verified extracted-file total. Full row count, category/role distribution, all source directories, generation provenance and validation method are still required. Do not treat or label this file as the complete 1.69 TW client manifest until those checks are done. Keep it untracked pending review.
+
+The user also appended a final newline to `.gitignore` and re-staged it. The CRLF-to-LF warning is normal Git line-ending normalization. No commit or push has been reported.
