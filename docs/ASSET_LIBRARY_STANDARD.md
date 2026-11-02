@@ -260,3 +260,33 @@ The user showed the header and first 9 data rows of `docs/pak_audit_1_69/pak_inv
 This is useful package-level inventory evidence (paths, sizes, hashes and tentative package roles), but the sample does not establish complete client-root coverage, non-PAK inventory, extraction success, or package-format compatibility. In particular, 798 is the index count reported on the flash header row, not a verified extracted-file total. Full row count, category/role distribution, all source directories, generation provenance and validation method are still required. Do not treat or label this file as the complete 1.69 TW client manifest until those checks are done. Keep it untracked pending review.
 
 The user also appended a final newline to `.gitignore` and re-staged it. The CRLF-to-LF warning is normal Git line-ending normalization. No commit or push has been reported.
+
+
+## 18. First-pass review of newly tracked JSON dictionaries and property data (2026-11-02)
+
+The user confirmed that the selected asset whitelist and pak_inventory.csv have been pushed. All 11 JSON files in assets/effect/, assets/gui/, and assets/prop/property/ were read from the current GitHub main branch and parsed successfully. These are repository-content findings, not proof of source-package completeness or runtime correctness.
+
+### Effect
+- visualeffect_01.json and visualeffect_02.json have identical Git blob SHA values and identical two-entry content; one effect name is blank. Preserve both until source/export provenance explains the duplication.
+
+### GUI
+- ui_atlas_dictionary.json contains 6,071 keys, 3,039 distinct surface_name values, 107 texture names and 57 resource_file values. 3,032 case-variant aliases were exact content matches to their lowercase keys.
+- ui_layout_dictionary.json contains 311 forms and 5,423 controls. Its references include 1,255 distinct surface names and 190 distinct SRF filenames.
+- 30 surface names and 30 SRF filenames were not found in the atlas dictionary. Treat these as unresolved cross-file references, not confirmed missing source assets. Resolve against the actual SRF/RSR/texture inventory before implementing strict validation.
+
+### Property data
+- characterproperty: 1,499 characters, 35,620 animation entries, 11,802 distinct animation names and 37,495 animation events.
+- default_item_list: 10 body archetypes. default_parts, scouter_attach_info, face_ani_multi_texture and head_base_texture are empty objects in all 10 archetypes; this is absence of mappings in this export, not proof that the mechanisms do not exist.
+- direct_project: 704 nodes (25 folders, 679 objects). direct_splines: 679 splines; all 679 names match object nodes in direct_project.
+- itemproperty: 5,930 items. Of 76,512 upgrade_effect.effects entries, 63,549 effect strings contain control/non-ASCII characters. Treat this field as a high-priority parser/encoding/field-layout risk. Do not use these values as normal effect identifiers or sanitize them before comparing the original binary/RDF structure and exporter.
+- objectproperty: 4,521 objects, 1,141 animation entries and 440 animation events. 3,729 records have at least one axis where bbox.min is greater than bbox.max. Do not swap or normalize these fields until their source semantics are established.
+- tenkaichi_direction: 11 controllers with 33 nodes (27 EFFECT, 6 SOUND).
+
+### PAK inventory
+pak_inventory.csv contains 469 PAK records: 427 under pack and 42 under localize\\TAIWAN\\pack. All rows have extension .pak; roles are 453 data_volume and 16 header_index. Categories include terrain/world (163), model/animation (106), sound (66), texture (64), UI/Flash (50), and 20 records across the remaining data/UI/language/engine categories. This is a PAK-only inventory, not a full client-root manifest or proof of successful extraction.
+
+### Data handling rules
+1. Keep the original JSON unchanged while investigating anomalies.
+2. Do not merge the identical visualeffect files based only on their hash.
+3. Build GUI reference checks as reports first; unresolved surface/SRF references may be explained by resources not represented in the atlas dictionary.
+4. Revisit item upgrade-effect string decoding and object bounding-box semantics against original source data and exporter code before runtime use or correction.
