@@ -189,12 +189,39 @@ The authoritative source archive should therefore be built from the selected 1.6
 The selected version is the project policy decision; completeness and package integrity remain validation tasks.
 
 
-## 13. Local 1.69 TW PAK inventory handoff
+## 13. Local 1.69 TW client-root inventory handoff (revised 2026-11-02)
 
-The user identifies `E:\DBO_CT_TW(1.57.51)\pack` as the local directory containing PAK files from the client they downloaded as the final pre-shutdown 1.69 TW update. This is a user-reported local path; remote reviewers cannot inspect it directly.
+The user identifies `E:\\DBO_CT_TW(1.57.51)\\` as the root of the downloaded client believed to be the final pre-shutdown 1.69 TW release. The `pack\\` directory is only one subdirectory containing PAK containers. The user has clarified that additional resources exist elsewhere in the client root; therefore the audit and eventual source archive must not be limited to PAK files. This is a user-reported local path; remote reviewers cannot inspect it directly.
 
-The first action is a read-only Antigravity inventory and decoder audit. Do not bulk-extract yet. Recursively inventory all files (not only `.pak`) with relative path, extension, size and SHA-256; record totals; identify package categories only when evidence supports the classification; and inspect client-root version/update metadata rather than trusting the folder name alone.
+### Read-only inventory scope
 
-Locate the decoder source, dependencies, configuration, batch scripts and historical logs. Determine per-package compatibility, including sound and non-model packages, and document filtering, silent exception handling, collision/overwrite behavior and validation coverage. Produce an isolated extraction plan with per-package logs, counts, hashes/integrity checks, failure handling and collision checks. Stop for user approval.
+1. Recursively inventory **every file under the complete client root**, including all files inside and outside `pack\\`. Record relative path, extension, size and SHA-256; produce machine-readable CSV/JSON manifests and concise aggregate summaries.
+2. Separately report:
+   - PAK/container files under `pack\\`;
+   - any PAK/container files found outside `pack\\`;
+   - all non-PAK files and directories outside `pack\\`.
+3. Classify non-PAK files lightly using path, extension, file signature and metadata. Candidate classes include executable/client components, configuration, language/localization, tables/data, scripts, audio, images, models, UI, plugins, patch/update metadata, cache/temp and unknown. These are hypotheses until supported by evidence; do not silently discard unknown files.
+4. Inspect root-level version/update metadata and executable version resources to support client version/region identification. Record exact evidence paths and fields.
+5. Inspect the PAK decoder and batch tools separately. Establish per-package compatibility, including sound and non-model packages, and document filtering, swallowed exceptions, collision/overwrite behavior and validation coverage.
+6. Propose how PAK outputs and original non-PAK resources will be preserved in a single traceable source archive without altering the client installation.
 
-Safety: do not modify the PAK input directory; do not extract, overwrite, move, rename, delete, convert or upload files during this inspection. File enumeration alone does not prove extraction completeness.
+### Token and output limits
+
+- Use deterministic scripts for recursive enumeration, hashing, file signatures and aggregate statistics; these tasks do not require AI interpretation.
+- Save full inventories as CSV/JSON files. In chat, report totals, category summaries, anomalies and only the small number of metadata/code excerpts needed for decisions. Do not paste thousands of manifest rows.
+- Do not re-parse the previous raw tree or repeat last week's broad asset analysis.
+- Do not deeply inspect every file. Escalate only ambiguous formats, version evidence, decoder compatibility and exceptions that affect completeness.
+
+### Safety
+
+This is a read-only audit. Do not write to or modify any file under `E:\\DBO_CT_TW(1.57.51)\\`. Do not extract, convert, move, rename, overwrite, delete or upload anything during this inspection. Do not begin bulk extraction until the user approves the plan.
+
+### Acceptance boundary
+
+The source archive can be called a complete client-resource baseline only after:
+- the entire client root has been inventoried;
+- all PAK/container files have been identified and their extraction status validated;
+- every non-PAK file has been classified as an original resource, client/runtime component, metadata/tooling, cache/temp, or unresolved;
+- all original resource-bearing files outside PAK have been preserved alongside the validated PAK extraction outputs.
+
+A complete PAK extraction alone is not proof that the complete client resource set has been captured.
