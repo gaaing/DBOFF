@@ -262,43 +262,47 @@ class DboFullExtractor:
         dest_full = os.path.join(self.assets_root, namespace, res_path)
         result["output_path"] = os.path.relpath(dest_full, self.assets_root)
 
-        # Check existing file (idempotency & resume support)
+        # Check existing file (idempotency & resume support & absolute conflict protection)
         if verify_existing and os.path.exists(dest_full):
             cur_sz = os.path.getsize(dest_full)
-            if cur_sz == sz:
-                # Read source slice sha256 to verify existing matches
-                src_hash = hashlib.sha256()
-                with open(vol_path, "rb") as vf:
-                    vf.seek(off)
-                    rem = sz
-                    while rem > 0:
-                        b = vf.read(min(rem, 64 * 1024))
-                        if not b: break
-                        src_hash.update(b)
-                        rem -= len(b)
-                exp_sha = src_hash.hexdigest()
 
-                # Calculate existing file sha256
-                cur_hash = hashlib.sha256()
+            # Read source slice sha256 to verify existing matches
+            src_hash = hashlib.sha256()
+            with open(vol_path, "rb") as vf:
+                vf.seek(off)
+                rem = sz
+                while rem > 0:
+                    b = vf.read(min(rem, 64 * 1024))
+                    if not b: break
+                    src_hash.update(b)
+                    rem -= len(b)
+            exp_sha = src_hash.hexdigest()
+
+            # Calculate existing file sha256
+            cur_hash = hashlib.sha256()
+            with open(dest_full, "rb") as df:
+                while b := df.read(64 * 1024):
+                    cur_hash.update(b)
+            cur_sha = cur_hash.hexdigest()
+
+            result["source_sha256"] = exp_sha
+            result["output_sha256"] = cur_sha
+            result["exported_size"] = cur_sz
+
+            if cur_sz == sz and exp_sha == cur_sha:
+                result["extraction_status"] = "SUCCESS_EXISTING_VERIFIED"
                 with open(dest_full, "rb") as df:
-                    while b := df.read(64 * 1024):
-                        cur_hash.update(b)
-                cur_sha = cur_hash.hexdigest()
-
-                if exp_sha == cur_sha:
-                    result["exported_size"] = cur_sz
-                    result["source_sha256"] = exp_sha
-                    result["output_sha256"] = cur_sha
-                    result["extraction_status"] = "SUCCESS_EXISTING_VERIFIED"
-                    with open(dest_full, "rb") as df:
-                        head = df.read(16)
-                    result["detected_format"] = detect_file_format(head, res_path)
-                    return result
+                    head = df.read(16)
+                result["detected_format"] = detect_file_format(head, res_path)
+                return result
+            else:
+                # Conflict: different size or different content - STRICTLY REFUSE OVERWRITE
+                result["extraction_status"] = "CONFLICT_DIFFERENT_CONTENT"
+                if cur_sz != sz:
+                    result["error_detail"] = f"Destination exists with different size (existing_size={cur_sz}, expected_size={sz}, existing_sha={cur_sha}, expected_sha={exp_sha})"
                 else:
-                    # Conflict: existing file has different hash
-                    result["extraction_status"] = "CONFLICT_DIFFERENT_CONTENT"
-                    result["error_detail"] = f"Destination exists with different SHA-256 (existing={cur_sha}, expected={exp_sha})"
-                    return result
+                    result["error_detail"] = f"Destination exists with different content (same size {sz}, existing_sha={cur_sha}, expected_sha={exp_sha})"
+                return result
 
         # Ensure target dir exists
         os.makedirs(os.path.dirname(dest_full), exist_ok=True)

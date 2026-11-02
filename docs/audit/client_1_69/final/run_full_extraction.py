@@ -155,8 +155,8 @@ def run_production_extraction():
         elap = time.time() - t0
         print(f"  Processed {done:6,}/{total_pak_entries:,} ({pct:5.1f}%) | Batch time: {elap:.1f}s | Success: {success_count:,} | Failures: {failure_count}")
 
-    # 3. Process the 68 external files
-    print("\n[Phase 3] Copying 68 external non-PAK files to assets\\external\\...")
+    # 3. Process the 68 external files with full conflict protection
+    print("\n[Phase 3] Processing 68 external non-PAK files with conflict protection...")
     source_inv_path = os.path.join(AUDIT_DIR, "01_source_inventory.csv")
     ext_count = 0
     with open(source_inv_path, "r", encoding="utf-8-sig") as f:
@@ -168,9 +168,78 @@ def run_production_extraction():
             rel_src = r["relative_path"]
             src_full = os.path.join(CLIENT_ROOT, rel_src)
             dest_full = os.path.join(ASSETS_ROOT, "external", rel_src)
-            os.makedirs(os.path.dirname(dest_full), exist_ok=True)
+            expected_sz = int(r["size_bytes"])
+            expected_sha = r["sha256"]
 
-            # Stream copy with SHA-256 computation
+            # If destination file already exists, verify size & SHA-256; NEVER overwrite blindly
+            if os.path.exists(dest_full):
+                cur_sz = os.path.getsize(dest_full)
+                cur_h = hashlib.sha256()
+                with open(dest_full, "rb") as df:
+                    while chunk := df.read(64 * 1024):
+                        cur_h.update(chunk)
+                cur_sha = cur_h.hexdigest()
+
+                with open(dest_full, "rb") as df:
+                    head = df.read(16)
+                fmt = detect_file_format(head, rel_src)
+
+                if cur_sz == expected_sz and cur_sha == expected_sha:
+                    # Verified existing file match
+                    manifest_writer.writerow({
+                        "namespace": "external",
+                        "source_pak": "NONE_EXTERNAL_FILE",
+                        "resource_path": rel_src,
+                        "output_path": os.path.relpath(dest_full, ASSETS_ROOT),
+                        "source_volume": "FILESYSTEM",
+                        "source_offset": 0,
+                        "expected_size": expected_sz,
+                        "exported_size": cur_sz,
+                        "source_sha256": expected_sha,
+                        "output_sha256": cur_sha,
+                        "detected_format": fmt,
+                        "extraction_status": "SUCCESS_EXISTING_VERIFIED"
+                    })
+                    existing_verified_count += 1
+                    success_count += 1
+                    total_bytes_exported += cur_sz
+                    continue
+                else:
+                    # Conflict: different size or different content - STRICTLY REFUSE OVERWRITE
+                    if cur_sz != expected_sz:
+                        err_msg = f"External file exists with different size (existing_size={cur_sz}, expected_size={expected_sz})"
+                    else:
+                        err_msg = f"External file exists with different content (existing_sha={cur_sha}, expected_sha={expected_sha})"
+                    manifest_writer.writerow({
+                        "namespace": "external",
+                        "source_pak": "NONE_EXTERNAL_FILE",
+                        "resource_path": rel_src,
+                        "output_path": os.path.relpath(dest_full, ASSETS_ROOT),
+                        "source_volume": "FILESYSTEM",
+                        "source_offset": 0,
+                        "expected_size": expected_sz,
+                        "exported_size": cur_sz,
+                        "source_sha256": expected_sha,
+                        "output_sha256": cur_sha,
+                        "detected_format": fmt,
+                        "extraction_status": "CONFLICT_DIFFERENT_CONTENT"
+                    })
+                    failures_writer.writerow({
+                        "namespace": "external",
+                        "source_pak": "NONE_EXTERNAL_FILE",
+                        "resource_path": rel_src,
+                        "source_volume": "FILESYSTEM",
+                        "source_offset": 0,
+                        "expected_size": expected_sz,
+                        "resolution_rule": "RULE_DIRECT_COPY",
+                        "extraction_status": "CONFLICT_DIFFERENT_CONTENT",
+                        "error_detail": err_msg
+                    })
+                    conflict_count += 1
+                    continue
+
+            # File does not exist yet: stream copy with validation
+            os.makedirs(os.path.dirname(dest_full), exist_ok=True)
             h_src = hashlib.sha256()
             h_out = hashlib.sha256()
             sz_copied = 0
@@ -183,7 +252,6 @@ def run_production_extraction():
 
             s_sha = h_src.hexdigest()
             o_sha = h_out.hexdigest()
-            expected_sz = int(r["size_bytes"])
             is_ok = (s_sha == o_sha) and (sz_copied == expected_sz)
 
             with open(dest_full, "rb") as df:

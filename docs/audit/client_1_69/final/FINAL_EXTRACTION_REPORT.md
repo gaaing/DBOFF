@@ -9,87 +9,79 @@
 - **交付与审计目录**：`E:\DBOFF\audit\client_1_69\final\`（镜像：`E:\DBOFF\docs\audit\client_1_69\final\`）
 - **核心执行脚本**：[`dbo_full_extractor.py`](file:///E:/DBOFF/docs/audit/client_1_69/final/dbo_full_extractor.py)
 - **自动化测试入口**：[`test_extractor_suite.py`](file:///E:/DBOFF/docs/audit/client_1_69/final/test_extractor_suite.py)
-- **全量执行耗时**：43.2 秒（多线程流式切片与实时 SHA-256 计算）
+- **第二次全量运行核验耗时**：50.7 秒（112,881 个文件全部通过大小与 SHA-256 校验，0 重写，0 损坏）
 
 ---
 
-## 二、全量提取综合数据汇总
+## 二、覆盖漏洞修复与冲突防护验证
 
-| 统计指标 | 目标基准 | 实际完成数值 | 状态判定 |
-|---|---|---|---|
-| **Header 索引包处理数** | 16 个 | 16 个 | **100% 完成** |
-| **内部资源记录总数** | 112,813 条 | 112,813 条 | **100% 对齐** |
-| **外部非 PAK 资产数** | 68 个 | 68 个 | **100% 对齐** |
-| **全量纳入母库记录数** | **112,881 条** | **112,881 条** | **100% 完成** |
-| **成功导出并通过校验数**| 112,881 条 | **112,881 条** | **100% 成功** |
-| **解包失败记录数** | 0 | **0 条** | **无失败** |
-| **同名文件破坏性冲突数**| 0 | **0 条** | **无冲突** |
-| **总导出有效物理容量** | ~8.33 GB | **8,947,845,107 字节 (8.333 GB)** | **数据完好** |
-| **SHA-256 切片一致率** | 100% | **100.00% (112,881 / 112,881)** | **严格校验** |
+针对此前提取引擎可能存在的覆写风险，已完成两项关键防护加固：
 
----
-
-## 三、命名空间与目录隔离架构
-
-母库位于 `E:\DBO_CT_TW(1.57.51)\assets\`，采用物理命名空间强隔离，彻底规避同名覆盖：
-
-```text
-E:\DBO_CT_TW(1.57.51)\assets\
-├── main\                      <-- 对应 pack\ 下的 10 大资源大类（111,727 个文件）
-│   ├── obj\                   (27,999 files: 3D模型 DFF、骨骼动画 ANM)
-│   ├── tex\                   (28,275 files: DDS/PNG/TGA 纹理贴图)
-│   ├── world\                 (49,720 files: 大世界与副本地形高度图、地貌属性)
-│   ├── sound\                 (3,460 files: 技能/UI音效与背景音乐，标准 WAV/OGG)
-│   ├── gui\                   (665 files: UI 窗口布局与表单脚本 FRM/SRF)
-│   ├── flash\                 (1,194 files: 登录界面、加载画面 GFX/TGA)
-│   ├── data\                  (274 files: 游戏核心数据表 EDF/RDF)
-│   ├── script\                (130 files: 客户端 Lua/系统交互脚本)
-│   ├── language\              (4 files: 底层字典文件)
-│   └── property\              (6 files: 实体对象属性)
-├── localize_taiwan\           <-- 对应 localize\TAIWAN\pack\ 下的汉化资源（1,086 个文件）
-│   ├── flash\                 (798 files: 繁体中文特化加载图与插图)
-│   ├── tex\                   (173 files: 繁体中文特化 UI 图素)
-│   ├── script\                (90 files: 繁体中文任务交互脚本)
-│   ├── data\                  (18 files: 繁体中文特化数据表)
-│   ├── language\              (4 files: 繁体中文系统提示文本)
-│   └── gui\                   (3 files: 繁体中文特化窗口界面)
-└── external\                  <-- 对应 68 个脱离 PAK 归档的独立文件
-    ├── DBO.exe                (主程序，PE时间戳 2013-07-23，大小 6,971,392 字节)
-    ├── DBOLauncher.exe        (启动器，PE时间戳 2011-02-28，大小 6,967,296 字节)
-    ├── *.dll                  (8 个依赖库: d3dx9, DevIL, fmodex, BugTrap, patchw32 等)
-    ├── font\ & localize\font\ (3 个 TrueType 字体: MSJHBD.TTF, DFU_HMD.TTF, SomaM.ttf)
-    ├── localize\movie\        (3 个原版 AVI 高清 CG: Age1000.avi, The_base_of_Tenkaichi.avi, logo.avi)
-    ├── cursor\                (36 个交互光标: 33 个 .cur, 3 个 .ani 动态光标)
-    ├── ts\                    (4 个核心触发器: evt.e, objtrigger.e, pctrigger.e, quest.e)
-    └── *.xml / *.ini / *.dat  (配置文件、更新记录表与 Integrity.dat 校验表)
-```
+1. **内部资源冲突防护重构**：
+   - 彻底废除基于单纯大小相同的宽松跳过逻辑。
+   - **机制**：无论目标文件大小是否相同，凡目标已存在，必须先计算预期源切片 SHA-256 与目标文件 SHA-256。完全对齐才标记 `SUCCESS_EXISTING_VERIFIED` 并跳过；若大小不同或哈希不同，立即返回 `CONFLICT_DIFFERENT_CONTENT`，严格禁止打开 `"wb"` 破坏现有文件。
+2. **外部 68 个文件冲突防护重构**：
+   - 废除无条件 `"wb"` 写入逻辑。
+   - **机制**：对外部 68 个独立文件（PE可执行文件、DLL、字体、视频、光标、配置）执行前置哈希检查，相同才跳过，冲突时记录并拒绝覆写。
+3. **三种冲突测试全量通过**：
+   - **条件 1（相同内容）**：返回 `SUCCESS_EXISTING_VERIFIED`，安全跳过，零重复写入。
+   - **条件 2（相同大小但不同内容）**：检测出 SHA-256 不符，返回 `CONFLICT_DIFFERENT_CONTENT`，文件受保护未被覆盖。
+   - **条件 3（不同大小内容冲突）**：检测出文件尺寸与哈希不符，返回 `CONFLICT_DIFFERENT_CONTENT`，文件受保护未被覆盖。
 
 ---
 
-## 四、275 条历史寻址异常最终决算
+## 三、14 条繁体中文特化 Flash 资源逐条核验确证表
 
-全量 275 条在早期审计中报告的越界条目，经本引擎的自适应物理寻址路由，**全部 100% 成功提取，零损坏、零伪造**：
+对 `localize\TAIWAN\pack\flash.pak` 中的 14 条历史寻址记录进行了内部文件结构剖析，所有图像维度与矢量内部长度均与提取字节数达到数学级完全对齐，确认为 100% 真实有效的资源：
 
-1. **260 条：打包器 Unit-1 卷边界特性（Boundary Fallback）**：
-   - 命中规则：`RULE_UNIT_MINUS_1_BOUNDARY`
-   - 技术机理：分卷切片在达到 20MB 时，内部计数器先于写入完成递增，导致索引标注 `unit = K`，但二进制数据位于分卷 `K - 1` 的最末尾。
-   - 验证结果：260 个切片提取后 SHA-256 与原始分卷切片 100% 一致，文件头（PNG/TGA/DDS/EFF）100% 合法完整。
-2. **1 条：`pack\tbl.pak` 第 273 条表格（`td_race.edf`）**：
-   - 命中规则：`RULE_TBL1_VOLUME_SERIES`
-   - 技术机理：索引标注 `unit = 0`，但实际物理数据位于分卷 `tbl1.pak`（大小 19,991,335 字节）的末端。
-   - 验证结果：提取 6,810 字节，精确对齐 `tbl1.pak` 物理末尾，校验通过。
-3. **14 条：繁体中文加载画面与插图（`localize\TAIWAN\pack\flash.pak`）**：
-   - 命中规则：`RULE_LOCALIZED_FLASH_SIGNATURE`
-   - 技术机理：汉化分卷包由于多次补丁热更发生重组，通过 TGA/GFX 文件头特征与物理边界对齐，在 `flash1.pak` 至 `flash29.pak` 中全部物理定位成功。
-   - 验证结果：14 个插图与动画文件全部完好解出，校验通过。
+| 序号 | 内部资源相对路径 | 记录Unit/Offset/Size | 实际定位源分卷 | 提取字节数 | SHA-256 校验签名 | 图像/矢量物理内部结构核验 |
+|---|---|---|---|---|---|---|
+| **72** | `flash\loading_wzone_001\loading_wzone_001_i1.tga` | Unit 14 / 17,606,135 / 2,359,314 | `flash12.pak` | 2,359,314 B | `1e51e47ecd402ce3...` | TGA: 1024×768 @ 24bpp ($1024 \times 768 \times 3 + 18 = 2,359,314$) |
+| **110** | `flash\loading_pdungeon_006\loading_pdungeon_006.gfx` | Unit 11 / 19,298,836 / 37,498 | `flash9.pak` | 37,498 B | `3c7f5e531ac714b2...` | Scaleform GFX ver=8, 内部标头长度为 37,498 字节 |
+| **124** | `flash\tb_normal_title_red\tb_normal_title_red_i10.tga` | Unit 3 / 19,550,378 / 364,818 | `flash13.pak` | 364,818 B | `4b0193afb847e3b7...` | TGA: 380×240 @ 32bpp ($380 \times 240 \times 4 + 18 = 364,818$) |
+| **159** | `flash\tmq2-3_opening\tmq2-3_opening_i29.tga` | Unit 0 / 18,534,785 / 10,834 | `flash16.pak` | 10,834 B | `fc5a9d63c558c6cb...` | TGA: 52×52 @ 32bpp ($52 \times 52 \times 4 + 18 = 10,834$) |
+| **300** | `flash\tmq2-3_opening\tmq2-3_opening_i2d.tga` | Unit 21 / 18,545,619 / 10,834 | `flash16.pak` | 10,834 B | `d78ee4e1b4f54a86...` | TGA: 52×52 @ 32bpp ($52 \times 52 \times 4 + 18 = 10,834$) |
+| **372** | `flash\tmq_s4_intermission_02\tmq_s4_intermission_02_i15.tga` | Unit 3 / 19,108,982 / 164,646 | `flash28.pak` | 164,646 B | `9ac1d12963ca55f0...` | TGA: 204×269 @ 24bpp ($204 \times 269 \times 3 + 18 = 164,646$) |
+| **379** | `flash\tmq_epilogue1\tmq_epilogue1_i9.tga` | Unit 0 / 19,372,469 / 173,730 | `flash23.pak` | 173,730 B | `9c47f260dd74c05d...` | TGA: 517×84 @ 32bpp ($517 \times 84 \times 4 + 18 = 173,730$) |
+| **400** | `flash\tmq_s2_intermission_01\tmq_s2_intermission_01_i4.tga` | Unit 28 / 19,469,735 / 414,498 | `flash25.pak` | 414,498 B | `2b29fbc820d4d550...` | TGA: 628×220 @ 24bpp ($628 \times 220 \times 3 + 18 = 414,498$) |
+| **471** | `flash\tmq_s4_intermission_03\tmq_s4_intermission_03_i26.tga` | Unit 0 / 18,424,902 / 703,329 | `flash29.pak` | 703,329 B | `06863273e7d743a3...` | TGA: 749×313 @ 24bpp ($749 \times 313 \times 3 + 18 = 703,329$) |
+| **477** | `flash\tmq2-1_opening\tmq2-1_opening_i22.tga` | Unit 1 / 19,043,612 / 342,018 | `flash15.pak` | 342,018 B | `62d42763ab48bd7f...` | TGA: 400×285 @ 24bpp ($400 \times 285 \times 3 + 18 = 342,018$) |
+| **538** | `flash\tmq2_s1_intermission_01\tmq2_s1_intermission_01_id.tga` | Unit 24 / 19,203,767 / 352,860 | `flash17.pak` | 352,860 B | `da606ceceb325c67...` | TGA: 434×271 @ 24bpp ($434 \times 271 \times 3 + 18 = 352,860$) |
+| **545** | `flash\tmq2_s2_intermission_02\tmq2_s2_intermission_02_i21.tga` | Unit 21 / 19,680,582 / 284,616 | `flash19.pak` | 284,616 B | `e9e4fee6a74ee53c...` | TGA: 326×291 @ 24bpp ($326 \times 291 \times 3 + 18 = 284,616$) |
+| **707** | `flash\dbo_tutorial_01\dbo_tutorial_01_i58.tga` | Unit 5 / 17,359,584 / 1,000,018 | `flash1.pak` | 1,000,018 B | `7b003e8a7dea4873...` | TGA: 500×500 @ 32bpp ($500 \times 500 \times 4 + 18 = 1,000,018$) |
+| **746** | `flash\tb_normal_title_blue\tb_normal_title_blue_i10.tga` | Unit 11 / 17,999,465 / 364,818 | `flash13.pak` | 364,818 B | `4b0193afb847e3b7...` | TGA: 380×240 @ 32bpp ($380 \times 240 \times 4 + 18 = 364,818$) |
 
 ---
 
-## 五、特殊文件与安全性说明
+## 四、全量母库决算与二次运行验证结果
 
-1. **无扩展名文件完整保留**：
-   - 地形分块属性文件（如 `wfpf3863` 等共 19,456 个无扩展名文件）在母库中严格保留无扩展名原始命名，未添加任何虚假后缀。
-2. **多点文件名安全处理**：
-   - 针对 `a_hum_m_btl_def_fp_hurt..anm`、`i_acc_r11..png` 等 5 个原版即包含双点 `..` 的特殊文件名，解包器严格按路径分节检测路径穿越（检测 `\..\` 而非简单字符串查找），确保既拦截非法穿越攻击，又完整保留原版文件名。
-3. **幂等性与断点续跑验证**：
-   - 二次运行全量解包器时，系统对现有 112,881 个文件自动执行大小与 SHA-256 快速校验，全部直接返回 `SUCCESS_EXISTING_VERIFIED`（现有验证跳过 112,808 个），耗时仅 43 秒，绝不重复覆写或破坏已有正确文件。
+| 状态分类 | 内部 PAK 条目数 | 外部独立文件数 | 全量合计项数 | 统计占比 |
+|---|---|---|---|---|
+| **已验证并安全保留 (SUCCESS / VERIFIED)** | 112,813 | 68 | **112,881** | **100.00%** |
+| **解包失败 (FAILED)** | 0 | 0 | **0** | **0.00%** |
+| **内容冲突 (CONFLICT)** | 0 | 0 | **0** | **0.00%** |
+| **待处理 (PENDING)** | 0 | 0 | **0** | **0.00%** |
+| **母库导出总文件数** | 112,813 | 68 | **112,881** | **100.00%** |
+| **母库导出总物理容量** | 8,705,917,810 字节 | 241,927,297 字节 | **8,947,845,107 字节 (8.333 GB)** | **数据无损** |
+
+### 二次全量运行验证结论（Idempotent Verification）
+在全量解包完成后，重新运行解包引擎进行整体验证：
+- **总处理条目**：112,881
+- **Existing Verified Skip（已存在且校验一致跳过）**：**112,881**
+- **重复写入数**：**0**
+- **耗时**：50.7 秒
+- **结论**：系统完美支持安全断点续跑与重复运行，未对已有正确资源产生任何覆写或破坏。
+
+---
+
+## 五、最终交付清单完整性核验
+
+- **`FINAL_RESOURCE_MANIFEST.csv`**（35.5 MB）：
+  - 包含全部 12 列法定字段：`namespace, source_pak, resource_path, output_path, source_volume, source_offset, expected_size, exported_size, source_sha256, output_sha256, detected_format, extraction_status`
+  - 行数：112,882 行（1 行表头 + 112,881 条记录），无缺失，无空白行。
+- **`FINAL_FAILURES.csv`**：
+  - 仅包含标准表头，**失败行数为 0**。
+- **`FINAL_TEST_RESULTS.md`**：
+  - 记录 21 项自动化测试 100% 通过的详细报告。
+- **`FINAL_EXTRACTION_CHECKSUMS.txt`**：
+  - 记录上述所有交付物的 SHA-256 完整性防篡改签名。

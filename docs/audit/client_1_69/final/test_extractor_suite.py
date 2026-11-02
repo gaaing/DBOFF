@@ -187,28 +187,44 @@ def run_tests():
     record_test("Handle Missing Volume Safely", ok_miss, f"Status: {res_miss['extraction_status']}")
 
     # ---------------------------------------------------------
-    # TEST 9: Idempotency & Conflict Detection
+    # TEST 9: Idempotency & Conflict Protection (3 Conditions)
     # ---------------------------------------------------------
-    print("\n--- Running Test 9: Idempotency & Conflict Detection ---")
+    print("\n--- Running Test 9: Idempotency & Conflict Protection ---")
     # First extraction was done in Test 1 for obj entry 0
     obj_0 = family_samples[0]
     magic, entries_data = extractor.decrypt_header_pak(obj_0[0])
     entries_obj = extractor.parse_header_entries(entries_data, "main", obj_0[0], "obj")
     ent_obj0 = entries_obj[0]
+    dest_file = os.path.join(TEST_SANDBOX, "main", ent_obj0["clean_path"])
     
-    # Run second time: should return SUCCESS_EXISTING_VERIFIED without re-writing
+    # Condition 1: Same Content -> SUCCESS_EXISTING_VERIFIED without re-writing
     res_dup = extractor.extract_entry(ent_obj0, "obj")
     ok_dup = (res_dup["extraction_status"] == "SUCCESS_EXISTING_VERIFIED")
-    record_test("Idempotency / Skip Verified Existing", ok_dup, f"Status: {res_dup['extraction_status']}")
+    record_test("Conflict Protection 1: Same Content (Verified Skip)", ok_dup, f"Status: {res_dup['extraction_status']}")
 
-    # Conflict test: modify the file content and test conflict detection
-    dest_file = os.path.join(TEST_SANDBOX, "main", ent_obj0["clean_path"])
+    # Condition 2: Same Size, Different Content -> CONFLICT_DIFFERENT_CONTENT (Refuse overwrite)
+    orig_sz = os.path.getsize(dest_file)
     with open(dest_file, "r+b") as f:
         f.seek(0)
         f.write(b"CORRUPTED_BYTES_HERE")
-    res_conflict = extractor.extract_entry(ent_obj0, "obj")
-    ok_conflict = (res_conflict["extraction_status"] == "CONFLICT_DIFFERENT_CONTENT")
-    record_test("Refuse Overwrite on Content Conflict", ok_conflict, f"Status: {res_conflict['extraction_status']}")
+    res_conflict_same_sz = extractor.extract_entry(ent_obj0, "obj")
+    ok_conflict_same_sz = (res_conflict_same_sz["extraction_status"] == "CONFLICT_DIFFERENT_CONTENT")
+    # Verify file was NOT overwritten back to original
+    with open(dest_file, "rb") as f:
+        head_after = f.read(20)
+    preserved_same_sz = head_after.startswith(b"CORRUPTED_BYTES_HERE")
+    record_test("Conflict Protection 2: Same Size, Different Content", ok_conflict_same_sz and preserved_same_sz, f"Status: {res_conflict_same_sz['extraction_status']}, File Protected: {preserved_same_sz}")
+
+    # Condition 3: Different Size -> CONFLICT_DIFFERENT_CONTENT (Refuse overwrite)
+    with open(dest_file, "wb") as f:
+        f.write(b"SHORT_DIFFERENT_SIZE_BYTES")
+    new_sz = os.path.getsize(dest_file) # != orig_sz
+    res_conflict_diff_sz = extractor.extract_entry(ent_obj0, "obj")
+    ok_conflict_diff_sz = (res_conflict_diff_sz["extraction_status"] == "CONFLICT_DIFFERENT_CONTENT")
+    with open(dest_file, "rb") as f:
+        head_diff = f.read(30)
+    preserved_diff_sz = (head_diff == b"SHORT_DIFFERENT_SIZE_BYTES")
+    record_test("Conflict Protection 3: Different Size Content", ok_conflict_diff_sz and preserved_diff_sz, f"Status: {res_conflict_diff_sz['extraction_status']}, File Protected: {preserved_diff_sz}")
 
     # ---------------------------------------------------------
     # Summary
