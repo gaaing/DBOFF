@@ -1,0 +1,349 @@
+{
+  "world_table_entries_count": 106,
+  "total_terrain_zones": 50,
+  "total_terrain_chunks": 15453,
+  "zones": [
+    {
+      "zone_name": "battle_001_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/battle_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "battle_002_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/battle_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "battle_003_chunks",
+      "chunk_count": 6,
+      "path": "data/terrain/battle_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "bdungeon_001_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/bdungeon_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "bdungeon_002_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/bdungeon_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "bdungeon_003_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/bdungeon_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "bdungeon_004_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/bdungeon_004_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "budoh_001_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/budoh_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "budoh_002_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/budoh_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "budoh_003_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/budoh_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "cdungeon_001_chunks",
+      "chunk_count": 1025,
+      "path": "data/terrain/cdungeon_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "chunks",
+      "chunk_count": 3337,
+      "path": "data/terrain/chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dojo_001_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/dojo_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_000_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/dungeon_000_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_001_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/dungeon_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_002_chunks",
+      "chunk_count": 114,
+      "path": "data/terrain/dungeon_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_003_chunks",
+      "chunk_count": 112,
+      "path": "data/terrain/dungeon_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_004_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/dungeon_004_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_005_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/dungeon_005_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_006_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/dungeon_006_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_007_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/dungeon_007_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dungeon_etc_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/dungeon_etc_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "dwc_001_chunks",
+      "chunk_count": 300,
+      "path": "data/terrain/dwc_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "pdungeon_001_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/pdungeon_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "pdungeon_002_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/pdungeon_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "pdungeon_003_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/pdungeon_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "pdungeon_004_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/pdungeon_004_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "pdungeon_005_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/pdungeon_005_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "pdungeon_006_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/pdungeon_006_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "quest_001_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/quest_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "quest_002_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/quest_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "quest_003_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/quest_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "quest_004_chunks",
+      "chunk_count": 99,
+      "path": "data/terrain/quest_004_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "quest_005_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/quest_005_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "quest_006_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/quest_006_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "quest_007_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/quest_007_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "select_character_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/select_character_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "skdungeon_001_chunks",
+      "chunk_count": 156,
+      "path": "data/terrain/skdungeon_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "start_001_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/start_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "start_002_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/start_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "start_003_chunks",
+      "chunk_count": 65,
+      "path": "data/terrain/start_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "test_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/test_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "tlq_001_chunks",
+      "chunk_count": 228,
+      "path": "data/terrain/tlq_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "tlq_002_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/tlq_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "tlq_003_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/tlq_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "town_001_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/town_001_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "town_002_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/town_002_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "town_003_chunks",
+      "chunk_count": 257,
+      "path": "data/terrain/town_003_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "world_02_chunks",
+      "chunk_count": 1961,
+      "path": "data/terrain/world_02_chunks/",
+      "status": "VERIFIED"
+    },
+    {
+      "zone_name": "wzone_001_chunks",
+      "chunk_count": 204,
+      "path": "data/terrain/wzone_001_chunks/",
+      "status": "VERIFIED"
+    }
+  ],
+  "canon_lobby_stages": {
+    "-1": {
+      "name": "Stage_Cell_Ring",
+      "field_id": 18,
+      "coords": [
+        -296.22,
+        52.577,
+        -281.39
+      ],
+      "status": "VERIFIED"
+    },
+    "0": {
+      "name": "Stage_Human",
+      "field_id": 42,
+      "coords": [
+        -350.37,
+        52.0,
+        328.73
+      ],
+      "status": "VERIFIED"
+    },
+    "1": {
+      "name": "Stage_Namek",
+      "field_id": 45,
+      "coords": [
+        471.69,
+        52.0,
+        300.63
+      ],
+      "status": "VERIFIED"
+    },
+    "2": {
+      "name": "Stage_Majin",
+      "field_id": 21,
+      "coords": [
+        365.617,
+        52.0,
+        -365.843
+      ],
+      "status": "VERIFIED"
+    }
+  }
+}

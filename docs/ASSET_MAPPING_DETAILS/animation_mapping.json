@@ -1,0 +1,153 @@
+{
+  "total_animation_files": 5302,
+  "directories": {
+    "animation_candy": {
+      "path": "res://assets/obj/character/animation_candy/",
+      "count": 2,
+      "sample_files": [
+        "a_candy_appear.glb",
+        "a_candy_stand.glb"
+      ]
+    },
+    "animation_humanfemale": {
+      "path": "res://assets/obj/character/animation_humanfemale/",
+      "count": 312,
+      "sample_files": [
+        "a_hch_f_run_front.glb",
+        "a_hch_f_skl_spirit_ball.glb",
+        "a_hch_f_soc_courtesy.glb",
+        "a_hch_f_soc_laugh.glb",
+        "a_hch_f_soc_poke.glb",
+        "a_hch_f_swim_fainting.glb",
+        "a_hch_f_swim_idle.glb",
+        "a_hch_f_swim_idle_hurt.glb"
+      ]
+    },
+    "animation_humanmale": {
+      "path": "res://assets/obj/character/animation_humanmale/",
+      "count": 391,
+      "sample_files": [
+        "attack_1.glb",
+        "attack_2.glb",
+        "a_hch_m_run_front.glb",
+        "a_hch_m_skl_spirit_ball.glb",
+        "a_hch_m_soc_courtesy.glb",
+        "a_hch_m_swim_fainting.glb",
+        "a_hch_m_swim_idle.glb",
+        "a_hch_m_swim_idle_hurt.glb"
+      ]
+    },
+    "animation_majinfemale": {
+      "path": "res://assets/obj/character/animation_majinfemale/",
+      "count": 278,
+      "sample_files": [
+        "a_maj_f_ability.glb",
+        "a_maj_f_atk_def_1.glb",
+        "a_maj_f_atk_def_2.glb",
+        "a_maj_f_atk_def_3.glb",
+        "a_maj_f_atk_def_4.glb",
+        "a_maj_f_atk_def_5.glb",
+        "a_maj_f_atk_def_6.glb",
+        "a_maj_f_bike_idle.glb"
+      ]
+    },
+    "animation_majinmale": {
+      "path": "res://assets/obj/character/animation_majinmale/",
+      "count": 373,
+      "sample_files": [
+        "a_maj_m_ability.glb",
+        "a_maj_m_atk_def_1.glb",
+        "a_maj_m_atk_def_2.glb",
+        "a_maj_m_atk_def_3.glb",
+        "a_maj_m_atk_def_4.glb",
+        "a_maj_m_atk_def_5.glb",
+        "a_maj_m_atk_def_6.glb",
+        "a_maj_m_bike_idle.glb"
+      ]
+    },
+    "animation_mob": {
+      "path": "res://assets/obj/character/animation_mob/",
+      "count": 0,
+      "sample_files": []
+    },
+    "animation_namek": {
+      "path": "res://assets/obj/character/animation_namek/",
+      "count": 382,
+      "sample_files": [
+        "a_nam_atk_def_1.glb",
+        "a_nam_atk_def_2.glb",
+        "a_nam_atk_def_3.glb",
+        "a_nam_atk_def_4.glb",
+        "a_nam_atk_def_5.glb",
+        "a_nam_atk_def_6.glb",
+        "a_nam_atk_staff_1.glb",
+        "a_nam_atk_staff_2.glb"
+      ]
+    },
+    "animation_npc": {
+      "path": "res://assets/obj/character/animation_npc/",
+      "count": 3171,
+      "sample_files": [
+        "e_pos_a1_quest_2944_01.glb",
+        "e_pos_dwc_04_01.glb",
+        "e_pos_normal.glb",
+        "e_pos_tlb_01.glb",
+        "e_pos_tmq7_s12_01.glb",
+        "e_pos_tmq7_s12_02.glb",
+        "e_pos_tmq7_s15_01.glb",
+        "e_pos_tmq7_s15_02.glb"
+      ]
+    },
+    "animation_vehicle": {
+      "path": "res://assets/obj/character/animation_vehicle/",
+      "count": 240,
+      "sample_files": [
+        "v_12a_01_idle.glb",
+        "v_12a_01_jump.glb",
+        "v_12a_01_landing.glb",
+        "v_12a_01_run.glb",
+        "v_12a_01_start.glb",
+        "v_12a_01_stop.glb",
+        "v_12a_01_turn_left.glb",
+        "v_12a_01_turn_right.glb"
+      ]
+    },
+    "animation_weapon": {
+      "path": "res://assets/obj/item/animation_weapon/",
+      "count": 153,
+      "sample_files": [
+        "a_qst_007_stand.glb",
+        "a_qst_009_idle_loop.glb",
+        "a_qst_010_stand.glb",
+        "a_qst_011_stand.glb",
+        "a_qst_029_stand.glb",
+        "a_qst_034_stand.glb",
+        "a_qst_035_stand.glb",
+        "a_qst_041_stand.glb"
+      ]
+    }
+  },
+  "core_actions": {
+    "idle": "站立待机",
+    "walk": "向前行走",
+    "run": "疾跑",
+    "walk_back": "后退",
+    "run_back": "后退疾跑",
+    "jump_start": "起跳",
+    "jump_hover": "空中悬停/滞空",
+    "jump_landing": "着地",
+    "charge_start": "聚气起始",
+    "charge_loop": "聚气循环",
+    "charge_end": "聚气收招",
+    "sit_down": "坐下",
+    "sit_idle": "打坐待机",
+    "block_loop": "格挡防守",
+    "attack_01": "普通攻击 1 段",
+    "attack_02": "普通攻击 2 段",
+    "attack_03": "普通攻击 3 段",
+    "hurt": "受击硬直",
+    "faint": "眩晕昏厥",
+    "knockdown_fall": "击倒倒地"
+  },
+  "retargeting_pipeline": "character_factory.gd (load_character_animations): dynamically binds track paths to Skeleton3D:bone_name and strips child translation tracks to eliminate stretching."
+}

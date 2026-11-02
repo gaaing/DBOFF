@@ -1,0 +1,240 @@
+{
+  "races": [
+    {
+      "id": 0,
+      "name": "HUMAN",
+      "name_cn": "人类",
+      "classes": [
+        {
+          "id": 0,
+          "name": "MARTIAL_ARTIST",
+          "name_cn": "武道家",
+          "master_classes": [
+            {
+              "id": 1,
+              "name": "FIGHTER",
+              "name_cn": "战士"
+            },
+            {
+              "id": 2,
+              "name": "SWORDSMAN",
+              "name_cn": "剑客"
+            }
+          ]
+        },
+        {
+          "id": 1,
+          "name": "SPIRITUALIST",
+          "name_cn": "气功师",
+          "master_classes": [
+            {
+              "id": 3,
+              "name": "CRANE_HERMIT",
+              "name_cn": "鹤仙流"
+            },
+            {
+              "id": 4,
+              "name": "TURTLE_HERMIT",
+              "name_cn": "龟仙流"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 1,
+      "name": "NAMEK",
+      "name_cn": "那美克星人",
+      "classes": [
+        {
+          "id": 2,
+          "name": "WARRIOR",
+          "name_cn": "战士",
+          "master_classes": [
+            {
+              "id": 5,
+              "name": "DARK_WARRIOR",
+              "name_cn": "魔界战士"
+            },
+            {
+              "id": 6,
+              "name": "SHADOW_KNIGHT",
+              "name_cn": "魔导士"
+            }
+          ]
+        },
+        {
+          "id": 3,
+          "name": "DRAGON_CLAN",
+          "name_cn": "龙族",
+          "master_classes": [
+            {
+              "id": 7,
+              "name": "DENDE_PRIEST",
+              "name_cn": "天天导士"
+            },
+            {
+              "id": 8,
+              "name": "POKO_PRIEST",
+              "name_cn": "波克导士"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "name": "MAJIN",
+      "name_cn": "魔人",
+      "classes": [
+        {
+          "id": 4,
+          "name": "MIGHTY_MAJIN",
+          "name_cn": "大魔人",
+          "master_classes": [
+            {
+              "id": 9,
+              "name": "ULTIMATE_MAJIN",
+              "name_cn": "至尊魔人"
+            },
+            {
+              "id": 10,
+              "name": "GRAND_CHEF_MAJIN",
+              "name_cn": "食神魔人"
+            }
+          ]
+        },
+        {
+          "id": 5,
+          "name": "WONDER_MAJIN",
+          "name_cn": "意魔人",
+          "master_classes": [
+            {
+              "id": 11,
+              "name": "PLASMA_MAJIN",
+              "name_cn": "幻魔人"
+            },
+            {
+              "id": 12,
+              "name": "KARMA_MAJIN",
+              "name_cn": "影魔人"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "base_models": {
+    "human_male_adult": {
+      "filename": "a_hum_m_ad.glb",
+      "path": "res://assets/obj/character/mesh_pc/a_hum_m_ad.glb",
+      "exists": true,
+      "size_bytes": 179780,
+      "status": "VERIFIED",
+      "bone_count": 0,
+      "mesh_count": 1,
+      "surface_count": 16
+    },
+    "human_female_adult": {
+      "filename": "a_hum_f_ad.glb",
+      "path": "res://assets/obj/character/mesh_pc/a_hum_f_ad.glb",
+      "exists": true,
+      "size_bytes": 201728,
+      "status": "VERIFIED",
+      "bone_count": 0,
+      "mesh_count": 1,
+      "surface_count": 21
+    },
+    "namek_adult": {
+      "filename": "a_nam_ad.glb",
+      "path": "res://assets/obj/character/mesh_pc/a_nam_ad.glb",
+      "exists": true,
+      "size_bytes": 108400,
+      "status": "VERIFIED",
+      "bone_count": 0,
+      "mesh_count": 1,
+      "surface_count": 15
+    },
+    "majin_male_adult": {
+      "filename": "a_maj_m_m.glb",
+      "path": "res://assets/obj/character/mesh_pc/a_maj_m_m.glb",
+      "exists": true,
+      "size_bytes": 129172,
+      "status": "VERIFIED",
+      "bone_count": 0,
+      "mesh_count": 1,
+      "surface_count": 16
+    },
+    "majin_female_adult": {
+      "filename": "a_maj_m_f_ad.glb",
+      "path": "res://assets/obj/character/mesh_pc/a_maj_m_f_ad.glb",
+      "exists": true,
+      "size_bytes": 141908,
+      "status": "VERIFIED",
+      "bone_count": 0,
+      "mesh_count": 1,
+      "surface_count": 17
+    },
+    "human_male_child": {
+      "filename": "human_m_child.glb",
+      "path": "res://assets/obj/character/mesh_pc/human_m_child.glb",
+      "exists": true,
+      "size_bytes": 319352,
+      "status": "VERIFIED",
+      "bone_count": 50,
+      "mesh_count": 1,
+      "surface_count": 21
+    },
+    "human_female_child": {
+      "filename": "human_f_child.glb",
+      "path": "res://assets/obj/character/mesh_pc/human_f_child.glb",
+      "exists": true,
+      "size_bytes": 355312,
+      "status": "VERIFIED",
+      "bone_count": 52,
+      "mesh_count": 1,
+      "surface_count": 26
+    },
+    "namek_child": {
+      "filename": "namek_m_child.glb",
+      "path": "res://assets/obj/character/mesh_pc/namek_m_child.glb",
+      "exists": true,
+      "size_bytes": 198132,
+      "status": "VERIFIED",
+      "bone_count": 54,
+      "mesh_count": 1,
+      "surface_count": 18
+    },
+    "majin_male_child": {
+      "filename": "majin_m_child.glb",
+      "path": "res://assets/obj/character/mesh_pc/majin_m_child.glb",
+      "exists": true,
+      "size_bytes": 229416,
+      "status": "VERIFIED",
+      "bone_count": 50,
+      "mesh_count": 1,
+      "surface_count": 19
+    },
+    "majin_female_child": {
+      "filename": "majin_f_child.glb",
+      "path": "res://assets/obj/character/mesh_pc/majin_f_child.glb",
+      "exists": true,
+      "size_bytes": 254432,
+      "status": "VERIFIED",
+      "bone_count": 57,
+      "mesh_count": 1,
+      "surface_count": 20
+    }
+  },
+  "head_attachment_bones": [
+    "nulleye",
+    "Bip01 Head"
+  ],
+  "weapon_attachment_bones": [
+    "Bip01 R Hand",
+    "Bip01 L Hand"
+  ],
+  "child_clothing_architecture": "Embedded inside child base mesh (human_m_child.glb has 21 primitives for hair/dogi/pants/boots); adult uses modular external skin parts.",
+  "godot_factory_class": "DBOCharacterFactory (src/entities/character_factory.gd)",
+  "godot_visual_node": "DBOCharacterVisual (src/entities/character_visual.gd)"
+}

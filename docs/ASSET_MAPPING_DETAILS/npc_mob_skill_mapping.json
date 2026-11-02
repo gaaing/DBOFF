@@ -1,0 +1,471 @@
+{
+  "total_npcs": 3169,
+  "total_mobs": 7125,
+  "total_skills": 2663,
+  "npc_samples": [
+    {
+      "npc_id": "1111101",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111102",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111103",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111104",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111105",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111106",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111107",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111108",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111109",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111110",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111111",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111112",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111113",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111114",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111115",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111116",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111117",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111118",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111119",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "npc_id": "1111120",
+      "name_tblidx": 0,
+      "model": "N_ARM_A1",
+      "glb_path": "res://assets/obj/character/mesh_npc/n_arm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    }
+  ],
+  "mob_samples": [
+    {
+      "mob_id": "1211101",
+      "name_tblidx": 0,
+      "model": "M_AKM_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1211102",
+      "name_tblidx": 0,
+      "model": "M_AKM_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1211103",
+      "name_tblidx": 0,
+      "model": "M_AKM_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1211104",
+      "name_tblidx": 0,
+      "model": "M_AKM_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1211105",
+      "name_tblidx": 0,
+      "model": "M_AKM_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1211106",
+      "name_tblidx": 0,
+      "model": "M_AKM_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1212101",
+      "name_tblidx": 0,
+      "model": "M_AKM_B1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_b1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1212102",
+      "name_tblidx": 0,
+      "model": "M_AKM_B1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_b1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1212103",
+      "name_tblidx": 0,
+      "model": "M_AKM_B1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_b1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1213101",
+      "name_tblidx": 0,
+      "model": "M_AKM_C1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_c1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1213102",
+      "name_tblidx": 0,
+      "model": "M_AKM_C1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_c1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1213103",
+      "name_tblidx": 0,
+      "model": "M_AKM_C1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_akm_c1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1411101",
+      "name_tblidx": 0,
+      "model": "M_BAB_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1411102",
+      "name_tblidx": 0,
+      "model": "M_BAB_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1411103",
+      "name_tblidx": 0,
+      "model": "M_BAB_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1411104",
+      "name_tblidx": 0,
+      "model": "M_BAB_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1411105",
+      "name_tblidx": 0,
+      "model": "M_BAB_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1411106",
+      "name_tblidx": 0,
+      "model": "M_BAB_A1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_a1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1412101",
+      "name_tblidx": 0,
+      "model": "M_BAB_B1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_b1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    },
+    {
+      "mob_id": "1412102",
+      "name_tblidx": 0,
+      "model": "M_BAB_B1",
+      "glb_path": "res://assets/obj/character/mesh_mob/m_bab_b1.glb",
+      "exists": true,
+      "status": "VERIFIED"
+    }
+  ],
+  "skill_samples": [
+    {
+      "skill_id": "91",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "92",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "93",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "100",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "101",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "102",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "103",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "104",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "105",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "106",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "107",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "108",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "109",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "110",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "111",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "112",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "113",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "114",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "115",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    },
+    {
+      "skill_id": "116",
+      "name_tblidx": 0,
+      "app_type": 0,
+      "icon_name": "",
+      "status": "VERIFIED"
+    }
+  ]
+}

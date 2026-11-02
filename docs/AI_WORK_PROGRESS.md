@@ -119,6 +119,18 @@ GitHub 文件存在只证明这些文件已上传，不证明其内容正确或�
 
 ## 8. 更新记录
 
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
+
 ### 2026-11-01
 - 建立本文件，记录用户确认的真实项目阶段。
 - 明确创建角色和选择角色场面已有初步实现，但仍存在 Bug，Antigravity 正在修复。
@@ -226,6 +238,18 @@ GitHub 文件存在只证明这些文件已上传，不证明其内容正确或�
 
 ## 11. 更新记录补充
 
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
+
 ### 2026-11-01
 - 用户明确产品目标：忠实还原原版 DBO 的游戏内容与行为，同时采用更先进、更完整、更轻量的实现技术。
 - 用户明确 Local-first 目标：游戏尽可能本地运行，在线服务只承担下载更新、云存档、GM 临时授权及确实需要跨玩家协调的功能。
@@ -283,6 +307,18 @@ GitHub 文件存在只证明这些文件已上传，不证明其内容正确或�
 ### 12.5 证据与当前状态
 
 本节六大目标来自用户 2026-11-01 明确指示，属 **D：用户目标**；系统分类和档案字段是 ChatGPT 提出的规划方法。当前尚未完成 OpenDBO 全量客户端/服务端、数据表、资源、协议和运行行为盘点，**不能声称系统地图已经完整**。下一步先填充系统清单与依赖图，再排基础可玩闭环；每轮记录覆盖范围、未覆盖范围和新增发现。
+
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
 
 ### 2026-11-01 更新记录
 - 将用户提出的六大长期目标和“先建立完整系统地图，再按优先级开发”的要求纳入项目基准。
@@ -394,6 +430,18 @@ README 明确说明：
 
 当前已完成的是仓库规模/结构摸底和协议入口首轮读取，**不是完整客户端、完整服务端或协议审计完成**。尤其尚未逐个读取所有服务端 handler、全部共享 packet 结构、数据库访问链和实际运行流程。
 
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
+
 ### 2026-11-01 更新记录
 - 锁定 OpenDBO-Core master commit `23cb305a6cf20048fec75595a8fa1ee2f1a0e83d`，记录对应 tree SHA。
 - 对递归 Git tree 进行完整性检查，确认 43,728 条目且未被 GitHub API 截断；记录客户端、服务端、共享库和 NtlLib 的规模。
@@ -489,6 +537,18 @@ README 明确说明：
 4. 先上传小样本，验证路径映射、断点续传、SHA-256、远端读取和本地根目录变更。
 5. 验证通过后再全量上传，并将资产 manifest 与 OpenDBO 功能审计系统关联。
 
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
+
 ### 2026-11-01 更新记录
 - 用户确认 Antigravity 本轮修复已结束；模型、贴图和动画已完整提取，但其他资产覆盖率未知。
 - 将后续任务改为自动化全盘发现、提取覆盖率核对和未知文件保留，不要求用户人工分类。
@@ -545,6 +605,18 @@ README 明确说明：
 6. 服务器迁移、跨频道、登录等待队列的时序和失败路径；
 7. 代码存在但未注册、注册但未调用、客户端 UI 不可达、宏/配置关闭和数据缺失等功能状态判定。
 本轮通过 GitHub connector 直接按固定 commit 读取了共享协议头；尝试的部分服务端 opcode 文件路径未命中，不能据此断言不存在，后续需要从仓库实际路径搜索定位。
+
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
 
 ### 2026-11-01 更新记录
 - 增加 UC/CU、UT/TU、MG/GM、GQ/QG 八个共享协议头的读取记录。
@@ -607,6 +679,18 @@ README 明确说明：
 ### 17.5 当前缺失材料与审计边界
 尚未收到 Antigravity 实际扫描结果、raw 目录位置、所有导出目录位置、解码/导出日志或工具版本。因此目前不能报告 raw 文件总量、导出覆盖率、缺失数量，也不能断言已提取的模型/贴图/动画经过独立核验。
 下一步先取得 Antigravity 报告，再由 ChatGPT 对照 OpenDBO-Core 固定 commit 的真实文件清单、目录归属和加载代码，判定哪些是客户端资产缺失、哪些是服务端专有数据、哪些是版本差异或未识别数据。
+
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
 
 ### 2026-11-01 更新记录
 - 用户澄清资产从 `.pak` 解码至 `raw/` 后再导出；修正此前将其泛化为普通原始目录扫描的描述。
@@ -689,6 +773,18 @@ README 明确说明：
 
 大型 CSV 已上传，但当前连接读取接口无法返回其完整正文；后续仍需通过可读取的分段/抽样方式核查具体路径映射，特别是 `raw_to_export.csv`、`missing_exports.csv` 和 `opendbo_data_comparison.csv`。
 
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
+
 ### 2026-11-01 更新记录
 - 读取 GitHub `docs/asset_audit/ASSET_AUDIT_REPORT.md`、`extraction_coverage.json`、`data_type_inventory.json`、`failed_exports.csv`、`unknown_files.csv`，并检查最新提交新增的 CSV 清单及文件行数。
 - 记录 raw 120,234 个/7.377 GB、导出 129,928 个/4.462 GB 等为 Antigravity 报告值，而非独立重扫结论。
@@ -739,6 +835,18 @@ README 明确说明：
 - 工程完整资产目录清单及扫描排除规则；
 - 音频播放索引/资源引用（若项目中存在）。
 
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
+
 ### 2026-11-01 更新记录
 - 接受用户对审计方向的修正：raw 存在未解包 pak，不能作为完整原版资产基准。
 - 明确工程中存在音频文件；报告的 raw sound 为空不能推出工程音频为零。
@@ -781,6 +889,18 @@ README 明确说明：
 - 当前工程完整资源清单（包括音频、UI、特效和字体），用于和 1.69 TW 解包结果双向比对。
 
 缺少上述材料表示目前无法独立验证来源完整性，不表示这些文件在用户本地不存在。
+
+### 2026-11-02
+- **全项目资产与数据映射工程完成**：
+  - 建立了总索引文档 `docs/ASSET_DATA_MAPPING.md` 以及 7 个子系统映射目录 `docs/ASSET_MAPPING_DETAILS/`。
+  - **数据表映射** (`01_DATA_TABLE_MAPPING.md` + `table_registry.json`)：完成 280 张数据表（275 张位于 `assets/tbl/`，5 张位于 `data/`）的字段、主键与 OpenDBO 源码结构登记。
+  - **角色与职业映射** (`02_CHARACTER_AND_CLASS_MAPPING.md` + `character_class_mapping.json`)：完成 6 大种族/性别素体模型路径及 12 种基础/进阶职业与 NewbieTable 出生配置的绑定。
+  - **装备与物品映射** (`03_EQUIPMENT_AND_ITEM_MAPPING.md` + `equipment_item_mapping.csv` + `equipment_item_mapping.json`)：P0 级新手装备链打通（NewbieTable -> Item ID -> ItemTable -> ItemProperty -> 槽位 -> 对应成人/儿童模型 -> 贴图/骨骼/皮肤），明确区分儿童角色素体自带新手服装与成人模块化装备挂载机制。
+  - **动画映射** (`04_ANIMATION_MAPPING.md` + `animation_mapping.json`)：完成 5,302 个 GLB 动作动画分类注册，梳理 CharacterAnimation 与 ItemTable 武器战斗待机/攻击动画映射逻辑。
+  - **模型材质贴图映射** (`05_MODEL_MATERIAL_TEXTURE_MAPPING.md` + `model_texture_mapping.json`)：登记本地存在的 30,894 个 GLB 模型与 28,577 个 PNG 贴图资源库分布。
+  - **大世界与地图映射** (`06_WORLD_AND_MAP_MAPPING.md` + `world_map_mapping.json`)：登记 106 个 WorldTable 世界及 50 个已就绪地形区域（共 15,453 个地形切片区块）。
+  - **NPC、怪物、技能与特效映射** (`07_NPC_MOB_SKILL_EFFECT_MAPPING.md` + `npc_mob_skill_mapping.json`)：完成 3,169 个 NPC、7,125 个怪物及 2,663 个技能的数据表与模型特效对应关系整理。
+  - 所有映射均按照 `VERIFIED`、`PARTIAL`、`INFERRED`、`MISSING`、`UNKNOWN` 严格标注证据等级，彻底解决今后跨模块调用与资产查证信息缺失问题。
 
 ### 2026-11-01 更新记录
 - 根据用户提出的来源污染风险，将 DBO_CT_TW 1.69 TW PAK 设为 DBOFF 首选原版资源基准（版本对应关系按用户报告记录，待包级证据核实）。

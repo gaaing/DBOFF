@@ -1,0 +1,53 @@
+{
+  "total_glb_models": 30894,
+  "total_png_textures": 28577,
+  "category_breakdown": {
+    ".": {
+      "": 1
+    },
+    "effect": {
+      ".json": 2
+    },
+    "fonts": {
+      ".ttf": 2,
+      ".import": 2
+    },
+    "gui": {
+      ".json": 2
+    },
+    "lang": {
+      ".json": 5
+    },
+    "obj": {
+      ".glb": 30894,
+      ".import": 19478,
+      ".png": 6,
+      ".json": 160,
+      "": 1,
+      ".tmp": 1
+    },
+    "prop": {
+      ".json": 7
+    },
+    "sound": {
+      ".wav": 3271,
+      ".import": 3475,
+      ".ogg": 204,
+      ".txt": 1
+    },
+    "tbl": {
+      ".json": 275
+    },
+    "tex": {
+      ".png": 28571,
+      ".import": 28571,
+      ".tmp": 12
+    }
+  },
+  "material_pipeline": {
+    "character_skin_shader": "res://src/shaders/character_skin_tint.gdshader",
+    "character_face_shader": "res://src/shaders/character_face_multitex.gdshader",
+    "world_prop_material": "StandardMaterial3D with BaseMaterial3D.DEPTH_DRAW_ALWAYS & BaseMaterial3D.CULL_BACK",
+    "status": "VERIFIED"
+  }
+}
