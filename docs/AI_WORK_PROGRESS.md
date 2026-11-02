@@ -1542,7 +1542,7 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 ### 40.4 当前缺少的材料 / 验证
 - GitHub main 当前递归树中没有任何 `.glb/.gltf/.obj/.fbx` 模型文件（0 个），包括代码引用的 `assets/obj/character/mesh_pc/` 与 `assets/obj/item/`。这是仓库当前未提供模型资产的证据，不代表用户本地没有这些文件。
 - 不再要求用户重复提供历史报告中已有的装备 ID / 模型 key 映射。当前仍无法从 GitHub 验证用户本地模型文件是否存在及其 GLB Skin 结构；只有进入实际资源兼容性验证时，才针对具体缺失项提出最小材料请求。
-- `assets/tbl/table_item_data.json`（约 6.99 MB）与 `assets/prop/property/itemproperty.json`（约 15.96 MB）在本轮 GitHub 文件读取接口中返回空正文，虽确认文件存在于树中，但尚未核实上述每个 tblidx 对应的 model、equip_slot_flag、mesh_path/mesh_file 具体值。
+- 首轮 `fetch_file` 对这两个大文件未返回正文；随后改用 Git blob SHA 读取成功并解析。目标装备字段与 itemproperty 映射已在第 41.7 节补齐，不再列为未解决材料。
 - 需要当前本地运行时日志，确认上述初始装备项目的 item 数据命中、解析出的 GLB 路径、文件存在状态和加载结果；并在 Godot 4.7.2 下分别验证创角预览、选角预览、人类/那美克/魔人、男女及至少一个不同职业。
 
 本轮只读诊断并记录 Markdown；未修改 Godot 源码、场景、模型资源或提交任何代码修复。
@@ -1594,7 +1594,7 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 不可采取的修复：单纯删除儿童提前返回，或将成人静态 GLB 强制挂到儿童 Skeleton3D。
 - 正确方向：保留创角/选角共用装备入口；明确区分刚体武器/史考特与需要 Skin 的防具/手套；儿童装备只有在资源的 Skin、骨骼映射和绑定矩阵通过检查后才允许挂载；缺失/不兼容时明确记录，不静默使用成人资源。
 - 原版对照已经证明装备数据从 NewbieTable/角色装备栏进入统一装备代理，并由 ItemTable 模型字段和角色属性生成模型名；仍需继续查原版角色骨骼缩放/装备蒙皮绑定细节，以及 DBOFF 当前 GLB 的实际 Skin/骨骼结构。
-- 尚未完成：读取 DBOFF 当前 `table_item_data.json` 中目标 tblidx 的完整字段值；读取 `itemproperty.json` 中对应模型 key 的 mesh path/file；核实本地模型物理文件与 GLB Skin 结构；核实 `equip_slot_flag` 映射；进一步检查原版角色骨骼缩放与装备蒙皮的坐标/IBM 兼容；Godot 4.7.2 创角/选角运行验证。
+- 尚未完成：核实本地模型物理文件与 GLB Skin 结构；进一步检查原版角色骨骼缩放与装备蒙皮的坐标/IBM 兼容；Godot 4.7.2 创角/选角运行验证。
 - 本轮未修改 Godot 源码、场景、模型资源；仅更新本进度文档，没有执行代码修复或运行验证。
 
 
@@ -1612,3 +1612,23 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 原版槽位索引依次为 HAND=0、SUB_WEAPON=1、JACKET=2、PANTS=3、BOOTS=4、SCOUTER=5、QUEST=6 等；对应 bit flag 是 `1 << slot_index`，所以 HAND=1、SUB_WEAPON=2、JACKET=4、PANTS=8、BOOTS=16、SCOUTER=32、QUEST=64、COSTUME_SET=4096、COSTUME_HAIR_STYLE=8192。
 - 当前 DBOFF `_slot_flag_to_name()` 对常见单 bit 值的映射与原版定义一致；先前将其标为可能字段混淆需要修正：当前代码使用 `equip_slot_flag` 做视觉槽分类本身并非已证实错误。真正仍需确认的是每个 tblidx 的实际 flag 值、手套/武器的进一步区分，以及多 bit mask 是否会出现。
 - `newbie_table.json` 中的 `pos` 是装备容器位置，不能拿它替代 `equip_slot_flag`。原版 `abyPos[]` 负责装备容器槽位置，而 ItemTable 的 `Equip_Slot_Type_Bit_Flag` 用于允许装备槽类型判断。
+
+
+### 41.7 大型 JSON 映射读取成功与 child 路径不匹配（证据 A）
+通过 GitHub blob SHA 读取并在工具端解析大型 JSON（不再要求用户手动导出）：
+- `assets/tbl/table_item_data.json` SHA `c3037c03e7d176091588328c1931d142301b9252`，正文 6,768,810 字符。
+- `assets/prop/property/itemproperty.json` SHA `5087513dd3ff28e98580c85b5e9d533d418c3154`，正文 15,774,876 字符。
+- 从当前 `data/newbie_table.json` 的所有职业配置合并得到 22 个唯一初始穿戴 tblidx，全部在 `table_item_data` 中命中；对应属性 key 与 `mesh_path/mesh_file` 均已命中，唯一例外是 `W_STF_01` 没有 itemproperty 项，但它的 `model_type=0`，按原版规则不需要种族/性别后缀，仍可通过无后缀 key 查找。
+- 已核实初始装备主要字段：
+  - 武器/手套：500001 `W_GLV_16`（flag 1, equip_type 0, item_type 0）；505001 `W_GLV_01`（flag 1, equip_type 0, item_type 0）；506001 `W_STF_01`（flag 1, equip_type 0, item_type 1）。
+  - 人类格斗家防具：522001/522002/522003 → `A_HFI_04_01_J/P/B`，flag 4/8/16，属性 key 分别追加 `_H_M` 或 `_H_F`，路径 `Mesh_Armor_HumanMale/Female`。
+  - 人类气功师防具：523001/523002/523003 → `A_HMY_04_01_J/P/B`，flag 4/8/16，路径同人类男女防具目录。
+  - 那美克战士防具：525001/525002/525003 → `A_NFI_04_01_J/P/B`，flag 4/8/16，属性 key 为 `_N_O_S1`，路径 `Mesh_Armor_Namek`。
+  - 那美克龙族防具：526001/526002/526003 → `A_NMY_04_01_J/P/B`，flag 4/8/16，属性 key 为 `_N_O_S1`，路径 `Mesh_Armor_Namek`。
+  - 魔人大魔人防具：527001/527002/527003 → `A_MMI_04_01_J/P/B`，flag 4/8/16，男女属性 key 分别为 `_M_M` / `_M_F`，路径 `Mesh_Armor_MajinMale/Female`。
+  - 魔人意魔人防具：528001/528002/528003 → `A_MWO_04_01_J/P/B`，flag 4/8/16，男女属性 key 分别为 `_M_M` / `_M_F`，路径 `Mesh_Armor_MajinMale/Female`。
+  - 史考特：60000000 `I_SCT_01`，flag 32、equip_type 3，按种族/性别查询属性 key。
+- 当前 DBOFF `_resolve_item_glb_path()` 使用 itemproperty 的 `mesh_file` 原样改扩展名，并在儿童模式下只是在同一成人文件名之前插入 `child/`。例如人类男格斗家上衣会尝试 `.../child/a_hfi_04_01_j_h_m.glb`，不是历史儿童装备报告列出的 `a_hch_j_h_m.glb`；那美克/魔人同样存在成人命名与历史 child 命名不一致。
+- 因此当前 child 路径解析与历史报告中的儿童资源命名规范不一致；若目录中确实只有 `a_hch_*` / `a_nch_*` / `a_mch_*` 文件，现有 resolver 将无法命中它们，随后会继续回退到成人路径。结合儿童提前 return，当前代码表现为儿童防具不挂载；若只删除 return，则可能加载成人静态模型，重现 T-Pose 重影。
+- 这也解释了为什么不能只移除儿童 gate。下一步必须在“原版运行时骨骼缩放 + 保留原始装备 Skin”与“DBOFF 统一烘焙儿童素体/儿童装备”两种一致策略中，根据当前实际基础模型与装备 GLB 结构作决定；不能把两种方案混用。
+- 仍缺的不是 tblidx/model 映射，而是 GitHub 当前未提交的本地模型文件本身及其 GLB 结构（Skin、骨骼名、IBM、顶点坐标/比例）。本轮没有要求用户重新提供映射。
