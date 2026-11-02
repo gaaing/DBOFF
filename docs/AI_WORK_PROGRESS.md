@@ -1433,3 +1433,56 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 游戏端完整运行时状态回写、本地存档原子写入/校验和、Worker 云存档接口、R2 staging bucket 与 quota ledger 仍未实现或未验证，不能因为启动器承担上传就跳过这些依赖。
 
 本轮只更新架构与进度文档；没有创建启动器工程、修改 Godot/Worker/D1/R2 或部署。
+
+
+## 38. 2026-11-02 本地存档闭环第一轮代码审计（证据 A/B）
+
+### 38.1 本轮读取的 DBOFF 当前代码
+- `src/core/dbo_save_manager.gd` SHA `912aef25a9842ecaf892c0a27ce249b82b2cca4e`
+- `src/ui/lobby/character_lobby_ui.gd` SHA `dc91e58dd2d86e3a41cb4d9cf027f95cefbfd73e`
+- `src/world/world_scene_driver.gd` SHA `c75b432dc16f59fd01f73d635a095b283592a237`
+- `src/core/dbo_inventory_manager.gd` SHA `9204dc6adc85bd1d35a1366d45aea47673d84de3`
+- `src/core/dbo_quest_manager.gd` SHA `3bf9b6719554f7bdfafef3e83c932cab7a5c5e7`
+- `src/entities/player_controller_3d.gd` SHA `aafeb12ca7a774fa33ffdbbac4d6715edcd82063`
+- `src/entities/character_base_3d.gd` SHA `6197c6f213d1089624b4b99dafcf9744f217d068`
+- `project.godot` SHA `8adf1940305b5a72513e584453b8f4759f605221`
+
+### 38.2 已确认的问题（限已读取代码范围）
+1. 账号与角色 JSON 使用 `FileAccess.WRITE` 直接覆盖；没有观察到临时文件、原子替换、备份轮换、内容校验或损坏恢复。保存函数返回 void，没有向调用者反馈打开/写入失败。
+2. SaveManager 没有从玩家实体、背包、任务等运行时系统采集数据的统一快照入口。
+3. WorldSceneDriver 从存档读取角色档案和初始位置，但已读取的世界/玩家脚本范围内未发现退出位置、方向、world_id 等写回角色 JSON 的闭环。
+4. CharacterBase 持有 current_health/current_energy、RP、六维属性等运行时字段；已读取的初始化路径只将 race/gender/is_adult 映射到玩家实体，未发现 stats 的完整加载/写回。
+5. InventoryManager 持有 equipped_items、bags、bag_capsules、zenny，并处理新手背包、添加物品、装备交换；已读脚本没有从角色 JSON 恢复或序列化这些状态的接口。UI 事件信号不等于持久化。
+6. QuestManager 持有 active_quests/completed_quests，击杀事件会更新进度；已读脚本没有角色 JSON 加载/保存逻辑。
+7. 默认 JSON 预留 skills、quick_slots、quest_inventory 等字段，但技能/快捷栏运行时持有者和读写路径未定位。
+8. DEFAULT_ACCOUNT_META 含 account_id=1001、username=dbo_player、gm_level=10 占位值；不能作为真实账号身份或 GM 授权依据。移除/迁移须单独设计，不能直接覆盖现有玩家文件。
+9. `_active_character_cache` 与传入 Dictionary 直接共享引用；显式保存之外没有统一 dirty 标记、revision 或最近成功保存状态。
+
+### 38.3 OpenDBO-Core 对照（证据 B）
+本轮读取 `DboServer/Server/GameServer/CPlayer.cpp` 的 `CPlayer::SaveToDB`（约 901–1025 行）、`CharacterRepository.h`、`CharacterRepository.cpp` 的 `SavePcData`、`LoadCharacterCoreDataAsync`、`LoadCharacterExtendedDataAsync`。
+- 原版定时路径 `SaveToDB(true)` 发送轻量运行时位置/世界/经验/游戏时间数据。
+- 完整路径 `SaveToDB(false)` 保存经验、世界、位置/方向、LP/EP/RP/RP 球/AP、地图索引、标题、教程标记等，并触发物品冷却、技能、Buff、HTB 冷却、宠物数据及任务进度保存。
+- Repository 将角色核心与扩展数据分组读取；扩展数据包括 items、skills、HTB skills、buffs、quest items、quests、quickslots、mascots、HoiPoi recipe、item cooldowns、portals 等。
+- 原版由 GameServer 汇总运行时权威对象并向 QueryServer 提交持久化请求。DBOFF 不必复刻 QueryServer/数据库，但必须建立本地等价的“运行时状态采集 → 规范化快照 → 可靠写盘”边界。
+- 原版定时运行时保存与完整退出保存不是同一数据量；DBOFF 的本地 checkpoint 与退出保存不等于云上传。云上传仅由未来启动器在游戏退出后按玩家选择执行。
+
+### 38.4 建议实施顺序（尚未实现）
+1. 定义单一角色 schema/schema_version，区分静态表数据与玩家可变状态。
+2. 为玩家实体、Inventory、Quest、Skills/QuickSlots、世界位置/绑定点建立 serialize/deserialize 契约。
+3. 建立统一快照入口，避免 UI 脚本各自写 JSON。
+4. 实现安全写入：临时文件、检查写入/关闭结果、重新读取解析验证，再替换主文件；保留至少一份上一个有效备份。Godot 文件 API 与 Windows 替换语义须先验证。
+5. 引入 dirty/revision 与最近成功保存状态；保存失败不能清除 dirty。
+6. 定义主文件损坏时恢复优先级，绝不自动用默认新角色数据覆盖损坏存档。
+7. 再接入本地定时保存（此前用户提出的 60 秒目标），验证正常退出、异常退出、场景切换和多角色隔离。
+
+### 38.5 当前缺少的代码/证据
+- 技能与快捷栏运行时持有者、技能学习/升级/冷却数据结构及调用入口。
+- 背包/装备 UI、物品使用/拾取/丢弃等改变 Inventory 状态的全部调用方。
+- 属性/经验/等级/货币的权威运行时持有者与奖励结算调用方。
+- 任务 UI、任务奖励、任务物品和任务触发器的完整数据路径。
+- 世界切换/传送/绑定点系统，以及玩家方向、位置和地图 ID 的最终权威来源。
+- 所有调用 DBOSaveManager 的脚本/场景完整清单；当前 GitHub connector 代码搜索未返回匹配项，不能把有限读取等同于全仓库零调用。
+- 正常退出、强制结束、写盘中断、损坏 JSON、磁盘空间不足、多角色切换等运行验证。
+- OpenDBO 物品、技能、任务、绑定点的具体保存处理函数/Repository SQL 仍需逐项追踪；本轮只完成角色核心保存与扩展数据加载入口初步映射。
+
+本轮只读审计并记录证据；没有修改 Godot 源码、场景、资源、Cloudflare 或部署。
