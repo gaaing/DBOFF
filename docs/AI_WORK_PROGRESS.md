@@ -965,3 +965,75 @@ Next: inspect CSV row count and group by category, role, and source_pack_dir; co
 2. 首个系统开始审查时，从当前 GitHub main 读取其完整脚本/场景和被调用模块；若有未推送本地差异，提供对应 diff 或文件。
 3. 对照 OpenDBO 时提供对应源码仓库/路径；若 OpenDBO-Core 仓库已连接或公开可读，直接按系统逐段读取，不要求重复打包全部源码。
 4. 涉及本地二进制资产时，只提供该系统所需资源或机器生成的 manifest；不要求重新制作全仓库文件索引。
+
+
+## 28. S01 客户端基础与全局服务初步审查（2026-11-02）
+
+> 状态：**已发现实现 + 存在架构风险（初步静态审查）**。本节不是完整验收，不代表已修复。
+
+### 28.1 本轮直接读取的 DBOFF 文件
+
+- `project.godot`
+- `src/core/dbo_event_bus.gd`
+- `src/core/audio_manager.gd`
+- `src/core/dbo_material_helper.gd`
+- `src/ui/dbo_ui_manager.gd`（仅用于检查全局服务交互）
+- 当前 `src/` 递归文件树（确认脚本目录和 Autoload 声明）
+
+### 28.2 当前全局服务布局
+
+`project.godot` 注册 9 个 Autoload：DBOEventBus、DBOLocalizer、DBOTableManager、AudioManager、DBOInventoryManager、DBOQuestManager、DBOUIManager、DBOCombatTextManager、DBOEffectManager。
+
+初步观察：
+- 全局节点同时承载基础设施和领域服务；事件、音频、语言、数据表、背包、任务、UI、战斗文字、特效均为 Autoload。后续需检查初始化顺序、依赖方向和生命周期，不预设必须全部改为 Autoload。
+- `DBOSaveManager` 当前是 `RefCounted` 的静态工具类，不在 Autoload 列表中；其数据生命周期和全局状态属于 S02 范围。
+- 当前可见 `src/core/` 文件中没有独立的 Logger、配置服务或通用资源管理服务入口；这只表示当前目录树未见独立模块，不排除相关职责写在其他脚本中。
+
+### 28.3 DBOEventBus 初步发现
+
+当前脚本声明玩家属性/经验、目标选择、战斗伤害/死亡、NPC交互/对话、传送、背包/装备、任务、通知、地图切换和 UI 风格等全局信号。
+
+**确定的职责混杂风险：**
+- `DBOEventBus._ready()` 订阅整个 SceneTree 的 `node_added`。
+- `_on_node_added_global()` 对每个新加入场景树的 `MeshInstance3D` 调用 `DBOMaterialHelper.fix_mesh_materials()`。
+- 因此事件总线不只是事件分发，还承担了全局模型材质修正；事件基础设施与渲染/资源导入规则形成硬耦合。该副作用会覆盖所有动态加入的网格节点，是否造成重复处理、共享材质污染或额外开销需结合模型实例和运行时验证。
+
+**事件语义与原版对照：**
+- OpenDBO-Core 的 `DboClient/Lib/NtlCore/ceventhandler.h`、`ceventhandler.cpp` 使用 `CEventHandler`、`CEventId`、`CMsg`、`CLinkedMsg`、`CRegisteredMsgs`。
+- 原版事件系统提供多发送者/多接收者关系、接收者优先级、Active 状态控制、显式 Link/UnLink 和注册计数；处理期间解除订阅会延迟清理，另有安全删除事件处理器的机制。
+- `SendMsgToEventHandler()` 直接调用接收者的 `HandleEvents()`，因此该源码路径的事件派发是同步调用，不应简单把原版描述成异步系统。
+- DBOFF 使用 Godot typed signals 是合理的现代实现候选，但目前单靠信号声明并不能证明原版优先级、接收者启停、事件生命周期和安全销毁语义均已覆盖。应按具体事件需要决定是否补充，不必机械复刻 C++ 事件框架。
+- DBOEventBus 注释称提供“全生命周期异步事件通知”，但当前没有显式 deferred dispatch/队列；Godot 信号默认连接也不是自动异步。注释与实际语义不一致，需在后续确定事件契约时修正。
+
+### 28.4 DBOMaterialHelper 与全局挂接风险
+
+- `DBOMaterialHelper` 会直接修改 `BaseMaterial3D` 的 UV、透明模式、Alpha Scissor、Cull 和 Depth Draw 属性。
+- 其判断依赖 MeshInstance 名称、父节点名称、材质名和贴图路径关键字；这些规则需要对照资产来源与材质实例化方式验证。
+- 若多个网格共享同一 Material 资源，直接修改材质资源可能影响其他使用者；是否已通过资源本地化/实例化隔离，当前尚未验证。
+- 该类还包含 GLB 安全载入与无效贴图 URI 替换逻辑，职责已超出单纯材质助手；是否拆分为导入校验、GLB 修复与运行时材质策略，需在审查完整调用方后评价。
+- 初步建议：将材质修正规则从 EventBus 移出，改为明确的资源导入/实例化流程或专用模型初始化组件；最终方案需在查清所有模型入口后决定，本轮不修改代码。
+
+### 28.5 AudioManager 初步发现
+
+当前实现包括双 BGM 播放器交叉淡入淡出、固定 8 个 2D SFX 播放器、按名称查找资源、AudioStream 缓存，以及每次播放创建一个 3D AudioStreamPlayer3D 并在 finished 后释放。
+
+待处理风险：
+- 2D 音效池全部占用时，`_get_available_sfx_player()` 会返回第 0 个播放器，即使它仍在播放；新音效可能截断旧音效，且没有优先级/抢占策略。
+- BGM 淡入淡出 Tween 没有保存和取消管理；快速连续切换或 stop/play 交错时，需要验证多个 Tween 是否对同一播放器属性产生竞争。
+- 请求的 BGM 找不到时，只要文件名包含 `bgm`，就回退播放固定的 `bgm_share_plain1.ogg`。这会掩盖资源路径错误，让错误曲目被当作成功加载；应评估改为显式 fallback 状态或仅由调用方指定回退曲目。
+- `_sound_cache` 没有容量、引用或清理策略；是否需要 LRU/分组释放取决于实际音频规模和内存测量，不应先验增加复杂度。
+- 3D 音效采用每次创建节点的方式，需结合最大同时发声量、场景切换和 finished 信号验证节点释放及性能。
+- 当前统一使用 Master bus；尚未看到 BGM、SFX、环境音、语音的独立音量控制/混音策略，需后续核查。
+
+### 28.6 跨系统发现
+
+`src/ui/dbo_ui_manager.gd` 的 `set_ui_style_mode()` 使用 `Engine.has_singleton("DBOEventBus")` / `Engine.get_singleton("DBOEventBus")` 查找 Autoload。Godot Engine singleton 与项目 Autoload 节点不是同一概念；按当前 `project.godot` 注册方式，这条查找路径高度疑似无法取得 DBOEventBus，导致跨系统 `ui_style_changed` 广播不触发。需要在运行时验证并纳入 UI 系统修复，不在本轮擅自修改。
+
+### 28.7 本轮源码对照结论与下一步
+
+- 已读取 OpenDBO-Core 的事件处理器头文件和实现，确认事件订阅、优先级、Active、Link/UnLink、安全删除和同步派发等基础语义。
+- 当前 DBOFF EventBus 的 typed signal 方案可保留为候选，但必须建立逐事件语义映射；材质自动修正应从事件基础设施中解耦。
+- 下一步先完成 S01 其余调用方与资源生命周期检查，再决定事件总线和音频服务的修复边界。此后进入 S02 数据表/属性/存档，逐项核对原版字段与行为。
+- 当前缺少的验证材料：完整的 EventBus/AudioManager 调用方清单（当前 GitHub 搜索未返回可用索引结果，需通过完整脚本读取或本地只读搜索生成命中清单）；Godot 运行日志/复现证据；本地音频资源 manifest 与实际同时播放压力结果；共享材质资源是否被多个场景/网格复用的证据。
+- 本轮只读审查 GitHub 与 OpenDBO-Core 公开源码；未修改 GDScript、场景、资源或配置。
+
