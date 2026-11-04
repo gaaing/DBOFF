@@ -21,6 +21,7 @@ enum Gender {
 }
 
 @export var character_property_name: String = ""
+@export var character_class_id: int = 0
 @export var race: int = 0
 @export var gender: int = 0
 @export var is_adult: bool = false
@@ -181,8 +182,8 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 	# 按槽位确定挂载骨骼
 	var bone_names: Array[String] = []
 	match slot_name:
-		"face":  # 史考特挂在眼部/头部骨骼
-			bone_names = ["nulleye", "Bip01 Head"]
+		"face":  # 史考特相对于头部骨骼建模挂载
+			bone_names = ["Bip01 Head", "nulleye"]
 		"weapon_r":
 			bone_names = ["nullRhand", "Bip01 R Hand"]
 		"weapon_l":
@@ -212,6 +213,16 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 		sc.queue_free()
 		return
 
+	# The GLB often stores axis conversion and item placement on parent nodes.
+	# Keep the mesh's scene-space transform when extracting it from those nodes.
+	# Accumulate transforms up to the generated scene root. global_transform is
+	# unavailable until a Node3D enters the SceneTree.
+	var source_mesh_transform: Transform3D = mesh_inst.transform
+	var transform_parent := mesh_inst.get_parent()
+	while transform_parent != null and transform_parent != sc:
+		if transform_parent is Node3D:
+			source_mesh_transform = (transform_parent as Node3D).transform * source_mesh_transform
+		transform_parent = transform_parent.get_parent()
 	mesh_inst.get_parent().remove_child(mesh_inst)
 	_clear_owner_recursive(mesh_inst)
 	mesh_inst.name = "Item_" + slot_name
@@ -230,49 +241,18 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 
 	var attachment := BoneAttachment3D.new()
 	attachment.name = "ItemAttach_" + slot_name
+	attachment.bone_idx = bone_idx
 	attachment.bone_name = _skeleton.get_bone_name(bone_idx)
 	_skeleton.add_child(attachment)
 
-	# 严格按照官方 tbl/linkitemtrasformlist.xml 与各族骨骼比例设定位置与旋转
+	mesh_inst.transform = source_mesh_transform
+	var item_transform := _get_item_attach_transform(model_name)
+	mesh_inst.transform = item_transform * mesh_inst.transform
+
+	# Scouter surface materials
 	if slot_name == "face":
-		var sct_scale := 1.30
-		var sct_pos := Vector3(-0.005, -0.010, -0.010)
-		var rot_x_deg := 0.0
-
-		if race == Race.MAJIN or race == 2:
-			if gender == Gender.MALE or gender == 0:
-				sct_scale = 0.95
-				sct_pos = Vector3(-0.005, -0.010, -0.010)
-				rot_x_deg = 0.0
-			else:
-				sct_scale = 1.20
-				sct_pos = Vector3(0.0, -0.010, 0.0)
-				rot_x_deg = 0.0
-		elif race == Race.NAMEK or race == 1:
-			sct_scale = 1.20
-			sct_pos = Vector3(-0.020, -0.030, -0.010)
-			rot_x_deg = -8.0
-		else: # Human
-			if gender == Gender.FEMALE or gender == 1:
-				sct_scale = 1.30
-				sct_pos = Vector3(-0.010, -0.015, -0.020)
-				rot_x_deg = 5.0
-			else:
-				sct_scale = 1.30
-				sct_pos = Vector3(-0.005, -0.010, -0.010)
-				rot_x_deg = 0.0
-
-		if is_adult:
-			sct_scale = 1.0
-			sct_pos = Vector3(0.0, -0.010, -0.015)
-			rot_x_deg = 0.0
-
-		var sct_rot := Vector3(deg_to_rad(rot_x_deg), 0.0, 0.0)
-		var basis := Basis.from_euler(sct_rot).scaled(Vector3(sct_scale, sct_scale, sct_scale))
-		mesh_inst.transform = Transform3D(basis, sct_pos)
-
 		# 史考特耳机材质精细分工 (Surface 0: 结实不透明耳机外壳，Surface 1: 双面晶莹半透明镜片)
-		var sct_tex_name := (model_name if not model_name.is_empty() else glb_path.get_file().get_basename()).to_lower()
+		var sct_tex_name := glb_path.get_file().get_basename().to_lower()
 		var sct_tex_path := "res://assets/tex/texture/item/" + sct_tex_name + ".png"
 		if not ResourceLoader.exists(sct_tex_path):
 			sct_tex_path = "res://assets/tex/texture/item/i_sct_01.png"
@@ -300,11 +280,6 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 				lens_mat.emission = Color(0.1, 0.85, 0.25)
 				lens_mat.emission_energy_multiplier = 0.5
 				mesh_inst.set_surface_override_material(s, lens_mat)
-	else:
-		if not is_adult:
-			mesh_inst.scale = Vector3(0.65, 0.65, 0.65)
-		mesh_inst.rotation = Vector3(-PI / 2.0, 0.0, 0.0)
-		mesh_inst.position = Vector3.ZERO
 
 	_clear_owner_recursive(mesh_inst)
 	mesh_inst.owner = null
@@ -312,6 +287,48 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 	_slots[slot_name] = mesh_inst
 
 	sc.queue_free()
+
+
+func _get_item_attach_transform(model_name: String) -> Transform3D:
+	var model := model_name.to_upper().get_basename()
+	var item_type := ""
+	for prefix in ["I_SCT", "W_STF", "A_QST", "A_MSK", "SUB_WEAPON", "HLS_TOP", "HLS_BAK"]:
+		if model == prefix or model.begins_with(prefix + "_"):
+			item_type = prefix
+			break
+	if item_type.is_empty():
+		return Transform3D.IDENTITY
+	var path := "res://assets/prop/property/item_transform_list.json"
+	if not FileAccess.file_exists(path):
+		return Transform3D.IDENTITY
+	var file := FileAccess.open(path, FileAccess.READ)
+	if file == null:
+		return Transform3D.IDENTITY
+	var root: Variant = JSON.parse_string(file.get_as_text())
+	if not root is Dictionary:
+		return Transform3D.IDENTITY
+	var char_type := _get_item_char_type()
+	var data: Dictionary = root.get("items", {}).get(item_type, {}).get(char_type, {})
+	if data.is_empty():
+		return Transform3D.IDENTITY
+	var item_scale := Vector3(float(data.get("scl_x", 1.0)), float(data.get("scl_y", 1.0)), float(data.get("scl_z", 1.0)))
+	var item_rotation := Vector3(deg_to_rad(float(data.get("rot_x", 0.0))), 0.0, 0.0)
+	var item_position := Vector3(float(data.get("pos_x", 0.0)), float(data.get("pos_y", 0.0)), float(data.get("pos_z", 0.0)))
+	return Transform3D(Basis.from_euler(item_rotation).scaled(item_scale), item_position)
+
+
+func _get_item_char_type() -> String:
+	var race_name: String = "HUMAN" if race == 0 else ("NAMEK" if race == 1 else "MAJIN")
+	var body_name: String = "ADULT" if is_adult else "CHILD"
+	var gender_name: String = "MALE" if gender == 0 else "FEMALE"
+	var class_type_name := "FIGHTER"
+	if race == 0:
+		class_type_name = ["FIGHTER", "MYSTIC", "ENGINEER"][clampi(character_class_id, 0, 2)]
+	elif race == 1:
+		class_type_name = "FIGHTER" if character_class_id in [0, 3] else "MYSTIC"
+	else:
+		class_type_name = "FIGHTER" if character_class_id in [0, 5] else "MYSTIC"
+	return "%s_%s_%s_%s" % [race_name, body_name, gender_name, class_type_name]
 
 
 static func _clear_owner_recursive(node: Node) -> void:
@@ -505,11 +522,17 @@ static func get_head_transform(prop_key: String) -> Dictionary:
 func _get_default_prop_key(c_race: int, c_gender: int, c_adult: bool) -> String:
 	match c_race:
 		0:
-			return ("A_HFI_M_AD" if c_gender == 0 else "A_HFI_F_AD") if c_adult else ("A_HFI_M_CH" if c_gender == 0 else "A_HFI_F_CH")
+			if c_adult:
+				return "A_HFI_M_AD" if c_gender == 0 else "A_HFI_F_AD"
+			else:
+				return "A_HFI_M_CH" if c_gender == 0 else "A_HFI_F_CH"
 		1:
 			return "A_NFI_AD" if c_adult else "A_NFI_CH"
 		2:
-			return ("A_MMI_M_AD" if c_gender == 0 else "A_MMI_F_AD") if c_adult else ("A_MMI_M_CH" if c_gender == 0 else "A_MMI_F_CH")
+			if c_adult:
+				return "A_MMI_M_AD" if c_gender == 0 else "A_MMI_F_AD"
+			else:
+				return "A_MMI_M_CH" if c_gender == 0 else "A_MMI_F_CH"
 	return "A_HFI_M_CH"
 
 
@@ -582,8 +605,8 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 	var inv_mat := _get_invisible_material()
 	var has_torso := (_slots.get("torso") != null)
 	var has_legs := (_slots.get("legs") != null)
+	var has_hands := (_slots.get("hands") != null)
 	var has_feet := (_slots.get("feet") != null)
-	var has_hands := (_slots.get("hands") != null or (_slots.get("weapon_r") != null and "glv" in str(equipped_glb_paths.get("weapon_r", "")).to_lower()))
 
 	var target_hair_slot := "mat_hair_%02d" % hair_num
 
@@ -700,14 +723,12 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 				smat.set_shader_parameter("race_mode", c_race)
 				mesh_inst.set_surface_override_material(s, smat)
 		elif is_underwear:
-			# 内衣/底裤：当角色穿着对应外装时隐藏，若无外装或外装为开胸/围巾时显式保留，保证绝不露洞
+			# 装备外层服装后隐藏素体内衣/底裤，儿童与成人使用相同规则。
 			var should_hide_underwear := false
 			if "pants" in mat_name or "pants" in tex_name:
 				should_hide_underwear = has_legs
 			elif "jacket" in mat_name or "jacket" in tex_name:
-				var torso_path := str(equipped_glb_paths.get("torso", "")).to_lower()
-				var is_scarf_or_open_torso := ("mwo" in torso_path) or ("scarf" in torso_path)
-				should_hide_underwear = has_torso and not is_scarf_or_open_torso
+				should_hide_underwear = has_torso
 
 			if should_hide_underwear:
 				mesh_inst.set_surface_override_material(s, inv_mat)
@@ -741,35 +762,33 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 			var is_hand_surface := is_majin_hand or is_namek_hand or is_human_hand
 
 			if is_hand_surface:
-				# 角色手掌与小臂手腕表面 (对标 OpenDBO: surface_hands)
-				# 穿戴手套时隐藏手掌，彻底消除素体手掌穿透手套的穿模破皮；脱下手套时精准恢复
+				# 手套完整覆盖掌部时隐藏素体手掌，避免裸手从手套中穿出。
 				if has_hands:
 					mesh_inst.set_surface_override_material(s, inv_mat)
+				elif c_race == 1:
+					# 那美克星人手掌：直接采用原生烘焙高精纹理 (StandardMaterial3D 保真)
+					var nmat := StandardMaterial3D.new()
+					nmat.roughness = 0.65
+					nmat.cull_mode = BaseMaterial3D.CULL_BACK
+					var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
+					if ResourceLoader.exists(stex_path):
+						nmat.albedo_texture = ResourceLoader.load(stex_path)
+					elif orig_tex:
+						nmat.albedo_texture = orig_tex
+					nmat.albedo_color = Color.WHITE
+					mesh_inst.set_surface_override_material(s, nmat)
 				else:
-					if c_race == 1:
-						# 那美克星人手掌：直接采用原生烘焙高精纹理 (StandardMaterial3D 保真)
-						var nmat := StandardMaterial3D.new()
-						nmat.roughness = 0.65
-						nmat.cull_mode = BaseMaterial3D.CULL_BACK
-						var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
-						if ResourceLoader.exists(stex_path):
-							nmat.albedo_texture = ResourceLoader.load(stex_path)
-						elif orig_tex:
-							nmat.albedo_texture = orig_tex
-						nmat.albedo_color = Color.WHITE
-						mesh_inst.set_surface_override_material(s, nmat)
-					else:
-						var skin_tex: Texture2D = orig_tex
-						if c_race == 2:
-							var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
-							skin_tex = DBOCharacterFactory.load_texture_safe(arm_path)
-						var smat := ShaderMaterial.new()
-						smat.shader = CHARACTER_SKIN_SHADER
-						if skin_tex:
-							smat.set_shader_parameter("base_tex", skin_tex)
-						smat.set_shader_parameter("skin_tint", body_skin_tint)
-						smat.set_shader_parameter("race_mode", c_race)
-						mesh_inst.set_surface_override_material(s, smat)
+					var skin_tex: Texture2D = orig_tex
+					if c_race == 2:
+						var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
+						skin_tex = DBOCharacterFactory.load_texture_safe(arm_path)
+					var smat := ShaderMaterial.new()
+					smat.shader = CHARACTER_SKIN_SHADER
+					if skin_tex:
+						smat.set_shader_parameter("base_tex", skin_tex)
+					smat.set_shader_parameter("skin_tint", body_skin_tint)
+					smat.set_shader_parameter("race_mode", c_race)
+					mesh_inst.set_surface_override_material(s, smat)
 			else:
 				# 躯干胸腹/颈肩/大臂表面
 				# 魔人族：Surface 7(女)/Surface 8(男)为双臂，Surface 8(女)/Surface 9(男)为胸腹
@@ -818,7 +837,7 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 					mesh_inst.set_surface_override_material(s, nmat)
 				else:
 					# 人类躯干
-					var should_hide_torso := has_torso
+					var should_hide_torso := has_torso and is_adult
 					if should_hide_torso:
 						mesh_inst.set_surface_override_material(s, inv_mat)
 					else:
@@ -840,38 +859,45 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 							mesh_inst.set_surface_override_material(s, cmat)
 		elif is_pants:
 			# 素体下装表面（包含 pants_skin 腿部皮肤与新手裤子）
-			if c_race == 1 and is_skin:
-				# 那美克星人：裤子表面为露踝皮肤 A_NAM_pants_skin01 时，直接使用官方原生烘焙贴图
-				var nmat := StandardMaterial3D.new()
-				nmat.roughness = 0.65
-				nmat.cull_mode = BaseMaterial3D.CULL_BACK
-				var stex_path := "res://assets/tex/texture/item/a_nam_pants_skin%02d.png" % skin_col_num
-				if ResourceLoader.exists(stex_path):
-					nmat.albedo_texture = ResourceLoader.load(stex_path)
-				elif orig_tex:
-					nmat.albedo_texture = orig_tex
-				nmat.albedo_color = Color.WHITE
-				mesh_inst.set_surface_override_material(s, nmat)
-			elif has_legs:
-				mesh_inst.set_surface_override_material(s, inv_mat)
-			else:
-				if is_skin:
-					var skin_tex: Texture2D = orig_tex
+			if is_skin:
+				# 皮肤表面绝对不能隐形！保留原生皮肤贴图并调色，魔人族严格同步粉红肤色
+				if c_race == 2:
 					var smat := ShaderMaterial.new()
 					smat.shader = CHARACTER_SKIN_SHADER
-					if skin_tex:
-						smat.set_shader_parameter("base_tex", skin_tex)
-					smat.set_shader_parameter("skin_tint", body_skin_tint)
-					smat.set_shader_parameter("race_mode", c_race)
-					mesh_inst.set_surface_override_material(s, smat)
-				else:
-					var cmat := StandardMaterial3D.new()
-					cmat.cull_mode = BaseMaterial3D.CULL_BACK
-					cmat.roughness = 0.65
 					if orig_tex:
-						cmat.albedo_texture = orig_tex
-					cmat.albedo_color = Color.WHITE
-					mesh_inst.set_surface_override_material(s, cmat)
+						smat.set_shader_parameter("base_tex", orig_tex)
+					smat.set_shader_parameter("skin_tint", body_skin_tint)
+					smat.set_shader_parameter("race_mode", 2)
+					mesh_inst.set_surface_override_material(s, smat)
+				elif c_race == 1:
+					var nmat := StandardMaterial3D.new()
+					nmat.roughness = 0.65
+					nmat.cull_mode = BaseMaterial3D.CULL_BACK
+					var stex_path := "res://assets/tex/texture/item/a_nam_pants_skin%02d.png" % skin_col_num
+					if ResourceLoader.exists(stex_path):
+						nmat.albedo_texture = ResourceLoader.load(stex_path)
+					elif orig_tex:
+						nmat.albedo_texture = orig_tex
+					nmat.albedo_color = Color.WHITE
+					mesh_inst.set_surface_override_material(s, nmat)
+				else:
+					var smat := ShaderMaterial.new()
+					smat.shader = CHARACTER_SKIN_SHADER
+					if orig_tex:
+						smat.set_shader_parameter("base_tex", orig_tex)
+					smat.set_shader_parameter("skin_tint", body_skin_tint)
+					smat.set_shader_parameter("race_mode", 0)
+					mesh_inst.set_surface_override_material(s, smat)
+			elif has_legs and is_adult:
+				mesh_inst.set_surface_override_material(s, inv_mat)
+			else:
+				var cmat := StandardMaterial3D.new()
+				cmat.cull_mode = BaseMaterial3D.CULL_BACK
+				cmat.roughness = 0.65
+				if orig_tex:
+					cmat.albedo_texture = orig_tex
+				cmat.albedo_color = Color.WHITE
+				mesh_inst.set_surface_override_material(s, cmat)
 		elif is_boots:
 			if has_feet:
 				mesh_inst.set_surface_override_material(s, inv_mat)

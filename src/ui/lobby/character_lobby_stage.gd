@@ -144,6 +144,7 @@ var cam_tween: Tween = null
 var current_visual_instance: DBOCharacterVisual = null
 var current_race: int = 0
 var current_gender: int = 0
+var current_class_id: int = 0
 var is_in_create_mode: bool = false
 
 var _skybox_instance: WorldSkybox = null
@@ -548,10 +549,11 @@ func _on_ui_mode_changed(is_create: bool) -> void:
 		switch_to_stage(current_race)
 
 
-func _on_avatar_visual_changed(race: int, gender: int, _class_id: int, hair: int, hair_color: int, face: int, skin_color: int, equipped_items: Array = []) -> void:
+func _on_avatar_visual_changed(race: int, gender: int, class_id: int, hair: int, hair_color: int, face: int, skin_color: int, equipped_items: Array = []) -> void:
 	var race_changed := (current_race != race or current_gender != gender)
 	current_race = race
 	current_gender = gender
+	current_class_id = class_id
 
 	if is_in_create_mode:
 		switch_to_stage(-1)
@@ -563,6 +565,8 @@ func _on_avatar_visual_changed(race: int, gender: int, _class_id: int, hair: int
 	else:
 		if current_visual_instance:
 			current_visual_instance.apply_character_customization(race, gender, hair, hair_color, face, skin_color)
+	if current_visual_instance:
+		current_visual_instance.character_class_id = current_class_id
 
 	# 装备初始新手部件或已穿戴装备 (适配成人素体与儿童烘焙素体)
 	if current_visual_instance and not equipped_items.is_empty():
@@ -584,5 +588,6 @@ func _load_character_model(race: int, gender: int, hair: int = 1, hair_color: in
 	if visual:
 		model_mount.add_child(visual)
 		current_visual_instance = visual
+		visual.character_class_id = current_class_id
 		visual.apply_character_customization(race, gender, hair, hair_color, face, skin_color)
 		visual.play_animation("idle")

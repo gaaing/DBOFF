@@ -46,20 +46,26 @@ static func fix_mesh_materials(mesh_inst: MeshInstance3D) -> void:
 
 	# 1. 材质重写 (material_override)
 	if mesh_inst.material_override:
-		_process_material(mesh_inst.material_override, should_flip_uv)
+		var local_override := mesh_inst.material_override.duplicate(true) as Material
+		mesh_inst.material_override = local_override
+		_process_material(local_override, should_flip_uv)
 
 	# 2. 网格分表面材质 (surface materials)
 	if mesh_inst.mesh:
 		for s in range(mesh_inst.mesh.get_surface_count()):
 			var surf_mat := mesh_inst.get_surface_override_material(s)
 			if surf_mat:
-				_process_material(surf_mat, should_flip_uv)
+				var local_surf := surf_mat.duplicate(true) as Material
+				mesh_inst.set_surface_override_material(s, local_surf)
+				_process_material(local_surf, should_flip_uv)
 			else:
 				var base_mat := mesh_inst.mesh.surface_get_material(s)
 				if base_mat:
-					_process_material(base_mat, should_flip_uv)
+					var local_base := base_mat.duplicate(true) as Material
+					mesh_inst.set_surface_override_material(s, local_base)
+					_process_material(local_base, should_flip_uv)
 					# 植被树冠/棕榈叶片微风摆动材质动态替换 (对标 OpenDBO-Core: 00_N_TREE_PALM_001.ANM 叶片骨骼运动)
-					var leaf_shader_mat := _create_foliage_leaf_material_if_needed(base_mat, should_flip_uv)
+					var leaf_shader_mat := _create_foliage_leaf_material_if_needed(local_base, should_flip_uv)
 					if leaf_shader_mat:
 						mesh_inst.set_surface_override_material(s, leaf_shader_mat)
 
@@ -105,6 +111,19 @@ static func _process_material(mat: Material, should_flip_uv: bool) -> void:
 		var mat_name := bmat.resource_name.to_lower()
 		var tex_path: String = bmat.albedo_texture.resource_path.to_lower() if bmat.albedo_texture else ""
 
+		# 贴图回退自动补全（针对靴子、手套等可能在导出时 URI 指向不同目录的材质）
+		if bmat.albedo_texture == null and not mat_name.is_empty():
+			var clean_tex_name := mat_name.to_lower()
+			var cand_dirs: Array[String] = ["res://assets/tex/texture/item/", "res://assets/tex/texture/character/"]
+			for cand_dir: String in cand_dirs:
+				var cpath: String = cand_dir + clean_tex_name + ".png"
+				if FileAccess.file_exists(cpath):
+					var tex: Texture2D = DBOCharacterFactory.load_texture_safe(cpath)
+					if tex:
+						bmat.albedo_texture = tex
+						tex_path = cpath.to_lower()
+						break
+
 		# 1. UV 垂直翻转纠偏：修复场景建筑、龙首、石阶、雕塑与成人物件倒立贴图
 		var is_tutorial_bg := ("tutorialmap_005" in tex_path or "tutorialmap_005" in mat_name or
 			"tutorialmap_006" in tex_path or "tutorialmap_006" in mat_name or
@@ -140,63 +159,15 @@ static func _process_material(mat: Material, should_flip_uv: bool) -> void:
 			bmat.depth_draw_mode = BaseMaterial3D.DEPTH_DRAW_ALWAYS
 
 
-## 安全载入 GLB 场景，防止 GLB 中包含的损坏贴图 URI (如 ".../texture/item/") 触发引擎底层红字错误
+## 安全载入 GLB 场景，保留原生 Skin 绑定并避免修改二进制引起 BIN 块偏移错位
 static func load_gltf_scene_safe(glb_path: String, flags: int = 0) -> Node:
 	if glb_path.is_empty() or not FileAccess.file_exists(glb_path):
 		return null
 
-	var file := FileAccess.open(glb_path, FileAccess.READ)
-	if file == null:
-		return null
-	var bytes := file.get_buffer(file.get_length())
-	file.close()
-
-	if bytes.size() < 20:
-		return null
-
-	# 检查是否为有效 GLB (magic: 0x46546C67 "glTF")
-	var magic := bytes.decode_u32(0)
-	if magic == 0x46546C67:
-		var json_chunk_len := bytes.decode_u32(12)
-		var json_chunk_type := bytes.decode_u32(16)
-		if json_chunk_type == 0x4E4F534A and bytes.size() >= 20 + json_chunk_len:
-			var json_bytes := bytes.slice(20, 20 + json_chunk_len)
-			var json_text := json_bytes.get_string_from_utf8()
-			if json_text.contains("texture/item/\""):
-				var parsed = JSON.parse_string(json_text)
-				if parsed is Dictionary and parsed.has("images"):
-					var modified := false
-					for img in parsed["images"]:
-						if img is Dictionary and str(img.get("uri", "")).ends_with("/"):
-							img["uri"] = "../../../tex/texture/item/i_sct_01.png"
-							modified = true
-					if modified:
-						var new_json_text := JSON.stringify(parsed)
-						while new_json_text.length() % 4 != 0:
-							new_json_text += " "
-						var new_json_bytes := new_json_text.to_utf8_buffer()
-						var new_json_len := new_json_bytes.size()
-						var bin_chunk := bytes.slice(20 + json_chunk_len)
-						var new_total_len := 12 + 8 + new_json_len + bin_chunk.size()
-
-						var new_bytes := PackedByteArray()
-						new_bytes.resize(new_total_len)
-						new_bytes.encode_u32(0, 0x46546C67)
-						new_bytes.encode_u32(4, 2)
-						new_bytes.encode_u32(8, new_total_len)
-						new_bytes.encode_u32(12, new_json_len)
-						new_bytes.encode_u32(16, 0x4E4F534A)
-						for i in range(new_json_len):
-							new_bytes[20 + i] = new_json_bytes[i]
-						var bin_offset := 20 + new_json_len
-						for i in range(bin_chunk.size()):
-							new_bytes[bin_offset + i] = bin_chunk[i]
-						bytes = new_bytes
-
 	var doc := GLTFDocument.new()
 	var state := GLTFState.new()
-	var base_dir := glb_path.get_base_dir() + "/"
-	var err := doc.append_from_buffer(bytes, base_dir, state, flags)
+	state.use_named_skin_binds = true
+	var err := doc.append_from_file(glb_path, state, flags)
 	if err != OK:
 		return null
 	return doc.generate_scene(state)
