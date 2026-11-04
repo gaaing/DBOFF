@@ -94,7 +94,7 @@ static func get_pc_anim_dirs() -> Dictionary:
 
 ## 检索素体模型路径（儿童与成人均使用基础素体，装备由独立装备系统挂载）
 static func get_pc_model_path(race: int, gender: int, is_adult: bool, _prop_name: String = "") -> String:
-	# 选角与创角及童年期角色：必须使用内嵌标准骨骼架构与初始新手服饰的儿童模型
+	# 创角与选角使用儿童基础素体；初始服装由独立装备网格挂载。
 	if not is_adult:
 		match race:
 			Race.HUMAN:
