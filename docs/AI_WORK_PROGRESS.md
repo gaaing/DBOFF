@@ -1806,3 +1806,13 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - **当前判断：** 故障发生在装备几何已加载后的 Skin/骨骼绑定或节点变换阶段；截图本身不能区分 bind matrix/骨骼映射错误与丢失父级变换，不能直接靠缩放参数修补。
 - **完成精确修复仍缺少的文件：** 上述儿童基础模型 `human_m_child.glb`，以及三件儿童装备 GLB（522001/522002/522003）。GitHub main 当前未提交 GLB 二进制，因此无法在远端直接检查这些文件。需要从本地项目提供这 4 个原始 GLB（优先只提供这 4 个，不需要重新上传整个 assets）。若截图实际使用的不是人类男性/522001 这一组，请按实际角色对应的儿童基础模型和初始装备替换。
 - **验证状态：** 用户截图为运行行为证据；装备成功出现已验证，蒙皮正确性明确失败。尚未修改 Skin 绑定算法；先取得上述 GLB 检查骨骼名、Skin binds、IBM、网格父级 transform，再决定是否按名称重映射、恢复源层级变换或修正导出资源。
+
+
+### 2026-11-06：评估 DFF2glTF Converter 对 DBO 服装导出的适用性
+- 用户提供工具：`https://github.com/AlterSDB/dff2gltf-converter`。已读取其 README、`dff-converter.ts`、`dff-validator.ts`、`skin-utils.ts` 与测试。
+- **结论：有研究/改造价值，但不能直接认定可批量转换 DBO 服装。** 该项目能读取 RenderWare `.dff/.txd` 并输出 glTF/GLB；代码具备 SKIN 分支，解析顶点权重（JOINTS/WEIGHTS）、骨骼节点及 inverse bind matrices，并将 TXD 纹理转为 PNG。仓库测试样例 `sa-omyri.dff/.txd` 验证的是 GTA San Andreas SKIN 模型。
+- 关键限制：`DffValidator` 对 `ModelType.SKIN` 明确只允许 `RwVersion.SA`，其他版本直接报“VC/III skins are not supported”。这并不等于支持 DBO 的 RenderWare 版本或 DBO 自定义扩展。README 所说 SKIN 不可用仅针对 GTA III/VC；San Andreas SKIN 测试确实存在。
+- 代码中存在需要重点评估的假设：骨骼名称通过 DFF dummies 表按 SA 规则取得；骨骼索引/父帧关系按固定偏移和映射排序处理；inverse bind matrices 从第一个 geometry 读取；每个 geometry 的 skin 权重按该解析器的数据结构写入。DBO 的骨骼命名、骨骼层级、Skin 插件布局、多个 geometry/材质分段及坐标约定均尚未验证。
+- 对 DBO 服装的潜在价值：若 DBO 原始服装确实是带 Skin 插件的 DFF，且其 RW 版本/扩展可被 `rw-parser` 正确解析，此项目可作为 GLB 导出器的基础或算法参考；若服装是静态 DFF、独立骨架引用或 DBO 自定义容器，则需先解析其实际结构，不能直接套用 SKIN 模式。
+- **下一步本地验证（无需上传资产）：** 由 Antigravity 在用户本机选择一个代表性 DBO 服装 DFF 及其 TXD，先只读输出 RenderWare version、插件列表、geometry 数量、Skin 插件是否存在、顶点/权重数量、骨骼/帧层级、IBM 数量；再用该工具尝试转换一个样本，并在 Godot/Blender 检查骨骼权重与变形。禁止先批量转换或覆盖现有 GLB。
+- **尚缺证据：** DBO 服装原始 DFF/TXD 的实际结构与版本、该工具依赖的 `rw-parser` 对 DBO 扩展的兼容性、导出 GLB 在 Godot 中的蒙皮结果。当前只完成公开源码静态评估，未运行转换。
