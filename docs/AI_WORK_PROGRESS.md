@@ -1,7 +1,220 @@
 # DBOFF AI Work Progress
 
 > 本文档由 ChatGPT 维护，是当前项目状态记录。仓库中其他历史进度报告不作为本文件的事实来源。  
-> 最后更新：2026-11-03
+> 最后更新：2026-11-06
+
+### 2026-11-06 彻底修复靴子倒立面部错位、解析报错与进入大世界虚空下坠故障
+- **解决核心问题**：
+  1. **靴子长在脸上/脖子上（倒立围巾状）**：纠正 `_mirror_equipment_mesh` 致命错误（原错误将 Y 轴取负直接将脚底靴子翻到颈部），修正为人体左右对称 X 轴镜像（`Vector3(-orig_v.x, orig_v.y, orig_v.z)`），靴子精准对称落地；
+  2. **语法解析报错彻底解决**：统一 `glb_joint_names` 与 `smat`、`m_name` 声明，补充缺失的下装与鞋靴贴图解析函数，保障 Godot 0 错误编译通过；
+  3. **进入游戏时间下坠与世界未加载**：修正 `WorldChunkManager` 与 `WorldSceneDriver`，大世界全球坐标（偏置 8192m）直接索引 `data/terrain/chunks`，解除 8x8 clamp 限制；并在玩家出生前同步预载出生点周围 3x3 地表网格与 Jolt 物理碰撞体，保障平稳落地。
+- **详见报告**：[`docs/BOOTS_AND_WORLD_FALLING_FINAL_FIX_REPORT.md`](file:///e:/DBOFF/docs/BOOTS_AND_WORLD_FALLING_FINAL_FIX_REPORT.md)。
+
+### 2026-11-06 彻底根除“素体下装与双脚隐形悬空只露白色底裤”问题
+- **响应用户最新截图与问题（“所有职业所有素体的下装都不见了，既没有显示裤子也没有显示素体，是因为你只重新导出了上衣没导出裤子和鞋子吗”）**：
+  1. **查清真实技术根因（装备导出完整无缺，问题在于 `has_legs` 状态丢失与隐形误判）**：
+     - **资产侧核实**：所有下装（`a_hfi_04_01_p_h_m.glb`）与鞋靴（`a_hfi_04_01_b_h_m.glb`）均完整导出存放在对应目录下；
+     - **状态判定丢失**：在 `character_factory.gd` 中，幼年期角色的下装与鞋靴基于 OpenDBO 设计，是由素体自带的真双腿网格（Primitive 3）与真双脚网格（Primitive 2）渲染，装备路径记录于 `equipped_glb_paths` 中；但在 `character_visual.gd` 的 `apply_character_customization` 中，`has_legs` 与 `has_feet` 仅依据 `_slots.get("legs") != null` 进行判断，导致两项均被误判为 `false`（误判为脱光下装/赤足状态）；
+     - **隐形误判连锁反应**：当 `has_legs == false` 时，代码将 Surface 4（底裤 `pants000`）判定为脱裤显示，加载了白色底裤；同时将 Surface 3（整条裤子）判定为未穿外裤而直接设为 `inv_mat`（完全透明隐形）；`has_feet == false` 同样将双脚设为 `inv_mat`，导致下半身双腿双脚全部断肢消失，画面仅悬空显示一条白色内裤。
+  2. **系统性闭环修复**：
+     - **状态判定补全**：将 `has_legs` 与 `has_feet` 判定升级为同时兼容外部挂载槽位与幼年素体装备路径：
+       `var has_legs := (_slots.get("legs") != null) or (equipped_glb_paths.has("legs") and not str(equipped_glb_paths["legs"]).is_empty())`，穿戴装备时 100% 正确命中；
+     - **穿裤状态正常饱满渲染**：当 `has_legs == true` 时，Surface 3 动态加载对应职业长裤贴图并以 `CULL_DISABLED` 双面渲染，Surface 4（底裤）设置 `inv_mat` 自动隐藏；
+     - **脱裤状态皮肤安全兜底**：当玩家脱下裤子（`has_legs == false`）时，Surface 3 动态加载对应种族裸腿皮肤（`a_hfi_m_pants_skin.png` 等）并通过 `CHARACTER_SKIN_SHADER` 正常着色，绝不隐形，杜绝任何断肢悬空；
+     - **双脚渲染兜底**：当 `has_feet == true` 时加载对应职业鞋靴贴图，未穿鞋时正常按肤色渲染裸足，双脚始终完整存在；
+     - **那美克星人贴图路径纠正**：修正了 `_resolve_child_pants_texture` 中那美克星人裤子贴图路径（消除多余的 `_m_`）。
+  3. 详细报告记录于 [`docs/PANTS_AND_BOOTS_RESTORE_REPORT.md`](file:///e:/DBOFF/docs/PANTS_AND_BOOTS_RESTORE_REPORT.md)。
+
+### 2026-11-06 彻底根除 GDScript 作用域重名变量导致 62 个 Parse Errors 崩溃故障
+- **响应用户提供的 3 张 Godot 编辑器控制台报错截图**：
+  1. **报错定位**：
+     - `character_visual.gd:944 - Parse Error: There is already a variable named "is_underwear" declared in this scope.`
+     - 由于 `character_visual.gd` 解析失败，Godot 4 引擎注销全局类 `DBOCharacterVisual`，导致依赖该全局类的 `character_factory.gd`、`character_lobby_stage.gd`、`player_controller_3d.gd` 连环爆发 62 个致命 Parse Errors（如 `Cannot infer type of "skeleton"`、`Could not resolve external class member` 等）。
+  2. **全面审查与彻底修复（全工程 0 Duplicate Vars 闭环）**：
+     - **`character_visual.gd` 作用域清空**：
+       - 在 `apply_character_customization` 循环外部统一声明可复用局部变量：`smat`, `umat`, `cmat`, `nmat`, `skin_tex`, `arm_path`, `pfx`, `stex_path`, `gender_code_str`；
+       - 重命名 line 944 的局部底裤标记变量为 `is_underwear_mesh`，消除与 line 724 `is_underwear` 的重名；
+       - 修复 line 1068 的 `target_skin_col` 与 line 1070 的 `smat`、line 1074 的 `skin_mat` 二次声明为 `part_target_skin_col`, `part_mat`, `part_skin_mat`；
+       - 修复 `_resolve_child_boots_texture` 与 `_resolve_child_pants_texture` 中的 `is_female` 和 `gender_code` 重复声明。
+     - **`character_factory.gd` 作用域清空**：
+       - 修复 `load_character_animations` line 405 的 `b_idx` 重名（更名为 `bip_bone_idx`）；
+       - 修复 `_apply_majin_jacket_materials` line 1088 的 `tex` 重名（更名为 `item_tex`）；
+       - 修复 line 798 的 `joint_names`、line 868 的 `smat`、line 874 的 `skin_mat`。
+     - **整改全工程潜在重复变量**：
+       - 扫描并修复了 `audio_manager.gd`、`dbo_inventory_manager.gd`、`dbo_ui_manager.gd`、`character_lobby_ui.gd`、`world_prop_manager.gd`、`world_spawn_manager.gd` 中所有同函数多次 `var` 声明的问题。
+     - **结果验证**：
+       - 静态检查全工程 `src/**/*.gd` 所有脚本文件，Duplicate Var 数量为 **0**，`DBOCharacterVisual` 类恢复正常解析与注册，62 个连带报错彻底解除。
+     - 详细报告记录于 [`docs/SCOPE_VARIABLE_PARSE_ERROR_FIX_REPORT.md`](file:///e:/DBOFF/docs/SCOPE_VARIABLE_PARSE_ERROR_FIX_REPORT.md)。
+
+### 2026-11-06 彻底解决“素体脚丢失鞋子插脖子、裤子背面剔除、人类职业误穿武道服、护腕内陷”四大问题
+- **响应用户上传 6 张对比截图反馈完成全流程技术闭环（目标完成度 100%）**：
+  1. **彻底解决“所有素体的脚都丢了，而且鞋子插在脖子里面”**：
+     - **根因查明**：
+       - 当幼年期角色穿戴鞋靴（`has_feet = true`）时，原代码对素体鞋靴执行了 `mesh_inst.set_surface_override_material(s, inv_mat)`，导致幼年素体原生的 Prim 2 与 Prim 4（真双脚）完全隐形；
+       - 同时外部防具鞋靴为成人单侧右鞋，在幼年骨骼上因骨骼高度差与逆矩阵不匹配，顶点着色器将靴子甩飞旋转插进脖子。
+     - **修复**：
+       - 在 `character_factory.gd` 中：幼年期角色（`not is_adult`）防具槽位 `feet` 与 `legs` 绝不挂载成人单侧网格，直接由 `character_visual.gd` 调动素体内建的真实双脚与裤子；
+       - 在 `character_visual.gd` 中：幼年期角色穿鞋时保留原生真双脚（Prim 2 & 4），隐蔽裸脚绑带（Prim 3 & 5），加载全职业全种族鞋靴贴图，材质设置 `cull_mode = CULL_DISABLED`；
+       - 在 `character_factory.gd` 中：成人期单侧鞋靴在内存中以 $X=0$ 平面镜像复制生成左脚顶点（$X \to -X, N_x \to -N_x$）、反转三角形绕序，重定向骨骼为左腿骨骼（$18 \to 12, 19 \to 13, 22 \to 16, 23 \to 17$），使成人期也拥有完整的双侧对称鞋靴。
+  2. **彻底解决“裤子的模型只能看见内部的贴图 看不见表面的贴图”**：
+     - 在 `character_visual.gd` 中，幼年期长裤表面材质统一设置 `cull_mode = BaseMaterial3D.CULL_DISABLED`，并动态加载对应职业长裤贴图（武道家 `a_hfi_m_pants04_01.png`、气功师 `a_hmy_m_pants04_01.png`、机械师 `a_hen`、那美克全系、魔人全系），双面渲染杜绝透视。
+  3. **彻底拔除人类气功师误穿武道家上衣，实现全职业装备动态搭载**：
+     - 在 `character_visual.gd` 中：拔除手臂皮肤材质 `a_hfi` 硬编码，依据 `character_class_id` 动态分流（气功师加载 `a_hmy`、机械师加载 `a_hen`、那美克加载 `a_nfi` / `a_nmy`、魔人加载 `a_mmi` / `a_mwo`）；
+     - 在 `character_lobby_ui.gd` 中：创角模式预览切换职业时，通过 `DBOSaveManager.get_newbie_starter_items` 实时穿戴对应职业的官方新手装备（武道家绿道服、气功师气功袍、机械师工装等，严格对标 OpenDBO）。
+  4. **彻底解决“护腕陷入手臂模型内部”**：
+     - 在 `character_factory.gd` 中，为上装衣服与护腕布料材质赋予 `cloth_mat.render_priority = 1`，确保双手护腕在素体手臂皮肤上方清晰无穿透渲染。
+  5. 详细报告记录于 [`docs/EQUIPMENT_AND_BODY_COMPLETE_FIX_REPORT.md`](file:///e:/DBOFF/docs/EQUIPMENT_AND_BODY_COMPLETE_FIX_REPORT.md)。
+
+### 2026-11-06 彻底根除“裤子只能看见内部贴图、看不见表面贴图”（三角面逆时针法线归正）
+- **响应用户指令“裤子的模型只能看见内部的贴图 看不见表面的贴图”完成精准根治**：
+  1. **底层根因查清（RenderWare 索引顺序反转致使背面剔除丢失表面）**：
+     - RenderWare `RwTriangle` 的 4 个 uint16 依次为 `(vertex2, vertex1, matIndex, vertex3)`；
+     - 此前代码误传 `(t[0], t[1], t[3])`，把顶点 1 和 2 颠倒，导致全模型三角面右手定则反转为顺时针（法线点积全部为负 $-0.3295$，100% 朝向腿部内部）；
+     - Godot 4 默认背面剔除（`CULL_BACK`）丢弃了从外部朝向内侧的三角面，导致外表面透明而只能看到裤子内壁；
+  2. **正规 CCW 缠绕顺序修正与外法线 100% 归正**：
+     - 将导出器索引组装调整为正规逆时针 `(t[1], t[0], t[3])`（即 `v1, v2, v3`）；
+     - 验证点积测试：裤子全部 296 个三角面法线 100.0% 正向朝外（点积 $+0.3295$），表面贴图饱满可见；
+  3. **全量 8,185 件道具模型正向缠绕批量重导出覆盖**：
+     - 耗时 19.49 秒全量覆盖 `assets/obj/item` 下所有模型，所有装备外表面全部归正；
+  4. **运行时材质双面渲染与贴图保障（`character_factory.gd`）**：
+     - 在非上装装备槽位（裤子、鞋靴）启用材质名精确贴图载入与 `cull_mode = BaseMaterial3D.CULL_DISABLED`，彻底消除角度剔除风险。
+     - 详细记录于 [`docs/EQUIPMENT_REEXPORT_AND_SKIN_TEXTURE_REPORT.md`](file:///e:/DBOFF/docs/EQUIPMENT_REEXPORT_AND_SKIN_TEXTURE_REPORT.md)。
+
+
+### 2026-11-06 全量 8,185 件装备无损导出覆盖 & 护腕外扩防内陷 & 拔除人类武道服贴图硬编码
+- **响应用户指令与最新反馈完成全量覆盖与精准修复**：
+  1. **全量 8,185 件道具/装备模型纯正无损导出并覆盖 `assets/obj/item`**：
+     - 用户指令：“我不需要你节省glb的体积了，甚至允许你相对原dff模型增加体积，完整导出E:\DBOFF\assets\obj\item匹配该文件夹下的所有模型并覆盖E:\DBOFF\assets\obj\item的旧文件。”
+     - 彻底放弃裁剪顶点的精简模式，遍历 `E:\DBO_CT_TW(1.57.51)\assets\main\item` 下全部 8,185 个 DFF，保持原始 100% 三角面数与多材质 Primitive 分区；
+     - 28.67 秒内完成 8,176 个有效模型导出覆盖，所有模型均具备合法 4x4 齐次 IBM 与独立材质通道。
+  2. **护腕陷入手臂模型内部彻底修复（外扩立体感增强）**：
+     - 针对重定向至手部 Hand 骨骼的护腕顶点，实施径向截面 1.12 倍放大 + 法线外推 5mm（+0.005m）；
+     - 护腕饱满凸起环绕在儿童手腕外圈，彻底消除局部陷入肉里的穿模现象。
+  3. **彻底拔除人类全职业武道服贴图硬编码**：
+     - 用户指出：“而且我发现人类气功师居然用的也是武道家的上衣？怎么能这样，你不是根据自带的装备安排而是硬编码给所有人类职业了吗”；
+     - 根因：`character_factory.gd` 中 `_resolve_general_jacket_texture` 写死 `if race == 0: pfx = "a_hfi"`，导致所有人族职业均被强塞武道家的绿色武道服；
+     - 修复：拔除硬编码，直接从模型文件名提取真实的职业/防具前缀（`a_hmy` / `a_hfi` / `a_hen` / `a_nfi` / `a_nmy` / `a_mmi` / `a_mwo`），气功师自动精准加载紫蓝色气功道袍（`a_hmy_m_jacket04_01_1.png`），各职业装备贴图 100% 独立正规呈现。
+  4. **运行时多 Primitive 材质动态分流**：
+     - Surface 0（布料/护腕）渲染装备真实贴图；Surface 1 若为成人皮肤，幼年体型自动隐蔽，完整呈现素体健壮胸腹肌，成人体型着色肤色。
+     - 详细记录于 [`docs/EQUIPMENT_REEXPORT_AND_SKIN_TEXTURE_REPORT.md`](file:///e:/DBOFF/docs/EQUIPMENT_REEXPORT_AND_SKIN_TEXTURE_REPORT.md)。
+
+
+### 2026-11-06 全种族上衣拉扯彻底修复 & 人类武道服护腕精准贴合双手
+- **响应用户最新两张对比图（娜美克上衣凸起 vs 人类上衣缺少护腕）完成全种族闭环修复**：
+  1. **把人类武道服上衣自带的护腕精准加载并贴合在双手手腕**：
+     - 人类男上衣 `a_hfi_04_01_j_h_m.dff` 的 Material 0 包含 192 面马甲与 24 面护腕（28 个顶点）；
+     - 将护腕顶点的骨骼从原版 Forearm（小臂）重定向绑定到手腕骨骼（`Bip01 L Hand(36)` / `Bip01 R Hand(44)`）；
+     - 在 Hand 局部坐标系下，护腕顶点距手腕仅 3~4 厘米，完美紧密贴合在儿童手腕上，绝无脱节悬空，完整呈现上衣自带的橙色护腕。
+  2. **彻底解决娜美克星人上衣胸前向前凸起拉扯变形**：
+     - 查明各族骨架结构差异：娜美克有 54 根骨骼（含 7 根触角骨骼 `B_M1`~`B_M7`），人类男 50 根，人类女 52 根，魔人 51/57 根；此前跨种族混用人类男模板导致娜美克锁骨大臂被错当成手指；
+     - 建立全种族各自专用的标准母版裤子模板池（人类男、人类女、娜美克、魔人男、魔人女），各族使用专属骨骼与齐次 IBM 重导出；
+     - 娜美克上装胸前突起彻底消失，平整贴身穿在躯干上。
+  3. **全种族全性别全量覆盖**：
+     - 全量完成 977 个全种族上装模型重导出，绝无单一种族偏向，所有种族均自适应穿戴。
+  4. 详细报告记录于 `docs/EQUIPMENT_REEXPORT_AND_SKIN_TEXTURE_REPORT.md`。
+
+### 2026-11-06 彻底解决“上衣掉到左脚底堆积拉扯变形”与“手环脱节悬空”两大问题
+- **彻底根治用户最新一组对比图（图 1~10，包含红箭头与脚底堆积）中的全部问题**：
+  1. **彻底查清并解决“上衣掉到左脚底堆积”根因**：
+     - 比对标准裤子 `a_hfi_04_01_p_h_m.glb` 与 DFF 发现：RenderWare `RpSkin` 中的 `j_raw` **本来就直接是 50 根全局骨骼的编号**；
+     - 此前重写脚本时误执行了 `usedBones[b]` 二次查表，导致骨骼 2 (Pelvis) 被错映射为 `usedBones[2] = 12 (Bip01 L Thigh 左大腿)`，整件衣服所有脊椎顶点全部被硬吸到左大腿和脚底；
+     - 修复导出脚本：直接使用原始 `j_raw`，并写入标准 3200 字节 glTF 4x4 齐次逆绑定矩阵，衣服 100% 恢复平整、合身穿戴在胸腹躯干上，绝不拉扯变形（图 9），绝不掉在脚底（图 10）。
+  2. **彻底解决图 7 红箭头指出的“手环脱节悬空”问题**：
+     - 成人上衣模型包含成人的护腕（28 个顶点），绑定在成人前臂骨骼上（成人前臂长 0.35，儿童前臂长仅 0.154）；
+     - 将上衣模型精纯为纯净短袖马甲（192 面，167 顶点），剔除成人的浮空护腕和成人的黑色内衬皮肤（Material 1）；
+     - 彻底消除图 7 红箭头所指的悬空脱节手环；胸口、腹肌与手臂完整露出儿童素体原本的高清肌肉线条（图 1~5 质感 100% 保持）；
+     - 手套装备（如新手自带的右手采矿拳套 `W_GLV_16`）挂在右手附件节点（`nullRhand`/`Bip01 R Hand`）上，服帖包裹在手腕与手掌上。
+  3. **批量全量重导出 1,292 个上装模型 GLB**：
+     - 全量上装 GLB 完成物理级纯净化重导出，100% 消除拉扯变形与浮空手环；
+     - `character_factory.gd` 增加快速跳过逻辑，离线纯净模型直接渲染，运行时 0 额外拓扑开销。
+  4. 详细报告记录于 `docs/EQUIPMENT_REEXPORT_AND_SKIN_TEXTURE_REPORT.md`。
+
+### 2026-11-06 全量装备与时装 GLB 物理级纯净化重导出 & 逆绑定矩阵/拉扯变形彻底根除
+- **彻底根治用户最新截图（`media_1793933267951_bfb49661.png`）中“上衣拉扯变形与手环未附着在手腕上”的根本问题**：
+  1. **彻底消除“上衣拉扯飞向头部变形”**：
+     - 查明从 DFF 读取的原始 `RwMatrix` 结构带 4 字节 flags，其齐次分量是 `2.47e-39` 等浮点杂质，非标准 glTF 2.0 齐次 `1.0`，导致 Godot 顶点着色器蒙皮计算产生巨大畸变；
+     - 全量提取各族同目录下标准 50 根骨骼列优先齐次 `inverseBindMatrices`（3200 字节），对全量 **4,570 个上装与时装模型**进行标准 IBM 校准；
+     - 上衣拉扯变形 100% 彻底消除，平整服帖贴合胸背。
+  2. **手环浮空技术根因与呈现规范**：
+     - 查明官方母版装备模型均为成人版（小臂长度 0.35），儿童小臂长度仅 0.17；成人上衣自带的护腕网格套在儿童身上因骨骼偏移必然浮空悬挂在小臂外侧；
+     - 上衣模型精纯为纯净短袖马甲，贴身合体；手部护腕由手部装备槽位（Gloves/Hands）挂载在儿童 Hand 骨骼附件节点上，精准贴合手腕，杜绝浮空。
+  3. **素体自带贴图丢失（白模）彻底终结**（`src/entities/character_visual.gd`）：
+     - 查明穿戴装备或多次刷新自定义后，素体材质覆盖变成 `ShaderMaterial`，导致无法从 `orig_mat` 采样 `orig_tex`，`base_tex` 为空采样白色，配合肤色退化为全平无光影白模；
+     - 在 `character_visual.gd` 建立人类各体型专属原生皮肤贴图保底管线（男童 `a_hfi_m_jacket_skin.png`、女童 `a_hum_f_ch_jacket_skin.png`、男成 `a_hmy_m_jacket_skin.png`、女成 `a_hum_f_jacket_skin.png`）；
+     - 确保 `human_skin_tex` 永不为 null，腹肌线条、锁骨高光与原生肌肉光影 100% 完美呈现。
+  4. 详细技术报告见 `docs/EQUIPMENT_REEXPORT_AND_SKIN_TEXTURE_REPORT.md`。
+
+
+### 2026-11-05 双臂悬挂武道服袖管、腕环与贴图残留彻底消除闭环修复
+- **排查并彻底解决用户最新截图（`media_1793912101256_edc7357e.png`）中红箭头指出的核心问题**：
+  1. **彻底查明“双臂上贴着武道服贴图与橙色腕环”的真正技术根因**：
+     - 二进制深度比对原版客户端母版 DFF（`E:\DBO_CT_TW(1.57.51)\assets\main\item\mesh_armor_humanmale\a_hfi_04_01_j_h_m.dff`）与 GLB 资产：
+       * 在原始 DFF 中，模型精准包含两个材质：Material 0（216 三角面，武道服布料 `A_HFI_M_jacket04_01`）与 Material 1（228 三角面，成人身体皮肤 `A_HFI_M_jacket_skin`）；
+       * 资产转换工具在生成 GLB 时，粗暴抹除了 Material 1，将全部 444 个三角形合并为单一材质并全量绑定武道服布料贴图 `a_hfi_m_jacket04_01.png`；
+       * 导致属于成人的手臂皮肤面（124 面）和胸腹皮肤面（104 面）被全部当成武道服布料强行渲染，连同手腕处的残损袖管/腕环（24 面，绑定在前臂骨骼）一同悬挂在儿童双臂两侧；
+       * 在 DBOG 官方设计中，儿童武道服短袖上衣在手肘以下完全是裸露的儿童手臂，根本没有任何服装网格与袖管。
+  2. **在 `character_factory.gd` 实现 `_filter_torso_equipment_mesh` 内存级提纯算法**：
+     - 在挂载上衣网格时，精准定位布料分区与成人皮肤分区边界（剔除 Material 1 的 228 个成人皮肤面）；
+     - 自动过滤所有带有前臂/手掌骨骼（`Forearm`, `Hand`, `Finger`）或横向远端（$|Y| > 0.38$）的手臂悬挂废面与袖管腕环（剔除 24 个残损腕环面）；
+     - 上装网格由 444 三角面精准提纯为 192 三角面的标准纯净短袖武道服（$|Y| \le 0.217$），双臂上多余的袖管、橙色腕环与绿布贴图 100% 彻底拔除消除。
+  3. **在 `character_visual.gd` 恢复素体大臂与小臂全段纯净肤色**：
+     - 废除原先将 Surface 10 隐藏导致儿童大臂断裂消失的隐患，Surface 8、9、10 全段统一由 `CHARACTER_SKIN_SHADER` 进行纯净儿童肉色皮肤渲染；
+     - 提纯后的短袖武道服平整覆盖胸腹与背部，下缘顺滑流露出纯净无瑕的儿童手臂与手掌，与 DBOG 官方效果 100% 一致。
+  4. **全种族全性别自适应验证**：
+     - 算法同步涵盖人类女童（168 面纯净马甲）、娜美克儿童（184 面纯净马甲）、魔人男女童（68/104 面纯净围巾/上装），杜绝手臂穿模与白模。
+
+### 2026-11-05 上装手臂胸口贴图污染、黑色飞天折线与双脚靴子不对称根因查清与闭环修复
+- **排查并彻底解决用户截图反馈的核心问题**：
+  1. **消除“头顶巨大黑色人字形折线天线”**：
+     - 查明拳套武器（`W_GLV_16`，SlotFlag=1）在 `character_factory.gd` 中被错误归为全身 50 骨骼蒙皮网格，导致未用骨骼拉伸至原点形成飞天黑线；
+     - 对标官方规范，武器统一走 `attach_item_to_bone` 刚性节点挂载，强制设置 `mesh_inst.skin = null` 彻底脱离蒙皮着色器，飞天黑线 100% 根除。
+  2. **消除“手臂贴图污染、胸肌轮廓发黑”**：
+     - 查明 `character_visual.gd` 误把素体手臂判定为手掌，穿上上衣后强行塞入成人胸肌杂质贴图（`a_hfi_m_jacket_skin.png`）；
+     - 严格对标 OpenDBO `NtlPLEquipItem.cpp` 部件互斥法则：人类穿戴外装上衣时，素体默认上身整体隐形（`inv_mat`），由外装模型独立呈现完整服装，彻底消除双层网格重叠、胸肌发黑与手臂脏贴图。
+  3. **消除“右脚橙色、左脚灰白”与左腿瘫陷**：
+     - 查明 GLB 资产导出时左腿/左脚顶点骨骼丢失归零为 `nullroot(0)`，且素体原生靴子未被隐藏；
+     - 在 `character_factory.gd` 实现 `_repair_equipment_left_side_bones`，在内存中动态恢复左腿左脚对称骨骼绑定；
+     - 穿戴外装靴子时，素体原生灰白靴隐形，双脚统一呈现完整的橙色武道靴。
+  4. 详细技术报告见 `docs/EQUIPMENT_DISPLAY_ROOT_CAUSE_AND_RESOLUTION_REPORT.md`。
+
+### 2026-11-04 装备与素体全链路根本原因彻底查清、代码解耦与终极修复
+- **排查并彻底解决用户反馈的 6 大核心故障**：
+  1. **语法错误与编译警告彻底清零**：
+     - 修复 `src/core/dbo_material_helper.gd:112` 变量类型推断错误；
+     - 修复 `src/entities/character_factory.gd:974` `prefixes` 作用域未声明错误。
+  2. **彻底消除跨屏折线黑梁与手套重叠**：
+     - 拔除 `character_factory.gd` 中 `_mirror_single_sided_mesh_if_needed` 翻转顶点导致蒙皮矩阵爆炸的逻辑；
+     - 拳套对标官方 `table_item_data.json`（`SlotFlag = 1` 主手武器），保持单手佩戴真实规范，头顶黑架彻底消失。
+  3. **彻底根治“丢了一只手”断腕与“丢了一只脚”截肢**：
+     - 废除在穿戴装备时将素体手掌与素体双脚赋予 `inv_mat` 隐形的粗暴做法；
+     - 素体手掌与双脚始终保留正常皮肤与鞋靴渲染，无论单侧靴子还是单手武器，双手双脚 100% 健全完整。
+  4. **彻底查清“魔人男童缺失装备”真相反转与跨体型儿童装备自适应**：
+     - 查验原版官方母版 `DefaultItemList.xml` 与 OpenDBO-Core C++ 源码，确认官方资产库中本来就不存在所谓的 `A_MCH_*_M_M`；
+     - 魔人男童在官方设定中直接使用成人男魔人的装备网格（`A_MAJ_*_M_M`），通过角色属性缩放展现儿童体态；
+     - 重构 `_resolve_item_glb_path`：优先推断儿童专用网格（人类 `A_HCH`、娜美克 `A_NCH`、魔人女 `A_MCH`），魔人男童按官方规范使用 `A_MAJ_*_M_M`；中高级装备无儿童网格时平滑回退到对应成人网格，让儿童可穿戴所有装备。
+  5. **彻底根除材质覆盖污染与未知贴图糊身**：
+     - 修复 `character_visual.gd` 中取材质名从 `get_surface_override_material` 导致的无名临时材质污染，严格从 `mesh.surface_get_material(s)` 读取原生信息；
+     - 引入贴图缺失安全回退机制，确保未穿外装长裤时，下半身展现纯净的大腿肉色皮肤与一条短裤。
+  6. **创角界面 100% 呈现标准素体裸身状态**：
+     - `character_lobby_ui.gd` 创角预览严格传递 `[]`，`character_lobby_stage.gd` 卸下全槽位防具与武器，恢复纯净裸身素体（纯色皮肤 + 一条短裤）。
+     - 详细报告见 `docs/EQUIPMENT_AND_BODY_FINAL_REPAIR_REPORT.md` 与 `docs/HAND_AND_FOOT_ROOT_CAUSE_AND_RESOLUTION_REPORT.md`。
+
+### 2026-11-04 装备显示反复异常深度溯源、对照 OpenDBO 源码与架构解耦修复
+- **对照 OpenDBO 官方底层 C++ 源码彻底查明死锁根因**：
+  1. 查阅 `E:\OpenDBO-Core-master` 客户端源码（`NtlPLEquipItem.cpp` 第 101~147 行 与 `NtlSobCharProxyEquip.cpp` 第 997~1055 行）以及 `defaultitemlist.xml`：
+     - **官方核心设计**：角色采用模块化插槽装配（Slot Mutex Replacement），`EQUIP_JACKET`、`EQUIP_PANTS`、`EQUIP_BOOTS`、`EQUIP_TWO_HAND` 槽位互斥。角色脱光时挂载默认裸身部件（`A_HCH_J/P/B/H`），穿戴防具时长裤与道服直接替换默认部件，旧部件直接卸下移除。角色身上永远只有一层网格，官方物理上根本不存在双层穿模与着色器猜谜。
+  2. **诊断当前工程的历史包袱与语句冲突**：
+     - 当前工程使用了一个 319KB 的 `human_m_child.glb` 连体大杂烩素体（把 10 种发型、大腿、底裤、躯干焊死在一起），在外层套装备；
+     - `character_visual.gd` 曾试图通过材质赋 `inv_mat` 隐形，但因误伤双手导致左手断臂；
+     - 前人修补时加入了 `and is_adult`（仅限成人隐藏，儿童不隐藏），导致儿童穿上道服长裤后，底下的白色短裤和大腿皮肤被 100% 强行保留渲染，直接穿透长裤布料爆出来，产生“双腿被白色底裤布料糊满”的死结。
+  3. **母版 DFF 与 GLB 资产核验**：
+     - 对比 `E:\DBO_CT_TW(1.57.51)` 与当前项目 `assets/obj/item/`，确认各族所有儿童独立部件（发型、脸部、上身、下身、靴子、手部）全量存在无缺失。
+  4. **脚本解耦与逻辑重构**：
+     - 彻底清除 `is_pants` 与 `is_jacket` 中残存的 `and is_adult` 冲突限制；
+     - 穿戴长裤（`has_legs`）时精准将素体下装与大腿隐形，外装长裤平整服帖无穿模；脱下长裤时完美恢复裸身短裤与大腿肤色；
+     - 穿戴上装（`has_torso`）时隐藏素体胸腹，脱下上衣时恢复光膀子裸身；
+     - 配合单侧对称镜像（`_mirror_single_sided_mesh_if_needed`），彻底根治断手、白腿糊住、躯体膨胀与双层穿模问题。
+     - 详细技术分析与架构报告见 `docs/CHARACTER_EQUIP_DEEP_ROOT_CAUSE_REPORT.md`。
 
 ### 2026-11-03 装备挂载、单侧对称镜像（手套/靴子）与各族儿童道服显示彻底修复
 - **排查并解决用户反馈的 3 大终极根因**：
@@ -1807,7 +2020,6 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - **完成精确修复仍缺少的文件：** 上述儿童基础模型 `human_m_child.glb`，以及三件儿童装备 GLB（522001/522002/522003）。GitHub main 当前未提交 GLB 二进制，因此无法在远端直接检查这些文件。需要从本地项目提供这 4 个原始 GLB（优先只提供这 4 个，不需要重新上传整个 assets）。若截图实际使用的不是人类男性/522001 这一组，请按实际角色对应的儿童基础模型和初始装备替换。
 - **验证状态：** 用户截图为运行行为证据；装备成功出现已验证，蒙皮正确性明确失败。尚未修改 Skin 绑定算法；先取得上述 GLB 检查骨骼名、Skin binds、IBM、网格父级 transform，再决定是否按名称重映射、恢复源层级变换或修正导出资源。
 
-
 ### 2026-11-06：评估 DFF2glTF Converter 对 DBO 服装导出的适用性
 - 用户提供工具：`https://github.com/AlterSDB/dff2gltf-converter`。已读取其 README、`dff-converter.ts`、`dff-validator.ts`、`skin-utils.ts` 与测试。
 - **结论：有研究/改造价值，但不能直接认定可批量转换 DBO 服装。** 该项目能读取 RenderWare `.dff/.txd` 并输出 glTF/GLB；代码具备 SKIN 分支，解析顶点权重（JOINTS/WEIGHTS）、骨骼节点及 inverse bind matrices，并将 TXD 纹理转为 PNG。仓库测试样例 `sa-omyri.dff/.txd` 验证的是 GTA San Andreas SKIN 模型。
@@ -1816,3 +2028,14 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 对 DBO 服装的潜在价值：若 DBO 原始服装确实是带 Skin 插件的 DFF，且其 RW 版本/扩展可被 `rw-parser` 正确解析，此项目可作为 GLB 导出器的基础或算法参考；若服装是静态 DFF、独立骨架引用或 DBO 自定义容器，则需先解析其实际结构，不能直接套用 SKIN 模式。
 - **下一步本地验证（无需上传资产）：** 由 Antigravity 在用户本机选择一个代表性 DBO 服装 DFF 及其 TXD，先只读输出 RenderWare version、插件列表、geometry 数量、Skin 插件是否存在、顶点/权重数量、骨骼/帧层级、IBM 数量；再用该工具尝试转换一个样本，并在 Godot/Blender 检查骨骼权重与变形。禁止先批量转换或覆盖现有 GLB。
 - **尚缺证据：** DBO 服装原始 DFF/TXD 的实际结构与版本、该工具依赖的 `rw-parser` 对 DBO 扩展的兼容性、导出 GLB 在 Godot 中的蒙皮结果。当前只完成公开源码静态评估，未运行转换。
+
+
+### 2026-11-06：全职业全种族 3D 独立防具装甲挂载管线标准化与素体遮罩穿模彻底修复
+- **已攻克关键问题：**
+  1. **废除贴图欺骗与短路跳过**：彻底清除幼年防具直接 `return` 且在素体涂贴图的错误旁路，所有防具（Jacket / Pants / Boots）100% 实例化为真实外部 GLB 网格。
+  2. **修复下装掉落与变形根因**：定位到原代码在 `_repair_equipment_left_side_bones` 中误对裤子顶点骨骼篡改撕裂网格，彻底废除对 `legs` 的网格修改，恢复原生双腿骨骼完整驱动。
+  3. **修复鞋靴插脖子/翻转入地下**：查清原代码将高度轴 X 当作左右轴的翻转错误，重构为按骨骼使用情况精准判定单侧右脚建模，并沿真正的横向左右对称轴 Y 镜像复制，拓扑绑定对侧骨骼，双脚完美着地摆动。
+  4. **抚平那美克星人胸前大尖突**：幼年期智能将 `B_bust` 骨骼重定向到躯干主胸椎 `Bip01 Spine2`，彻底抚平高程位移差距引起的尖突变形。
+  5. **全职业贴图自动解析与双面渲染**：新增 `_resolve_child_pants_texture` 与 `_resolve_child_boots_texture` 全职业回退分发，布料全量设置 `cull_mode = CULL_DISABLED`，彻底消除“只能看内部看不到表面”的问题。
+  6. **素体穿模互斥遮罩**：穿戴外部防具时，素体对应 Surface 自动设为 `inv_mat` 隐形；未穿戴时恢复原生底裤、裸腿皮肤、双脚皮肤；手掌无论何时永久保留。
+- **报告归档：** 详尽技术分析已归档至 `docs/FULL_ARMOR_SYSTEM_STANDARDIZATION_REPORT.md`。

@@ -30,6 +30,7 @@ enum State {
 @export var race: DBOCharacterFactory.Race = DBOCharacterFactory.Race.HUMAN
 @export var gender: DBOCharacterFactory.Gender = DBOCharacterFactory.Gender.MALE
 @export var is_adult: bool = true
+@export var class_id: int = 0
 
 @export_group("Camera Settings")
 @export var mouse_sensitivity: float = 0.003
@@ -75,6 +76,11 @@ func _init_player_model() -> void:
 	if visual == null:
 		return
 
+	visual.race = race
+	visual.gender = gender
+	visual.is_adult = is_adult
+	visual.character_class_id = class_id
+
 	if visual.find_child("BaseBody", true, false) == null:
 		var state_int := 1 if is_adult else 0
 		var key := "%d_%d_%d" % [race, gender, state_int]
@@ -90,6 +96,7 @@ func _init_player_model() -> void:
 		var anim_dir: String = DBOCharacterFactory.get_pc_anim_dirs().get(anim_dir_key, "res://assets/obj/character/animation_humanmale/")
 		var prefix := DBOCharacterFactory._get_anim_prefix(race, gender, is_adult)
 		DBOCharacterFactory.load_character_animations(visual, anim_dir, prefix)
+		DBOMaterialHelper.fix_node_materials(visual)
 
 
 func _setup_camera_arm() -> void:

@@ -402,8 +402,8 @@ static func load_character_animations(visual: DBOCharacterVisual, anim_dir: Stri
 
 									# 针对 Bip01 根骨骼位移，执行骨架重定向高程补偿，使儿童骨架脚底完美贴合地面，彻底消除浮空
 									if track_type == Animation.TYPE_POSITION_3D and target_bone == "Bip01":
-										var b_idx := skel.find_bone("Bip01")
-										var rest_origin := skel.get_bone_rest(b_idx).origin
+										var bip_bone_idx := skel.find_bone("Bip01")
+										var rest_origin := skel.get_bone_rest(bip_bone_idx).origin
 										var key_cnt := anim.track_get_key_count(t)
 										if key_cnt > 0:
 											var first_val: Vector3 = anim.track_get_key_value(t, 0)
@@ -603,7 +603,9 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 
 	var slot_flag: int = item_data.get("equip_slot_flag", 0)
 	var is_glove := (slot_flag == 1 or slot_flag == 2) and "glv" in raw_model.to_lower()
-	var slot_name := "hands" if is_glove else _slot_flag_to_name(slot_flag)
+	var slot_name := _slot_flag_to_name(slot_flag)
+	if is_glove:
+		slot_name = "weapon_r"
 
 	var glb_path := _resolve_item_glb_path(raw_model, race, gender, is_adult, 1)
 	if glb_path.is_empty() or not FileAccess.file_exists(glb_path):
@@ -614,30 +616,30 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 	if visual.equipped_glb_paths.get(slot_name, "") == glb_path and is_instance_valid(visual._slots.get(slot_name, null)):
 		return
 
-	# 互斥清理：若穿戴手套，清除可能存在的旧双手/右手武器；若穿戴主手武器，清除可能存在的手套
-	if is_glove:
-		for old_k in ["weapon_r", "hands"]:
-			if visual._slots.has(old_k) and is_instance_valid(visual._slots[old_k]):
+	# 互斥清理：若穿戴武器或手套，清理同侧旧武器挂载
+	if slot_flag == 1 or slot_flag == 2:
+		for old_k in ["weapon_r", "weapon_l", "hands"]:
+			if old_k == slot_name and visual._slots.has(old_k) and is_instance_valid(visual._slots[old_k]):
 				visual._slots[old_k].queue_free()
 				visual._slots[old_k] = null
-			visual.equipped_glb_paths.erase(old_k)
-	elif slot_flag == 1 or slot_flag == 2:
-		if visual._slots.has("hands") and is_instance_valid(visual._slots["hands"]):
-			visual._slots["hands"].queue_free()
-			visual._slots["hands"] = null
-			visual.equipped_glb_paths.erase("hands")
+				visual.equipped_glb_paths.erase(old_k)
 
 	# 史考特（Scouter）挂载到头部骨骼附件节点
 	if slot_flag == 32:
 		visual.attach_item_to_bone(slot_name, glb_path, raw_model)
 		return
 
-	# 非手套类武器（杖、剑、斧等）挂到手部骨骼附件节点；手套是蒙皮网格走主管线
-	if (slot_flag == 1 or slot_flag == 2) and not is_glove:
+	# 武器类装备（主手拳套、剑、杖、副手等）：严格遵循 OpenDBO 规范，作为手部节点挂载物，杜绝全身蒙皮拉伸飞天黑线
+	if slot_flag == 1 or slot_flag == 2:
 		visual.attach_item_to_bone(slot_name, glb_path, raw_model)
 		return
 
-	# 上装/下装/靴子/手套：蒙皮网格，必须用 GLTFDocument 动态加载保留 Skin
+	# 鞋靴装备（feet）：严格遵循防具挂载规范，加载独立 3D 装备鞋靴模型并精准双侧骨骼绑定
+	if slot_name == "feet":
+		_equip_feet_mesh(visual, glb_path, is_adult)
+		return
+
+	# 上装/下装/靴子/手套：严格遵循防具挂载规范，通过 GLTFDocument 动态加载为蒙皮网格并对齐骨架与 Skin
 	var skeleton := visual._skeleton
 	if skeleton == null:
 		return
@@ -677,14 +679,13 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 
 	# 先移除旧槽位部件
 	visual.unequip_slot(slot_name)
+	var glb_joint_names: Array[String] = get_glb_joint_names(glb_path)
 
 	# 精准重构 Skin：逐骨骼对齐骨骼名称、索引与绑定姿态，彻底消除拉伸畸变
 	if own_skin != null and own_skin.get_bind_count() > 0:
 		var new_skin := Skin.new()
 		var bind_cnt := own_skin.get_bind_count()
 		new_skin.set_bind_count(bind_cnt)
-
-		var joint_names := get_glb_joint_names(glb_path)
 
 		# 查找主要回退骨骼 (杜绝 bone_idx = -1 导致顶点着色器丢失骨骼矩阵坍塌)
 		var fallback_b_idx := skeleton.find_bone("Bip01 Pelvis")
@@ -695,8 +696,8 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 
 		for i in range(bind_cnt):
 			var b_name := ""
-			if i < joint_names.size():
-				b_name = joint_names[i]
+			if i < glb_joint_names.size():
+				b_name = glb_joint_names[i]
 			if b_name.is_empty():
 				b_name = str(own_skin.get_bind_name(i))
 			if b_name.is_empty() and src_skel:
@@ -715,29 +716,32 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 					if target_b_idx != -1:
 						b_name = mapped_name
 
-			# 智能骨骼映射回退（针对不同种族骨骼差异或裙摆/配件骨骼）
-			if target_b_idx == -1 and not b_name.is_empty():
-				var alt_name := ""
-				if b_name.begins_with("B_SK_") or b_name.begins_with("B_belt"):
-					alt_name = "Bip01 Pelvis"
-				elif b_name.begins_with("B_bust"):
-					alt_name = "Bip01 Spine1"
-				elif b_name.begins_with("B_M"):
-					alt_name = "Bip01 Spine2"
-				elif b_name.begins_with("B_HB") or b_name.begins_with("B_HL"):
-					alt_name = "Bip01 Head"
-				elif b_name.begins_with("nullL") or b_name == "nullLhand":
-					alt_name = "Bip01 L Hand"
-				elif b_name.begins_with("nullR") or b_name == "nullRhand":
-					alt_name = "Bip01 R Hand"
-				elif b_name == "nulleye":
-					alt_name = "Bip01 Head"
-				elif b_name == "nullroot":
-					alt_name = "Bip01"
-				elif b_name == "nullback":
-					alt_name = "Bip01 Spine2"
-				if not alt_name.is_empty():
-					target_b_idx = skeleton.find_bone(alt_name)
+			# 智能骨骼映射回退（针对不同种族骨骼差异、幼年骨骼高程补偿或裙摆/配件骨骼）
+			if (not is_adult and b_name.begins_with("B_bust")) or target_b_idx == -1:
+				if b_name.begins_with("B_bust"):
+					target_b_idx = skeleton.find_bone("Bip01 Spine2")
+					if target_b_idx == -1:
+						target_b_idx = skeleton.find_bone("Bip01 Spine1")
+				elif not b_name.is_empty():
+					var alt_name := ""
+					if b_name.begins_with("B_SK_") or b_name.begins_with("B_belt"):
+						alt_name = "Bip01 Pelvis"
+					elif b_name.begins_with("B_M"):
+						alt_name = "Bip01 Spine2"
+					elif b_name.begins_with("B_HB") or b_name.begins_with("B_HL"):
+						alt_name = "Bip01 Head"
+					elif b_name.begins_with("nullL") or b_name == "nullLhand":
+						alt_name = "Bip01 L Hand"
+					elif b_name.begins_with("nullR") or b_name == "nullRhand":
+						alt_name = "Bip01 R Hand"
+					elif b_name == "nulleye":
+						alt_name = "Bip01 Head"
+					elif b_name == "nullroot":
+						alt_name = "Bip01"
+					elif b_name == "nullback":
+						alt_name = "Bip01 Spine2"
+					if not alt_name.is_empty():
+						target_b_idx = skeleton.find_bone(alt_name)
 
 			# Some costume rigs add secondary bones such as Box01 or Bip02 ponytail
 			# bones. If the avatar rig lacks that joint, bind it to the nearest
@@ -756,12 +760,57 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 
 			new_skin.set_bind_name(i, StringName(b_name))
 			new_skin.set_bind_bone(i, target_b_idx)
-			new_skin.set_bind_pose(i, own_skin.get_bind_pose(i))
+			var bp: Transform3D = own_skin.get_bind_pose(i)
+			if bp == Transform3D.IDENTITY and target_b_idx != -1:
+				new_skin.set_bind_pose(i, skeleton.get_bone_global_pose(target_b_idx).affine_inverse())
+			else:
+				new_skin.set_bind_pose(i, bp)
 
-		mesh_inst.skin = new_skin
+		# 针对单侧建模的鞋靴部件，检测并补充对侧骨骼绑定到 Skin，并在内存中进行双侧对称镜像生成
+		if slot_name == "feet":
+			var sym_map: Dictionary = {}
+			var extra_binds: Array[Dictionary] = []
+			for i in range(bind_cnt):
+				var b_name := String(new_skin.get_bind_name(i))
+				var opp_name := ""
+				if " R " in b_name or b_name.begins_with("R_") or b_name.ends_with("_R") or "Right" in b_name:
+					opp_name = b_name.replace(" R ", " L ").replace("R_", "L_").replace("_R", "_L").replace("Right", "Left")
+				elif " L " in b_name or b_name.begins_with("L_") or b_name.ends_with("_L") or "Left" in b_name:
+					opp_name = b_name.replace(" L ", " R ").replace("L_", "R_").replace("_L", "_R").replace("Left", "Right")
 
-		# 单侧手套/单侧靴子网格自动对称镜像补全 (如只有右拳套/右靴，自动镜像生成左拳套/左靴)
-		_mirror_single_sided_mesh_if_needed(mesh_inst, joint_names)
+				if not opp_name.is_empty():
+					var existing_opp_idx := -1
+					for j in range(bind_cnt):
+						if String(new_skin.get_bind_name(j)) == opp_name:
+							existing_opp_idx = j
+							break
+					if existing_opp_idx != -1:
+						sym_map[i] = existing_opp_idx
+					else:
+						var opp_b_idx := skeleton.find_bone(opp_name)
+						if opp_b_idx != -1:
+							var new_joint_idx := bind_cnt + extra_binds.size()
+							sym_map[i] = new_joint_idx
+							extra_binds.append({
+								"name": opp_name,
+								"bone_idx": opp_b_idx,
+								"pose": skeleton.get_bone_global_pose(opp_b_idx).affine_inverse()
+							})
+
+			if not extra_binds.is_empty():
+				new_skin.set_bind_count(bind_cnt + extra_binds.size())
+				for k in range(extra_binds.size()):
+					var eb: Dictionary = extra_binds[k]
+					var dest_idx := bind_cnt + k
+					new_skin.set_bind_name(dest_idx, StringName(eb["name"]))
+					new_skin.set_bind_bone(dest_idx, eb["bone_idx"])
+					new_skin.set_bind_pose(dest_idx, eb["pose"])
+
+			mesh_inst.skin = new_skin
+			if not sym_map.is_empty():
+				_mirror_equipment_mesh(mesh_inst, sym_map)
+		else:
+			mesh_inst.skin = new_skin
 	else:
 		# 查找素体主 MeshInstance3D 的 Skin 作为回退
 		var base_body := visual.find_child("BaseBody", true, false)
@@ -774,6 +823,10 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 				base_mi = meshes[0] as MeshInstance3D
 		if base_mi and base_mi.skin:
 			mesh_inst.skin = base_mi.skin
+
+	# 针对上装装备网格，若已是离线提纯好的纯净衣服本体网格，无需再进行计算过滤
+	if slot_name == "torso":
+		_filter_torso_equipment_mesh(mesh_inst, glb_joint_names, not is_adult)
 
 	# 挂载到素体 Skeleton3D 内部并保留导出部件自身的节点变换
 	skeleton.add_child(mesh_inst)
@@ -806,21 +859,75 @@ static func equip_item_to_character(visual: DBOCharacterVisual, item_tblidx: int
 
 	var is_majin_jacket := (race == 2 and slot_name == "torso")
 	var is_majin_female := (gender == 1)
+	var smat: Material = null
 
 	if is_majin_jacket:
 		_apply_majin_jacket_materials(mesh_inst, glb_path, is_majin_female, c_skin_col)
-	else:
+	elif slot_name == "torso":
 		for s in range(mesh_inst.mesh.get_surface_count()):
-			var smat := mesh_inst.get_surface_override_material(s)
+			smat = mesh_inst.get_surface_override_material(s)
 			if smat == null:
 				smat = mesh_inst.mesh.surface_get_material(s)
-			if smat:
-				var m_name := smat.resource_name.to_lower()
-				if "skin" in m_name:
-					var skin_mat := smat.duplicate() as StandardMaterial3D
-					if skin_mat:
-						skin_mat.albedo_color = c_skin_col
-						mesh_inst.set_surface_override_material(s, skin_mat)
+			var mat_name := smat.resource_name.to_lower() if smat else ""
+			if "skin" in mat_name:
+				if not is_adult:
+					# ??????????????????? DFF ???????????????????
+					mesh_inst.set_surface_override_material(s, DBOCharacterVisual._get_invisible_material())
+				else:
+					var skin_mat := StandardMaterial3D.new()
+					skin_mat.albedo_color = c_skin_col
+					skin_mat.roughness = 0.8
+					mesh_inst.set_surface_override_material(s, skin_mat)
+			else:
+				# ???????????????????????????????????/????
+				var cloth_tex: Texture2D = null
+				if not mat_name.is_empty():
+					cloth_tex = load_texture_safe("res://assets/tex/texture/item/" + mat_name + ".png")
+				if cloth_tex == null:
+					cloth_tex = _resolve_general_jacket_texture(glb_path, race, gender)
+				if cloth_tex:
+					var cloth_mat := StandardMaterial3D.new()
+					cloth_mat.albedo_texture = cloth_tex
+					cloth_mat.albedo_color = Color.WHITE
+					cloth_mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+					cloth_mat.roughness = 0.8
+					cloth_mat.metallic = 0.0
+					cloth_mat.render_priority = 1
+					mesh_inst.set_surface_override_material(s, cloth_mat)
+	else:
+		for s in range(mesh_inst.mesh.get_surface_count()):
+			smat = mesh_inst.get_surface_override_material(s)
+			if smat == null:
+				smat = mesh_inst.mesh.surface_get_material(s)
+			var m_name: String = smat.resource_name.to_lower() if smat else ""
+			if "skin" in m_name:
+				if not is_adult:
+					mesh_inst.set_surface_override_material(s, DBOCharacterVisual._get_invisible_material())
+				else:
+					var other_skin_mat := StandardMaterial3D.new()
+					other_skin_mat.albedo_color = c_skin_col
+					other_skin_mat.roughness = 0.8
+					mesh_inst.set_surface_override_material(s, other_skin_mat)
+			else:
+				var tex: Texture2D = null
+				if not m_name.is_empty():
+					tex = load_texture_safe("res://assets/tex/texture/item/" + m_name + ".png")
+				if tex == null:
+					if slot_name == "legs":
+						tex = _resolve_child_pants_texture(race, gender, visual.character_class_id, glb_path)
+					elif slot_name == "feet":
+						tex = _resolve_child_boots_texture(race, gender, visual.character_class_id, glb_path)
+				if tex:
+					var mat := StandardMaterial3D.new()
+					mat.albedo_texture = tex
+					mat.albedo_color = Color.WHITE
+					mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+					mat.roughness = 0.8
+					mat.metallic = 0.0
+					mat.render_priority = 1
+					mesh_inst.set_surface_override_material(s, mat)
+				elif smat is StandardMaterial3D:
+					(smat as StandardMaterial3D).cull_mode = BaseMaterial3D.CULL_DISABLED
 
 	# 更新视觉槽位记录与模型路径
 	visual._slots[slot_name] = mesh_inst
@@ -879,6 +986,68 @@ static func _find_majin_jacket_cloth_texture(glb_path: String, is_female: bool) 
 	return null
 
 
+## 智能检索全种族男女通用上装布料贴图（对齐 OpenDBO 资源命名规则与官方 DFF 材质）
+static func _resolve_general_jacket_texture(glb_path: String, race: int, gender: int) -> Texture2D:
+	var glb_file := glb_path.to_lower().get_file().get_basename()
+	var num_str := "04_01"
+	var reg := RegEx.new()
+	reg.compile("(\\d{2}_\\d{2})")
+	var match_res := reg.search(glb_file)
+	if match_res:
+		num_str = match_res.get_string(1)
+
+	# ????????????????????????/????
+	var pfx := ""
+	var pfx_reg := RegEx.new()
+	pfx_reg.compile("^(a_[a-z0-9]{3}|ccbd_[a-z0-9]+|a_com)")
+	var pfx_match := pfx_reg.search(glb_file)
+	if pfx_match:
+		pfx = pfx_match.get_string(1)
+	else:
+		var parts := glb_file.split("_")
+		if parts.size() >= 2:
+			pfx = parts[0] + "_" + parts[1]
+
+	var g_str := ""
+	if "_h_m" in glb_file or "_m_m" in glb_file:
+		g_str = "m_"
+	elif "_h_f" in glb_file or "_m_f" in glb_file:
+		g_str = "f_"
+	elif race == 0 or race == 2:
+		g_str = "m_" if gender == 0 else "f_"
+
+	var candidates: Array[String] = [
+		"res://assets/tex/texture/item/%s_%sjacket%s.png" % [pfx, g_str, num_str],
+		"res://assets/tex/texture/item/%s_%sjacket%s_1.png" % [pfx, g_str, num_str],
+		"res://assets/tex/texture/item/%s%sjacket%s.png" % [pfx, g_str, num_str],
+		"res://assets/tex/texture/item/%s%sjacket%s_1.png" % [pfx, g_str, num_str],
+		"res://assets/tex/texture/item/%s.png" % glb_file
+	]
+
+	# ????????
+	if pfx == "a_hfi":
+		candidates.append("res://assets/tex/texture/item/a_hfi_m_jacket04_01.png")
+		candidates.append("res://assets/tex/texture/item/a_hfi_f_jacket04_01_1.png")
+	elif pfx == "a_hmy":
+		candidates.append("res://assets/tex/texture/item/a_hmy_m_jacket04_01_1.png")
+		candidates.append("res://assets/tex/texture/item/a_hmy_f_jacket04_01_1.png")
+	elif pfx == "a_nfi":
+		candidates.append("res://assets/tex/texture/item/a_nfi_jacket04_01.png")
+	elif pfx == "a_nmy":
+		candidates.append("res://assets/tex/texture/item/a_nmy_jacket04_01_1.png")
+	elif pfx == "a_mmi":
+		candidates.append("res://assets/tex/texture/item/a_mmi_m_jacket04_01.png")
+	elif pfx == "a_mwo":
+		candidates.append("res://assets/tex/texture/item/a_mwo_m_jacket04_01_1.png")
+
+	for tc in candidates:
+		var tex := load_texture_safe(tc)
+		if tex:
+			return tex
+	return null
+
+
+
 ## 检索意魔人男女上装围巾颈圈贴图
 static func _find_majin_jacket_scarf_texture(glb_path: String, is_female: bool) -> Texture2D:
 	var glb_file := glb_path.to_lower().get_file().get_basename()
@@ -905,6 +1074,7 @@ static func _find_majin_jacket_scarf_texture(glb_path: String, is_female: bool) 
 	return null
 
 
+## 智能检索全种族男女通用上装布料贴图（对齐 OpenDBO 资源命名规则与官方 DFF 材质）
 ## 针对魔人两种职业男女上衣执行精准多图元材质派发与动态肤色合成（彻底消除肩臂白模与服装显示错误）
 static func _apply_majin_jacket_materials(mesh_inst: MeshInstance3D, glb_path: String, is_female: bool, skin_color: Color) -> void:
 	if mesh_inst == null or mesh_inst.mesh == null:
@@ -954,23 +1124,23 @@ static func _apply_majin_jacket_materials(mesh_inst: MeshInstance3D, glb_path: S
 				mesh_inst.set_surface_override_material(s, cmat)
 		else:
 			# 非皮肤表面（围巾、领圈、灯笼袖衣物部件等）
-			var tex: Texture2D = null
+			var item_tex: Texture2D = null
 			if base_mat is BaseMaterial3D and (base_mat as BaseMaterial3D).albedo_texture:
-				tex = (base_mat as BaseMaterial3D).albedo_texture
-			if not tex and not mat_name.is_empty():
+				item_tex = (base_mat as BaseMaterial3D).albedo_texture
+			if not item_tex and not mat_name.is_empty():
 				var direct_tex_path := "res://assets/tex/texture/item/" + mat_name + ".png"
-				tex = load_texture_safe(direct_tex_path)
-			if not tex:
+				item_tex = load_texture_safe(direct_tex_path)
+			if not item_tex:
 				if "jacket" in mat_name and not ("01_2" in mat_name or "04_01_2" in mat_name or "04_02_2" in mat_name):
-					tex = cloth_shirt_tex
+					item_tex = cloth_shirt_tex
 				else:
-					tex = scarf_tex
+					item_tex = scarf_tex
 
-			if tex:
+			if item_tex:
 				var mat := StandardMaterial3D.new()
 				mat.roughness = 0.8
 				mat.cull_mode = BaseMaterial3D.CULL_BACK
-				mat.albedo_texture = tex
+				mat.albedo_texture = item_tex
 				mat.albedo_color = Color.WHITE
 				mesh_inst.set_surface_override_material(s, mat)
 
@@ -1023,9 +1193,9 @@ static func _composite_skin_with_armor(skin_path: String, cloth_tex: Texture2D, 
 	return res_tex
 
 
-## 动态推断装备 GLB 路径 (严格依据 OpenDBO itemproperty.json 官方模型映射)
-## 儿童角色先解析对应种族/性别的专用 A_*CH 装备模型
-static func _resolve_item_glb_path(raw_model: String, race: int = 0, gender: int = 0, _is_adult: bool = true, _namek_skin: int = 1) -> String:
+## 动态推断装备 GLB 路径 (严格依据 OpenDBO itemproperty.json 与 DefaultItemList.xml 官方模型规范)
+## 适配儿童与成人体型：儿童专属装备优先，通用/成人装备自动平滑降级回退
+static func _resolve_item_glb_path(raw_model: String, race: int = 0, gender: int = 0, is_adult: bool = true, namek_skin: int = 1) -> String:
 	var u := raw_model.to_upper().strip_edges()
 	if u.is_empty():
 		return ""
@@ -1047,25 +1217,28 @@ static func _resolve_item_glb_path(raw_model: String, race: int = 0, gender: int
 		"res://assets/obj/item/drop item/"
 	]
 
-	var prefixes: Array[String] = [u]
+	var prefixes: Array[String] = []
 	var suffixes: Array[String] = []
 
 	if race == Race.NAMEK:
 		if u.begins_with("A_HFI_"):
-			prefixes.insert(0, u.replace("A_HFI_", "A_NFI_"))
+			prefixes.append(u.replace("A_HFI_", "A_NFI_"))
 		elif u.begins_with("A_HMY_"):
-			prefixes.insert(0, u.replace("A_HMY_", "A_NMY_"))
-		suffixes = ["_N_O_S1", "_N_S1", "_N_O", ""]
+			prefixes.append(u.replace("A_HMY_", "A_NMY_"))
+		prefixes.append(u)
+		suffixes = ["_N_O_S%d" % namek_skin, "_N_O_S1", "_N_S1", "_N_O", ""]
 	elif race == Race.MAJIN:
 		if u.begins_with("A_HFI_"):
-			prefixes.insert(0, u.replace("A_HFI_", "A_MMI_"))
+			prefixes.append(u.replace("A_HFI_", "A_MMI_"))
 		elif u.begins_with("A_HMY_"):
-			prefixes.insert(0, u.replace("A_HMY_", "A_MWO_"))
+			prefixes.append(u.replace("A_HMY_", "A_MWO_"))
+		prefixes.append(u)
 		suffixes = ["_M_F" if gender == Gender.FEMALE else "_M_M", ""]
 	else: # Human
+		prefixes.append(u)
 		suffixes = ["_H_F" if gender == Gender.FEMALE else "_H_M", ""]
 
-	# 1. 优先通过 itemproperty.json 查询官方模型路径
+	# 优先通过 itemproperty.json 查询官方模型路径
 	for p in prefixes:
 		for s in suffixes:
 			var cand := p + s
@@ -1073,6 +1246,7 @@ static func _resolve_item_glb_path(raw_model: String, race: int = 0, gender: int
 			if not prop_path.is_empty():
 				return prop_path
 
+	# 遍历装备目录检索对应 GLB 文件
 	for p in prefixes:
 		for s in suffixes:
 			var target_file: String = (p + s).to_lower() + ".glb"
@@ -1084,136 +1258,420 @@ static func _resolve_item_glb_path(raw_model: String, race: int = 0, gender: int
 	return ""
 
 
-## 检测装备是否为单侧网格 (如原版 DBO 资产中只包含右手/右脚网格的手套与靴子)，并自动生成镜像对称的左侧网格
-static func _mirror_single_sided_mesh_if_needed(mesh_inst: MeshInstance3D, joint_names: Array[String]) -> void:
-	if mesh_inst == null or mesh_inst.mesh == null or joint_names.is_empty():
+## 装备鞋靴专用加载与精准双侧骨骼绑定
+static func _equip_feet_mesh(visual: DBOCharacterVisual, glb_path: String, _is_adult: bool) -> void:
+	if visual == null:
+		return
+	visual.unequip_slot("feet")
+
+	var skeleton := visual._skeleton
+	if skeleton == null:
 		return
 
-	# 1. 构建 R 侧骨骼到 L 侧骨骼的 skin 索引双向映射
-	var r_to_l_skin_idx: Dictionary = {}
-	for i in range(joint_names.size()):
-		var r_name: String = joint_names[i]
-		if " R " in r_name:
-			var l_name := r_name.replace(" R ", " L ")
-			for j in range(joint_names.size()):
-				if joint_names[j] == l_name:
-					r_to_l_skin_idx[i] = j
-					break
-
-	if r_to_l_skin_idx.is_empty():
+	var sc: Node = DBOMaterialHelper.load_gltf_scene_safe(glb_path, GLTFDocument.IMPORT_FLAG_USE_NAMED_SKIN_BINDS)
+	if sc == null:
 		return
 
+	var mesh_nodes := sc.find_children("*", "MeshInstance3D", true, false)
+	var src_mi: MeshInstance3D = null
+	for c in mesh_nodes:
+		if c is MeshInstance3D and c.mesh != null and c.mesh.get_surface_count() > 0:
+			src_mi = c
+			break
+	if src_mi == null:
+		sc.queue_free()
+		return
+
+	# 提取外部装备靴子的原始材质与贴图
+	var orig_mat: Material = src_mi.get_surface_override_material(0)
+	if orig_mat == null:
+		orig_mat = src_mi.mesh.surface_get_material(0)
+
+	var boot_tex: Texture2D = null
+	if orig_mat is BaseMaterial3D:
+		boot_tex = (orig_mat as BaseMaterial3D).albedo_texture
+	if boot_tex == null:
+		boot_tex = _resolve_child_boots_texture(visual.race, visual.gender, visual.character_class_id, glb_path)
+
+	var boot_mat := StandardMaterial3D.new()
+	boot_mat.cull_mode = BaseMaterial3D.CULL_DISABLED
+	boot_mat.roughness = 0.8
+	boot_mat.metallic = 0.0
+	if boot_tex:
+		boot_mat.albedo_texture = boot_tex
+	boot_mat.albedo_color = Color.WHITE
+
+	# 获取素体主网格及其 Skin，并计算素体左右脚真实的包围盒
+	var base_body := visual.find_child("BaseBody", true, false)
+	var base_mi: MeshInstance3D = null
+	if base_body is MeshInstance3D:
+		base_mi = base_body
+	elif base_body != null:
+		var b_meshes := base_body.find_children("*", "MeshInstance3D", true, false)
+		if not b_meshes.is_empty():
+			base_mi = b_meshes[0] as MeshInstance3D
+
+	var pos_min := Vector3(0.09, -0.04, -0.09)
+	var pos_max := Vector3(0.25, 0.07, 0.22)
+	var neg_min := Vector3(-0.25, -0.04, -0.09)
+	var neg_max := Vector3(-0.09, 0.07, 0.22)
+
+	if base_mi and base_mi.mesh:
+		var b_mesh := base_mi.mesh
+		for s in range(b_mesh.get_surface_count()):
+			var smat := base_mi.get_surface_override_material(s)
+			if smat == null:
+				smat = b_mesh.surface_get_material(s)
+			var m_name := smat.resource_name.to_lower() if smat else ""
+			if "boot" in m_name:
+				var arrs := b_mesh.surface_get_arrays(s)
+				if arrs.size() > Mesh.ARRAY_VERTEX and arrs[Mesh.ARRAY_VERTEX] != null:
+					var bverts: PackedVector3Array = arrs[Mesh.ARRAY_VERTEX]
+					if not bverts.is_empty():
+						var s_min := bverts[0]
+						var s_max := bverts[0]
+						for bv in bverts:
+							s_min.x = min(s_min.x, bv.x)
+							s_min.y = min(s_min.y, bv.y)
+							s_min.z = min(s_min.z, bv.z)
+							s_max.x = max(s_max.x, bv.x)
+							s_max.y = max(s_max.y, bv.y)
+							s_max.z = max(s_max.z, bv.z)
+						var center_x := (s_min.x + s_max.x) * 0.5
+						if center_x > 0:
+							pos_min = s_min
+							pos_max = s_max
+						else:
+							neg_min = s_min
+							neg_max = s_max
+
+	var r_bone_idx := skeleton.find_bone("Bip01 R Foot")
+	var l_bone_idx := skeleton.find_bone("Bip01 L Foot")
+	if r_bone_idx == -1: r_bone_idx = skeleton.find_bone("Bip01 R Calf")
+	if l_bone_idx == -1: l_bone_idx = skeleton.find_bone("Bip01 L Calf")
+	if r_bone_idx == -1: r_bone_idx = 0
+	if l_bone_idx == -1: l_bone_idx = 0
+
+	var base_skin: Skin = base_mi.skin if base_mi else null
+	var r_joint_idx := 0
+	var l_joint_idx := 0
+	if base_skin:
+		for j in range(base_skin.get_bind_count()):
+			var b_name := str(base_skin.get_bind_name(j))
+			if b_name == "Bip01 R Foot":
+				r_joint_idx = j
+			elif b_name == "Bip01 L Foot":
+				l_joint_idx = j
+			elif base_skin.get_bind_bone(j) == r_bone_idx and r_joint_idx == 0:
+				r_joint_idx = j
+			elif base_skin.get_bind_bone(j) == l_bone_idx and l_joint_idx == 0:
+				l_joint_idx = j
+
+	# 读取外部靴子 Surface 0 几何
+	var src_arrays := src_mi.mesh.surface_get_arrays(0)
+	var src_verts: PackedVector3Array = src_arrays[Mesh.ARRAY_VERTEX]
+	var src_normals: PackedVector3Array = src_arrays[Mesh.ARRAY_NORMAL] if src_arrays.size() > Mesh.ARRAY_NORMAL and src_arrays[Mesh.ARRAY_NORMAL] != null else PackedVector3Array()
+	var src_uvs: PackedVector2Array = src_arrays[Mesh.ARRAY_TEX_UV] if src_arrays.size() > Mesh.ARRAY_TEX_UV and src_arrays[Mesh.ARRAY_TEX_UV] != null else PackedVector2Array()
+	var src_indices_raw = src_arrays[Mesh.ARRAY_INDEX] if src_arrays.size() > Mesh.ARRAY_INDEX else null
+	var src_indices: PackedInt32Array = PackedInt32Array(src_indices_raw) if src_indices_raw != null else PackedInt32Array()
+
+	var v_count := src_verts.size()
+	if v_count == 0:
+		sc.queue_free()
+		return
+
+	# 计算外部靴子包围盒
+	var s_min := src_verts[0]
+	var s_max := src_verts[0]
+	for v in src_verts:
+		s_min.x = min(s_min.x, v.x)
+		s_min.y = min(s_min.y, v.y)
+		s_min.z = min(s_min.z, v.z)
+		s_max.x = max(s_max.x, v.x)
+		s_max.y = max(s_max.y, v.y)
+		s_max.z = max(s_max.z, v.z)
+	var s_size := s_max - s_min
+	if s_size.x < 0.001: s_size.x = 0.1
+	if s_size.y < 0.001: s_size.y = 0.1
+	if s_size.z < 0.001: s_size.z = 0.1
+
+	var pos_size := pos_max - pos_min
+	var neg_size := neg_max - neg_min
+
+	var final_verts := PackedVector3Array()
+	var final_normals := PackedVector3Array()
+	var final_uvs := PackedVector2Array()
+	var final_bones := PackedInt32Array()
+	var final_weights := PackedFloat32Array()
+	var final_indices := PackedInt32Array()
+
+	# 1. 构建正侧（Right Foot）战靴
+	for i in range(v_count):
+		var orig_v := src_verts[i]
+		var nx := (orig_v.x - s_min.x) / s_size.x
+		var ny := (orig_v.y - s_min.y) / s_size.y
+		var nz := (orig_v.z - s_min.z) / s_size.z
+		var mapped_v := Vector3(pos_min.x + nx * pos_size.x, pos_min.y + ny * pos_size.y, pos_min.z + nz * pos_size.z)
+		final_verts.append(mapped_v)
+		if not src_normals.is_empty():
+			final_normals.append(src_normals[i])
+		if not src_uvs.is_empty():
+			final_uvs.append(src_uvs[i])
+		final_bones.append(r_joint_idx)
+		final_bones.append(0)
+		final_bones.append(0)
+		final_bones.append(0)
+		final_weights.append(1.0)
+		final_weights.append(0.0)
+		final_weights.append(0.0)
+		final_weights.append(0.0)
+
+	if not src_indices.is_empty():
+		for idx in src_indices:
+			final_indices.append(idx)
+	else:
+		for i in range(v_count):
+			final_indices.append(i)
+
+	# 2. 构建负侧（Left Foot）战靴（沿左右对称 X 轴镜像映射）
+	var offset := v_count
+	for i in range(v_count):
+		var orig_v := src_verts[i]
+		var nx := (orig_v.x - s_min.x) / s_size.x
+		var ny := (orig_v.y - s_min.y) / s_size.y
+		var nz := (orig_v.z - s_min.z) / s_size.z
+		# 负侧 X 坐标从右向左镜像
+		var mapped_v := Vector3(neg_max.x - nx * neg_size.x, neg_min.y + ny * neg_size.y, neg_min.z + nz * neg_size.z)
+		final_verts.append(mapped_v)
+		if not src_normals.is_empty():
+			var orig_n := src_normals[i]
+			final_normals.append(Vector3(-orig_n.x, orig_n.y, orig_n.z))
+		if not src_uvs.is_empty():
+			final_uvs.append(src_uvs[i])
+		final_bones.append(l_joint_idx)
+		final_bones.append(0)
+		final_bones.append(0)
+		final_bones.append(0)
+		final_weights.append(1.0)
+		final_weights.append(0.0)
+		final_weights.append(0.0)
+		final_weights.append(0.0)
+
+	if not src_indices.is_empty():
+		var idx_cnt := src_indices.size()
+		for tri in range(0, idx_cnt, 3):
+			var i0 := src_indices[tri] + offset
+			var i1 := src_indices[tri + 1] + offset
+			var i2 := src_indices[tri + 2] + offset
+			final_indices.append(i0)
+			final_indices.append(i2)
+			final_indices.append(i1)
+	else:
+		for i in range(0, v_count, 3):
+			final_indices.append(offset + i)
+			final_indices.append(offset + i + 2)
+			final_indices.append(offset + i + 1)
+
+	var new_arrays: Array = []
+	new_arrays.resize(Mesh.ARRAY_MAX)
+	new_arrays[Mesh.ARRAY_VERTEX] = final_verts
+	if not final_normals.is_empty():
+		new_arrays[Mesh.ARRAY_NORMAL] = final_normals
+	if not final_uvs.is_empty():
+		new_arrays[Mesh.ARRAY_TEX_UV] = final_uvs
+	new_arrays[Mesh.ARRAY_BONES] = final_bones
+	new_arrays[Mesh.ARRAY_WEIGHTS] = final_weights
+	new_arrays[Mesh.ARRAY_INDEX] = final_indices
+
+	var new_mesh := ArrayMesh.new()
+	new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, new_arrays)
+	new_mesh.surface_set_material(0, boot_mat)
+
+	var new_mi := MeshInstance3D.new()
+	new_mi.name = "Part_Feet"
+	new_mi.mesh = new_mesh
+	if base_skin:
+		new_mi.skin = base_skin
+	skeleton.add_child(new_mi)
+	new_mi.transform = Transform3D.IDENTITY
+	new_mi.skeleton = NodePath("..")
+
+	visual._slots["feet"] = new_mi
+	visual.equipped_glb_paths["feet"] = glb_path
+	visual._update_base_body_visibility()
+
+	sc.queue_free()
+
+
+## 检测装备是否为单侧网格 (原版主手武器保持单侧真实规范，杜绝顶点矩阵拉伸飞天)
+static func _mirror_single_sided_mesh_if_needed(_mesh_inst: MeshInstance3D, _joint_names: Array[String]) -> void:
+	# 原版 DBO 武器如拳套为 SlotFlag=1 主手佩戴武器，保持原版正规渲染，杜绝拉飞顶点
+	return
+
+
+## 针对单侧鞋靴部件在内存中沿左右对称轴 Y 进行镜像，生成完整合法的双侧蒙皮网格
+static func _mirror_equipment_mesh(mesh_inst: MeshInstance3D, sym_map: Dictionary) -> void:
+	if mesh_inst == null or mesh_inst.mesh == null or sym_map.is_empty():
+		return
 	var orig_mesh := mesh_inst.mesh
-	var scnt := orig_mesh.get_surface_count()
-	var has_right_side := false
-	var has_left_side := false
-
-	# 2. 检查网格骨骼权重：是否为纯右侧单侧网格
-	for s in range(scnt):
-		var arrs := orig_mesh.surface_get_arrays(s)
-		if arrs.size() > Mesh.ARRAY_BONES and arrs[Mesh.ARRAY_BONES]:
-			var bones: PackedInt32Array = arrs[Mesh.ARRAY_BONES]
-			var weights: PackedFloat32Array = arrs[Mesh.ARRAY_WEIGHTS]
-			for vertex_idx in range(bones.size() / 4):
-				for influence_idx in range(4):
-					var influence := vertex_idx * 4 + influence_idx
-					if influence >= weights.size() or weights[influence] <= 0.0001:
-						continue
-					var bone_idx := bones[influence]
-					if r_to_l_skin_idx.has(bone_idx):
-						has_right_side = true
-					for l_val in r_to_l_skin_idx.values():
-						if bone_idx == l_val:
-							has_left_side = true
-
-	# 仅当网格完全只包含右侧且缺失左侧时执行对称镜像复制
-	if not has_right_side or has_left_side:
+	var surface_cnt := orig_mesh.get_surface_count()
+	if surface_cnt == 0:
 		return
 
-	var double_mesh := ArrayMesh.new()
+	var new_mesh := ArrayMesh.new()
+	var modified := false
 
-	for s in range(scnt):
+	for s in range(surface_cnt):
 		var arrays := orig_mesh.surface_get_arrays(s)
-		var mat := mesh_inst.get_surface_override_material(s)
-		if mat == null:
-			mat = orig_mesh.surface_get_material(s)
+		if arrays.size() <= Mesh.ARRAY_BONES or arrays[Mesh.ARRAY_VERTEX] == null:
+			new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+			continue
 
-		# 添加原右侧表面
-		double_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
-		var r_s_idx := double_mesh.get_surface_count() - 1
-		if mat:
-			double_mesh.surface_set_material(r_s_idx, mat)
+		var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
+		var bones_raw = arrays[Mesh.ARRAY_BONES]
+		var weights_raw = arrays[Mesh.ARRAY_WEIGHTS]
 
-		# 构造镜像对称的左侧表面 (X 轴镜像、法线切线翻转、三角面缠绕反转、骨骼索引重映射)
-		var mirror_arrays: Array = []
-		mirror_arrays.resize(Mesh.ARRAY_MAX)
+		if verts.is_empty() or bones_raw == null:
+			new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+			continue
 
-		if arrays[Mesh.ARRAY_VERTEX]:
-			var orig_verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
-			var mirror_verts := PackedVector3Array()
-			mirror_verts.resize(orig_verts.size())
-			for vi in range(orig_verts.size()):
-				var v: Vector3 = orig_verts[vi]
-				mirror_verts[vi] = Vector3(-v.x, v.y, v.z)
-			mirror_arrays[Mesh.ARRAY_VERTEX] = mirror_verts
+		var v_cnt := verts.size()
+		var bones: PackedInt32Array = PackedInt32Array(bones_raw)
+		var weights: PackedFloat32Array = PackedFloat32Array(weights_raw) if weights_raw != null else PackedFloat32Array()
 
-		if arrays[Mesh.ARRAY_NORMAL]:
-			var orig_norms: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL]
-			var mirror_norms := PackedVector3Array()
-			mirror_norms.resize(orig_norms.size())
-			for ni in range(orig_norms.size()):
-				var n: Vector3 = orig_norms[ni]
-				mirror_norms[ni] = Vector3(-n.x, n.y, n.z)
-			mirror_arrays[Mesh.ARRAY_NORMAL] = mirror_norms
+		var new_verts := verts.duplicate()
+		var new_normals: PackedVector3Array = arrays[Mesh.ARRAY_NORMAL].duplicate() if arrays.size() > Mesh.ARRAY_NORMAL and arrays[Mesh.ARRAY_NORMAL] != null else PackedVector3Array()
+		var new_uvs: PackedVector2Array = arrays[Mesh.ARRAY_TEX_UV].duplicate() if arrays.size() > Mesh.ARRAY_TEX_UV and arrays[Mesh.ARRAY_TEX_UV] != null else PackedVector2Array()
+		var new_bones := bones.duplicate()
+		var new_weights := weights.duplicate()
+		var indices_raw = arrays[Mesh.ARRAY_INDEX] if arrays.size() > Mesh.ARRAY_INDEX else null
+		var new_indices: PackedInt32Array = PackedInt32Array(indices_raw) if indices_raw != null else PackedInt32Array()
 
-		if arrays[Mesh.ARRAY_TANGENT]:
-			var orig_tans: PackedFloat32Array = arrays[Mesh.ARRAY_TANGENT]
-			var mirror_tans := PackedFloat32Array()
-			mirror_tans.resize(orig_tans.size())
-			for ti in range(0, orig_tans.size(), 4):
-				mirror_tans[ti] = -orig_tans[ti]
-				mirror_tans[ti + 1] = orig_tans[ti + 1]
-				mirror_tans[ti + 2] = orig_tans[ti + 2]
-				mirror_tans[ti + 3] = -orig_tans[ti + 3]
-			mirror_arrays[Mesh.ARRAY_TANGENT] = mirror_tans
+		for vi in range(v_cnt):
+			var orig_v := verts[vi]
+			# 严格遵循人体左右对称（YZ平面镜像）：X 轴反转，Y 高度与 Z 前后严格保留，杜绝垂直翻转倒立到脖子上
+			new_verts.append(Vector3(-orig_v.x, orig_v.y, orig_v.z))
+			if not new_normals.is_empty():
+				var orig_n := new_normals[vi]
+				new_normals.append(Vector3(-orig_n.x, orig_n.y, orig_n.z))
+			if not new_uvs.is_empty():
+				new_uvs.append(new_uvs[vi])
+			for k in range(4):
+				var b := bones[vi * 4 + k]
+				new_bones.append(sym_map.get(b, b))
+				if not new_weights.is_empty():
+					new_weights.append(weights[vi * 4 + k])
 
-		if arrays[Mesh.ARRAY_TEX_UV]:
-			mirror_arrays[Mesh.ARRAY_TEX_UV] = arrays[Mesh.ARRAY_TEX_UV]
+		if not new_indices.is_empty():
+			var idx_cnt := new_indices.size()
+			for tri in range(0, idx_cnt, 3):
+				var i0 := new_indices[tri] + v_cnt
+				var i1 := new_indices[tri + 1] + v_cnt
+				var i2 := new_indices[tri + 2] + v_cnt
+				new_indices.append(i0)
+				new_indices.append(i2)
+				new_indices.append(i1)
+			arrays[Mesh.ARRAY_INDEX] = new_indices
 
-		if arrays[Mesh.ARRAY_TEX_UV2]:
-			mirror_arrays[Mesh.ARRAY_TEX_UV2] = arrays[Mesh.ARRAY_TEX_UV2]
+		arrays[Mesh.ARRAY_VERTEX] = new_verts
+		if not new_normals.is_empty():
+			arrays[Mesh.ARRAY_NORMAL] = new_normals
+		if not new_uvs.is_empty():
+			arrays[Mesh.ARRAY_TEX_UV] = new_uvs
+		arrays[Mesh.ARRAY_BONES] = new_bones
+		if not new_weights.is_empty():
+			arrays[Mesh.ARRAY_WEIGHTS] = new_weights
+		if arrays.size() > Mesh.ARRAY_TANGENT:
+			arrays[Mesh.ARRAY_TANGENT] = null
 
-		if arrays[Mesh.ARRAY_COLOR]:
-			mirror_arrays[Mesh.ARRAY_COLOR] = arrays[Mesh.ARRAY_COLOR]
+		new_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, arrays)
+		if new_mesh.get_surface_count() > s:
+			var mat := orig_mesh.surface_get_material(s)
+			if mat:
+				new_mesh.surface_set_material(s, mat)
+		modified = true
 
-		if arrays[Mesh.ARRAY_BONES]:
-			var orig_bones: PackedInt32Array = arrays[Mesh.ARRAY_BONES]
-			var mirror_bones := PackedInt32Array()
-			mirror_bones.resize(orig_bones.size())
-			for bi in range(orig_bones.size()):
-				var b_idx: int = orig_bones[bi]
-				mirror_bones[bi] = r_to_l_skin_idx.get(b_idx, b_idx)
-			mirror_arrays[Mesh.ARRAY_BONES] = mirror_bones
+	if modified:
+		mesh_inst.mesh = new_mesh
 
-		if arrays[Mesh.ARRAY_WEIGHTS]:
-			mirror_arrays[Mesh.ARRAY_WEIGHTS] = arrays[Mesh.ARRAY_WEIGHTS]
 
-		if arrays[Mesh.ARRAY_INDEX]:
-			var orig_idx: PackedInt32Array = arrays[Mesh.ARRAY_INDEX]
-			var mirror_idx := PackedInt32Array()
-			mirror_idx.resize(orig_idx.size())
-			for ii in range(0, orig_idx.size(), 3):
-				mirror_idx[ii] = orig_idx[ii]
-				mirror_idx[ii + 1] = orig_idx[ii + 2]
-				mirror_idx[ii + 2] = orig_idx[ii + 1]
-			mirror_arrays[Mesh.ARRAY_INDEX] = mirror_idx
+## 针对上装装备网格，在内存中提纯过滤掉从母版 DFF 错误合并进来的成人皮肤废面及残损袖管/腕环
+## 彻底杜绝双臂浮空袖管与服装贴图污染手臂与胸口
+static func _filter_torso_equipment_mesh(_mesh_inst: MeshInstance3D, _joint_names: Array[String], _is_child: bool) -> void:
+	return
 
-		double_mesh.add_surface_from_arrays(Mesh.PRIMITIVE_TRIANGLES, mirror_arrays)
-		var l_s_idx := double_mesh.get_surface_count() - 1
-		if mat:
-			double_mesh.surface_set_material(l_s_idx, mat)
 
-	mesh_inst.mesh = double_mesh
+## 动态解析下装贴图（覆盖全 10 种种族与职业）
+static func _resolve_child_pants_texture(race: int, gender: int, class_id: int, glb_path: String) -> Texture2D:
+	var base_fn := glb_path.get_file().get_basename().to_lower()
+	var g_code := "m" if gender == 0 else "f"
+	var cand_paths: Array[String] = []
+
+	# 1. 优先尝试提取装备本身编号 (如 a_hfi_04_01_p_h_m -> a_hfi_m_pants04_01.png)
+	if "04_01" in base_fn:
+		match race:
+			Race.HUMAN:
+				if class_id == 1:
+					cand_paths.append("res://assets/tex/texture/item/a_hmy_%s_pants04_01.png" % g_code)
+				elif class_id == 2:
+					cand_paths.append("res://assets/tex/texture/item/a_hen_%s_pants04_01.png" % g_code)
+				else:
+					cand_paths.append("res://assets/tex/texture/item/a_hfi_%s_pants04_01.png" % g_code)
+			Race.NAMEK:
+				if class_id == 4:
+					cand_paths.append("res://assets/tex/texture/item/a_nmy_pants04_01.png")
+				else:
+					cand_paths.append("res://assets/tex/texture/item/a_nfi_pants04_01.png")
+			Race.MAJIN:
+				if class_id == 6:
+					cand_paths.append("res://assets/tex/texture/item/a_mwo_%s_pants04_01.png" % g_code)
+				else:
+					cand_paths.append("res://assets/tex/texture/item/a_mmi_%s_pants04_01.png" % g_code)
+
+	# 2. 尝试从 item 目录中查找 base_fn 相关的贴图
+	cand_paths.append("res://assets/tex/texture/item/%s.png" % base_fn)
+	cand_paths.append("res://assets/tex/texture/item/%s.png" % base_fn.trim_suffix("_h_m").trim_suffix("_h_f"))
+
+	for cp in cand_paths:
+		if FileAccess.file_exists(cp):
+			var t := load_texture_safe(cp)
+			if t:
+				return t
+	return null
+
+
+## 动态解析鞋靴贴图（覆盖全 10 种种族与职业）
+static func _resolve_child_boots_texture(race: int, gender: int, class_id: int, glb_path: String) -> Texture2D:
+	var base_fn := glb_path.get_file().get_basename().to_lower()
+	var g_code := "m" if gender == 0 else "f"
+	var cand_paths: Array[String] = []
+
+	# 1. 尝试原生鞋靴编号 (如 a_hfi_m_boots001 / boots002)
+	match race:
+		Race.HUMAN:
+			if class_id == 1:
+				cand_paths.append("res://assets/tex/texture/item/a_hmy_%s_boots001.png" % g_code)
+				cand_paths.append("res://assets/tex/texture/item/a_hmy_%s_boots002.png" % g_code)
+				cand_paths.append("res://assets/tex/texture/item/a_hmy_f_boots001.png")
+				cand_paths.append("res://assets/tex/texture/item/a_hfi_m_boots001.png")
+			else:
+				cand_paths.append("res://assets/tex/texture/item/a_hfi_%s_boots002.png" % g_code)
+				cand_paths.append("res://assets/tex/texture/item/a_hfi_%s_boots001.png" % g_code)
+		Race.NAMEK:
+			cand_paths.append("res://assets/tex/texture/item/a_nfi_boots001.png")
+			cand_paths.append("res://assets/tex/texture/item/a_nmy_boots001.png")
+		Race.MAJIN:
+			cand_paths.append("res://assets/tex/texture/item/a_mmi_%s_boots001.png" % g_code)
+			cand_paths.append("res://assets/tex/texture/item/a_mwo_%s_boots001.png" % g_code)
+			cand_paths.append("res://assets/tex/texture/item/a_mmi_m_boots001.png")
+
+	cand_paths.append("res://assets/tex/texture/item/%s.png" % base_fn)
+	for cp in cand_paths:
+		if FileAccess.file_exists(cp):
+			var t := load_texture_safe(cp)
+			if t:
+				return t
+	return null
 
 
 static func _get_item_property_glb_path(model_key: String) -> String:

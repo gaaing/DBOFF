@@ -131,6 +131,11 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
+	# 掉出世界虚空深渊保护 (OpenDBO: OutOfWorld 回弹)
+	if global_position.y < -350.0:
+		velocity.y = 0.0
+		global_position.y = 60.0
+
 
 ## 触发微顿帧 (Hit Stop / Frame Freeze)
 func apply_hit_stop(duration: float = 0.05) -> void:

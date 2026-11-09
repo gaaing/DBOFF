@@ -40,12 +40,26 @@ func _process(_delta: float) -> void:
 		_update_chunks(current_chunk)
 
 
-## 世界三维空间坐标转换为区块网格索引 (严格对标 OpenDBO: 地图世界坐标原点为中心, 边界起始为 -1024m)
+## 世界三维空间坐标转换为区块网格索引 (严格对标 OpenDBO: 大世界全球偏置 8192m，独立副本中心偏置 1024m)
 func world_pos_to_chunk_coord(pos: Vector3) -> Vector2i:
+	if is_global_world_mode(pos):
+		return Vector2i(
+			int(floor((pos.x + 8192.0) / chunk_size)),
+			int(floor((pos.z + 8192.0) / chunk_size))
+		)
 	return Vector2i(
 		clampi(int(floor((pos.x + 1024.0) / chunk_size)), 0, 7),
 		clampi(int(floor((pos.z + 1024.0) / chunk_size)), 0, 7)
 	)
+
+
+## 判断当前是否处于大世界全球流式模式
+func is_global_world_mode(pos: Vector3 = Vector3.ZERO) -> bool:
+	if zone_name in ["chunks", "world_02", "main_world"]:
+		return true
+	if abs(pos.x) > 1024.0 or abs(pos.z) > 1024.0:
+		return true
+	return false
 
 
 ## 强制刷新加载指定中心坐标区块
@@ -56,13 +70,21 @@ func force_load_zone(new_zone: String, center_coord: Vector2i = Vector2i.ZERO) -
 	_update_chunks(center_coord)
 
 
+## 同步预加载指定世界空间坐标周围的 3x3 区块 (确保玩家出生时地面碰撞体完备，杜绝开局下坠)
+func preload_area_sync(pos: Vector3) -> void:
+	var center := world_pos_to_chunk_coord(pos)
+	_current_center_chunk = center
+	_update_chunks(center)
+
+
 ## 刷新活跃区块
 func _update_chunks(center: Vector2i) -> void:
 	var required_coords: Dictionary = {}
+	var is_small_dungeon := (not is_global_world_mode() and zone_name != "chunks")
 
 	for x in range(center.x - view_distance_chunks, center.x + view_distance_chunks + 1):
 		for y in range(center.y - view_distance_chunks, center.y + view_distance_chunks + 1):
-			if x < 0 or x > 7 or y < 0 or y > 7:
+			if is_small_dungeon and (x < 0 or x > 7 or y < 0 or y > 7):
 				continue
 			var coord := Vector2i(x, y)
 			required_coords[coord] = true
@@ -79,9 +101,22 @@ func _update_chunks(center: Vector2i) -> void:
 		_unload_chunk(coord)
 
 
+func _resolve_chunk_json_path(coord: Vector2i) -> String:
+	var candidates: Array[String] = [
+		"res://data/terrain/%s_chunks/chunk_%d_%d.json" % [zone_name, coord.x, coord.y],
+		"res://data/terrain/chunks/chunk_%d_%d.json" % [coord.x, coord.y],
+		"res://data/terrain/world_02_chunks/chunk_%d_%d.json" % [coord.x, coord.y],
+		"res://data/terrain/%s/chunk_%d_%d.json" % [zone_name, coord.x, coord.y]
+	]
+	for c in candidates:
+		if FileAccess.file_exists(c):
+			return c
+	return ""
+
+
 func _load_chunk(coord: Vector2i) -> void:
-	var json_path := "res://data/terrain/%s_chunks/chunk_%d_%d.json" % [zone_name, coord.x, coord.y]
-	if not FileAccess.file_exists(json_path):
+	var json_path := _resolve_chunk_json_path(coord)
+	if json_path.is_empty():
 		return
 
 	var file := FileAccess.open(json_path, FileAccess.READ)
@@ -98,7 +133,7 @@ func _load_chunk(coord: Vector2i) -> void:
 	var chunk_data: Dictionary = json.data
 
 	var chunk_root := Node3D.new()
-	chunk_root.name = "Chunk_%s_%d_%d" % [zone_name, coord.x, coord.y]
+	chunk_root.name = "Chunk_%d_%d" % [coord.x, coord.y]
 	add_child(chunk_root)
 
 	# 1. 生成 3D 地形高度网格与物理碰撞体

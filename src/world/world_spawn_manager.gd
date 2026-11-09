@@ -65,18 +65,18 @@ func load_world_spawns(world_name: String) -> void:
 	# 2. 从 assets/tbl 载入 NPC 刷新表 (如 spawn_npc_main_world.json)
 	var npc_path := "res://assets/tbl/spawn_npc_%s.json" % world_name
 	if FileAccess.file_exists(npc_path):
-		var file := FileAccess.open(npc_path, FileAccess.READ)
-		if file:
-			var npc_list = JSON.parse_string(file.get_as_text())
+		var npc_file := FileAccess.open(npc_path, FileAccess.READ)
+		if npc_file:
+			var npc_list = JSON.parse_string(npc_file.get_as_text())
 			if npc_list is Array:
 				for entry in npc_list:
-					var loc: Dictionary = entry.get("spawn_loc", {})
-					var sx: float = float(loc.get("x", 0.0))
-					var sz: float = float(loc.get("z", 0.0))
-					var cell := _get_cell_coord(sx, sz)
-					if not _npc_cells.has(cell):
-						_npc_cells[cell] = []
-					_npc_cells[cell].append(entry)
+					var n_loc: Dictionary = entry.get("spawn_loc", {})
+					var nx: float = float(n_loc.get("x", 0.0))
+					var nz: float = float(n_loc.get("z", 0.0))
+					var n_cell := _get_cell_coord(nx, nz)
+					if not _npc_cells.has(n_cell):
+						_npc_cells[n_cell] = []
+					_npc_cells[n_cell].append(entry)
 
 	_is_initialized = true
 

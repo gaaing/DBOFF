@@ -169,10 +169,10 @@ func load_sound(sound_name: String) -> AudioStream:
 	if clean_name.to_lower().contains("bgm"):
 		var default_bgm := "res://assets/sound/bgm/bgm_share_plain1.ogg"
 		if ResourceLoader.exists(default_bgm):
-			var res := ResourceLoader.load(default_bgm)
-			if res is AudioStream:
-				_sound_cache[clean_name] = res
-				return res
+			var default_res := ResourceLoader.load(default_bgm)
+			if default_res is AudioStream:
+				_sound_cache[clean_name] = default_res
+				return default_res
 
 	return null
 

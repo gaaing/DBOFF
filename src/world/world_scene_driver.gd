@@ -136,12 +136,20 @@ func _setup_player() -> void:
 		player_instance.race = int(prof.get("race", 0)) as DBOCharacterFactory.Race
 		player_instance.gender = int(prof.get("gender", 0)) as DBOCharacterFactory.Gender
 		player_instance.is_adult = bool(prof.get("is_adult", false))
+		player_instance.class_id = int(prof.get("class_id", 0))
 
 		var spawn_pos: Vector3 = initial_player_spawn_pos
 		var world_tx: Dictionary = char_data.get("world_transform", {})
 		var pos_arr: Array = world_tx.get("position", [])
 		if pos_arr.size() == 3:
 			spawn_pos = Vector3(float(pos_arr[0]), float(pos_arr[1]), float(pos_arr[2]))
+
+		# 若坐标处于大世界范围，自动切换为 chunks 大世界全域流式
+		if _chunk_manager:
+			if abs(spawn_pos.x) > 1024.0 or abs(spawn_pos.z) > 1024.0:
+				_chunk_manager.zone_name = "chunks"
+			# 出生前立即同步预加载脚底地表九宫格网格与物理碰撞体，杜绝空中虚空直接下坠
+			_chunk_manager.preload_area_sync(spawn_pos)
 
 		add_child(player_instance)
 		player_instance.global_position = spawn_pos

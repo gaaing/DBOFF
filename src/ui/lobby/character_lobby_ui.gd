@@ -382,22 +382,22 @@ func _connect_events() -> void:
 		if r: r.pressed.connect(func(): _step_attribute("hair", 1))
 
 	if hair_color_row:
-		var l = hair_color_row.get_node_or_null("LeftBtn") as TextureButton
-		var r = hair_color_row.get_node_or_null("RightBtn") as TextureButton
-		if l: l.pressed.connect(func(): _step_attribute("hair_color", -1))
-		if r: r.pressed.connect(func(): _step_attribute("hair_color", 1))
+		var l_hc = hair_color_row.get_node_or_null("LeftBtn") as TextureButton
+		var r_hc = hair_color_row.get_node_or_null("RightBtn") as TextureButton
+		if l_hc: l_hc.pressed.connect(func(): _step_attribute("hair_color", -1))
+		if r_hc: r_hc.pressed.connect(func(): _step_attribute("hair_color", 1))
 
 	if face_row:
-		var l = face_row.get_node_or_null("LeftBtn") as TextureButton
-		var r = face_row.get_node_or_null("RightBtn") as TextureButton
-		if l: l.pressed.connect(func(): _step_attribute("face", -1))
-		if r: r.pressed.connect(func(): _step_attribute("face", 1))
+		var l_fc = face_row.get_node_or_null("LeftBtn") as TextureButton
+		var r_fc = face_row.get_node_or_null("RightBtn") as TextureButton
+		if l_fc: l_fc.pressed.connect(func(): _step_attribute("face", -1))
+		if r_fc: r_fc.pressed.connect(func(): _step_attribute("face", 1))
 
 	if skin_row:
-		var l = skin_row.get_node_or_null("LeftBtn") as TextureButton
-		var r = skin_row.get_node_or_null("RightBtn") as TextureButton
-		if l: l.pressed.connect(func(): _step_attribute("skin_color", -1))
-		if r: r.pressed.connect(func(): _step_attribute("skin_color", 1))
+		var l_sk = skin_row.get_node_or_null("LeftBtn") as TextureButton
+		var r_sk = skin_row.get_node_or_null("RightBtn") as TextureButton
+		if l_sk: l_sk.pressed.connect(func(): _step_attribute("skin_color", -1))
+		if r_sk: r_sk.pressed.connect(func(): _step_attribute("skin_color", 1))
 
 	if random_btn: random_btn.pressed.connect(_on_random_pressed)
 
@@ -772,7 +772,8 @@ func _get_actual_class_id() -> int:
 
 func _update_avatar_preview() -> void:
 	var actual_class := _get_actual_class_id()
-	var starter_items := DBOSaveManager.get_newbie_starter_items(cur_race, actual_class)
+	# 创角模式角色预览动态搭载对应职业的新手装备（武道家绿道服、气功师气功袍、机械师工装等，严格对标 OpenDBO）
+	var preview_equipped: Array = DBOSaveManager.get_newbie_starter_items(cur_race, actual_class)
 
 	if hair_row and hair_row.get_node_or_null("Label"):
 		hair_row.get_node("Label").text = "%s %d" % [DBOLocalizer.get_text("GUI", "DST_LOBBY_HAIR", "发型"), cur_hair + 1]
@@ -783,7 +784,7 @@ func _update_avatar_preview() -> void:
 	if skin_row and skin_row.get_node_or_null("Label"):
 		skin_row.get_node("Label").text = "%s %d" % [DBOLocalizer.get_text("GUI", "DST_LOBBY_SKIN", "肤色"), cur_skin_color + 1]
 
-	avatar_visual_changed.emit(cur_race, cur_gender, actual_class, cur_hair + 1, cur_hair_color + 1, cur_face + 1, cur_skin_color + 1, starter_items)
+	avatar_visual_changed.emit(cur_race, cur_gender, actual_class, cur_hair + 1, cur_hair_color + 1, cur_face + 1, cur_skin_color + 1, preview_equipped)
 
 
 func _on_create_confirm_pressed() -> void:

@@ -183,7 +183,9 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 	var bone_names: Array[String] = []
 	match slot_name:
 		"face":  # 史考特相对于头部骨骼建模挂载
-			bone_names = ["Bip01 Head", "nulleye"]
+			# Core links right-eye equipment to nulleye. Attaching to Head first
+			# leaves the scouter displaced by the head pivot offset on child rigs.
+			bone_names = ["nulleye", "Bip01 Head"]
 		"weapon_r":
 			bone_names = ["nullRhand", "Bip01 R Hand"]
 		"weapon_l":
@@ -244,6 +246,10 @@ func attach_item_to_bone(slot_name: String, glb_path: String, model_name: String
 	attachment.bone_idx = bone_idx
 	attachment.bone_name = _skeleton.get_bone_name(bone_idx)
 	_skeleton.add_child(attachment)
+
+	# 清除可能残留的蒙皮绑定与骨骼路径，作为刚性部件坚固挂载在手部/头部附件节点，杜绝拉出飞天黑色折线
+	mesh_inst.skin = null
+	mesh_inst.skeleton = NodePath("")
 
 	mesh_inst.transform = source_mesh_transform
 	var item_transform := _get_item_attach_transform(model_name)
@@ -361,17 +367,6 @@ func attach_object_to_bone(bone_name: String, obj_node: Node3D, offset: Vector3 
 	obj_node.position = offset
 	attachment.add_child(obj_node)
 	return attachment
-
-
-## 载入并应用骨骼缩放矩阵（魔人肥胖/矮小、那美克星人体型调整）
-func apply_bone_scaling(bone_data: Dictionary) -> void:
-	if bone_data.is_empty():
-		return
-
-	if bone_data.get("apply_base_scale", false):
-		var base_scale: Array = bone_data.get("base_scale", [1.0, 1.0, 1.0])
-		if base_scale.size() == 3:
-			scale = Vector3(base_scale[0], base_scale[1], base_scale[2])
 
 
 ## 播放指定动作 (支持指定融合过渡时长)
@@ -561,6 +556,115 @@ func _resolve_head_mesh_path(c_race: int, c_gender: int, c_adult: bool, hair_num
 	return ""
 
 
+## 动态解析幼年素体鞋靴贴图（严格根据种族、性别、职业以及装备模型分流）
+## 动态解析幼年鞋靴贴图（严格根据种族、性别、职业以及装备模型分流）
+static func _resolve_child_boots_texture(c_race: int, c_gender: int, class_id: int, glb_path: String) -> Texture2D:
+	var path_lower := glb_path.to_lower()
+	var candidates: Array[String] = []
+	var num_str := "001"
+	var p_match := path_lower.split("_")
+	for p in p_match:
+		if p.is_valid_int() and p.length() <= 3:
+			num_str = "%03d" % p.to_int()
+
+	var is_female := (c_gender == 1)
+	var gender_code := "f" if is_female else "m"
+
+	match c_race:
+		0: # Human
+			if class_id == 1: # Mystic (气功师)
+				candidates.append("res://assets/tex/texture/item/a_hmy_%s_boot%s.png" % [gender_code, num_str])
+				candidates.append("res://assets/tex/texture/item/a_hmy_%s_boots%s.png" % [gender_code, num_str])
+				candidates.append("res://assets/tex/texture/item/a_hmy_%s_boot001.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_hmy_%s_boots001.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_hmy_f_boots001.png")
+				candidates.append("res://assets/tex/texture/item/a_hfi_m_boots001.png")
+			elif class_id == 2: # Engineer (机械师)
+				candidates.append("res://assets/tex/texture/item/a_hen_%s_boots%s.png" % [gender_code, num_str])
+				candidates.append("res://assets/tex/texture/item/a_hen_%s_boots001.png" % gender_code)
+			else: # Fighter (武道家)
+				candidates.append("res://assets/tex/texture/item/a_hfi_%s_boots%s.png" % [gender_code, num_str])
+				candidates.append("res://assets/tex/texture/item/a_hfi_%s_boots002.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_hfi_%s_boots001.png" % gender_code)
+		1: # Namek
+			if class_id == 4: # Namek Mystic
+				candidates.append("res://assets/tex/texture/item/a_nmy_boots%s.png" % num_str)
+				candidates.append("res://assets/tex/texture/item/a_nmy_boots001.png")
+			else: # Namek Fighter
+				candidates.append("res://assets/tex/texture/item/a_nfi_boots%s.png" % num_str)
+				candidates.append("res://assets/tex/texture/item/a_nfi_boots001.png")
+		2: # Majin
+			if class_id == 6: # Wonder Majin
+				candidates.append("res://assets/tex/texture/item/a_mwo_%s_boots%s.png" % [gender_code, num_str])
+				candidates.append("res://assets/tex/texture/item/a_mwo_%s_boots001.png" % gender_code)
+			else: # Mighty Majin
+				candidates.append("res://assets/tex/texture/item/a_mmi_%s_boots%s.png" % [gender_code, num_str])
+				candidates.append("res://assets/tex/texture/item/a_mmi_%s_boot%s.png" % [gender_code, num_str])
+				candidates.append("res://assets/tex/texture/item/a_mmi_%s_boots001.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_mmi_%s_boot001.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_mmi_m_boots001.png")
+
+	for c in candidates:
+		var tex := DBOCharacterFactory.load_texture_safe(c)
+		if tex:
+			return tex
+	return null
+
+
+## 动态解析幼年素体长裤贴图（严格根据种族、性别、职业以及装备模型分流）
+static func _resolve_child_pants_texture(c_race: int, c_gender: int, class_id: int, glb_path: String) -> Texture2D:
+	var candidates: Array[String] = []
+	var gender_code := "f" if c_gender == 1 else "m"
+	match c_race:
+		0: # Human
+			if class_id == 1: # 气功师
+				candidates.append("res://assets/tex/texture/item/a_hmy_%s_pants04_01.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_hmy_%s_pants_skin.png" % gender_code)
+			elif class_id == 2: # 机械师
+				candidates.append("res://assets/tex/texture/item/a_hen_%s_pants04_01.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_hen_%s_pants_skin.png" % gender_code)
+			else: # 武道家
+				candidates.append("res://assets/tex/texture/item/a_hfi_%s_pants04_01.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_hfi_%s_pants_skin.png" % gender_code)
+		1: # Namek
+			if class_id == 4:
+				candidates.append("res://assets/tex/texture/item/a_nmy_pants04_01.png")
+				candidates.append("res://assets/tex/texture/item/a_nmy_m_pants04_01.png")
+			else:
+				candidates.append("res://assets/tex/texture/item/a_nfi_pants04_01.png")
+				candidates.append("res://assets/tex/texture/item/a_nfi_m_pants04_01.png")
+			candidates.append("res://assets/tex/texture/item/a_nam_pants_skin01.png")
+		2: # Majin
+			if class_id == 6:
+				candidates.append("res://assets/tex/texture/item/a_mwo_%s_pants04_01.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_maj_f_pants_skin.png")
+			else:
+				candidates.append("res://assets/tex/texture/item/a_mmi_%s_pants04_01.png" % gender_code)
+				candidates.append("res://assets/tex/texture/item/a_maj_m_pants_skin.png")
+
+	for c in candidates:
+		var tex := DBOCharacterFactory.load_texture_safe(c)
+		if tex:
+			return tex
+	return null
+
+
+## 动态解析未穿下装时的裸腿皮肤贴图 (杜绝脱裤导致下半身断肢与透明悬空)
+static func _resolve_naked_leg_texture(c_race: int, c_gender: int) -> Texture2D:
+	var path := ""
+	match c_race:
+		0:
+			path = "res://assets/tex/texture/item/a_hfi_m_pants_skin.png" if c_gender == 0 else "res://assets/tex/texture/item/a_hum_f_ch_pants_skin.png"
+		1:
+			path = "res://assets/tex/texture/item/a_nam_pants_skin01.png"
+		2:
+			path = "res://assets/tex/texture/item/a_maj_m_pants_skin.png" if c_gender == 0 else "res://assets/tex/texture/item/a_maj_f_pants_skin.png"
+	var t := DBOCharacterFactory.load_texture_safe(path)
+	if t == null and c_race == 0:
+		t = DBOCharacterFactory.load_texture_safe("res://assets/tex/texture/item/a_hfi_m_pants_skin.png")
+	return t
+
+
 ## 应用官方外观定制 (发型/发色/触角、五官面部贴图与肤色，严格对标 DefaultItemList.xml 与 NtlPLEquipItem.cpp)
 func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hair_color_id: int, face_id: int, skin_color_id: int) -> void:
 	_ensure_skeleton()
@@ -603,12 +707,21 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 	var face_tex: Texture2D = (ResourceLoader.load(face_tex_path) as Texture2D) if (face_tex_path != "" and ResourceLoader.exists(face_tex_path)) else null
 
 	var inv_mat := _get_invisible_material()
-	var has_torso := (_slots.get("torso") != null)
-	var has_legs := (_slots.get("legs") != null)
-	var has_hands := (_slots.get("hands") != null)
-	var has_feet := (_slots.get("feet") != null)
+	var has_torso := (_slots.get("torso") != null) or (equipped_glb_paths.has("torso") and not str(equipped_glb_paths.get("torso", "")).is_empty())
+	var has_legs := (_slots.get("legs") != null) or (equipped_glb_paths.has("legs") and not str(equipped_glb_paths.get("legs", "")).is_empty())
+	var has_hands := (_slots.get("hands") != null) or (equipped_glb_paths.has("hands") and not str(equipped_glb_paths.get("hands", "")).is_empty())
+	var has_feet := (_slots.get("feet") != null) or (equipped_glb_paths.has("feet") and not str(equipped_glb_paths.get("feet", "")).is_empty())
 
 	var target_hair_slot := "mat_hair_%02d" % hair_num
+	var gender_code_str := "f" if c_gender == 1 else "m"
+	var smat: ShaderMaterial = null
+	var umat: StandardMaterial3D = null
+	var cmat: StandardMaterial3D = null
+	var nmat: StandardMaterial3D = null
+	var skin_tex: Texture2D = null
+	var arm_path := ""
+	var pfx := ""
+	var stex_path := ""
 
 	for s in range(mesh_inst.mesh.get_surface_count()):
 		var base_mat := mesh_inst.mesh.surface_get_material(s)
@@ -621,6 +734,18 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 			orig_tex = (base_mat as BaseMaterial3D).albedo_texture
 			if orig_tex:
 				tex_name = orig_tex.resource_path.to_lower()
+
+		# 贴图安全回退检索：若导入时未自动绑定纹理，依据材质名从 item/character 目录自动补齐
+		if orig_tex == null and not mat_name.is_empty():
+			var clean_tex_name := mat_name.to_lower()
+			var cand_dirs: Array[String] = ["res://assets/tex/texture/item/", "res://assets/tex/texture/character/"]
+			for cand_dir: String in cand_dirs:
+				var cpath: String = cand_dir + clean_tex_name + ".png"
+				if FileAccess.file_exists(cpath):
+					orig_tex = DBOCharacterFactory.load_texture_safe(cpath)
+					if orig_tex:
+						tex_name = cpath.to_lower()
+						break
 
 		var is_hair_slot := mat_name.begins_with("mat_hair_") or "head01" in mat_name or "hair_acc" in mat_name or "hair_accessory" in mat_name
 		var is_fskin := ("fskin" in mat_name or "fskin" in tex_name)
@@ -716,7 +841,7 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 				fmat.set_shader_parameter("skin_tint", face_skin_tint)
 				mesh_inst.set_surface_override_material(s, fmat)
 			elif base_face_tex:
-				var smat := ShaderMaterial.new()
+				smat = ShaderMaterial.new()
 				smat.shader = CHARACTER_SKIN_SHADER
 				smat.set_shader_parameter("base_tex", base_face_tex)
 				smat.set_shader_parameter("skin_tint", face_skin_tint)
@@ -733,7 +858,7 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 			if should_hide_underwear:
 				mesh_inst.set_surface_override_material(s, inv_mat)
 			else:
-				var umat := StandardMaterial3D.new()
+				umat = StandardMaterial3D.new()
 				umat.cull_mode = BaseMaterial3D.CULL_BACK
 				umat.roughness = 0.65
 				if orig_tex == null:
@@ -744,175 +869,171 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 				mesh_inst.set_surface_override_material(s, umat)
 		elif is_jacket:
 			# 素体躯干与手臂表面（包含 jacket_skin 露胸/腹/臂皮肤与新手外套）
-			var is_majin_hand := (c_race == 2 and ((c_gender == 1 and (s == 2 or s == 10)) or (c_gender == 0 and (s == 4 or s == 7))))
-			var is_namek_hand := (c_race == 1 and (s == 2 or s == 3))
-			var is_human_hand := false
-
-			var arrays := mesh_inst.mesh.surface_get_arrays(s)
-			if c_race == 0 and arrays.size() > Mesh.ARRAY_VERTEX and arrays[Mesh.ARRAY_VERTEX].size() > 0:
-				var verts: PackedVector3Array = arrays[Mesh.ARRAY_VERTEX]
-				var min_x := 999.0
-				var max_x := -999.0
-				for v in verts:
-					if v.x < min_x: min_x = v.x
-					if v.x > max_x: max_x = v.x
-				if min_x > 0.35 or max_x < -0.35:
-					is_human_hand = true
-
-			var is_hand_surface := is_majin_hand or is_namek_hand or is_human_hand
-
-			if is_hand_surface:
-				# 手套完整覆盖掌部时隐藏素体手掌，避免裸手从手套中穿出。
-				if has_hands:
-					mesh_inst.set_surface_override_material(s, inv_mat)
-				elif c_race == 1:
-					# 那美克星人手掌：直接采用原生烘焙高精纹理 (StandardMaterial3D 保真)
-					var nmat := StandardMaterial3D.new()
-					nmat.roughness = 0.65
-					nmat.cull_mode = BaseMaterial3D.CULL_BACK
-					var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
-					if ResourceLoader.exists(stex_path):
-						nmat.albedo_texture = ResourceLoader.load(stex_path)
-					elif orig_tex:
-						nmat.albedo_texture = orig_tex
-					nmat.albedo_color = Color.WHITE
-					mesh_inst.set_surface_override_material(s, nmat)
-				else:
-					var skin_tex: Texture2D = orig_tex
-					if c_race == 2:
-						var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
-						skin_tex = DBOCharacterFactory.load_texture_safe(arm_path)
-					var smat := ShaderMaterial.new()
-					smat.shader = CHARACTER_SKIN_SHADER
-					if skin_tex:
-						smat.set_shader_parameter("base_tex", skin_tex)
-					smat.set_shader_parameter("skin_tint", body_skin_tint)
-					smat.set_shader_parameter("race_mode", c_race)
-					mesh_inst.set_surface_override_material(s, smat)
-			else:
-				# 躯干胸腹/颈肩/大臂表面
-				# 魔人族：Surface 7(女)/Surface 8(男)为双臂，Surface 8(女)/Surface 9(男)为胸腹
-				var is_majin_arm := (c_race == 2 and ((c_gender == 1 and s == 7) or (c_gender == 0 and s == 8)))
-				var is_majin_torso_skin := (c_race == 2 and ((c_gender == 1 and s == 8) or (c_gender == 0 and s == 9)))
-
-				# 检查已穿戴上衣是否自带手臂模型 (若自带手臂，则隐藏素体手臂避免双重重叠导致 Z-fighting 白模)
-				var torso_path := str(equipped_glb_paths.get("torso", "")).to_lower()
-				var torso_has_its_own_arm := ("mmi" in torso_path)
-
-				if is_majin_arm:
-					if has_torso and torso_has_its_own_arm:
-						# 上衣模型已内建手臂网格，隐藏素体手臂，彻底根除双层网格重叠引起的白模走样
-						mesh_inst.set_surface_override_material(s, inv_mat)
+			# 严格对标 OpenDBO: 人类素体胸腹、大臂、小臂与手掌统一呈现纯净肉色皮肤着色器渲染，彻底杜绝脏贴图与断臂
+			if c_race == 0:
+				var human_skin_tex := orig_tex
+				if human_skin_tex == null:
+					var hskin_path := ""
+					if character_class_id == 1:
+						hskin_path = "res://assets/tex/texture/item/a_hmy_%s_jacket_skin.png" % gender_code_str
+					elif character_class_id == 2:
+						hskin_path = "res://assets/tex/texture/item/a_hen_%s_jacket_skin.png" % gender_code_str
 					else:
-						# 意魔人上装(围巾)或无上衣：显示素体手臂
-						var arm_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
+						if is_adult:
+							hskin_path = "res://assets/tex/texture/item/a_hfi_m_jacket_skin.png" if c_gender == 0 else "res://assets/tex/texture/item/a_hum_f_jacket_skin.png"
+						else:
+							hskin_path = "res://assets/tex/texture/item/a_hfi_m_jacket_skin.png" if c_gender == 0 else "res://assets/tex/texture/item/a_hum_f_ch_jacket_skin.png"
+					human_skin_tex = DBOCharacterFactory.load_texture_safe(hskin_path)
+					if human_skin_tex == null:
+						human_skin_tex = DBOCharacterFactory.load_texture_safe("res://assets/tex/texture/item/a_hfi_m_jacket_skin.png")
+
+				smat = ShaderMaterial.new()
+				smat.shader = CHARACTER_SKIN_SHADER
+				if human_skin_tex:
+					smat.set_shader_parameter("base_tex", human_skin_tex)
+				smat.set_shader_parameter("skin_tint", body_skin_tint)
+				smat.set_shader_parameter("race_mode", 0)
+				mesh_inst.set_surface_override_material(s, smat)
+			else:
+				var is_majin_hand := (c_race == 2 and ((c_gender == 1 and (s == 2 or s == 10)) or (c_gender == 0 and (s == 4 or s == 7))))
+				var is_namek_hand := (c_race == 1 and (s == 2 or s == 3))
+				var is_hand_surface := is_majin_hand or is_namek_hand
+
+				if is_hand_surface:
+					# 素体手掌永远保留正常渲染，确保左手掌完好无损，杜绝单侧手部装备导致左手断肢
+					if c_race == 1:
+						# 那美克星人手掌：直接采用原生烘焙高精纹理 (StandardMaterial3D 保真)
+						nmat = StandardMaterial3D.new()
+						nmat.roughness = 0.65
+						nmat.cull_mode = BaseMaterial3D.CULL_DISABLED
+						pfx = "a_nmy" if character_class_id == 4 else "a_nfi"
+						stex_path = "res://assets/tex/texture/item/%s_ad_jacket_skin%02d.png" % [pfx, skin_col_num]
+						if ResourceLoader.exists(stex_path):
+							nmat.albedo_texture = ResourceLoader.load(stex_path)
+						elif orig_tex:
+							nmat.albedo_texture = orig_tex
+						nmat.albedo_color = Color.WHITE
+						mesh_inst.set_surface_override_material(s, nmat)
+					else:
+						arm_path = "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
+						skin_tex = DBOCharacterFactory.load_texture_safe(arm_path)
+						smat = ShaderMaterial.new()
+						smat.shader = CHARACTER_SKIN_SHADER
+						smat.set_shader_parameter("base_tex", skin_tex if skin_tex else orig_tex)
+						smat.set_shader_parameter("skin_tint", body_skin_tint)
+						smat.set_shader_parameter("race_mode", 2)
+						mesh_inst.set_surface_override_material(s, smat)
+				else:
+					# 躯干胸腹/颈肩/大臂表面
+					# 魔人族：Surface 7(女)/Surface 8(男)为双臂，Surface 8(女)/Surface 9(男)为胸腹
+					var is_majin_arm := (c_race == 2 and ((c_gender == 1 and s == 7) or (c_gender == 0 and s == 8)))
+					var is_majin_torso_skin := (c_race == 2 and ((c_gender == 1 and s == 8) or (c_gender == 0 and s == 9)))
+
+					if is_majin_arm:
+						# 上衣模型已在工厂端提纯过滤掉手臂废面，素体手臂始终完整呈现并正确染色
+						arm_path = "res://assets/tex/texture/item/a_maj_f_jacket_skin2.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin2.png"
 						var arm_tex: Texture2D = DBOCharacterFactory.load_texture_safe(arm_path)
-						var smat := ShaderMaterial.new()
+						smat = ShaderMaterial.new()
 						smat.shader = CHARACTER_SKIN_SHADER
 						smat.set_shader_parameter("base_tex", arm_tex if arm_tex else orig_tex)
 						smat.set_shader_parameter("skin_tint", body_skin_tint)
 						smat.set_shader_parameter("race_mode", 2)
 						mesh_inst.set_surface_override_material(s, smat)
-				elif is_majin_torso_skin:
-					# 魔人胸腹皮肤：意魔人围巾与新手背心均为开胸款，素体胸腹必须显示并正确染色
-					var torso_skin_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin1.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin1.png"
-					var torso_tex: Texture2D = DBOCharacterFactory.load_texture_safe(torso_skin_path)
-					var smat := ShaderMaterial.new()
-					smat.shader = CHARACTER_SKIN_SHADER
-					smat.set_shader_parameter("base_tex", torso_tex if torso_tex else orig_tex)
-					smat.set_shader_parameter("skin_tint", body_skin_tint)
-					smat.set_shader_parameter("race_mode", 2)
-					mesh_inst.set_surface_override_material(s, smat)
-				elif c_race == 1:
-					# 那美克星人：新手上装为无袖开胸小马甲，素体颈肩胸腹皮肤必须显式保留！直接使用原生烘焙贴图
-					var nmat := StandardMaterial3D.new()
-					nmat.roughness = 0.65
-					nmat.cull_mode = BaseMaterial3D.CULL_BACK
-					var stex_path := "res://assets/tex/texture/item/a_nfi_ad_jacket_skin%02d.png" % skin_col_num
-					if ResourceLoader.exists(stex_path):
-						nmat.albedo_texture = ResourceLoader.load(stex_path)
-					elif orig_tex:
-						nmat.albedo_texture = orig_tex
-					nmat.albedo_color = Color.WHITE
-					mesh_inst.set_surface_override_material(s, nmat)
-				else:
-					# 人类躯干
-					var should_hide_torso := has_torso and is_adult
-					if should_hide_torso:
+					elif is_majin_torso_skin:
+						# 魔人胸腹皮肤：意魔人围巾与新手背心均为开胸款，素体胸腹必须显示并正确染色
+						var torso_skin_path := "res://assets/tex/texture/item/a_maj_f_jacket_skin1.png" if c_gender == 1 else "res://assets/tex/texture/item/a_maj_m_jacket_skin1.png"
+						var torso_tex: Texture2D = DBOCharacterFactory.load_texture_safe(torso_skin_path)
+						smat = ShaderMaterial.new()
+						smat.shader = CHARACTER_SKIN_SHADER
+						smat.set_shader_parameter("base_tex", torso_tex if torso_tex else orig_tex)
+						smat.set_shader_parameter("skin_tint", body_skin_tint)
+						smat.set_shader_parameter("race_mode", 2)
+						mesh_inst.set_surface_override_material(s, smat)
+					elif c_race == 1:
+						# 那美克星人：新手上装为无袖开胸小马甲，素体颈肩胸腹皮肤必须显式保留！直接使用原生烘焙贴图
+						nmat = StandardMaterial3D.new()
+						nmat.roughness = 0.65
+						nmat.cull_mode = BaseMaterial3D.CULL_DISABLED
+						pfx = "a_nmy" if character_class_id == 4 else "a_nfi"
+						stex_path = "res://assets/tex/texture/item/%s_ad_jacket_skin%02d.png" % [pfx, skin_col_num]
+						if ResourceLoader.exists(stex_path):
+							nmat.albedo_texture = ResourceLoader.load(stex_path)
+						elif orig_tex:
+							nmat.albedo_texture = orig_tex
+						nmat.albedo_color = Color.WHITE
+						mesh_inst.set_surface_override_material(s, nmat)
+		elif is_pants:
+			# 素体下装表面（包含 pants_skin 腿部皮肤与底裤）
+			if not is_adult:
+				var is_underwear_mesh := ("pants000" in mat_name or "underwear" in mat_name or is_underwear)
+				var is_foot_skin_mesh := (c_race == 0 and ((c_gender == 0 and (s == 3 or s == 5)) or (c_gender == 1 and (s == 10 or s == 12))))
+
+				if is_foot_skin_mesh:
+					# 脚部裸足皮肤：穿鞋时隐形（由原生 boots 网格显示鞋靴），脱鞋时无论是否穿裤均呈现裸足皮肤
+					if has_feet:
 						mesh_inst.set_surface_override_material(s, inv_mat)
 					else:
-						if is_skin:
-							var smat := ShaderMaterial.new()
-							smat.shader = CHARACTER_SKIN_SHADER
-							if orig_tex:
-								smat.set_shader_parameter("base_tex", orig_tex)
-							smat.set_shader_parameter("skin_tint", body_skin_tint)
-							smat.set_shader_parameter("race_mode", c_race)
-							mesh_inst.set_surface_override_material(s, smat)
-						else:
-							var cmat := StandardMaterial3D.new()
-							cmat.cull_mode = BaseMaterial3D.CULL_BACK
-							cmat.roughness = 0.65
-							if orig_tex:
-								cmat.albedo_texture = orig_tex
-							cmat.albedo_color = Color.WHITE
-							mesh_inst.set_surface_override_material(s, cmat)
-		elif is_pants:
-			# 素体下装表面（包含 pants_skin 腿部皮肤与新手裤子）
-			if is_skin:
-				# 皮肤表面绝对不能隐形！保留原生皮肤贴图并调色，魔人族严格同步粉红肤色
-				if c_race == 2:
-					var smat := ShaderMaterial.new()
-					smat.shader = CHARACTER_SKIN_SHADER
-					if orig_tex:
-						smat.set_shader_parameter("base_tex", orig_tex)
-					smat.set_shader_parameter("skin_tint", body_skin_tint)
-					smat.set_shader_parameter("race_mode", 2)
-					mesh_inst.set_surface_override_material(s, smat)
-				elif c_race == 1:
-					var nmat := StandardMaterial3D.new()
-					nmat.roughness = 0.65
-					nmat.cull_mode = BaseMaterial3D.CULL_BACK
-					var stex_path := "res://assets/tex/texture/item/a_nam_pants_skin%02d.png" % skin_col_num
-					if ResourceLoader.exists(stex_path):
-						nmat.albedo_texture = ResourceLoader.load(stex_path)
-					elif orig_tex:
-						nmat.albedo_texture = orig_tex
-					nmat.albedo_color = Color.WHITE
-					mesh_inst.set_surface_override_material(s, nmat)
+						smat = ShaderMaterial.new()
+						smat.shader = CHARACTER_SKIN_SHADER
+						var skin_pants_tex := _resolve_naked_leg_texture(c_race, c_gender)
+						smat.set_shader_parameter("base_tex", skin_pants_tex if skin_pants_tex else orig_tex)
+						smat.set_shader_parameter("skin_tint", body_skin_tint)
+						smat.set_shader_parameter("race_mode", c_race)
+						mesh_inst.set_surface_override_material(s, smat)
+				elif is_underwear_mesh:
+					# 选角/脱裤时的底裤部分：穿裤时隐形，脱裤时显示
+					if has_legs:
+						mesh_inst.set_surface_override_material(s, inv_mat)
+					else:
+						umat = StandardMaterial3D.new()
+						umat.cull_mode = BaseMaterial3D.CULL_DISABLED
+						umat.roughness = 0.65
+						umat.albedo_texture = _resolve_underwear_texture(c_race, c_gender, mat_name)
+						umat.albedo_color = Color.WHITE
+						mesh_inst.set_surface_override_material(s, umat)
 				else:
-					var smat := ShaderMaterial.new()
+					# 原生下装/裸腿表面（pants_skin）：
+					# 穿裤状态（has_legs）：穿戴外部独立 3D 裤子模型，素体下半身隐形，彻底杜绝穿模与双层堆叠
+					# 脱裤状态（not has_legs）：渲染原生裸腿皮肤贴图，按角色肤色着色器正常显示，杜绝断腿与透明悬空
+					if has_legs:
+						mesh_inst.set_surface_override_material(s, inv_mat)
+					else:
+						smat = ShaderMaterial.new()
+						smat.shader = CHARACTER_SKIN_SHADER
+						var skin_pants_tex := _resolve_naked_leg_texture(c_race, c_gender)
+						smat.set_shader_parameter("base_tex", skin_pants_tex if skin_pants_tex else orig_tex)
+						smat.set_shader_parameter("skin_tint", body_skin_tint)
+						smat.set_shader_parameter("race_mode", c_race)
+						mesh_inst.set_surface_override_material(s, smat)
+			else:
+				# 成人期下装：穿戴外部长裤时隐藏素体，脱裤状态渲染底裤与裸腿皮肤
+				if has_legs:
+					mesh_inst.set_surface_override_material(s, inv_mat)
+				elif is_skin:
+					smat = ShaderMaterial.new()
 					smat.shader = CHARACTER_SKIN_SHADER
 					if orig_tex:
 						smat.set_shader_parameter("base_tex", orig_tex)
 					smat.set_shader_parameter("skin_tint", body_skin_tint)
-					smat.set_shader_parameter("race_mode", 0)
+					smat.set_shader_parameter("race_mode", c_race)
 					mesh_inst.set_surface_override_material(s, smat)
-			elif has_legs and is_adult:
-				mesh_inst.set_surface_override_material(s, inv_mat)
-			else:
-				var cmat := StandardMaterial3D.new()
-				cmat.cull_mode = BaseMaterial3D.CULL_BACK
-				cmat.roughness = 0.65
-				if orig_tex:
-					cmat.albedo_texture = orig_tex
-				cmat.albedo_color = Color.WHITE
-				mesh_inst.set_surface_override_material(s, cmat)
+				else:
+					cmat = StandardMaterial3D.new()
+					cmat.cull_mode = BaseMaterial3D.CULL_DISABLED
+					cmat.roughness = 0.65
+					if orig_tex:
+						cmat.albedo_texture = orig_tex
+					cmat.albedo_color = Color.WHITE
+					mesh_inst.set_surface_override_material(s, cmat)
 		elif is_boots:
-			if has_feet:
-				mesh_inst.set_surface_override_material(s, inv_mat)
-			else:
-				var cmat := StandardMaterial3D.new()
-				cmat.cull_mode = BaseMaterial3D.CULL_BACK
-				cmat.roughness = 0.65
-				if orig_tex:
-					cmat.albedo_texture = orig_tex
-				cmat.albedo_color = Color.WHITE
-				mesh_inst.set_surface_override_material(s, cmat)
+			# 素体双脚表面（旧素体自带靴子网格）：
+			# 当穿鞋状态（has_feet）：素体自带靴子表面彻底设为隐形剔除（inv_mat），让外部独立 3D 装备靴子显露，杜绝内外两层鞋重叠穿模！
+			# 当脱鞋状态（not has_feet）：素体自带靴子表面同样隐形剔除，由脚部裸足皮肤呈现光脚！
+			mesh_inst.set_surface_override_material(s, inv_mat)
 		elif is_skin:
 			# 其余素体裸露皮肤调色
-			var skin_tex: Texture2D = orig_tex
-			var smat := ShaderMaterial.new()
+			skin_tex = orig_tex
+			smat = ShaderMaterial.new()
 			smat.shader = CHARACTER_SKIN_SHADER
 			if skin_tex:
 				smat.set_shader_parameter("base_tex", skin_tex)
@@ -932,11 +1053,11 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 			else:
 				var target_skin_col := Color.WHITE if c_race == 1 else current_skin_color
 				for s in range(torso_mesh.mesh.get_surface_count()):
-					var smat := torso_mesh.get_surface_override_material(s)
-					if smat == null:
-						smat = torso_mesh.mesh.surface_get_material(s)
-					if smat and "skin" in smat.resource_name.to_lower():
-						var skin_mat := smat.duplicate() as StandardMaterial3D
+					var torso_mat := torso_mesh.get_surface_override_material(s)
+					if torso_mat == null:
+						torso_mat = torso_mesh.mesh.surface_get_material(s)
+					if torso_mat and "skin" in torso_mat.resource_name.to_lower():
+						var skin_mat := torso_mat.duplicate() as StandardMaterial3D
 						if skin_mat:
 							skin_mat.albedo_color = target_skin_col
 							torso_mesh.set_surface_override_material(s, skin_mat)
@@ -945,16 +1066,16 @@ func apply_character_customization(c_race: int, c_gender: int, hair_id: int, hai
 		if _slots.get(slot_key) != null and is_instance_valid(_slots[slot_key]):
 			var part_mesh := _slots[slot_key] as MeshInstance3D
 			if part_mesh and part_mesh.mesh:
-				var target_skin_col := Color.WHITE if c_race == 1 else current_skin_color
+				var part_target_skin_col := Color.WHITE if c_race == 1 else current_skin_color
 				for s in range(part_mesh.mesh.get_surface_count()):
-					var smat := part_mesh.get_surface_override_material(s)
-					if smat == null:
-						smat = part_mesh.mesh.surface_get_material(s)
-					if smat and "skin" in smat.resource_name.to_lower():
-						var skin_mat := smat.duplicate() as StandardMaterial3D
-						if skin_mat:
-							skin_mat.albedo_color = target_skin_col
-							part_mesh.set_surface_override_material(s, skin_mat)
+					var part_mat := part_mesh.get_surface_override_material(s)
+					if part_mat == null:
+						part_mat = part_mesh.mesh.surface_get_material(s)
+					if part_mat and "skin" in part_mat.resource_name.to_lower():
+						var part_skin_mat := part_mat.duplicate() as StandardMaterial3D
+						if part_skin_mat:
+							part_skin_mat.albedo_color = part_target_skin_col
+							part_mesh.set_surface_override_material(s, part_skin_mat)
 
 
 ## 动态解析各族内衣/底裤贴图路径 (对标 OpenDBO: 原生底裤贴图资源)

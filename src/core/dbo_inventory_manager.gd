@@ -79,10 +79,10 @@ func init_newbie_inventory(race: int, class_id: int) -> void:
 	var starter_items: Array = matched_entry.get("starter_items", [])
 	# 遍历 starter_items 查找胶囊盒 (pos == 255)
 	for item_info in starter_items:
-		var tblidx: int = int(item_info.get("item_tblidx", 0))
-		var pos: int = int(item_info.get("pos", 255))
-		if pos == 255 and is_capsule_kit(tblidx):
-			equip_capsule_kit(0, tblidx)
+		var kit_tblidx: int = int(item_info.get("item_tblidx", 0))
+		var kit_pos: int = int(item_info.get("pos", 255))
+		if kit_pos == 255 and is_capsule_kit(kit_tblidx):
+			equip_capsule_kit(0, kit_tblidx)
 			break
 
 	# 若未配置胶囊盒，默认加载 16 格基本胶囊盒 19901

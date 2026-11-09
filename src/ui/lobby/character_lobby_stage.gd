@@ -185,11 +185,6 @@ func _ready() -> void:
 	
 	if current_visual_instance == null:
 		_load_character_model(0, 0, 1, 4, 1, 2)
-		var starters := DBOSaveManager.get_newbie_starter_items(0, 0)
-		for itm in starters:
-			var itm_tblidx: int = int(itm.get("item_tblidx", itm.get("tblidx", 0)))
-			if itm_tblidx > 0:
-				DBOCharacterFactory.equip_item_to_character(current_visual_instance, itm_tblidx)
 	
 	# 播放大厅背景音乐
 	if AudioManager:
@@ -564,16 +559,22 @@ func _on_avatar_visual_changed(race: int, gender: int, class_id: int, hair: int,
 		_load_character_model(race, gender, hair, hair_color, face, skin_color)
 	else:
 		if current_visual_instance:
+			current_visual_instance.character_class_id = current_class_id
 			current_visual_instance.apply_character_customization(race, gender, hair, hair_color, face, skin_color)
 	if current_visual_instance:
 		current_visual_instance.character_class_id = current_class_id
 
 	# 装备初始新手部件或已穿戴装备 (适配成人素体与儿童烘焙素体)
-	if current_visual_instance and not equipped_items.is_empty():
-		for itm in equipped_items:
-			var itm_tblidx: int = int(itm.get("item_tblidx", itm.get("tblidx", 0)))
-			if itm_tblidx > 0:
-				DBOCharacterFactory.equip_item_to_character(current_visual_instance, itm_tblidx)
+	if current_visual_instance:
+		if not equipped_items.is_empty():
+			for itm in equipped_items:
+				var itm_tblidx: int = int(itm.get("item_tblidx", itm.get("tblidx", 0)))
+				if itm_tblidx > 0:
+					DBOCharacterFactory.equip_item_to_character(current_visual_instance, itm_tblidx)
+		else:
+			# 创角模式或裸身预览状态：卸下所有防具与武器，完美恢复纯净素体
+			for slot_k in ["torso", "legs", "feet", "hands", "weapon_r", "weapon_l", "face", "head"]:
+				current_visual_instance.unequip_slot(slot_k)
 
 
 func _load_character_model(race: int, gender: int, hair: int = 1, hair_color: int = 4, face: int = 1, skin_color: int = 2) -> void:

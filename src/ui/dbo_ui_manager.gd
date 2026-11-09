@@ -42,13 +42,13 @@ func _load_dictionaries() -> void:
 			file.close()
 
 	if FileAccess.file_exists(LAYOUT_DICT_PATH):
-		var file := FileAccess.open(LAYOUT_DICT_PATH, FileAccess.READ)
-		if file:
-			var json_text := file.get_as_text()
-			var parsed = JSON.parse_string(json_text)
-			if parsed is Dictionary:
-				_layout_dict = parsed
-			file.close()
+		var l_file := FileAccess.open(LAYOUT_DICT_PATH, FileAccess.READ)
+		if l_file:
+			var l_json_text := l_file.get_as_text()
+			var l_parsed = JSON.parse_string(l_json_text)
+			if l_parsed is Dictionary:
+				_layout_dict = l_parsed
+			l_file.close()
 
 
 func set_ui_style_mode(mode: UIStyleMode) -> void:

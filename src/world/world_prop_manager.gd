@@ -68,13 +68,13 @@ func spawn_world_prop(prop_name: String, transform_3d: Transform3D, parent_node:
 						prop_inst.add_child(anim_inst)
 						var ext_player := anim_inst.find_child("AnimationPlayer", true, false) as AnimationPlayer
 						if ext_player:
-							var anim_list := ext_player.get_animation_list()
-							if not anim_list.is_empty():
-								var first_anim := anim_list[0]
-								var anim := ext_player.get_animation(first_anim)
-								if anim:
-									anim.loop_mode = Animation.LOOP_LINEAR
-								ext_player.play(first_anim)
+							var ext_anim_list := ext_player.get_animation_list()
+							if not ext_anim_list.is_empty():
+								var ext_first_anim := ext_anim_list[0]
+								var ext_anim := ext_player.get_animation(ext_first_anim)
+								if ext_anim:
+									ext_anim.loop_mode = Animation.LOOP_LINEAR
+								ext_player.play(ext_first_anim)
 
 	return prop_inst
 
@@ -128,9 +128,9 @@ func _load_prop_scene(clean_name: String) -> PackedScene:
 	# 若 MESH_DIR 无该模型，尝试从 ANIM_DIR 加载
 	var anim_path := ANIM_DIR + clean_name + ".glb"
 	if ResourceLoader.exists(anim_path):
-		var scene = ResourceLoader.load(anim_path) as PackedScene
-		if scene:
-			_mesh_cache[clean_name] = scene
-			return scene
+		var a_scene = ResourceLoader.load(anim_path) as PackedScene
+		if a_scene:
+			_mesh_cache[clean_name] = a_scene
+			return a_scene
 
 	return null
