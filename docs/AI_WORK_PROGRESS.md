@@ -2296,3 +2296,24 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 尚未读取 DBOFF 当前聊天 UI、客户端 WebSocket 管理、消息协议和频道/私聊界面，无法判断客户端改造量。
 - 尚未确定游戏内聊天范围（世界/地图/区域/队伍/私聊）、历史保留期限、预期并发在线人数与消息频率。
 - 因此“绰绰有余”是针对当前约 100 DAU 量级的文字聊天规划判断；上线前仍需实测并发连接、广播扇出、CPU duration、SQLite 写入和断线重连。
+
+
+### 44. Durable Objects 当前定价与免费额度核对（2026-11-12）
+- **官方定价页面核对**：Cloudflare Durable Objects 同时可用于 Workers Free 与 Workers Paid；Free 计划仅支持 SQLite-backed DO。官方定价页最后更新日期为 2026-10-18。
+- **Workers Free 免费额度**：
+  - DO 计费请求：100,000 次/天；包含 HTTP 请求、RPC sessions、WebSocket 消息和 Alarm 调用。
+  - DO 活跃计算时长：13,000 GB-s/天。
+  - SQLite 行读取：5,000,000 行/天；行写入：100,000 行/天；存储 5 GB（账户总量）。
+  - 超过 Free 任一项额度后，该类型后续操作会报错失败；每日额度在 UTC 00:00 重置，不是自动无限续用。
+- **Workers Paid 计划**：
+  - DO 请求包含 1,000,000 次/月，超出部分 $0.15/百万次。
+  - Duration 包含 400,000 GB-s/月，超出部分 $12.50/百万 GB-s。
+  - SQLite 读取前 250 亿行/月包含，超出 $0.001/百万行；写入前 5,000 万行/月包含，超出 $1.00/百万行；存储包含 5 GB-month，超出 $0.20/GB-month。
+  - 官方示例注明 Paid 计划最低每月用量费用为 $5；实际账单还应结合账户 Workers 计划与其他产品用量确认。
+- **WebSocket 计费关键点**：
+  - 建立 WebSocket 连接需要请求计费；入站 WebSocket 消息按 20:1 折算 DO 计费请求；出站 WebSocket 消息不计 DO 消息请求费用。
+  - DO 活跃 duration 仍可能收费。必须使用 WebSocket Hibernation API（如 state/ctx.acceptWebSocket），避免普通 accept() 导致连接空闲期间持续计入 duration。
+  - 休眠只免除符合条件的空闲 duration，不免除消息处理期间的执行时间、请求和存储计费。
+- **对 DBO 的判断**：若游戏内文字聊天采用分房间/频道的 Hibernatable WebSocket DO，且只在必要时写入历史记录，当前规划的约 100 DAU、低频文字聊天预计有较大机会留在 Free 额度内；这只是规划判断，不能当作已测得的成本保证。真正风险是未启用 Hibernation、单个热点 DO 承担所有房间、消息广播扇出过大或高频持久化写库。
+- **来源**：Cloudflare 官方 Durable Objects Pricing，https://developers.cloudflare.com/durable-objects/platform/pricing/ （页面标注 Last updated Oct 18, 2026，访问日期 2026-11-12）。
+- **验证缺口**：尚未读取 dbo-web 的实际 DO/Worker 实现、wrangler 配置、D1 schema 与计费分析；当前只能给出官方额度和架构估算，不能确认账户当前计划、实测用量或实际账单。
