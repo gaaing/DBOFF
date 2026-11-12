@@ -2039,3 +2039,47 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
   5. **全职业贴图自动解析与双面渲染**：新增 `_resolve_child_pants_texture` 与 `_resolve_child_boots_texture` 全职业回退分发，布料全量设置 `cull_mode = CULL_DISABLED`，彻底消除“只能看内部看不到表面”的问题。
   6. **素体穿模互斥遮罩**：穿戴外部防具时，素体对应 Surface 自动设为 `inv_mat` 隐形；未穿戴时恢复原生底裤、裸腿皮肤、双脚皮肤；手掌无论何时永久保留。
 - **报告归档：** 详尽技术分析已归档至 `docs/FULL_ARMOR_SYSTEM_STANDARDIZATION_REPORT.md`。
+
+
+## 38. 100 日活在线架构与 Cloudflare 免费额度初步评估（2026-11-12）
+
+### 38.1 用户明确的架构收敛（证据 D）
+- 普通玩家之间不需要实时动作同步；普通大世界展示只需要在线状态、角色基础资料和低频位置。
+- 组队后由队长负责整个队伍的共享世界模拟与同步；队员本地运行客户端并负责本地表现。队伍共享世界数据不应经过 Durable Objects 中继。
+- 因此普通玩家不需要建立 WebRTC P2P；组队 Host 直连可另行选择 P2P 传输。DO 只承担在线状态、地图位置视图、组队发现/会话协调和必要信令。
+
+### 38.2 免费额度评估（Cloudflare 官方资料，2026-11-12 查询）
+官方当前公开额度：
+- Workers Free：100,000 次请求/天；单次 HTTP Worker CPU 时间 10ms。
+- Durable Objects Free：100,000 次计费请求/天、13,000 GB-s/天；SQLite 后端读取 5,000,000 行/天、写入 100,000 行/天、存储 5GB。
+- DO WebSocket：每个连接建立需要请求；入站 WebSocket 消息按 20:1 折算 DO 计费请求；出站 WebSocket 消息不收消息请求费用；符合条件的 Hibernation WebSocket 在空闲且可休眠时不计 DO duration。
+- R2 Standard：10GB-month 存储、1,000,000 次 Class A、10,000,000 次 Class B/月；互联网出口流量免费。
+- 官方来源：
+  - https://developers.cloudflare.com/workers/platform/limits/
+  - https://developers.cloudflare.com/durable-objects/platform/pricing/
+  - https://developers.cloudflare.com/r2/pricing/
+
+### 38.3 100 日活估算模型（规划估算，不是实测）
+假设 100 个 DAU、每人每天平均在线 2 小时、每 30 秒发送一次在线心跳、每 10 秒发送一次位置更新：
+- 心跳约 24,000 条入站消息/天；
+- 位置约 72,000 条入站消息/天；
+- 合计约 96,000 条 DO 入站 WebSocket 消息，按 20:1 折算约 4,800 次 DO 消息计费请求，另加约 100 次连接建立请求。
+- 若位置更新提高到每 5 秒，仍明显低于 DO 每日 100,000 次计费请求额度。
+- Workers 的登录、资料、好友列表、WebSocket Upgrade 等 HTTP 请求，在正常客户端设计下预计也明显低于 100,000 次/天；须避免客户端高频轮询。
+- DO 在线位置应优先放在内存/连接状态中，不应每次心跳或位置更新都写 SQLite；持久化只保存确实需要跨会话保留的数据。
+- 组队 Host 的高频共享世界消息应走队长到队员的直接传输，不进入 DO，因此队伍人数和游戏 tick 不直接转化为 DO 消息量。
+
+### 38.4 关键成本风险与约束
+1. **必须使用 WebSocket Hibernation API**，并确认连接符合休眠条件。普通非休眠 WebSocket 若持续让 DO 保持活动，会按 DO 活跃 wall-clock duration 计费；大量独立 DO 长时间保持活动可能耗尽 13,000 GB-s/天额度。
+2. DO 消息处理函数应保持短小，建议把心跳与位置合并、降低不必要的广播频率，并按地图/区域分片；避免每个玩家独立建立一个长期活跃 DO。
+3. 不要把每次位置变化写入 SQLite；实时状态使用内存/连接状态，数据库只存资料、好友关系等持久数据。
+4. R2 云存档按关闭游戏后同步的既定方向设计时，100 DAU 的对象读写次数预计很低；真正需要关注的是存档总容量及是否保留大量历史版本，10GB-month 是免费存储额度。
+5. 如果队长与队员直连失败且需要 TURN 中继，传输成本与服务选择需另行评估；不提供 TURN 则部分 NAT 环境可能无法建立直连。
+6. Free 额度超限时相关服务可能报错/拒绝后续操作，不能把“免费额度”理解为无限可用；上线前应设置监控、限频和故障降级。
+
+### 38.5 当前结论与证据缺口
+- 初步结论：按上述低频 presence + Host 直连的架构，100 DAU 大概率不会耗尽 Workers/DO/R2 免费额度；DO Hibernation 是否正确实现是最重要的成本控制条件。该结论是基于假设的规划估算，尚非实测承诺。
+- 仍缺少 dbo-web 当前 Worker 入口、Durable Object 实现、wrangler 配置、D1 schema/migrations、认证与 WebSocket 路由，无法核算真实调用数、DO 实例分片方式及数据库读写量。
+- 仍缺少 DBOFF 当前网络客户端/会话脚本与组队 UI/会话实现，无法验证客户端是否已实现上述协议。
+- 目前 GitHub 可见进度文档中的既有静态扫描曾在有限文件范围内未发现统一网络客户端；这不等于整个本地工程不存在，也不等于本轮已完成完整代码审查。
+- 本节记录的是用户架构决定与成本规划，不表示任何在线系统已经实现或通过负载测试。
