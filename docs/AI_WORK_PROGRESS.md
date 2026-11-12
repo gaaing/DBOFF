@@ -2248,3 +2248,51 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 不为聊天消息建立 DBO 自有持久化副本，除非明确需要跨平台消息搜索、审计或游戏内聊天历史；否则会失去主要减负收益。
 - 不应把每分钟位置、两分钟心跳、角色状态或游戏 tick 转成平台机器人消息。
 - 当前没有 dbo-web Worker/DO/D1 实际实现、聊天服务代码、平台机器人桥接代码或生产流量数据，因此无法给出具体 CPU、请求数、数据库写入或费用下降百分比。当前结论为架构层面的定性判断，尚未经过压测。
+
+
+## 43. Durable Objects 作为 DBO 文字聊天服务（2026-11-12）
+
+### 43.1 结论
+- 用户询问 Durable Objects（DO）是否足以承担 DBO 聊天服务器。
+- 结论：对当前规划的文字聊天规模，DO + Hibernatable WebSocket 是合适且大概率绰绰有余的方案；但这是架构评估，不是对尚未读取的 dbo-web 实现或生产负载的验证。
+- Cloudflare 官方文档明确将 chat rooms 列为 DO WebSocket 的适用场景，并说明单个 DO 可连接数千客户端；单个 DO 的 WebSocket 连接上限为 32,768，实际容量仍受 CPU、内存和消息处理工作量影响。
+- 官方来源：
+  - https://developers.cloudflare.com/durable-objects/best-practices/websockets/
+  - https://developers.cloudflare.com/durable-objects/api/state/
+
+### 43.2 计费与容量依据
+- 当前 Cloudflare DO Free 计费额度：100,000 次计费请求/天、13,000 GB-s/天；DO SQLite 后端的具体存储额度与账户计划需以当前官方 pricing 页面为准。
+- WebSocket 建立连接需要计费请求；入站 WebSocket 消息按 20:1 折算计费请求；出站 WebSocket 消息不收消息请求费用。
+- 使用 Hibernatable WebSocket API 时，DO 空闲且符合休眠条件期间不计入 DO duration；收到消息时会唤醒处理。必须使用 ctx.acceptWebSocket() / state.acceptWebSocket() 这套 Hibernation API，而不是普通 ws.accept()。
+- 官方来源：
+  - https://developers.cloudflare.com/durable-objects/platform/pricing/
+  - https://developers.cloudflare.com/durable-objects/best-practices/websockets/
+  - https://developers.cloudflare.com/durable-objects/examples/websocket-hibernation-server/
+
+### 43.3 100 日活聊天消息量示例（规划估算）
+假设 100 名 DAU、每人每天在线 2 小时：
+- 平均每分钟 1 条消息：12,000 条入站消息/天，按 20:1 约 600 次消息计费请求/天。
+- 平均每 10 秒 1 条消息：72,000 条入站消息/天，约 3,600 次消息计费请求/天。
+- 平均每 2 秒 1 条消息：360,000 条入站消息/天，约 18,000 次消息计费请求/天。
+- 上述不含 WebSocket 连接建立、认证、房间创建、其他 HTTP/RPC 请求；仅为消息请求量模型，不是实测流量。
+- 广播出站消息不按 DO WebSocket 消息请求计费，但会消耗执行时间和网络资源。一个消息广播给很多接收者时，必须控制房间人数、广播范围和发送频率。
+
+### 43.4 推荐的 DBO 聊天职责划分
+- DO + Hibernatable WebSocket：负责实时连接、在线聊天房间、消息权限校验、房间内实时广播。
+- D1 或 DO SQLite：按产品需求保存聊天历史、频道配置、屏蔽/举报等需要持久化的数据；不要把所有高频临时状态都写库。历史消息是否持久化、保留多久尚待产品决策。
+- Worker：负责登录认证、连接鉴权、路由到正确 DO、限流与平台接口。
+- KOOK / Discord：继续作为可选社群和通知平台；不必为了减负而强制将 DBO 游戏内聊天迁出。DO 足以承担 DBO 自己的游戏内文字聊天。
+- 按聊天房间/频道/地图分区/队伍划分 DO 实例，避免所有玩家和所有频道都集中到单一热点 DO。私聊应按双方会话或收件人路由，不能让一个全局房间承担全部私聊流量。
+
+### 43.5 需要避免的设计错误
+1. 不要使用普通 WebSocket accept() 后长期保持 DO 活跃；必须使用 Hibernation API，并通过 WebSocket attachment 恢复必要的连接身份/房间信息。
+2. 不要每条消息都向 D1 执行多次读写；实时转发与历史持久化分开设计。
+3. 不要让单个全局 DO 处理所有频道、所有广播和所有私聊，避免热点与单实例 CPU 瓶颈。
+4. 必须实现身份验证、房间权限、消息长度限制、发送频率限制、封禁/屏蔽、重连与重复消息处理。
+5. 若需要跨平台同步 KOOK/Discord 消息，应单独评估机器人事件与重复转发，避免消息循环和额外负载。
+
+### 43.6 当前缺失材料与验证边界
+- 尚未读取 dbo-web 当前 Worker 入口、DO 类、WebSocket 路由、D1 schema/migrations 与 wrangler 配置，无法确认现有项目是否已有聊天实现，也无法核算实际部署负载。
+- 尚未读取 DBOFF 当前聊天 UI、客户端 WebSocket 管理、消息协议和频道/私聊界面，无法判断客户端改造量。
+- 尚未确定游戏内聊天范围（世界/地图/区域/队伍/私聊）、历史保留期限、预期并发在线人数与消息频率。
+- 因此“绰绰有余”是针对当前约 100 DAU 量级的文字聊天规划判断；上线前仍需实测并发连接、广播扇出、CPU duration、SQLite 写入和断线重连。
