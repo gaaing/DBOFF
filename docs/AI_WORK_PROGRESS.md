@@ -2167,3 +2167,58 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 当前尚未读取 dbo-web 的 Worker 入口、D1 schema/migrations、认证路由及部署配置，因此无法确认现有后端是否已有可复用的 HTTP API、D1 表或身份验证机制。
 - 当前尚未读取 DBOFF 的网络客户端、玩家发现、WebRTC PeerConnection/DataChannel 实现，因此不能确认客户端是否已有 SDP/ICE 交换代码。
 - 上述是架构方案，不表示 Worker+D1 信令或 WebRTC 已在项目中实现或通过网络环境测试。
+
+
+## 41. KOOK / Discord 作为 DBO 外围服务与备用 WebRTC 信令（2026-11-12）
+
+### 41.1 用户问题与结论（证据 D）
+- 用户询问 KOOK 与 Discord 是否可以承担 DBO 的部分功能。
+- 结论：可以作为可选的外围社交与通知平台，也可在用户授权且机器人可触达双方的前提下，实验性地转发 WebRTC 信令；不应作为 DBO 核心游戏状态服务器，也不应成为唯一信令通道。
+- 应保持 DBO 自己的玩家 ID / 存档 / 游戏状态为权威数据。KOOK / Discord OAuth 只用于外部账号绑定与身份确认，不应强制玩家拥有平台账号才能离线游玩。
+
+### 41.2 官方接口能力核对
+**KOOK 官方开发者文档：**
+- HTTP API + Webhook / WebSocket 事件通知，可用于机器人和第三方服务。
+- OAuth2 支持 authorization_code 流程；文档列出的 get_user_info scope 可读取基本用户信息，get_user_guilds 可读取加入的服务器信息。
+- 频道消息 API 支持发送、读取等操作；私聊消息 API 也存在。
+- 官方文档说明机器人主动发送消息按开发者账号实施每日配额，当前文档列出每日 10,000 条上限；具体额度与平台规则可能变化。
+- 来源：
+  - https://developer.kookapp.cn/doc/reference
+  - https://developer.kookapp.cn/doc/websocket
+  - https://developer.kookapp.cn/doc/oauth2
+  - https://developer.kookapp.cn/doc/http/message
+  - https://developer.kookapp.cn/doc/http/direct-message
+
+**Discord 官方开发者文档：**
+- OAuth2 可用于授权与用户身份信息；Bot 用户通过 Bot API / Gateway 接收事件并执行获准操作。
+- REST API 有全局与路由级速率限制；Gateway 事件与消息内容还受 intents / privileged intent 等权限机制限制。
+- 来源：
+  - https://discord.com/developers/docs/topics/oauth2
+  - https://discord.com/developers/docs/topics/rate-limits
+  - https://discord.com/developers/docs/events/gateway
+
+### 41.3 适合交给 KOOK / Discord 的功能
+1. 玩家自愿绑定外部账号，提供可选登录关联或账号找回辅助；DBOFF 离线游玩与本地存档不能依赖外部平台在线。
+2. 好友社群、公告、维护通知、活动通知、组队邀请提醒。
+3. 机器人命令：角色/服务器状态查询、活动信息、帮助与支持。
+4. 玩家主动同意后，可将平台私聊/频道机器人作为临时信令载体，转发 WebRTC SDP Offer/Answer 与 ICE Candidate；建立 DataChannel 后，游戏数据直接 P2P，不继续经过平台。
+5. 可作为 DBO 自有信令服务不可用时的备用邀请/信令路径，但前提是双方都绑定并授权同一平台，且机器人能够合法触达双方。
+
+### 41.4 不应交给 KOOK / Discord 的功能
+- 大世界角色位置与高频在线状态：不应把每分钟位置更新写成平台聊天消息。
+- 游戏角色状态、战斗 tick、队伍世界模拟、背包与云存档：这些属于 DBO 自身权威数据。
+- 高频实时 P2P 数据：平台消息 API 的延迟、速率限制、消息语义和配额不适合作为 DataChannel 替代品。
+- 不应假设机器人可以任意向任意平台用户发起私聊；用户授权、服务器成员关系、隐私设置、平台权限和 API 规则均可能限制可达性。
+- 不应使用用户账号密码或自动化普通用户账号；只使用官方 OAuth2 与 Bot API 授权机制。
+
+### 41.5 对 DBO 的建议架构
+- DBO 本身保留独立玩家 ID、离线存档、云存档与游戏数据权威性。
+- KOOK / Discord 是可选集成层：OAuth 绑定、社群、通知、邀请、机器人命令。
+- WebRTC 信令优先仍由 DBO 自己控制的 Worker + D1 临时信令邮箱完成；KOOK / Discord 可以作为额外的邀请或备用信令通道，但不应成为基础依赖。
+- P2P DataChannel 建立后，游戏数据直连传输；平台 API 不参与游戏数据中继。
+- 若要接入两种平台，建议做统一的外部平台适配层，分别实现 KOOK adapter 与 Discord adapter，不让 Godot 游戏核心逻辑直接依赖某个平台 SDK/API。
+
+### 41.6 当前缺失材料与验证边界
+- 当前没有读取 dbo-web 的 OAuth 回调、外部账号绑定表、机器人服务或平台适配代码；不能确认项目是否已有 KOOK / Discord 集成。
+- 当前没有读取 DBOFF 客户端的外部平台登录/绑定 UI、好友/邀请界面或 WebRTC 信令客户端。
+- 本节结论来自官方公开开发者文档与架构分析；尚未创建机器人、申请 OAuth 权限、实测私聊可达性或验证平台消息承载 SDP/ICE 的完整握手流程。
