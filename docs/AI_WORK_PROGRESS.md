@@ -2676,3 +2676,49 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - Godot 4 直接导出 PSP：没有发现可用的正式方案；现有公开 Godot PSP 线索是 Godot 2.1.6 概念验证。
 - DBO 能否以 PSP 规格实现：未验证；基于硬件规格判断，原样移植不现实，轻量重制需要独立评估。
 - 本节为技术路线研究，不代表已经修改代码、资源或项目配置。
+
+
+## 53. Switch 模拟器路线与网页版路线比较（2026-11-22）
+
+### 53.1 用户的进一步问题与判断方向
+
+- 用户追问：若目标改为 Nintendo Switch 模拟器，是否比 PSP 更合适；若仍需重新开发，为何不直接选择网页版。
+- 用户的核心目标仍是让大量 iPhone 用户方便安装/运行 DBO，而不是为了主机平台本身重制游戏。
+- 当前判断：用户的质疑成立。若必须大幅重写客户端，Switch 模拟器路线并没有比 Web 提供明显的开发收益；从复用当前 Godot 4 项目、减少平台专用工作和分发摩擦看，Web 应优先验证。
+
+### 53.2 Switch 路线的现实情况
+
+- Godot 官方当前主机支持说明：Switch 等封闭主机需要平台方批准、官方 SDK、开发设备及专用导出模板；Godot 官方不提供通用开放的 Switch 导出模板。批准开发者可通过官方 SDK 或经认证的第三方中间件移植 Godot 游戏。参考：https://godotengine.org/consoles/
+- Switch homebrew 工具链（例如 devkitA64 / libnx 生态）可用于独立开发 homebrew 程序，但它不等于 Godot 4 的 Switch 导出器，也不等于能直接把现有 DBO 项目打包成 Switch 程序。参考：https://www.switchbrew.org/wiki/Setting_up_Development_Environment
+- 本轮公开资料未确认存在一个可供普通中国大陆 iPhone 用户从 App Store 安装、稳定运行任意 Switch 游戏/自制程序的成熟通用 Switch 模拟器。不能将开发者侧的模拟、原生重编译或侧载项目等同于 App Store 正式模拟器。
+- 本轮检索发现 nxnative 一类项目描述的是把特定 Switch 游戏重编译/适配为 Apple Silicon 原生应用，并非通用 Switch 模拟器；它要求 Mac 构建流程、用户自有游戏文件，并对设备/iOS 版本及游戏兼容性有特定要求。它不能作为 DBO 的通用运行容器。参考：https://nxnative.org/
+- 因此 Switch 路线目前同时存在两层不确定性：一是 iPhone 用户端没有确认到成熟、官方商店可安装的通用运行环境；二是 DBO 端仍需要独立的 Switch/homebrew 或主机 SDK 移植工作。
+
+### 53.3 与 Godot Web 路线的对照
+
+- Godot 4 官方 Web 导出可以将现有项目导出为 WebAssembly + WebGL 2.0 网页程序；Web 目标只能使用 Compatibility 渲染方法，Forward+/Mobile 不支持。参考：https://docs.godotengine.org/en/latest/tutorials/export/exporting_for_web.html
+- Godot 官方文档指出，Web 导出可避免应用商店分发；但原生 iOS/Android 性能会明显更好，移动端 Web 受 CPU/GPU 预算限制；Safari 的 WebGL 2.0 存在其他浏览器没有的兼容问题。参考同上。
+- Web 不是零成本：必须验证渲染器、脚本/插件、音频、网络、线程、持久化、内存峰值和资源分包。但它至少有官方导出路径，能够直接以当前 Godot 工程做兼容性验证，而不必先构建另一个主机运行时。
+- 若目标是“保留完整 DBO”，建议先做 Web 原型验证；若目标是“重做一个专门面向手机的 DBO 版本”，也应优先考虑 Web 或原生移动端，而不是先锁定 Switch 模拟器。
+
+### 53.4 当前推荐结论
+
+1. 不建议将 Switch 模拟器作为当前主线。除非用户能明确提供目标模拟器名称、App Store 页面、支持自制程序的证据及目标 iPhone 实测，否则不应将它视为可落地发行渠道。
+2. 优先对当前 DBOFF 做 Godot Web 技术验证，不先全面重写。先以当前真实角色/装备和一张代表性地图验证 iPhone Safari 的渲染、输入、音频、网络和内存。
+3. 如果 Godot Web 因 Safari WebGL 或性能限制失败，再评估是否开发独立原生 iOS 客户端、采用其他跨平台引擎/渲染方案，或将网页作为启动入口而由其他可安装客户端承载游戏；不要预先投入 Switch homebrew 重制。
+4. 将“模拟器已经在商店”与“模拟器支持任意自制程序且在目标 iPhone 上能稳定运行”视为两个独立条件，必须逐一验证。
+
+### 53.5 当前缺失材料
+
+- DBOFF 当前 `project.godot`、`export_presets.cfg`、实际渲染器和 Godot 精确版本：本轮未重新读取。
+- 当前资源加载、脚本、GDExtension/原生插件、线程和网络功能依赖：尚未检查。
+- 代表性地图在 iPhone Safari 上的运行内存、帧率、加载时间、音频和存档实测：没有。
+- 用户计划覆盖的 iPhone 型号/iOS 版本范围：未明确。
+- 若仍考虑 Switch，需要用户提供具体模拟器名称、App Store 页面、homebrew 文件格式/加载方式和实际 iPhone 兼容性证据；本轮没有确认合格的通用 Switch iOS App Store 模拟器。
+
+### 53.6 状态
+
+- Switch 正规 Godot 移植需要许可/SDK/专用模板：有官方资料支持。
+- iPhone App Store 通用 Switch 模拟器可行性：未确认，不能当作既定方案。
+- Godot Web 可沿用现有工程进行导出验证：有官方资料支持，但 DBO 实际兼容性与性能未验证。
+- 当前建议方向：Web 优先做小规模原型；Switch 模拟器不作为主线。
