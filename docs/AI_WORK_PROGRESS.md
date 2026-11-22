@@ -2604,3 +2604,25 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - 正常运行阶段的资源加载日志/基线：尚未取得，无法定义可靠的异常访问阈值。
 - 当前没有实施诱饵、遥测、水印或完整性检查，也没有对静态解包器/动态分析进行对照测试。
 - 因此本节是安全设计分析，不代表当前 DBOFF 已具备解包检测能力。任何诱饵都必须先经过正式运行路径审计与误报测试。
+
+
+### 2026-11-22 DBO 网页版可行性与 2GB 资源目标初步评估（待项目文件验证）
+- **用户提出的目标**：评估 DBO 是否适合制作网页版，以便中国大陆 iPhone 用户通过浏览器访问；希望完整游戏资源总量控制在 2GB 以内。
+- **当前结论（研究判断，非代码验证）**：
+  1. Godot 4 支持 WebAssembly + WebGL 2.0 导出；Web 平台使用 Compatibility 渲染路径，不能直接沿用 Forward+/Mobile 渲染器配置。iOS Safari 的 WebGL 2.0 兼容性与性能需要真机验证，不能假定与原生 iOS 相同。
+  2. 不建议把整个游戏资源打成一个首次下载的大包。建议评估“轻量启动核心 + 地图/资源分包 + CDN 按需加载 + 本地缓存”的流式资源架构；首屏下载量与完整资源库总量应分别设定指标。
+  3. 2GB 作为完整资源库的目标目前无法确认。需要当前资产清单、按类型统计的实际字节数、重复资源统计、贴图尺寸/格式、模型与动画体积，以及 Web 导出后的实测包体。压缩算法不能替代实际盘点。
+  4. 浏览器版存在原生客户端没有的限制：移动设备 CPU/GPU 余量更小；线程导出需要跨源隔离响应头；Web 持久化依赖浏览器存储（IndexedDB 等）且可能受用户隐私设置影响；标签页进入后台时游戏循环可能暂停。不能承诺浏览器缓存永久保留 2GB。
+  5. 建议先做独立 Web 技术验证构建，不立即迁移主客户端：验证 iPhone Safari 的启动、角色加载、一个代表性地图、触控、音频、WebSocket、IndexedDB 存档、资源分包与内存峰值，再决定是否扩大范围。
+- **依据与来源**：
+  - Godot 官方 Web 导出文档：https://docs.godotengine.org/en/latest/tutorials/export/exporting_for_web.html
+  - Godot 官方系统需求：https://docs.godotengine.org/en/4.7/about/system_requirements.html
+  - Godot 官方 Web 导出选项：https://docs.godotengine.org/en/latest/classes/class_editorexportplatformweb.html
+  - 本次结论为文档研究与架构建议，尚无 DBO 当前工程的 Web 导出、iOS 真机运行或 2GB 压缩实测证据。
+- **待补充材料**：
+  - 当前 `project.godot` 与 `export_presets.cfg`；
+  - 当前资产总量及按扩展名/目录/单文件大小统计的清单；
+  - 地图、地形、角色、装备、动画和音频的资源加载入口与流式加载实现；
+  - 当前是否使用 GDExtension、原生插件、线程、低级网络接口或 Web 不支持的功能；
+  - iOS Safari 真机测试记录及代表性地图的内存/帧率数据。
+- **状态**：初步可行性评估；2GB 目标待资产盘点；iOS Safari 体验待原型验证；不视为已完成移植或已验证兼容。
