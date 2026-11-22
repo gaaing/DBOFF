@@ -2722,3 +2722,56 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
 - iPhone App Store 通用 Switch 模拟器可行性：未确认，不能当作既定方案。
 - Godot Web 可沿用现有工程进行导出验证：有官方资料支持，但 DBO 实际兼容性与性能未验证。
 - 当前建议方向：Web 优先做小规模原型；Switch 模拟器不作为主线。
+
+
+## 54. DBO Web 多平台浏览器限制与移动端全屏方案（2026-11-22）
+
+### 本轮目标
+评估 PC、Android、iOS 浏览器运行 DBO Godot 4 Web 导出的限制，并确认 Android 是否能提供接近原生游戏的全屏入口。
+
+### 当前技术依据
+- Godot 官方 Web 导出文档：Godot 4 Web 需要 WebAssembly 与 WebGL 2.0，只支持 Compatibility 渲染器；Forward+/Mobile 渲染器不支持 Web 导出。
+- Godot 官方特别提示 Safari 的 WebGL 2.0 支持存在其他浏览器没有的兼容性问题，推荐优先使用 Chromium 系浏览器或 Firefox。
+- Web 平台移动设备 CPU/GPU 预算有限，WebAssembly 运行性能通常明显低于原生导出。
+- Web 全屏请求受浏览器用户激活限制，必须由用户点击等有效交互触发；不能假定页面加载时可自动进入全屏。
+- 浏览器音频自动播放受限制，通常需要用户先点击/触摸页面启用音频。
+- Web 平台网络能力受浏览器 API 约束，Godot Web 当前主要使用 HTTP、WebSocket 客户端与 WebRTC 等能力；不能直接照搬原生低层网络实现。
+- Godot Web 页面切换/长时间失焦可能造成网络游戏断线；移动端后台切换应作为重点测试项。
+
+### 平台判断
+1. **PC**
+   - 主流 Chromium、Firefox 浏览器是优先测试对象。
+   - 浏览器全屏体验成熟，可用 F11 或由用户操作触发网页全屏。
+   - 仍需测试后台标签页节流、显存/内存占用、WebGL 驱动差异与音频策略。
+
+2. **Android**
+   - Chrome 与 Samsung Internet 是优先测试对象。
+   - 可使用 PWA manifest 的 `display: standalone` 或 `display: fullscreen`，让玩家从主屏幕图标启动并隐藏普通浏览器工具栏。
+   - Chrome 在具备 Google Mobile Services 的设备上、Samsung Internet 在三星设备上可将 PWA 安装为 WebAPK；其他浏览器或无 GMS 的 Chrome 环境可能只提供带浏览器标识的主屏幕快捷方式，实际启动形态需按设备测试。
+   - Edge、Firefox、Opera 等可作为兼容性测试对象，但不能假设它们都提供与 Chrome WebAPK 相同的独立安装体验。
+   - 中国大陆安卓设备的 GMS 覆盖差异较大，不能把 Chrome WebAPK 当成所有玩家的统一分发方案；应保留浏览器直接访问入口。
+
+3. **iOS**
+   - 以 iPhone Safari 为基准测试。iOS 上其他浏览器不能简单视为拥有 Android Chromium 的能力；平台浏览器引擎限制仍然存在。
+   - 可通过“添加到主屏幕”以 Web App/PWA 形式启动，隐藏 Safari 普通地址栏与工具栏，但不能承诺隐藏所有系统状态区域。
+   - iPhone 普通网页不能依赖标准 Fullscreen API 实现 Android 式任意元素全屏；iPad 的部分支持不代表 iPhone 也支持。
+   - 切后台、锁屏、内存回收和网络连接恢复必须在真机上测试。
+
+### 对 DBO 的建议
+- 采用“PC 浏览器 + Android PWA/浏览器 + iOS 主屏幕 Web App”的统一 Web 发行入口。
+- Android 首选 Chrome 与 Samsung Internet；iOS 以 Safari 添加到主屏幕为主；所有平台保留普通网页访问作为兜底。
+- 区分“隐藏浏览器工具栏的 PWA 独立窗口”和“Fullscreen API 真正全屏”，不把两者混为一谈。
+- 不应只测试桌面 Chrome。至少选一台低端 Android、一台中端 Android、一台高端 Android，以及实际目标 iPhone 型号进行测试。
+- 重点测试：WebGL 2.0 渲染、角色/装备动画、地图加载、触控、横竖屏、安全区域、音频启用、IndexedDB 存档、资源缓存、切后台恢复、WebSocket 重连、内存峰值与持续帧率。
+
+### 本轮缺少的项目材料
+- 当前分支的 `project.godot`：确认 Godot 版本、渲染器与项目设置。
+- `export_presets.cfg`：确认是否已有 Web 导出预设。
+- 当前实际 Web 导出文件与自定义 HTML Shell（如有）。
+- 当前 Web 资源加载、分包、缓存和存档实现代码。
+- GDExtension/原生插件清单，以及线程、音频、网络功能使用情况。
+- 目标玩家设备分布（尤其中国大陆安卓品牌、Android 版本、GMS 覆盖和 iPhone 型号/iOS 版本）。
+- PC、Android、iPhone 真机运行日志：帧率、内存、加载时间、断线与恢复行为。
+
+### 证据边界
+本节是基于 Godot 官方文档、MDN 与浏览器厂商 PWA 文档的技术评估，不代表 DBOFF 当前工程已经成功 Web 导出，也不代表已在真实设备完成兼容性验证。当前仍缺项目配置、导出文件和真机运行证据。
