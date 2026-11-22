@@ -2626,3 +2626,53 @@ OpenDBO 的 `CNtlSoundManager` 是 FMOD 系统管理入口，包含初始化/释
   - 当前是否使用 GDExtension、原生插件、线程、低级网络接口或 Web 不支持的功能；
   - iOS Safari 真机测试记录及代表性地图的内存/帧率数据。
 - **状态**：初步可行性评估；2GB 目标待资产盘点；iOS Safari 体验待原型验证；不视为已完成移植或已验证兼容。
+
+
+## 52. PSP 模拟器发行路线可行性初评（2026-11-22）
+
+### 52.1 用户提出的发行设想
+
+- 用户希望评估：是否可以把 DBO 制作成某个主机平台的游戏，让中国大陆 iPhone 用户先从 App Store 安装成熟模拟器，再通过模拟器运行 DBO，从而绕开为每位玩家单独分发 iOS 原生客户端的困难。
+- 本节聚焦“主机自制程序 + iOS 模拟器”的技术路线，不代表用户已决定采用 PSP，也不代表已开始移植。
+
+### 52.2 当前最接近的候选：PSP + PPSSPP
+
+- PPSSPP 的 App Store 页面（包括拉美区页面）明确说明它可在 iPhone/iPad 运行 PSP 游戏，也支持免费自制程序；模拟器本身不附带商业游戏。参考：
+  - 拉美 App Store：https://apps.apple.com/la/app/ppsspp-psp-emulator/id6496972903
+  - 委内瑞拉 App Store：https://apps.apple.com/vc/app/ppsspp-psp-emulator/id6496972903
+- RetroArch 的 App Store 页面也列出 Sony PSP 作为其支持的模拟系统之一：https://apps.apple.com/us/app/retroarch/id6499539433
+- PSPDEV/PSPSDK 是可用的开源 PSP homebrew 开发工具链，提供 PSP OS、线程、文件 I/O、显示、Wi-Fi、libGU/libGUM 3D 图形和基础音频等接口。参考：https://github.com/pspdev/pspsdk
+- PPSSPP 官方开发文档包含 Homebrew development 入口，可作为开发与调试环境参考：https://www.ppsspp.org/docs/development/
+
+### 52.3 对现有 Godot 工程的关键限制
+
+- 当前查到的 Godot PSP 项目是基于 Godot 2.1.6 的早期概念验证，不是 Godot 4.7.x 可直接使用的正式导出模板：https://www.gamebrew.org/Godot_PSP
+- Godot 官方说明，创建自定义平台端口需要实现平台层并处理渲染、OS 等接口；官方还指出 Godot 4 空项目在 Linux 上约需 100 MB RAM，这对旧主机极不友好。参考：https://docs.godotengine.org/en/latest/engine_details/engine_api/custom_platform_ports.html
+- Sony 官方 PSP-2000 规格为 333 MHz CPU、64 MB 主内存、480×272 屏幕；首代 PSP 官方规格为 32 MB 主内存。参考：
+  - https://www.sony.com/en/SonyInfo/IR/news/qfhh7c00000d2yu7-att/psp.pdf
+  - https://sonyinteractive.com/en/press-releases/2004/sony-computer-entertainment-inc-announces-product-specifications-of-handheld-video-game-system-playstationportable-psp/
+- 因此不能把现有 Godot 4 客户端直接导出成 PSP EBOOT。若坚持 PSP，需要独立编写或移植 PSP homebrew 客户端，重做渲染、资源加载、输入、音频、场景/地图表现和网络适配；PSPSDK 是底层工具链，不是 Godot 4 的 PSP 导出器。
+- PSP 的 32/64 MB 内存、480×272 分辨率和较旧 GPU/CPU 也意味着现有 DBO 大世界客户端不适合原样移植。必须大幅缩小场景、贴图、骨骼/动画复杂度、同时可见角色数量和地图范围，做成专门的轻量版；这与“把当前完整客户端换个容器”不是同一工作量。
+
+### 52.4 初步结论与路线排序
+
+1. **PSP + PPSSPP：模拟器安装路径最明确，但 DBO 移植代价极高。** 可作为独立的轻量 DBO 版本研究，不建议把它当作现有 Godot 工程的低成本导出目标。
+2. **RetroArch：它是多系统前端，不会自动让 Godot 游戏变成主机 ROM。** 仍必须先为其某个核心对应的平台制作兼容程序；PPSSPP core 也仍然要求 PSP 程序。
+3. **不能仅凭模拟器在 App Store 上架就认定可商业发行。** 还要确认目标平台的程序格式、SDK/工具链、模拟器实际支持范围、文件导入流程、性能和各地区商店可用性；另外必须独立核实 DBO 使用的原作素材与商标授权。
+4. 与网页路线相比，模拟器路线没有消除客户端移植工作，只是把运行时包装成模拟主机环境。它可能改善安装分发体验，但通常会显著增加平台适配和性能约束。
+
+### 52.5 当前缺失材料与下一步验证
+
+- DBOFF 当前 `project.godot`、实际 Godot 版本和渲染器设置：本轮未重新检查当前工程文件。
+- 当前角色、地图、贴图、动画和音频的资源体积/运行时内存峰值：没有可用于 PSP 规格预算的实测数据。
+- 当前游戏逻辑对 Godot API、GDScript、线程、网络、文件系统和渲染功能的依赖清单：尚未读取对应代码。
+- 目标用户 iPhone 型号分布、iOS 版本分布，以及 PPSSPP/RetroArch 在中国大陆 App Store storefront 的实际可见性：尚未实测。
+- DBO 原作素材、名称、标识及发行权利状态：未核实，不能据此判断公开发行/商业分发是否合法。
+- 若要继续，应先决定接受“专门制作一个 PSP 规格的简化 DBO 版本”，还是要求保留现有 DBO 的完整 3D 大世界体验。两者的可行性完全不同。
+
+### 52.6 状态
+
+- PSP 模拟器在 iOS App Store 有明确的官方发行页面，且 PSP homebrew 工具链存在：已通过公开资料初步确认。
+- Godot 4 直接导出 PSP：没有发现可用的正式方案；现有公开 Godot PSP 线索是 Godot 2.1.6 概念验证。
+- DBO 能否以 PSP 规格实现：未验证；基于硬件规格判断，原样移植不现实，轻量重制需要独立评估。
+- 本节为技术路线研究，不代表已经修改代码、资源或项目配置。
